@@ -10,10 +10,7 @@
           @keydown.esc="onEsc"
           >
             <div class="sd--dialog__container">
-              huh
-              <sd-focus-trap>
-                <slot />
-              </sd-focus-trap>
+              <slot />
             </div>
         </div>
       <sd-overlay
@@ -33,7 +30,6 @@
 <script>
 import { watch, computed, nextTick } from 'vue'
 import '@/library/components/SdElevation'
-import SdFocusTrap from '@/library/components/SdFocusTrap'
 import SdOverlay from '@/library/components/SdOverlay/SdOverlay'
 import sdUuid from '@/library/core/utilities/SdUuid'
 export default {
@@ -72,8 +68,7 @@ export default {
     aside: Boolean
   },
   components: {
-    SdOverlay,
-    SdFocusTrap
+    SdOverlay
   },
 
   setup (props, { emit }) {

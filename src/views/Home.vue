@@ -7,11 +7,11 @@
       </sd-dialog-title>
       <sd-dialog-content>
         <div>
-          <sd-button flat @click="buttonClick">Button</sd-button>
+          content
         </div>
       </sd-dialog-content>
       <sd-dialog-footer>
-        beep
+        <sd-button size="sm" flat @click="buttonClick">Button</sd-button>
       </sd-dialog-footer>
     </sd-dialog>
     <div>
