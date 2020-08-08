@@ -1,0 +1,66 @@
+$primary: #8F00F8;
+$secondary: #A77DF2;
+$default: #646066;
+$danger: #AE1A2C;
+$success: #83CF2A;
+$warning: #F5A623;
+
+$sd-color-global: (
+  primary: color-map($primary, 25%, 25%),
+  secondary: color-map($secondary, 25%, 50%),
+  default: color-map($default, 25%, 50%),
+  success: color-map($success, 25%, 15%),
+  danger: color-map($danger, 25%, 25%),
+  warning: color-map($warning, 25%, 15%)
+);
+
+$sd-color-schemes: (
+  light: (
+    background: #f9f9f9,
+    background-accent: #efefef,
+    background-highlight: #ffffff,
+    background-inverse: #202020,
+    background-opaque: #efefefef,
+    text: rgba(0,0,0, .87),
+    text-light: rgba(255,255,255, .87),
+    text-dark: rgba(0,0,0,.87),
+    text-accent: rgba(0,0,0, .54),
+    text-accent-light: rgba(255,255,255,.54),
+    text-accent-dark: rgba(0,0,0,.54),
+    text-hint: rgba(0,0,0, .38),
+    text-hint-light: rgba(255,255,255,.38),
+    text-hint-dark: rgba(0,0,0,.38),
+    disabled: rgba(0,0,0, .26),
+    disabled-background: rgba(0,0,0,.12),
+    highlight: rgba(0,0,0,.12),
+    icon: rgba(0,0,0,.54),
+    icon-disabled: rgba(0,0,0,.38),
+    divider: darken(#efefef, 5%),
+    scrollbar: #434444,
+    tooltip: #2E2F2F
+  ),
+  dark: (
+    background: #202020,
+    background-highlight: lighten(#202020, 5%),
+    background-accent: #181818,
+    background-inverse: #f9f9f9,
+    background-opaque: #2d2d2da8,
+    text: rgba(255,255,255,.87),
+    text-light: rgba(255,255,255,.87),
+    text-dark: rgba(0,0,0,.87),
+    text-accent: rgba(255,255,255,.54),
+    text-accent-light: rgba(0,0,0,.54),
+    text-accent-dark: rgba(255,255,255,.54),
+    text-hint: rgba(255,255,255,.38),
+    text-hint-light: rgba(255,255,255,.38),
+    text-hint-dark: rgba(0,0,0,.38),
+    disabled: rgba(255,255,255,.26),
+    disabled-background: rgba(255,255,255,.12),
+    highlight: rgba(255,255,255,.12),
+    icon: rgba(255,255,255,.54),
+    icon-disabled: rgba(255,255,255,.38),
+    divider: lighten(#202020, 12%),
+    scrollbar: #434444,
+    tooltip: #000
+  )
+);

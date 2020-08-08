@@ -1,0 +1,32 @@
+@import 'colors';
+@import 'spacing';
+@import 'functions';
+
+@each $scheme, $map in $sd-color-schemes {
+  @media(prefers-color-scheme: $scheme){
+    :root{
+      @each $key, $color in $map {
+        $color: sd-color($scheme, $key);
+        --#{$key}: #{$color};
+      }
+    }
+  }
+  .sd--layout--#{$scheme}{
+    @each $key, $color in $map {
+      $color: sd-color($scheme, $key);
+      --#{$key}: #{$color};
+    }
+  }
+}
+
+:root {
+  @each $key, $color in $sd-color-global {
+    $base: nth($color, 1);
+    $highlight: nth($color, 2);
+    $accent: nth($color, 3);
+    --#{$key}: #{$base};
+    --#{$key}-highlight: #{$highlight};
+    --#{$key}-accent: #{$accent};
+  };
+}
+

@@ -1,0 +1,10 @@
+@import "./variables";
+@import "./mixins";
+
+$sd--elevation-count: length($sd--elevation-umbra) - 1;
+
+@for $i from 0 through $sd--elevation-count {
+  .sd--elevation--#{$i} {
+    @include sd--elevation($i);
+  }
+}

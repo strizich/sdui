@@ -1,18 +1,48 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <sd-button flat @click="buttonClick">Button</sd-button>
+    <sd-dialog :active="state.modal" @update:active="(e) => handleClose(e)" size="sm">
+      <sd-dialog-title>
+        head
+      </sd-dialog-title>
+      <sd-dialog-content>
+        <div>
+          <sd-button flat @click="buttonClick">Button</sd-button>
+        </div>
+      </sd-dialog-content>
+      <sd-dialog-footer>
+        beep
+      </sd-dialog-footer>
+    </sd-dialog>
+    <div>
+      other thing
+    </div>
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
+import { reactive } from 'vue'
+
+import SdButton from '@/library/components/SdButton/SdButton'
+import SdDialog from '@/library/components/SdDialog/SdDialog'
+import SdDialogTitle from '@/library/components/SdDialog/SdDialogTitle'
+import SdDialogContent from '@/library/components/SdDialog/SdDialogContent'
+import SdDialogFooter from '@/library/components/SdDialog/SdDialogFooter'
 
 export default {
+  components: { SdButton, SdDialog, SdDialogTitle, SdDialogContent, SdDialogFooter },
   name: 'Home',
-  components: {
-    HelloWorld
+  setup () {
+    const state = reactive({
+      modal: true
+    })
+    const buttonClick = () => {
+      state.modal = !state.modal
+    }
+    const handleClose = (event) => {
+      state.modal = event
+    }
+    return { buttonClick, state, handleClose }
   }
 }
 </script>

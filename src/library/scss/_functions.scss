@@ -1,0 +1,46 @@
+
+// Converts to rem
+$base-font: 16;
+
+// Shorthand for var()
+// Usage: v(--css-var)
+@function v($val) {
+  @return var(#{$val});
+};
+
+// Converts PX to REM
+// Usage: font-size: rem(16);
+@function rem($pixels, $context: $base-font){
+  @if(unitless($pixels)) {
+    $pixels: $pixels * 1px;
+  }
+  @if(unitless($context)) {
+    $context: $context * 1px;
+  }
+  @return #{$pixels/$context * 1rem};
+};
+
+// Gets color from color map
+// Useage sd-color(dark, text-primary)
+@function sd-color($scheme, $type) {
+  @return map-get(map-get($sd-color-schemes, $scheme), $type);
+};
+
+// Creates a CSS gradient
+@function sd-gradient($primary, $secondary, $deg: 145deg) {
+  @return linear-gradient($deg, $primary, $secondary);
+};
+
+// Manages spacing
+@function spacing($type, $size: 'md'){
+  @return map-get(map-get($space, $type), $size);
+};
+
+// Creates a map of colors ($base-color, $highlight, $accent);
+@function color-map($color, $highlight, $accent) {
+  @return ($color, mix(#fff, $color, $highlight), mix(#000, $color, $accent))
+};
+
+@function ios-safe-area($position){
+  @return m#{a}x(16px, env(safe-area-inset-#{$position}))
+}

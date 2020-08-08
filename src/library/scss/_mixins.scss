@@ -1,0 +1,45 @@
+@mixin flatten($base, $highlight, $accent, $contrast) {
+  // No background, No border, more problems
+  background-color: none;
+  @include sd--elevation(0);
+  @media(prefers-color-scheme: 'dark'){
+    color: $highlight;
+  }
+  @media(prefers-color-scheme: 'light'){
+    color: $accent;
+  }
+  @content;
+  &:hover {
+    background-color: $base;
+    color: sd-color($contrast, text);
+  }
+  &:active {
+    background-color:$accent;
+  }
+}
+
+@mixin aspect-ratio($width, $height) {
+  overflow: hidden;
+  &:before {
+    padding-top: ($height / $width) * 100%;
+    display: block;
+    content: '';
+  }
+  img {
+    position: absolute;
+    top: 50%;
+    right: 0;
+    left: 0;
+    transform: translateY(-50%);
+  }
+}
+
+@mixin iosSafeArea {
+  @supports (padding: max(32px, 32px)) {
+    padding:
+    0
+    m#{a}x(16px, env(safe-area-inset-left))
+    0
+    m#{a}x(16px, env(safe-area-inset-right));
+  }
+}
