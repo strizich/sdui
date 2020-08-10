@@ -8,10 +8,11 @@
         <div
           :class="['sd--dialog__wrapper', classes ]"
           @keydown.esc="onEsc"
+          ref="modalContainer"
           >
-            <div class="sd--dialog__container">
-              <slot />
-            </div>
+          <div class="sd--dialog__container">
+            <slot />
+          </div>
         </div>
       <sd-overlay
         :parent="`#${id}`"
@@ -28,10 +29,11 @@
 </template>
 
 <script>
-import { watch, computed, nextTick } from 'vue'
+import { watch, computed, nextTick, onMounted, ref } from 'vue'
 import '@/library/components/SdElevation'
 import SdOverlay from '@/library/components/SdOverlay/SdOverlay'
 import sdUuid from '@/library/core/utilities/SdUuid'
+
 export default {
   name: 'SdDialog',
   props: {
@@ -71,7 +73,9 @@ export default {
     SdOverlay
   },
 
-  setup (props, { emit }) {
+  setup (props, { emit, root, attrs }) {
+    const modalContainer = ref(null)
+
     const classes = computed(() => {
       const sizeClass = `is--${props.size}`
       return {
@@ -80,6 +84,17 @@ export default {
         'is--fullscreen': props.fullscreen && !props.aside
       }
     })
+
+    const setFocus = () => {
+      // Sets the focus on the modal container so the
+      // first focused field when`tab` is pressed will
+      // be an child of the modal.
+      window.setTimeout(() => {
+        modalContainer.value.setAttribute('tabindex', '-1')
+        modalContainer.value.focus()
+      }, 20)
+    }
+
     watch(() => props.active, () => {
       nextTick().then(() => {
         if (props.active) {
@@ -88,6 +103,7 @@ export default {
           document.body.style.position = 'fixed'
           document.body.style.left = '0'
           document.body.style.right = '0'
+          setFocus()
           emit('sd-opened')
         } else {
           const scrollY = document.body.style.top
@@ -116,11 +132,16 @@ export default {
       }
     }
 
+    onMounted(() => {
+      setFocus()
+    })
+
     return {
       onEsc,
       onOutsideClick,
       closeModal,
-      classes
+      classes,
+      modalContainer
     }
   }
 }

@@ -7,7 +7,21 @@
       </sd-dialog-title>
       <sd-dialog-content>
         <div>
-          content
+          <div>
+            <input type="text"/>
+          </div>
+          <div>
+            <input type="text"/>
+          </div>
+          <div>
+            <input type="text"/>
+          </div>
+          <div>
+          <input type="text"/>
+          </div>
+          <div>
+            <input type="text"/>
+          </div>
         </div>
       </sd-dialog-content>
       <sd-dialog-footer>
@@ -16,6 +30,15 @@
     </sd-dialog>
     <div>
       other thing
+      <div>
+        <input type="text"/>
+      </div>
+      <div>
+        <input type="text"/>
+      </div>
+      <div>
+        <input type="text"/>
+      </div>
     </div>
   </div>
 </template>
