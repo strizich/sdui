@@ -1,10 +1,16 @@
 
 <template>
-  <button ref="root" :class="['sd--button', themeClass, attrs]">
+  <!-- dynamic component wrapper... needs further testing -->
+  <component :is="elementType"
+    ref="root"
+    :class="['sd--button', themeClass, attrs]"
+    :href="href"
+    :to="to"
+  >
     <div :class="['sd--button__content', sizeClass]">
       <slot />
     </div>
-  </button>
+  </component>
 </template>
 
 <script>
@@ -12,7 +18,6 @@ import { defineComponent, computed, ref } from 'vue'
 import useKeyboardFocus from '@/library/hooks/useKeyboardFocus'
 import sdUuid from '@/library/core/utilities/SdUuid'
 export default defineComponent({
-  // Swap this to use a typescript interface once docs are available
   props: {
     id: {
       type: String,
@@ -59,7 +64,20 @@ export default defineComponent({
     casing: String,
     full: Boolean,
     block: Boolean,
-    iconOnly: Boolean
+    iconOnly: Boolean,
+    to: [String, Object],
+    replace: Boolean,
+    append: Boolean,
+    activeClass: {
+      type: String,
+      default: 'is--active'
+    },
+    exact: Boolean,
+    exactActiveClass: {
+      type: String,
+      default: 'is--active--exact'
+    },
+    event: [String, Array]
   },
   setup (props) {
     const root = ref(null)
@@ -74,7 +92,9 @@ export default defineComponent({
         'is--outline': props.outline,
         'is--icon-only': props.iconOnly,
         'is--full': props.full,
-        'is--block': props.block
+        'is--block': props.block,
+        'is--router-link': elementType.value === 'router-link',
+        'is--link': elementType.value === 'a'
       }
     })
     const alignmentStyle = computed(() => {
@@ -92,12 +112,19 @@ export default defineComponent({
       return `sd--button__${props.theme}`
     })
 
+    const elementType = computed(() => {
+      if (props.href) return 'a'
+      if (props.to) return 'router-link'
+      return 'button'
+    })
+
     return {
       attrs,
       alignmentStyle,
       sizeClass,
       themeClass,
       isFocused,
+      elementType,
       root
     }
   }

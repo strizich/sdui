@@ -8,8 +8,6 @@ const useScrollPosition = () => {
   const onScroll = () => {
     const currentPosition = window.pageYOffset || document.documentElement.scrollTop
     const scrollingDown = currentPosition < last.value
-    console.log(currentPosition)
-    console.log(showHeader.value)
     if (currentPosition < 50) {
       showHeader.value = true
     } else {

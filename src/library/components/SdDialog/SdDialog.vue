@@ -29,12 +29,12 @@
 </template>
 
 <script>
-import { watch, computed, nextTick, onMounted, ref } from 'vue'
+import { defineComponent, watch, computed, nextTick, onMounted, ref } from 'vue'
 import '@/library/components/SdElevation'
 import SdOverlay from '@/library/components/SdOverlay/SdOverlay'
 import sdUuid from '@/library/core/utilities/SdUuid'
 
-export default {
+export default defineComponent({
   name: 'SdDialog',
   props: {
     id: {
@@ -90,11 +90,20 @@ export default {
       // first focused field when`tab` is pressed will
       // be an child of the modal.
       window.setTimeout(() => {
-        modalContainer.value.setAttribute('tabindex', '-1')
-        modalContainer.value.focus()
+        if (modalContainer.value) {
+          modalContainer.value.setAttribute('tabindex', '-1')
+          modalContainer.value.focus()
+        }
       }, 20)
     }
-
+    // When the modal is active we set the body of the document to fixed and position
+    // it based on its current scoll location. This keeps the body of the document from
+    // bouncing back to position [0,0] if the use is scrolled down and disables scrolling
+    // on the body while the dialog is open.
+    // When the dialog is closed save style we used above to
+    // position the element in `scrollY`.
+    // Then set the position of the body back to static.
+    // Then set scrollTo to our saved scroll position.
     watch(() => props.active, () => {
       nextTick().then(() => {
         if (props.active) {
@@ -144,7 +153,7 @@ export default {
       modalContainer
     }
   }
-}
+})
 </script>
 
 <style lang="scss">
@@ -155,7 +164,6 @@ export default {
     left:0;
     right: 0;
     z-index: 1000;
-
     &--open{
       @include breakpoint-up('sm') {
         padding-right: 10px;
@@ -184,58 +192,61 @@ export default {
       transition: opacity .2s ease-in-out,
                   transform .2s  ease-in-out;
       will-change: opacity, transform, left, top;
-           &.is{
-      &--sm{
-        width: 25%;
-        height: auto;
+      &:focus{
+        outline: none;
       }
-      &--md{
-        width: 60%;
-        height: 80%;
-        &.is--aside{
-          width: 40%
+      &.is{
+        &--sm{
+          width: 25%;
+          height: auto;
         }
-      }
-      &--lg{
-        width: 90%;
-        &.is--aside{
-          width: 70%
+        &--md{
+          width: 60%;
+          height: 80%;
+          &.is--aside{
+            width: 40%
+          }
         }
-      }
-      &--fullscreen{
-        @include breakpoint-down('sm'){
-          max-width: 100%;
-          max-height: 100%;
-          min-width: 100%;
-          top: 0;
-          right: 0;
-          bottom: 0;
-          left: 0;
-          border-radius: 0;
-          transform: none;
+        &--lg{
+          width: 90%;
+          &.is--aside{
+            width: 70%
+          }
         }
-      }
-      &--aside{
-        min-height: 100%;
-        left: 100%;
-        top:0;
-        bottom:0;
-        right: 0;
-        transform: translate3D(-100%, 0, 0);
-        overflow: hidden;
-        transition: opacity .5s ease-in-out,
-                    transform .5s  ease-in-out;
-        will-change: transform, opacity;
-        @include breakpoint-down('sm'){
-          left: 0;
-          right: 0;
+        &--fullscreen{
+          @include breakpoint-down('sm'){
+            max-width: 100%;
+            max-height: 100%;
+            min-width: 100%;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            border-radius: 0;
+            transform: none;
+          }
+        }
+        &--aside{
+          min-height: 100%;
+          left: 100%;
           top:0;
           bottom:0;
-          min-width: 100%;
-          transform: none;
-          opacity: 1;
-        }
-        .sd--dialog__content{
+          right: 0;
+          transform: translate3D(-100%, 0, 0);
+          overflow: hidden;
+          transition: opacity .5s ease-in-out,
+                      transform .5s  ease-in-out;
+          will-change: transform, opacity;
+          @include breakpoint-down('sm'){
+            left: 0;
+            right: 0;
+            top:0;
+            bottom:0;
+            min-width: 100%;
+            transform: none;
+            opacity: 1;
+          }
+          .sd--dialog__content{
             // min-height: 100%;
             flex-grow: 3;
             max-height: 100%;
@@ -248,9 +259,6 @@ export default {
       display: flex;
       flex-flow: column nowrap;
       flex: 1;
-      &:focus{
-        outline: none;
-      }
     }
   }
 
@@ -275,6 +283,5 @@ export default {
   .sd--dialog__overlay{
     opacity: 0;
   }
-
 }
 </style>
