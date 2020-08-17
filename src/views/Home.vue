@@ -1,5 +1,5 @@
 <template>
-  <div class="home">
+  <div class="container">
     <sd-button @click="buttonClick">
       Open Modal
     </sd-button>
@@ -38,10 +38,13 @@
       </sd-dialog-footer>
     </sd-dialog>
     <div>
-      <h1>Checkboxes</h1>
-      <sd-fieldset stack>
+      <p class="sd--text__lead">Lead</p>
+      <h1 class="sd--text__headline">Headline</h1>
+      <sd-fieldset title="Fieldset Title">
         <sd-checkbox v-model="state.simpleCheck">Simple Checkbox</sd-checkbox>
         <sd-checkbox v-model="state.valueCheck" true-value="yup" false-value="nope">Single Checkbox w/ value</sd-checkbox>
+      </sd-fieldset>
+      <sd-fieldset title="Fruit">
         <sd-checkbox
           v-for="(fruit, index) in list"
           :key="index"
@@ -66,19 +69,27 @@ arrayCheck: {{state.arrayCheck}}
 import { defineComponent, reactive } from 'vue'
 import SdButton from '@/library/components/SdButton'
 import SdFieldset from '@/library/components/SdField'
-import SdDialog, { SdDialogTitle, SdDialogContent, SdDialogFooter } from '@/library/components/SdDialog'
 import SdCheckbox from '@/library/components/SdCheckbox'
+import SdDialog, { SdDialogTitle, SdDialogContent, SdDialogFooter } from '@/library/components/SdDialog'
 
 export default defineComponent({
-  components: { SdButton, SdDialog, SdDialogTitle, SdDialogContent, SdDialogFooter, SdCheckbox, SdFieldset },
   name: 'Home',
+  components: {
+    SdButton,
+    SdDialog,
+    SdDialogTitle,
+    SdDialogContent,
+    SdDialogFooter,
+    SdCheckbox,
+    SdFieldset
+  },
   setup () {
     const list = ['apple', 'orange', 'pear']
     const state = reactive({
       modal: false,
       simpleCheck: false,
       arrayCheck: [],
-      valueCheck: ''
+      valueCheck: 'nope'
     })
     const buttonClick = () => {
       state.modal = !state.modal
@@ -91,3 +102,9 @@ export default defineComponent({
   }
 })
 </script>
+
+<style lang="scss">
+  .container{
+    padding: 40px;
+  }
+</style>
