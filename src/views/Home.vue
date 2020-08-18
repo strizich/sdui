@@ -40,7 +40,7 @@
     <div>
       <p class="sd--text__lead">Lead</p>
       <h1 class="sd--text__headline">Headline</h1>
-      <sd-fieldset title="Fieldset Title">
+      <sd-fieldset title="Checkboxes">
         <sd-checkbox v-model="state.simpleCheck">Simple Checkbox</sd-checkbox>
         <sd-checkbox v-model="state.valueCheck" true-value="yup" false-value="nope">Single Checkbox w/ value</sd-checkbox>
       </sd-fieldset>
@@ -54,13 +54,18 @@
           {{fruit}}
         </sd-checkbox>
       </sd-fieldset>
-      </div>
+      <sd-fieldset title="Radios">
+        <sd-radio name="radios" v-model="state.radioValue" value="one">Thing</sd-radio>
+        <sd-radio name="radios" v-model="state.radioValue" value="two">Thing</sd-radio>
+      </sd-fieldset>
+    </div>
   </div>
 <pre>
 <code>
 simpleCheck: {{state.simpleCheck}}
 valueCheck: {{state.valueCheck}}
 arrayCheck: {{state.arrayCheck}}
+radioValue: {{state.radioValue}}
 </code>
 </pre>
 </template>
@@ -71,6 +76,7 @@ import SdButton from '@/library/components/SdButton'
 import SdFieldset from '@/library/components/SdField'
 import SdCheckbox from '@/library/components/SdCheckbox'
 import SdDialog, { SdDialogTitle, SdDialogContent, SdDialogFooter } from '@/library/components/SdDialog'
+import SdRadio from '@/library/components/SdRadio'
 
 export default defineComponent({
   name: 'Home',
@@ -81,7 +87,8 @@ export default defineComponent({
     SdDialogContent,
     SdDialogFooter,
     SdCheckbox,
-    SdFieldset
+    SdFieldset,
+    SdRadio
   },
   setup () {
     const list = ['apple', 'orange', 'pear']
@@ -89,6 +96,7 @@ export default defineComponent({
       modal: false,
       simpleCheck: false,
       arrayCheck: [],
+      radioValue: '',
       valueCheck: 'nope'
     })
     const buttonClick = () => {
