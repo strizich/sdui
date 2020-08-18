@@ -1,6 +1,6 @@
 <template>
-  <div class="sd--modal__footer">
-    <slot/>
+  <div class="sd--dialog__footer">
+    <slot />
   </div>
 </template>
 
@@ -11,7 +11,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.sd--modal{
+.sd--dialog{
   &__footer{
     display: flex;
     align-content: center;
@@ -22,10 +22,9 @@ export default {
     border-top: 1px solid var(--background-highlight);
     border-radius: 0 0 3px 3px;
     backdrop-filter: blur(20px);
-    padding: 4px 16px;
+    padding: 8px 16px;
     @include breakpoint-down('sm') {
-      padding: 16px;
-      padding-bottom: calc(16px + ios-safe-area(bottom))
+      padding: 8px 16px calc(16px + ios-safe-area(bottom));
     }
   }
 }

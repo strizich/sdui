@@ -3,6 +3,9 @@
     <sd-button @click="buttonClick">
       Open Modal
     </sd-button>
+    <sd-button @click="handleModalTwo">
+      Other Modal
+    </sd-button>
     <sd-button theme="default" flat href="http://www.github.com" target="_blank">
       Github.com (External Link)
     </sd-button>
@@ -37,6 +40,31 @@
         <sd-button size="sm" flat @click="buttonClick">Button</sd-button>
       </sd-dialog-footer>
     </sd-dialog>
+
+    <sd-dialog
+      aside
+      :fullscreen="false"
+      :active="state.modalTwo"
+      @update:active="(e) => handleModalTwoClose(e)"
+      :size="state.asideSize"
+    >
+      <sd-dialog-title>
+        head
+      </sd-dialog-title>
+      <sd-dialog-content>
+        <div>
+          <sd-fieldset title="Aside Size Test">
+            <sd-radio name="radios" v-model="state.asideSize" value="sm">Small</sd-radio>
+            <sd-radio name="radios" v-model="state.asideSize" value="md">Medium</sd-radio>
+            <sd-radio name="radios" v-model="state.asideSize" value="lg">Large</sd-radio>
+          </sd-fieldset>
+        </div>
+      </sd-dialog-content>
+      <sd-dialog-footer>
+        <sd-button size="md" flat @click="buttonClick">Button</sd-button>
+      </sd-dialog-footer>
+    </sd-dialog>
+
     <div>
       <p class="sd--text__lead">Lead</p>
       <h1 class="sd--text__headline">Headline</h1>
@@ -98,11 +126,13 @@ export default defineComponent({
     const list = ['apple', 'orange', 'pear']
     const state = reactive({
       modal: false,
+      modalTwo: false,
       simpleCheck: false,
       objectCheck: {
         name: 'Checkbox object',
         checked: false
       },
+      asideSize: 'sm',
       arrayCheck: [],
       radioValue: '',
       valueCheck: 'nope'
@@ -114,7 +144,14 @@ export default defineComponent({
       state.modal = event
     }
 
-    return { state, handleClose, buttonClick, list }
+    const handleModalTwo = () => {
+      state.modalTwo = !state.modalTwo
+    }
+    const handleModalTwoClose = (event) => {
+      state.modalTwo = event
+    }
+
+    return { state, handleClose, buttonClick, list, handleModalTwo, handleModalTwoClose }
   }
 })
 </script>
