@@ -1,10 +1,9 @@
 <template>
- <!-- Simplified version of the checkbox -->
-  <label :class="['sd--checkbox', containerClasses]" @click.prevent="toggleCheck">
+  <label :class="[containerClasses]" @click.prevent="handleChecked">
       <input
         type="checkbox"
         :id="id"
-        :class="['sd--checkbox__field', inputClasses]"
+        :class="[inputClasses]"
         :checked="isSelected"
         :indeterminate="indeterminate"
         v-bind="attributes"
@@ -51,7 +50,7 @@ export default defineComponent({
     }
   },
   setup (props, { emit }) {
-    const hasFocus = ref(false)
+    const isFocused = ref(false)
 
     const isModelArray = computed(() => {
       return Array.isArray(props.modelValue)
@@ -97,7 +96,7 @@ export default defineComponent({
       emit('update:modelValue', isSelected.value ? props.falseValue : props.trueValue)
     }
 
-    const toggleCheck = () => {
+    const handleChecked = () => {
       if (!props.disabled) {
         if (isModelArray.value) {
           handleArrayCheckbox()
@@ -109,12 +108,12 @@ export default defineComponent({
       }
     }
 
-    const onFocus = () => {
-      hasFocus.value = true
+    const handleFocus = () => {
+      isFocused.value = true
     }
 
-    const onBlur = () => {
-      hasFocus.value = false
+    const handleBlur = () => {
+      isFocused.value = false
     }
 
     const attributes = computed(() => {
@@ -134,32 +133,34 @@ export default defineComponent({
 
     const containerClasses = computed(() => {
       return {
+        'sd--checkbox': true,
         'is--disabled': props.disabled,
-        'is--focused': hasFocus.value
+        'is--focused': isFocused.value
       }
     })
     const inputClasses = computed(() => {
       return {
+        'sd--checkbox__field': true,
         'is--checked': isSelected.value,
         'is--disabled': props.disabled,
         'is--required': props.required,
         'is--indeterminate': props.indeterminate,
-        'is--focused': hasFocus.value,
+        'is--focused': isFocused.value,
         'is--rotated': props.rotateAnim
       }
     })
 
     return {
       attributes,
-      hasFocus,
+      inputClasses,
+      containerClasses,
+      isFocused,
       isSelected,
       isModelArray,
       hasValue,
-      toggleCheck,
-      onFocus,
-      onBlur,
-      inputClasses,
-      containerClasses
+      handleChecked,
+      handleFocus,
+      handleBlur
     }
   }
 })

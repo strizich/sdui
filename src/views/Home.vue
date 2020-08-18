@@ -42,6 +42,7 @@
       <h1 class="sd--text__headline">Headline</h1>
       <sd-fieldset title="Checkboxes">
         <sd-checkbox v-model="state.simpleCheck">Simple Checkbox</sd-checkbox>
+        <sd-checkbox v-model="state.objectCheck.checked">{{state.objectCheck.name}}</sd-checkbox>
         <sd-checkbox v-model="state.valueCheck" true-value="yup" false-value="nope">Single Checkbox w/ value</sd-checkbox>
       </sd-fieldset>
       <sd-fieldset title="Fruit">
@@ -55,8 +56,8 @@
         </sd-checkbox>
       </sd-fieldset>
       <sd-fieldset title="Radios">
-        <sd-radio name="radios" v-model="state.radioValue" value="one">Thing</sd-radio>
-        <sd-radio name="radios" v-model="state.radioValue" value="two">Thing</sd-radio>
+        <sd-radio name="radios" v-model="state.radioValue" value="Radio 1">Radio 1</sd-radio>
+        <sd-radio name="radios" v-model="state.radioValue" value="Radio 2">Radio 2</sd-radio>
       </sd-fieldset>
     </div>
   </div>
@@ -65,7 +66,10 @@
 simpleCheck: {{state.simpleCheck}}
 valueCheck: {{state.valueCheck}}
 arrayCheck: {{state.arrayCheck}}
+checkboxOptions: {{list}}
 radioValue: {{state.radioValue}}
+objectCheck: {{state.objectCheck}}
+
 </code>
 </pre>
 </template>
@@ -95,6 +99,10 @@ export default defineComponent({
     const state = reactive({
       modal: false,
       simpleCheck: false,
+      objectCheck: {
+        name: 'Checkbox object',
+        checked: false
+      },
       arrayCheck: [],
       radioValue: '',
       valueCheck: 'nope'
