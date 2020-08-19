@@ -64,7 +64,6 @@
         <sd-button size="md" flat @click="buttonClick">Button</sd-button>
       </sd-dialog-footer>
     </sd-dialog>
-
     <div>
       <p class="sd--text__lead">Lead</p>
       <h1 class="sd--text__headline">Headline</h1>
@@ -89,6 +88,14 @@
       </sd-fieldset>
     </div>
   </div>
+  <div class="someContainer">
+   <teleport to="#app" >
+      <div ref="meh">Reftest</div>
+   </teleport>
+  </div>
+  <!-- <sd-popover :active="true">
+    umuu
+  </sd-popover> -->
 <pre>
 <code>
 simpleCheck: {{state.simpleCheck}}
@@ -103,13 +110,13 @@ objectCheck: {{state.objectCheck}}
 </template>
 
 <script>
-import { defineComponent, reactive } from 'vue'
+import { defineComponent, reactive, onMounted, ref } from 'vue'
 import SdButton from '@/library/components/SdButton'
 import SdFieldset from '@/library/components/SdField'
 import SdCheckbox from '@/library/components/SdCheckbox'
 import SdDialog, { SdDialogTitle, SdDialogContent, SdDialogFooter } from '@/library/components/SdDialog'
 import SdRadio from '@/library/components/SdRadio'
-
+// import SdPopover from '@/library/components/SdPopover'
 export default defineComponent({
   name: 'Home',
   components: {
@@ -121,9 +128,11 @@ export default defineComponent({
     SdCheckbox,
     SdFieldset,
     SdRadio
+    // SdPopover
   },
-  setup () {
+  setup (props, context) {
     const list = ['apple', 'orange', 'pear']
+    const meh = ref(null)
     const state = reactive({
       modal: false,
       modalTwo: false,
@@ -135,7 +144,8 @@ export default defineComponent({
       asideSize: 'sm',
       arrayCheck: [],
       radioValue: '',
-      valueCheck: 'nope'
+      valueCheck: 'nope',
+      popoverState: false
     })
     const buttonClick = () => {
       state.modal = !state.modal
@@ -150,8 +160,10 @@ export default defineComponent({
     const handleModalTwoClose = (event) => {
       state.modalTwo = event
     }
-
-    return { state, handleClose, buttonClick, list, handleModalTwo, handleModalTwoClose }
+    onMounted(() => {
+      console.log(meh.value.nodeType !== Node.COMMENT_NODE)
+    })
+    return { state, handleClose, buttonClick, list, handleModalTwo, handleModalTwoClose, meh }
   }
 })
 </script>
