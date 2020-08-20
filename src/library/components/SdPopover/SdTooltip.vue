@@ -1,0 +1,239 @@
+<template>
+  <teleport ref="tooltipPortal" to="#app">
+    <transition name="popover">
+      <div ref="tooltipRef" class="sd--tooltip" v-if="shouldRender">
+        <div :class="['sd--tooltip__content', themeClass]">
+          <slot />
+          <div :class="['sd--tooltip__arrow', themeClass]" data-popper-arrow/>
+        </div>
+      </div>
+    </transition>
+  </teleport>
+</template>
+
+<script>
+// TODO: Split popper.js logic into a composable for
+// reuse with popover, dropdowns, ect.
+import {
+  computed,
+  ref,
+  reactive,
+  toRefs,
+  watch,
+  nextTick,
+  onMounted,
+  onUnmounted
+} from 'vue'
+import { createPopper } from '@popperjs/core'
+
+export default {
+  name: 'SdTooltip',
+  emits: ['update:active', 'open', 'close'],
+  props: {
+    active: Boolean,
+    theme: {
+      type: String,
+      default: 'primary'
+    },
+    delay: {
+      type: [String, Number],
+      default: 100
+    },
+    placement: {
+      type: String,
+      default: 'top'
+    }
+  },
+  setup (props, { emit }) {
+    // Element Bindings
+    const tooltipPortal = ref(null)
+    const tooltipRef = ref(null)
+    // Styling
+    const themeClass = computed(() => `is--${props.theme}`)
+    // Element Instances
+    const state = reactive({
+      targetEl: null,
+      shouldRender: false,
+      popperInstance: null
+    })
+
+    // Popper Options
+    const options = reactive({
+      placement: props.placement,
+      modifiers: {
+        name: 'offset',
+        options: {
+          offset: [0, 8]
+        }
+      },
+      strategy: 'fixed'
+    })
+
+    // Copy active prop to local state
+    watch(() => props.active, () => {
+      state.shouldRender = props.active
+    })
+
+    // emit when state has been
+    watch(() => state.shouldRender, (shouldRender) => {
+      emit('update:active', shouldRender)
+      if (shouldRender) {
+        bindPopper()
+      }
+    })
+
+    const makePopper = () => {
+      state.popperInstance = createPopper(state.targetEl, tooltipRef.value, options)
+    }
+
+    const killPopper = () => {
+      if (state.popperInstance) {
+        state.popperInstance.destroy()
+        state.popperInstance = null
+      }
+    }
+
+    const bindPopper = () => {
+      nextTick().then(() => {
+        if (state.targetEl) {
+          makePopper()
+        }
+      })
+    }
+
+    const resetPopper = () => {
+      if (state.popperInstance) {
+        killPopper()
+        makePopper()
+      }
+    }
+
+    const show = () => {
+      state.shouldRender = true
+      emit('open')
+    }
+
+    const hide = () => {
+      state.shouldRender = false
+      emit('close')
+    }
+
+    const mountEventBindings = async () => {
+      await nextTick().then(() => {
+        state.targetEl = tooltipPortal.value?.parentNode
+        if (state.targetEl) {
+          state.targetEl.addEventListener('mouseenter', show, false)
+          state.targetEl.addEventListener('mouseleave', hide, false)
+        }
+      })
+    }
+
+    onMounted(() => {
+      mountEventBindings()
+      resetPopper()
+    })
+
+    onUnmounted(() => {
+      // Cleanup Listeners
+      state.targetEl.removeEventListener('mouseenter', show)
+      state.targetEl.removeEventListener('mouseleave', hide)
+    })
+
+    return {
+      ...toRefs(state),
+      tooltipPortal,
+      tooltipRef,
+      themeClass
+    }
+  }
+}
+</script>
+
+<style lang="scss" scoped>
+@import '../SdElevation/mixins';
+
+.sd--tooltip{
+  position:fixed;
+  min-height: 32px;
+  transition: opacity .5s;
+  &__content {
+    min-height: 24px;
+    padding: 8px;
+    z-index: 111;
+    pointer-events: none;
+    border-radius: 2px;
+    font-size: 14px;
+    text-transform: none;
+    white-space: nowrap;
+    opacity: 1;
+    background-color: var(--background-highlight);
+    @include sd--elevation(4);
+    @each $state, $color in $sd-color-global {
+      $default: nth($color, 1);
+      $variant: nth($color, 2);
+      $contrast: sd-pick-contrast($default);
+         &.is--#{$state} {
+          background-color: $default;
+          color: $contrast;
+        }
+      }
+    }
+    &__arrow{
+      @each $state, $color in $sd-color-global {
+      $default: nth($color, 1);
+      $variant: nth($color, 2);
+      $contrast: sd-pick-contrast($default);
+        &.is--#{$state} {
+          &:before{
+            background-color: $default;
+          }
+        }
+      }
+      &, &:before{
+        position: absolute;
+        width: 8px;
+        height: 8px;
+        z-index: 1;
+      }
+      &:before{
+        content: '';
+        transform: rotate(45deg);
+      }
+    }
+    &[data-popper-placement^='top'] .sd--tooltip__arrow {
+      bottom: -4px;
+    }
+    &[data-popper-placement^='bottom'] .sd--tooltip__arrow {
+      top: -4px;
+    }
+    &[data-popper-placement^='left'] .sd--tooltip__arrow {
+      right: -4px;
+    }
+    &[data-popper-placement^='right'] .sd--tooltip__arrow {
+      left: -4px;
+    }
+  }
+  .popover-enter-active, .popover-leave-active{
+    .sd--tooltip__content {
+      transition: opacity .2s .1s, transform .3s ease-in-out;
+    }
+  }
+  .popover-enter-to{
+    .sd--tooltip__content {
+      opacity: 1;
+      transform: translate3d(0, 0, 0)
+    }
+  }
+  .popover-enter-from{
+    .sd--tooltip__content {
+      opacity: 0;
+      transform: translate3d(0, 4px, 0);
+    }
+  }
+  .popover-leave-to{
+    .sd--tooltip__content {
+      opacity: 0;
+      transform: translate3d(0, -4px, 0);
+    }
+  }
+</style>

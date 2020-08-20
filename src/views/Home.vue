@@ -13,7 +13,7 @@
       About (Router Link)
     </sd-button>
 
-    <sd-dialog :active="state.modal" @update:active="(e) => handleClose(e)" size="sm">
+    <sd-dialog :active="modal" @update:active="(e) => handleClose(e)" size="sm">
       <sd-dialog-title>
         head
       </sd-dialog-title>
@@ -44,9 +44,9 @@
     <sd-dialog
       aside
       :fullscreen="false"
-      :active="state.modalTwo"
+      :active="modalTwo"
       @update:active="(e) => handleModalTwoClose(e)"
-      :size="state.asideSize"
+      :size="asideSize"
     >
       <sd-dialog-title>
         head
@@ -54,9 +54,9 @@
       <sd-dialog-content>
         <div>
           <sd-fieldset title="Aside Size Test">
-            <sd-radio name="radios" v-model="state.asideSize" value="sm">Small</sd-radio>
-            <sd-radio name="radios" v-model="state.asideSize" value="md">Medium</sd-radio>
-            <sd-radio name="radios" v-model="state.asideSize" value="lg">Large</sd-radio>
+            <sd-radio name="radios" v-model="asideSize" value="sm">Small</sd-radio>
+            <sd-radio name="radios" v-model="asideSize" value="md">Medium</sd-radio>
+            <sd-radio name="radios" v-model="asideSize" value="lg">Large</sd-radio>
           </sd-fieldset>
         </div>
       </sd-dialog-content>
@@ -68,55 +68,57 @@
       <p class="sd--text__lead">Lead</p>
       <h1 class="sd--text__headline">Headline</h1>
       <sd-fieldset title="Checkboxes">
-        <sd-checkbox v-model="state.simpleCheck">Simple Checkbox</sd-checkbox>
-        <sd-checkbox v-model="state.objectCheck.checked">{{state.objectCheck.name}}</sd-checkbox>
-        <sd-checkbox v-model="state.valueCheck" true-value="yup" false-value="nope">Single Checkbox w/ value</sd-checkbox>
+        <sd-checkbox v-model="simpleCheck">Simple Checkbox</sd-checkbox>
+        <sd-checkbox v-model="objectCheck.checked">{{objectCheck.name}}</sd-checkbox>
+        <sd-checkbox v-model="valueCheck" true-value="yup" false-value="nope">Single Checkbox w/ value</sd-checkbox>
       </sd-fieldset>
       <sd-fieldset title="Fruit">
         <sd-checkbox
           v-for="(fruit, index) in list"
           :key="index"
-          v-model="state.arrayCheck"
+          v-model="arrayCheck"
           :value="fruit"
         >
           {{fruit}}
         </sd-checkbox>
       </sd-fieldset>
       <sd-fieldset title="Radios">
-        <sd-radio name="radios" v-model="state.radioValue" value="Radio 1">Radio 1</sd-radio>
-        <sd-radio name="radios" v-model="state.radioValue" value="Radio 2">Radio 2</sd-radio>
+        <sd-radio name="radios" v-model="radioValue" value="Radio 1">Radio 1</sd-radio>
+        <sd-radio name="radios" v-model="radioValue" value="Radio 2">Radio 2</sd-radio>
       </sd-fieldset>
     </div>
   </div>
-  <div class="someContainer">
-   <teleport to="#app" >
-      <div ref="meh">Reftest</div>
-   </teleport>
+  <div class="some__container" style="display:flex; justify-content: center;">
+    <sd-button @click="someText = 'your an all star'">
+      hey
+      <sd-tooltip v-bind:active="(e) => simpleCheck = e" placement="top" theme="default">
+        <span>{{someText}}</span>
+      </sd-tooltip>
+    </sd-button>
+
   </div>
-  <!-- <sd-popover :active="true">
-    umuu
-  </sd-popover> -->
+
 <pre>
 <code>
-simpleCheck: {{state.simpleCheck}}
-valueCheck: {{state.valueCheck}}
-arrayCheck: {{state.arrayCheck}}
+simpleCheck: {{simpleCheck}}
+valueCheck: {{valueCheck}}
+arrayCheck: {{arrayCheck}}
 checkboxOptions: {{list}}
-radioValue: {{state.radioValue}}
-objectCheck: {{state.objectCheck}}
+radioValue: {{radioValue}}
+objectCheck: {{objectCheck}}
 
 </code>
 </pre>
 </template>
 
 <script>
-import { defineComponent, reactive, onMounted, ref } from 'vue'
+import { defineComponent, reactive, ref, toRefs } from 'vue'
 import SdButton from '@/library/components/SdButton'
 import SdFieldset from '@/library/components/SdField'
 import SdCheckbox from '@/library/components/SdCheckbox'
 import SdDialog, { SdDialogTitle, SdDialogContent, SdDialogFooter } from '@/library/components/SdDialog'
 import SdRadio from '@/library/components/SdRadio'
-// import SdPopover from '@/library/components/SdPopover'
+import { SdTooltip } from '@/library/components/SdPopover'
 export default defineComponent({
   name: 'Home',
   components: {
@@ -127,8 +129,8 @@ export default defineComponent({
     SdDialogFooter,
     SdCheckbox,
     SdFieldset,
-    SdRadio
-    // SdPopover
+    SdRadio,
+    SdTooltip
   },
   setup (props, context) {
     const list = ['apple', 'orange', 'pear']
@@ -141,6 +143,7 @@ export default defineComponent({
         name: 'Checkbox object',
         checked: false
       },
+      someText: 'hey you',
       asideSize: 'sm',
       arrayCheck: [],
       radioValue: '',
@@ -160,10 +163,8 @@ export default defineComponent({
     const handleModalTwoClose = (event) => {
       state.modalTwo = event
     }
-    onMounted(() => {
-      console.log(meh.value.nodeType !== Node.COMMENT_NODE)
-    })
-    return { state, handleClose, buttonClick, list, handleModalTwo, handleModalTwoClose, meh }
+
+    return { ...toRefs(state), handleClose, buttonClick, list, handleModalTwo, handleModalTwoClose, meh }
   }
 })
 </script>
@@ -172,4 +173,5 @@ export default defineComponent({
   .container{
     padding: 40px;
   }
+
 </style>

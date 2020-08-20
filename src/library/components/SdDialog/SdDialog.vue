@@ -264,7 +264,7 @@ export default defineComponent({
 
 .dialog-leave-active {
   transition: opacity .3s ease-in-out,
-              transform .3s  ease-in-out;
+              transform .3s ease-in-out;
 }
 .dialog-enter-from, .dialog-leave-to{
   .is--fullscreen{
