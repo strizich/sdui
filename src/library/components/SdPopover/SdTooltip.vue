@@ -12,8 +12,7 @@
 </template>
 
 <script>
-// TODO: Split popper.js logic into a composable for
-// reuse with popover, dropdowns, ect.
+// FUTURE: Split popper.js logic into a composable
 import {
   computed,
   ref,
@@ -73,7 +72,8 @@ export default {
       state.shouldRender = props.active
     })
 
-    // emit when state has been
+    // emit when state has been updated...
+    // FUTURE: potentially worth looking into using the new v-model bindings for this.
     watch(() => state.shouldRender, (shouldRender) => {
       emit('update:active', shouldRender)
       if (shouldRender) {
@@ -81,10 +81,12 @@ export default {
       }
     })
 
+    // create popper
     const makePopper = () => {
       state.popperInstance = createPopper(state.targetEl, tooltipRef.value, options)
     }
 
+    // kill your creation
     const killPopper = () => {
       if (state.popperInstance) {
         state.popperInstance.destroy()
@@ -92,6 +94,7 @@ export default {
       }
     }
 
+    // bind popper instance at the next repaint
     const bindPopper = () => {
       nextTick().then(() => {
         if (state.targetEl) {
@@ -119,6 +122,7 @@ export default {
 
     const mountEventBindings = async () => {
       await nextTick().then(() => {
+        // Gets the orignal parent instance of <teleport />
         state.targetEl = tooltipPortal.value?.parentNode
         if (state.targetEl) {
           state.targetEl.addEventListener('mouseenter', show, false)
@@ -199,6 +203,7 @@ export default {
         transform: rotate(45deg);
       }
     }
+    // FUTURE: Make this into a mixin for reuse
     &[data-popper-placement^='top'] .sd--tooltip__arrow {
       bottom: -4px;
     }
@@ -212,6 +217,7 @@ export default {
       left: -4px;
     }
   }
+  // FUTURE: Make this into a mixin for reuse
   .popover-enter-active, .popover-leave-active{
     .sd--tooltip__content {
       transition: opacity .2s .1s, transform .3s ease-in-out;
