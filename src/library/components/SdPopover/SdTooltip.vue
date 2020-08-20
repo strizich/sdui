@@ -52,8 +52,8 @@ export default {
     // Element Instances
     const state = reactive({
       targetEl: null,
-      shouldRender: false,
-      popperInstance: null
+      popperInstance: null,
+      shouldRender: false
     })
 
     // Popper Options
