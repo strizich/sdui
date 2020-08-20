@@ -33,6 +33,7 @@ export default {
       type: String,
       default: 'primary'
     },
+    // FUTURE: Update options obj with editable settings.
     delay: {
       type: [String, Number],
       default: 100
