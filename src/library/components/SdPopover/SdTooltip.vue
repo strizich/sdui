@@ -1,7 +1,7 @@
 <template>
   <teleport ref="tooltipPortal" to="#app">
     <transition name="popover">
-      <div ref="tooltipRef" class="sd--tooltip" v-if="shouldRender">
+      <div ref="tooltipRef" class="sd--tooltip" v-if="state.shouldRender">
         <div :class="['sd--tooltip__content', themeClass]">
           <slot />
           <div :class="['sd--tooltip__arrow', themeClass]" data-popper-arrow/>
@@ -18,7 +18,6 @@ import {
   computed,
   ref,
   reactive,
-  toRefs,
   watch,
   nextTick,
   onMounted,
@@ -140,7 +139,7 @@ export default {
     })
 
     return {
-      ...toRefs(state),
+      state,
       tooltipPortal,
       tooltipRef,
       themeClass

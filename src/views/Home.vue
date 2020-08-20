@@ -45,7 +45,6 @@
       aside
       :fullscreen="false"
       :active="modalTwo"
-      @update:active="(e) => handleModalTwoClose(e)"
       :size="asideSize"
     >
       <sd-dialog-title>
@@ -90,8 +89,8 @@
   </div>
   <div class="some__container" style="display:flex; justify-content: center;">
     <sd-button @click="someText = 'your an all star'">
-      hey
-      <sd-tooltip v-bind:active="(e) => simpleCheck = e" placement="top" theme="default">
+      Yay
+      <sd-tooltip placement="top" theme="default">
         <span>{{someText}}</span>
       </sd-tooltip>
     </sd-button>
