@@ -1,6 +1,6 @@
 <template>
   <teleport ref="tooltipPortal" to="#app">
-    <transition name="popover">
+    <transition name="tooltip">
       <div ref="tooltipRef" class="sd--tooltip" v-if="state.shouldRender">
         <div :class="['sd--tooltip__content', themeClass]">
           <slot />
@@ -219,24 +219,24 @@ export default {
     }
   }
   // FUTURE: Make this into a mixin for reuse
-  .popover-enter-active, .popover-leave-active{
+  .tooltip-enter-active, .tooltip-leave-active{
     .sd--tooltip__content {
       transition: opacity .2s .1s, transform .3s ease-in-out;
     }
   }
-  .popover-enter-to{
+  .tooltip-enter-to{
     .sd--tooltip__content {
       opacity: 1;
       transform: translate3d(0, 0, 0)
     }
   }
-  .popover-enter-from{
+  .tooltip-enter-from{
     .sd--tooltip__content {
       opacity: 0;
       transform: translate3d(0, 4px, 0);
     }
   }
-  .popover-leave-to{
+  .tooltip-leave-to{
     .sd--tooltip__content {
       opacity: 0;
       transform: translate3d(0, -4px, 0);
