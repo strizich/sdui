@@ -1,3 +1,3 @@
 import SdTooltip from './SdTooltip'
 
-export { SdTooltip }
+export default SdTooltip

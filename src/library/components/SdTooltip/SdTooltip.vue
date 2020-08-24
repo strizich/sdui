@@ -160,6 +160,7 @@ export default {
   position:fixed;
   min-height: 32px;
   transition: opacity .5s;
+  z-index: 110;
   &__content {
     min-height: 24px;
     padding: 8px;
