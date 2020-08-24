@@ -7,9 +7,9 @@
         <sd-card-media ratio="16x9">
           <img src="http://place-puppy.com/400x400" alt="place-puppy.com"/>
         </sd-card-media>
-        <sd-card-body>Body</sd-card-body>
-        <sd-card-footer align="flex-start">
-          Some Footer Content
+        <sd-card-footer align="center">
+          <sd-button flat theme="default">Button</sd-button>
+          <sd-button flat>Button</sd-button>
         </sd-card-footer>
       </sd-card>
 

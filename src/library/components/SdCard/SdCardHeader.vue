@@ -25,15 +25,16 @@ export default {
     align-items: center;
     position:relative;
     border-radius: 3px 3px 0 0;
-    &:after{
-      content: '';
-      position: absolute;
-      left: spacing(inset);
-      right: 0;
-      bottom: 0;
-      height: 1px;
-      background-color: v(--divider);
-    }
+    border-bottom: 1px solid var(--divider);
+    // &:after{
+    //   content: '';
+    //   position: absolute;
+    //   left: spacing(inset);
+    //   right: 0;
+    //   bottom: 0;
+    //   height: 1px;
+    //   background-color: v(--divider);
+    // }
   }
   &__title{
     font-size: rem(18);

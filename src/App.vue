@@ -40,7 +40,7 @@ export default {
 </script>
 <style lang="scss">
 @import './library/scss/reset';
-@import './library/scss/engine';
+
 @import './library/scss/css-vars';
 
 html, body{

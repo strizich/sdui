@@ -201,8 +201,10 @@ export default defineComponent({
           height: auto;
         }
         &--md{
+          @include breakpoint-up('md'){
+            height: 80%;
+          }
           width: 60%;
-          height: 80%;
           &.is--aside{
             width: 40%
           }
@@ -234,9 +236,8 @@ export default defineComponent({
           right: 0;
           transform: translate3D(-100%, 0, 0);
           overflow: hidden;
-          transition: opacity .5s ease-in-out,
-                      transform .5s  ease-in-out;
-          will-change: transform, opacity;
+          transition: opacity .3s ease-in-out,
+                      transform .3s  ease-in-out;
           @include breakpoint-down('sm'){
             left: 0;
             right: 0;
@@ -259,6 +260,10 @@ export default defineComponent({
       display: flex;
       flex-flow: column nowrap;
       flex: 1;
+      @include breakpoint-down('sm'){
+        height: 100%;
+        top:0;
+      }
     }
   }
 

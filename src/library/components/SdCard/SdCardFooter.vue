@@ -35,15 +35,16 @@ export default defineComponent({
   border-radius: 0 0 3px 3px;
   position: relative;
   align-items: center;
-   &:after{
-     position: absolute;
-     left: spacing(inset);
-     content: '';
-     height: 1px;
-     top:0;
-     right:0;
-     bottom: auto;
-     background-color: v(--divider);
-   }
+  border-top: 1px solid v(--divider);
+  //  &:after{
+  //    position: absolute;
+  //    left: spacing(inset);
+  //    content: '';
+  //    height: 1px;
+  //    top:0;
+  //    right:0;
+  //    bottom: auto;
+  //    background-color: v(--divider);
+  //  }
 }
 </style>

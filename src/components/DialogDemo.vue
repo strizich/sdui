@@ -2,29 +2,25 @@
   <section>
     <h2>Dialogs</h2>
     <div class="demo__content">
-      <sd-button @click="handleModal">
-        Open Dialog
-      </sd-button>
-      <sd-button @click="handleAside">
-        Open Aside Modal
-      </sd-button>
+      <div class="demo__triggers">
+        <sd-button @click="handleModal">
+          Open Dialog
+        </sd-button>
+        <sd-button @click="handleAside">
+          Open Aside Modal
+        </sd-button>
+      </div>
       <sd-dialog :active="active" @update:active="handleModalClose" size="md">
-        <sd-dialog-title>
-          Header
-        </sd-dialog-title>
+        <sd-dialog-title title="Normal Dialog"/>
         <sd-dialog-content>
-          <div>
-            All sorts of things go in here.
-          </div>
+          <div>All sorts of things go in here.</div>
         </sd-dialog-content>
         <sd-dialog-footer>
           <sd-button size="sm" flat @click="handleModalClose">Button</sd-button>
         </sd-dialog-footer>
       </sd-dialog>
       <sd-dialog :active="activeAside" @update:active="handleAsideClose" size="sm" aside>
-        <sd-dialog-title>
-          Aside Dialog Header
-        </sd-dialog-title>
+        <sd-dialog-title title="Aside Modal" subtitle="Subtitles go here"/>
         <sd-dialog-content>
           <div>
             All sorts of things go in here.
@@ -69,7 +65,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.sd--button{
-  margin-right: 16px;
+.demo__triggers{
+  .sd--button{
+    margin-right: 16px;
+  }
 }
 </style>

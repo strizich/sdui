@@ -1,12 +1,20 @@
 <template>
   <div class="sd--dialog__header">
+      <div class="sd--dialog__content" v-if="title || subtitle">
+        <h3 class="sd--dialog__title" v-if="title">{{title}}</h3>
+        <p class="sd--dialog__subtitle" v-if="subtitle">{{subtitle}}</p>
+      </div>
     <slot/>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'SdDialogTitle'
+  name: 'SdDialogTitle',
+  props: {
+    title: String,
+    subtitle: String
+  }
 }
 </script>
 
@@ -20,11 +28,20 @@ export default {
       border-top: 1px solid var(--divider);
       background-color: var(--background);
       flex-shrink: 0;
-      & > h3 {
-        font-size: 20px;
-        margin: 0;
-        font-weight: 500;
-      }
+      border-bottom: 1px solid v(--divider);
+    }
+    &__title {
+      font-size: 20px;
+      line-height: 24px;
+      margin: 0;
+      font-weight: 500;
+      margin: 0;
+    }
+    &__subtitle {
+      font-size: 16px;
+      color: var(--text-highlight);
+      margin: 0;
+      font-weight: 300;
     }
   }
 </style>
