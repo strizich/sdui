@@ -1,6 +1,7 @@
 <template>
-  <label :class="[containerClasses]" @click.prevent="handleChecked">
+  <label :class="[containerClasses]" @click.prevent="handleChecked" tabindex="-1">
       <input
+        ref="checkbox"
         type="checkbox"
         :id="id"
         :class="[inputClasses]"
@@ -15,6 +16,7 @@
 <script>
 import { defineComponent, ref, computed } from 'vue'
 import sdUuid from '@/library/core/utilities/SdUuid'
+import useKeyboardFocus from '@/library/hooks/useKeyboardFocus'
 
 export default defineComponent({
   name: 'SdCheckbox',
@@ -48,7 +50,8 @@ export default defineComponent({
     }
   },
   setup (props, { emit }) {
-    const isFocused = ref(false)
+    const checkbox = ref(false)
+    const isFocused = useKeyboardFocus(checkbox)
 
     const isModelArray = computed(() => {
       return Array.isArray(props.modelValue)
@@ -149,6 +152,7 @@ export default defineComponent({
     })
 
     return {
+      checkbox,
       attributes,
       inputClasses,
       containerClasses,
@@ -186,7 +190,11 @@ export default defineComponent({
       border: 2px solid var(--divider);
       border-radius: 2px;
     }
-    &:focus-within, &:hover{
+    &:focus{
+      border:none;
+      outline:none;
+    }
+    &:hover{
       &:before{
         border-color: var(--primary-accent);
       }
@@ -240,6 +248,10 @@ export default defineComponent({
     margin: 0 8px 8px 0;
     display: inline-flex;
     align-items: center;
+    &:focus{
+      border:none;
+      outline:none;
+    }
     -webkit-user-select: none;
     &:first-of-type{
       margin-left:0;
@@ -263,6 +275,9 @@ export default defineComponent({
     }
     &.is--focused{
       color: var(--primary-highlight);
+      input:before{
+        border-color: var(--primary-highlight);
+      }
     }
     &__label{
       font-size: 16px;
