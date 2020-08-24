@@ -1,6 +1,14 @@
 <template>
 <div class="container">
-  <div>
+  <sd-button
+    type="link"
+    href="https://github.com/strizich/v3-jsdesign"
+    target="_blank"
+  >
+    Github
+  </sd-button>
+
+  <div class="container__content">
     <card-demo/>
     <dialog-demo/>
     <radio-demo/>
@@ -33,6 +41,8 @@ import CardDemo from '@/components/CardDemo'
 import DialogDemo from '@/components/DialogDemo'
 import CheckboxDemo from '@/components/CheckboxDemo'
 import TooltipDemo from '@/components/TooltipDemo'
+import SdButton from '@/library/components/SdButton'
+
 import SdField, { SdFieldset, SdError } from '@/library/components/SdField'
 export default defineComponent({
   name: 'Home',
@@ -44,7 +54,8 @@ export default defineComponent({
     SdFieldset,
     SdField,
     SdError,
-    TooltipDemo
+    TooltipDemo,
+    SdButton
   },
   setup (props, context) {
     const list = ['apple', 'orange', 'pear']
@@ -79,6 +90,9 @@ export default defineComponent({
 <style lang="scss">
   .container{
     padding: 40px;
+    &__content{
+      padding: 32px 0;
+    }
   }
   section{
     margin-bottom: 64px;

@@ -5,8 +5,24 @@
 </template>
 
 <script>
+import useAlignment from '@/library/hooks/useAlignment'
+
 export default {
-  name: 'SdModalFooter'
+  name: 'SdModalFooter',
+  props: {
+    align: {
+      type: String,
+      default: 'flex-start'
+    },
+    direction: {
+      type: String,
+      default: 'initial'
+    }
+  },
+  setup (props) {
+    const { alignmentStyle } = useAlignment(props.align, props.direction)
+    return { alignmentStyle }
+  }
 }
 </script>
 
@@ -24,7 +40,7 @@ export default {
     backdrop-filter: blur(20px);
     padding: 8px 16px;
     @include breakpoint-down('sm') {
-      padding: 8px 16px calc(16px + ios-safe-area(bottom));
+      padding: 8px 8px calc(16px + ios-safe-area(bottom));
     }
   }
 }
