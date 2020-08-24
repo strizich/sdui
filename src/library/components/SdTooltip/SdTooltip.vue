@@ -179,7 +179,7 @@ export default {
       $contrast: sd-pick-contrast($default);
          &.is--#{$state} {
           background-color: $default;
-          color: $contrast;
+          color: sd-color($contrast, text)
         }
       }
     }

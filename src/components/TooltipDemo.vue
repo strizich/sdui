@@ -10,19 +10,19 @@
       </sd-button>
       <sd-button flat>
         Tooltip Left
-        <sd-tooltip placement="left">
+        <sd-tooltip theme="success" placement="left">
           <span>text</span>
         </sd-tooltip>
       </sd-button>
       <sd-button flat>
         Tooltip Right
-        <sd-tooltip placement="right">
+        <sd-tooltip theme="danger" placement="right">
           <span>text</span>
         </sd-tooltip>
       </sd-button>
       <sd-button flat>
         Tooltip Bottom
-        <sd-tooltip placement="bottom">
+        <sd-tooltip theme="secondary" placement="bottom">
           <span>text</span>
         </sd-tooltip>
       </sd-button>

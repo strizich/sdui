@@ -11,7 +11,7 @@
       }
     }
   }
-  .sd--layout--#{$scheme}{
+  .sd--scheme--#{$scheme}{
     @each $key, $color in $map {
       $color: sd-color($scheme, $key);
       --#{$key}: #{$color};
