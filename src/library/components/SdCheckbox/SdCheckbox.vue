@@ -7,8 +7,6 @@
         :checked="isSelected"
         :indeterminate="indeterminate"
         v-bind="attributes"
-        @focus="handleBlur"
-        @blur="handleFocus"
       />
       <span class="sd--checkbox__label"><slot/></span>
   </label>
