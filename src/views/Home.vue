@@ -9,20 +9,11 @@
   </sd-button>
 
   <div class="container__content">
-    <Suspense>
-      <template #default>
-        <card-demo/>
-        <dialog-demo/>
-        <radio-demo/>
-        <checkbox-demo/>
-        <tooltip-demo/>
-      </template>
-      <template #fallback>
-        <div class="is--loading">
-          <p>Loading spinner goes here</p>
-        </div>
-      </template>
-    </Suspense>
+    <card-demo/>
+    <dialog-demo/>
+    <radio-demo/>
+    <checkbox-demo/>
+    <tooltip-demo/>
 
     <h3>Work in progress</h3>
     <p class="sd--text__lead">Lead</p>
@@ -35,7 +26,7 @@
       </sd-field>
       <sd-field>
         <label>behh</label>
-        <input type="text" placeholder="geh" />
+        <input type="text" placeholder="geh"/>
         <sd-error error="err"/>
       </sd-field>
     </sd-fieldset>
@@ -44,26 +35,15 @@
 </template>
 
 <script>
-import { defineComponent, reactive, ref, toRefs, defineAsyncComponent } from 'vue'
+import { defineComponent, reactive, ref, toRefs } from 'vue'
+import RadioDemo from '@/components/RadioDemo'
+import CardDemo from '@/components/CardDemo'
+import DialogDemo from '@/components/DialogDemo'
+import CheckboxDemo from '@/components/CheckboxDemo'
+import TooltipDemo from '@/components/TooltipDemo'
 import SdButton from '@/library/components/SdButton'
+
 import SdField, { SdFieldset, SdError } from '@/library/components/SdField'
-
-const CardDemo = defineAsyncComponent(
-  () => import('@/components/CardDemo')
-)
-const DialogDemo = defineAsyncComponent(
-  () => import('@/components/DialogDemo')
-)
-const CheckboxDemo = defineAsyncComponent(
-  () => import('@/components/CheckboxDemo')
-)
-const TooltipDemo = defineAsyncComponent(
-  () => import('@/components/TooltipDemo')
-)
-const RadioDemo = defineAsyncComponent(
-  () => import('@/components/RadioDemo')
-)
-
 export default defineComponent({
   name: 'Home',
   components: {
@@ -88,7 +68,6 @@ export default defineComponent({
       radioValue: '',
       popoverState: false
     })
-
     const buttonClick = () => {
       state.modal = !state.modal
     }
@@ -114,14 +93,6 @@ export default defineComponent({
     &__content{
       padding: 32px 0;
     }
-  }
-  .is--loading{
-    background: pink;
-    height: 300px;
-    color: #000;
-    display:flex;
-    align-items: center;
-    justify-content: center;;
   }
   section{
     margin-bottom: 64px;
