@@ -45,7 +45,13 @@ export default {
   .cards__content{
     display:flex;
     width: 100%;
-    .sd--card{
+    @include breakpoint-down('sm'){
+      flex-direction: column;
+    }
+    & > .sd--card{
+      @include breakpoint-down('sm'){
+        margin: 0 0 32px;
+      }
       width: 100%;
       margin: 0 16px 16px;
       &:first-child{
