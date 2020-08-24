@@ -109,14 +109,6 @@ export default defineComponent({
       }
     }
 
-    const handleFocus = () => {
-      isFocused.value = true
-    }
-
-    const handleBlur = () => {
-      isFocused.value = false
-    }
-
     const attributes = computed(() => {
       const attrs = {
         id: props.id,
@@ -139,6 +131,7 @@ export default defineComponent({
         'is--focused': isFocused.value
       }
     })
+
     const inputClasses = computed(() => {
       return {
         'sd--checkbox__field': true,
@@ -160,9 +153,7 @@ export default defineComponent({
       isSelected,
       isModelArray,
       hasValue,
-      handleChecked,
-      handleFocus,
-      handleBlur
+      handleChecked
     }
   }
 })
