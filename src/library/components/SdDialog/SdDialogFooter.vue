@@ -12,7 +12,7 @@ export default {
   props: {
     align: {
       type: String,
-      default: 'flex-start'
+      default: 'flex-end'
     },
     direction: {
       type: String,
