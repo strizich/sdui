@@ -3,7 +3,7 @@
     <h2>Tooltip</h2>
     <div class="demo">
 
-      <sd-button href="/">
+      <sd-button>
         Tooltip Top
         <sd-tooltip placement="top">
           <span>Primary (default)</span>

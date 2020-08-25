@@ -47,8 +47,10 @@ export default {
     // Element Bindings
     const tooltipPortal = ref(null)
     const tooltipRef = ref(null)
+
     // Styling
     const themeClass = computed(() => `is--${props.theme}`)
+
     // Element Instances
     const state = reactive({
       targetEl: null,
@@ -71,8 +73,7 @@ export default {
           boundary: 'viewport',
           rootBoundary: 'document'
         }
-      }],
-      strategy: 'fixed'
+      }]
     })
 
     // Copy active prop to local state
@@ -164,7 +165,7 @@ export default {
 @import '../SdElevation/mixins';
 
 .sd--tooltip{
-  position:fixed;
+  // position:fixed;
   min-height: 32px;
   transition: opacity .5s;
   z-index: 110;
