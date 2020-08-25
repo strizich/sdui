@@ -19,8 +19,5 @@ export default defineComponent({
     flex-grow: 2;
     overflow-y: auto;
     overflow-x:hidden;
-    @include breakpoint-up('md'){
-      max-height: 600px;
-    }
   }
 </style>

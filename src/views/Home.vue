@@ -68,9 +68,11 @@ export default defineComponent({
       radioValue: '',
       popoverState: false
     })
+
     const buttonClick = () => {
       state.modal = !state.modal
     }
+
     const handleClose = (event) => {
       state.modal = event
     }
@@ -78,6 +80,7 @@ export default defineComponent({
     const handleModalTwo = () => {
       state.modalTwo = !state.modalTwo
     }
+
     const handleModalTwoClose = (event) => {
       state.modalTwo = event
     }

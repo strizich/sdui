@@ -67,7 +67,11 @@ export default defineComponent({
       type: Boolean,
       default: true
     },
-    aside: Boolean
+    aside: Boolean,
+    placement: {
+      type: String,
+      default: 'right'
+    }
   },
   components: {
     SdOverlay
@@ -78,10 +82,12 @@ export default defineComponent({
 
     const classes = computed(() => {
       const sizeClass = `is--${props.size}`
+      const asidePlacement = `sd--dialog__aside--${props.placement}`
       return {
-        [sizeClass]: true,
-        'is--aside': props.aside,
-        'is--fullscreen': props.fullscreen && !props.aside
+        'sd--dialog__aside': props.aside,
+        'sd--dialog__fullscreen': props.fullscreen && !props.aside,
+        [asidePlacement]: props.aside && props.placement,
+        [sizeClass]: true
       }
     })
 
@@ -170,11 +176,6 @@ export default defineComponent({
       }
     }
     &__wrapper{
-      min-width: 300px;
-      max-width: 80%;
-      max-height: 80%;
-      height:100%;
-      width:100%;
       margin: auto;
       display: flex;
       flex-flow: column;
@@ -205,54 +206,58 @@ export default defineComponent({
             height: 80%;
           }
           width: 60%;
-          &.is--aside{
-            width: 40%
-          }
         }
         &--lg{
           width: 90%;
-          &.is--aside{
-            width: 70%
-          }
         }
-        &--fullscreen{
-          @include breakpoint-down('sm'){
-            max-width: 100%;
-            max-height: 100%;
-            min-width: 100%;
-            top: 0;
-            right: 0;
-            bottom: 0;
-            left: 0;
-            border-radius: 0;
-            transform: none;
-          }
-        }
-        &--aside{
-          min-height: 100%;
-          left: 100%;
-          top:0;
-          bottom:0;
-          right: 0;
-          transform: translate3D(-100%, 0, 0);
-          overflow: hidden;
-          transition: opacity .3s ease-in-out,
-                      transform .3s  ease-in-out;
-          @include breakpoint-down('sm'){
-            left: 0;
-            right: 0;
-            top:0;
-            bottom:0;
-            min-width: 100%;
-            transform: none;
-            opacity: 1;
-          }
-          .sd--dialog__content{
-            // min-height: 100%;
-            flex-grow: 3;
-            max-height: 100%;
-          }
-        }
+      }
+    }
+    &__fullscreen{
+      min-width: 300px;
+      max-width: 80%;
+      max-height: 80%;
+      height:100%;
+      width:100%;
+      @include breakpoint-down('sm'){
+        max-width: 100%;
+        max-height: 100%;
+        min-width: 100%;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        border-radius: 0;
+        transform: none;
+      }
+    }
+    &__aside{
+      min-height: 100%;
+      left: 100%;
+      top:0;
+      bottom:0;
+      right: 0;
+      overflow: hidden;
+      transition: opacity .3s ease-in-out,
+                  transform .3s  ease-in-out;
+      &--left{
+        right: auto;
+        left: 0;
+        transform: translate3D(0%, 0, 0);
+      }
+      &--right{
+        transform: translate3D(-100%, 0, 0);
+      }
+      @include breakpoint-down('sm'){
+        left: 0;
+        right: 0;
+        top:0;
+        bottom:0;
+        min-width: 100%;
+        transform: none;
+        opacity: 1;
+      }
+      &.is--md{
+        width: 40%
       }
     }
     &__container{
@@ -260,6 +265,7 @@ export default defineComponent({
       display: flex;
       flex-flow: column nowrap;
       flex: 1;
+      height: 100%;
       @include breakpoint-down('sm'){
         height: 100%;
         top:0;
@@ -272,21 +278,28 @@ export default defineComponent({
               transform .3s ease-in-out;
 }
 .dialog-enter-from, .dialog-leave-to{
-  .is--fullscreen{
-    transform: translate3D(-50%, -55%, 0);
-    opacity: 0;
-    @include breakpoint-down("sm"){
-      transform: translate3D(0, 100%, 0);
+  .sd--dialog {
+    &__fullscreen {
+      transform: translate3D(-50%, -55%, 0);
+      opacity: 0;
+      @include breakpoint-down("sm") {
+        transform: translate3D(0, 100%, 0);
+      }
     }
-  }
-  .is--aside{
-    transform: translate3D(100%, 0, 0);
-    @include breakpoint-down("sm"){
-      transform: translate3D(0, 100%, 0);
+    &__aside {
+      &--left{
+        transform: translate3D(-100%, 0, 0);
+      }
+      &--right{
+        transform: translate3D(100%, 0, 0);
+      }
+      @include breakpoint-down("sm") {
+        transform: translate3D(0, 100%, 0);
+      }
     }
-  }
-  .sd--dialog__overlay{
-    opacity: 0;
+    &__overlay {
+      opacity: 0;
+    }
   }
 }
 </style>

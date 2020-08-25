@@ -2,7 +2,8 @@
   <section>
     <h2>Tooltip</h2>
     <div class="demo">
-      <sd-button flat>
+
+      <sd-button href="/">
         Tooltip Top
         <sd-tooltip placement="top">
           <span>Primary (default)</span>

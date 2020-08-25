@@ -9,6 +9,9 @@
         <sd-button @click="handleAside">
           Open Aside Modal
         </sd-button>
+         <sd-button @click="handleAsideLeft">
+          Open Aside (Mounted to left)
+        </sd-button>
       </div>
       <sd-dialog :active="active" @update:active="handleModalClose" size="md">
         <sd-dialog-title title="Normal Dialog"/>
@@ -19,7 +22,7 @@
           <sd-button size="sm" flat @click="handleModalClose">Button</sd-button>
         </sd-dialog-footer>
       </sd-dialog>
-      <sd-dialog :active="activeAside" @update:active="handleAsideClose" size="sm" aside>
+      <sd-dialog :active="activeAside" @update:active="handleAsideClose" size="md" aside>
         <sd-dialog-title title="Aside Modal" subtitle="Subtitles go here"/>
         <sd-dialog-content>
           <div>
@@ -28,6 +31,17 @@
         </sd-dialog-content>
         <sd-dialog-footer>
           <sd-button size="sm" flat @click="handleAsideClose">Button</sd-button>
+        </sd-dialog-footer>
+      </sd-dialog>
+      <sd-dialog :active="activeAsideLeft" @update:active="handleAsideLeftClose" size="md" aside placement="left">
+        <sd-dialog-title title="Aside Modal" subtitle="Subtitles go here"/>
+        <sd-dialog-content>
+          <div>
+            All sorts of things go in here.
+          </div>
+        </sd-dialog-content>
+        <sd-dialog-footer>
+          <sd-button size="sm" flat @click="handleAsideLeftClose">Button</sd-button>
         </sd-dialog-footer>
       </sd-dialog>
     </div>
@@ -43,7 +57,8 @@ export default {
   setup () {
     const state = reactive({
       active: false,
-      activeAside: false
+      activeAside: false,
+      activeAsideLeft: false
     })
 
     const handleModal = () => {
@@ -58,7 +73,21 @@ export default {
     const handleAsideClose = () => {
       state.activeAside = false
     }
-    return { ...toRefs(state), handleModalClose, handleModal, handleAside, handleAsideClose }
+    const handleAsideLeft = () => {
+      state.activeAsideLeft = !state.activeAsideLeft
+    }
+    const handleAsideLeftClose = () => {
+      state.activeAsideLeft = false
+    }
+    return {
+      ...toRefs(state),
+      handleModalClose,
+      handleModal,
+      handleAside,
+      handleAsideClose,
+      handleAsideLeft,
+      handleAsideLeftClose
+    }
   },
   components: { SdButton, SdDialog, SdDialogTitle, SdDialogContent, SdDialogFooter }
 }

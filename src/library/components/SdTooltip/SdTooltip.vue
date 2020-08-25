@@ -59,12 +59,19 @@ export default {
     // Popper Options
     const options = reactive({
       placement: props.placement,
-      modifiers: {
+      modifiers: [{
         name: 'offset',
         options: {
           offset: [0, 8]
         }
       },
+      {
+        name: 'preventOverflow',
+        options: {
+          boundary: 'viewport',
+          rootBoundary: 'document'
+        }
+      }],
       strategy: 'fixed'
     })
 
