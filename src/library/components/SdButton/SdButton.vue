@@ -1,21 +1,6 @@
 
-<template>
-  <!-- dynamic component wrapper... needs further testing -->
-  <component
-    ref="root"
-    :is="elementType"
-    :class="['sd--button', themeClass, attrs]"
-    :href="href"
-    :to="to"
-  >
-    <div :class="['sd--button__content', sizeClass]">
-      <slot />
-    </div>
-  </component>
-</template>
-
 <script>
-import { defineComponent, computed, ref } from 'vue'
+import { defineComponent, computed, ref, h } from 'vue'
 import useKeyboardFocus from '@/library/hooks/useKeyboardFocus'
 import sdUuid from '@/library/core/utilities/SdUuid'
 export default defineComponent({
@@ -80,7 +65,7 @@ export default defineComponent({
     },
     event: [String, Array]
   },
-  setup (props) {
+  setup (props, { slots, emits }) {
     const root = ref(null)
     const isFocused = useKeyboardFocus(root)
     const attrs = computed(() => {
@@ -94,8 +79,7 @@ export default defineComponent({
         'is--icon-only': props.iconOnly,
         'is--full': props.full,
         'is--block': props.block,
-        'is--router-link': elementType.value === 'router-link',
-        'is--link': elementType.value === 'a'
+        'is--link': elementTag.value === 'a'
       }
     })
     const alignmentStyle = computed(() => {
@@ -113,21 +97,29 @@ export default defineComponent({
       return `sd--button__${props.theme}`
     })
 
-    const elementType = computed(() => {
-      if (props.href) return 'a'
-      if (props.to) return 'router-link'
+    const elementTag = computed(() => {
+      // TODO: Additional research need to convert this button into a router-link
+      if (props.href || props.type === 'link') return 'a'
       return 'button'
     })
 
-    return {
-      attrs,
-      alignmentStyle,
-      sizeClass,
-      themeClass,
-      isFocused,
-      elementType,
-      root
-    }
+    return () =>
+      h(
+        elementTag.value,
+        {
+          ref: root,
+          class: ['sd--button', themeClass.value, attrs.value],
+          href: props.href
+        },
+        h(
+          'div',
+          {
+            class: ['sd--button__content', sizeClass.value],
+            style: alignmentStyle.value
+          },
+          slots
+        )
+      )
   }
 })
 </script>

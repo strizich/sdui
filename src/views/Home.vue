@@ -7,6 +7,7 @@
   >
     Github
   </sd-button>
+  <p><small>Above button is rendered as an &lt;a/&gt;</small></p>
 
   <div class="container__content">
     <card-demo/>
@@ -42,7 +43,6 @@ import DialogDemo from '@/components/DialogDemo'
 import CheckboxDemo from '@/components/CheckboxDemo'
 import TooltipDemo from '@/components/TooltipDemo'
 import SdButton from '@/library/components/SdButton'
-
 import SdField, { SdFieldset, SdError } from '@/library/components/SdField'
 export default defineComponent({
   name: 'Home',

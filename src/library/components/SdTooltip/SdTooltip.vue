@@ -78,6 +78,7 @@ export default {
 
     // Copy active prop to local state
     watch(() => props.active, () => {
+      console.log(props.active)
       state.shouldRender = props.active
     })
 
