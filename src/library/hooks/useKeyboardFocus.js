@@ -41,7 +41,6 @@ const useKeyboardFocus = ($el) => {
     eventTarget.addEventListener('mouseup', setMouseAndTouchInteraction)
     if ('ontouchend' in window) {
       eventTarget.addEventListener('touchend', setMouseAndTouchInteraction, supportsPassiveEvent)
-      console.log('inwindow event')
     }
   }
 

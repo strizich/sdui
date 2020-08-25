@@ -1,8 +1,9 @@
 
 <template>
   <!-- dynamic component wrapper... needs further testing -->
-  <component :is="elementType"
+  <component
     ref="root"
+    :is="elementType"
     :class="['sd--button', themeClass, attrs]"
     :href="href"
     :to="to"

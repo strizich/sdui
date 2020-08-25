@@ -129,11 +129,21 @@ export default {
       emit('close')
     }
 
+    const touched = () => {
+      state.shouldRender = !state.shouldRender
+    }
+    const outsideTouch = (e) => {
+      if (state.shouldRender && state.targetEl !== e.target) {
+        state.shouldRender = false
+      }
+    }
     const mountEventBindings = async () => {
       await nextTick().then(() => {
         // Gets the orignal parent instance of <teleport />
         state.targetEl = tooltipPortal.value?.parentNode
         if (state.targetEl) {
+          document.body.addEventListener('touchstart', outsideTouch, false)
+          state.targetEl.addEventListener('touchstart', touched, false)
           state.targetEl.addEventListener('mouseenter', show, false)
           state.targetEl.addEventListener('mouseleave', hide, false)
         }
@@ -147,6 +157,8 @@ export default {
 
     onUnmounted(() => {
       // Cleanup Listeners
+      document.body.removeEventListener('touchstart', outsideTouch)
+      state.targetEl.removeEventListener('touchstart', touched)
       state.targetEl.removeEventListener('mouseenter', show)
       state.targetEl.removeEventListener('mouseleave', hide)
     })
