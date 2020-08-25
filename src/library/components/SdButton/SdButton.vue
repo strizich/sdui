@@ -225,6 +225,11 @@ export default defineComponent({
         &--active{
           border:red;
         }
+        &--disabled{
+          background-color: transparentize($highlight, .7);
+          color: transparentize(sd-color($contrast-highlight, text), .6);
+          @include sd--elevation(0);
+        }
         &--icon-only {
           display: flex;
           align-items: center;
