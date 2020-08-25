@@ -108,6 +108,7 @@ export default defineComponent({
         elementTag.value,
         {
           ref: root,
+          type: !props.href && (props.type || 'button'),
           class: ['sd--button', themeClass.value, attrs.value],
           href: props.href
         },
