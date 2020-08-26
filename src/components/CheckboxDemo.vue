@@ -11,7 +11,7 @@
     <sd-fieldset title="Custom true/false values">
       <sd-checkbox v-model="valueCheck" true-value="yup" false-value="nope">Single Checkbox w/ value</sd-checkbox>
     </sd-fieldset>
-    <sd-fieldset title="Array of checkboxes">
+    <sd-fieldset title="Array of checkboxes" stack>
       <sd-checkbox v-model="arrayCheck" value="First">Simple Checkbox</sd-checkbox>
       <sd-checkbox v-model="arrayCheck" value="Second">{{objectCheck.name}}</sd-checkbox>
       <sd-checkbox v-model="arrayCheck" value="Third">Single Checkbox w/ value</sd-checkbox>

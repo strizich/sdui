@@ -1,19 +1,24 @@
 <template>
   <section>
-    <h2>Dialogs</h2>
+    <h2>Dialogs (Modals)</h2>
     <div class="demo__content">
       <div class="demo__triggers">
-        <sd-button @click="handleModal">
-          Open Dialog
-        </sd-button>
-        <sd-button @click="handleAside">
-          Open Aside Modal
-        </sd-button>
-         <sd-button @click="handleAsideLeft">
-          Open Aside (Mounted to left)
-        </sd-button>
+      <sd-fieldset title="Dialog Size" tip="No effect on mobile devices" tip-placement="right">
+        <sd-radio v-model="modalSize" value="sm">Small</sd-radio>
+        <sd-radio v-model="modalSize" value="md">Medium</sd-radio>
+        <sd-radio v-model="modalSize" value="lg">Large</sd-radio>
+      </sd-fieldset>
+      <sd-button @click="handleModal">
+        Open Dialog
+      </sd-button>
+      <sd-button @click="handleAside">
+        Aside Dialog
+      </sd-button>
+        <sd-button @click="handleAsideLeft">
+        Left Dialog
+      </sd-button>
       </div>
-      <sd-dialog :active="active" @update:active="handleModalClose" size="md">
+      <sd-dialog :active="active" @update:active="handleModalClose" :size="modalSize">
         <sd-dialog-title title="Normal Dialog"/>
         <sd-dialog-content>
           <div>All sorts of things go in here.</div>
@@ -22,7 +27,7 @@
           <sd-button size="sm" flat @click="handleModalClose">Button</sd-button>
         </sd-dialog-footer>
       </sd-dialog>
-      <sd-dialog :active="activeAside" @update:active="handleAsideClose" size="md" aside>
+      <sd-dialog :active="activeAside" @update:active="handleAsideClose" :size="modalSize" aside>
         <sd-dialog-title title="Aside Modal" subtitle="Subtitles go here"/>
         <sd-dialog-content>
           <div>
@@ -33,7 +38,7 @@
           <sd-button size="sm" flat @click="handleAsideClose">Button</sd-button>
         </sd-dialog-footer>
       </sd-dialog>
-      <sd-dialog :active="activeAsideLeft" @update:active="handleAsideLeftClose" size="md" aside placement="left">
+      <sd-dialog :active="activeAsideLeft" @update:active="handleAsideLeftClose" :size="modalSize" aside placement="left">
         <sd-dialog-title title="Aside Modal" subtitle="Subtitles go here"/>
         <sd-dialog-content>
           <div>
@@ -52,13 +57,17 @@
 import { reactive, toRefs } from 'vue'
 import SdButton from '@/library/components/SdButton'
 import SdDialog, { SdDialogTitle, SdDialogContent, SdDialogFooter } from '@/library/components/SdDialog'
+import SdRadio from '@/library/components/SdRadio'
+import { SdFieldset } from '@/library/components/SdField'
+
 export default {
   name: 'ModalDemo',
   setup () {
     const state = reactive({
       active: false,
       activeAside: false,
-      activeAsideLeft: false
+      activeAsideLeft: false,
+      modalSize: 'md'
     })
 
     const handleModal = () => {
@@ -89,7 +98,7 @@ export default {
       handleAsideLeftClose
     }
   },
-  components: { SdButton, SdDialog, SdDialogTitle, SdDialogContent, SdDialogFooter }
+  components: { SdButton, SdDialog, SdDialogTitle, SdDialogContent, SdDialogFooter, SdRadio, SdFieldset }
 }
 </script>
 
