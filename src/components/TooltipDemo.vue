@@ -2,6 +2,7 @@
   <section>
     <h2>Tooltip</h2>
     <div class="demo">
+      <sd-fieldset title="Tooltips" tip="Tooltip in here too... Hm...need an icon here." stack inline-label>
       <sd-button>
         Tooltip Top
         <sd-tooltip placement="top">
@@ -11,7 +12,7 @@
       <sd-button flat>
         Tooltip Left
         <sd-tooltip theme="success" placement="left">
-          <span>Success Tooltip</span>
+          <span>Success</span>
         </sd-tooltip>
       </sd-button>
       <sd-button flat>
@@ -26,6 +27,7 @@
           <span>Secondary</span>
         </sd-tooltip>
       </sd-button>
+      </sd-fieldset>
     </div>
   </section>
 </template>
@@ -34,9 +36,10 @@
 import { defineComponent } from 'vue'
 import SdButton from '@/library/components/SdButton'
 import SdTooltip from '@/library/components/SdTooltip'
+import { SdFieldset } from '@/library/components/SdField'
 
 export default defineComponent({
-  components: { SdTooltip, SdButton }
+  components: { SdTooltip, SdButton, SdFieldset }
 })
 </script>
 

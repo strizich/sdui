@@ -3,7 +3,9 @@
     <transition name="tooltip">
       <div ref="tooltipRef" class="sd--tooltip" v-if="state.shouldRender">
         <div :class="['sd--tooltip__content', themeClass]">
-          <slot />
+          <div>
+            <slot />
+          </div>
           <div :class="['sd--tooltip__arrow', themeClass]" data-popper-arrow/>
         </div>
       </div>
@@ -183,6 +185,7 @@ export default {
   transition: opacity .5s;
   z-index: 110;
   &__content {
+    max-width: 300px;
     min-height: 24px;
     padding: 8px;
     z-index: 111;
@@ -190,7 +193,7 @@ export default {
     border-radius: 2px;
     font-size: 14px;
     text-transform: none;
-    white-space: nowrap;
+    white-space: wrap;
     opacity: 1;
     background-color: var(--background-highlight);
     @include sd--elevation(4);

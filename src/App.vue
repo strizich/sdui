@@ -89,4 +89,15 @@ header{
   padding: 4px 32px;
   background: var(--background-accent);
 }
+.sd--scheme{
+  &--auto > *{
+    transition: all .6s 0s ease-in;
+  }
+  &--dark{
+    transition: all .6s 0s ease-in;
+  }
+  &--light{
+    transition: all .6s 0s ease-in;
+  }
+}
 </style>
