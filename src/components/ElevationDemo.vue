@@ -15,6 +15,7 @@ import { defineComponent } from 'vue'
 import '@/library/components/SdElevation'
 export default defineComponent({
   setup () {
+    // Future: Make demo dynamic... Likely after SdRange is finished.
     // const elevation = ref(0)
     // const computeElevation = computed(() => {
     //   return makeElevationClass(elevation.value)
