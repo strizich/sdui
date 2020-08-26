@@ -48,22 +48,8 @@ export default defineComponent({
       // ...SdPropValidator('start', 'end', 'center')
     },
     casing: String,
-    full: Boolean,
     block: Boolean,
-    iconOnly: Boolean,
-    to: [String, Object],
-    replace: Boolean,
-    append: Boolean,
-    activeClass: {
-      type: String,
-      default: 'is--active'
-    },
-    exact: Boolean,
-    exactActiveClass: {
-      type: String,
-      default: 'is--active--exact'
-    },
-    event: [String, Array]
+    iconOnly: Boolean
   },
   setup (props, { slots, emits }) {
     const root = ref(null)
@@ -77,7 +63,6 @@ export default defineComponent({
         'is--flat': props.flat,
         'is--outline': props.outline,
         'is--icon-only': props.iconOnly,
-        'is--full': props.full,
         'is--block': props.block,
         'is--link': elementTag.value === 'a'
       }
