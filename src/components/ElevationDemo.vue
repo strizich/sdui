@@ -43,9 +43,10 @@ export default defineComponent({
   }
   &__item{
     height: 100px;
-    width: 140px;
-    margin: 16px;
+    margin: 12px;
+    min-width: 140px;
     display:flex;
+    justify-content: space-between;
     flex-direction: column;
     align-items:center;
     justify-content:center;
