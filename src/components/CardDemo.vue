@@ -27,13 +27,14 @@
 </template>
 
 <script>
-import SdCard, {
+import {
+  SdButton,
+  SdCard,
   SdCardHeader,
   SdCardBody,
   SdCardFooter,
   SdCardMedia
-} from '@/library/components/SdCard'
-import SdButton from '@/library/components/SdButton'
+} from '@/library'
 
 export default {
   name: 'CardTest',

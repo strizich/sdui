@@ -30,9 +30,9 @@
 
 <script>
 import { defineComponent, watch, computed, nextTick, onMounted, ref } from 'vue'
-import '@/library/components/SdElevation'
 import SdOverlay from './SdOverlay'
 import sdUuid from '@/library/core/utilities/SdUuid'
+import '@/library/components/SdElevation'
 
 export default defineComponent({
   name: 'SdDialog',

@@ -55,10 +55,15 @@
 
 <script>
 import { reactive, toRefs } from 'vue'
-import SdButton from '@/library/components/SdButton'
-import SdDialog, { SdDialogTitle, SdDialogContent, SdDialogFooter } from '@/library/components/SdDialog'
-import SdRadio from '@/library/components/SdRadio'
-import { SdFieldset } from '@/library/components/SdField'
+import {
+  SdButton,
+  SdFieldset,
+  SdRadio,
+  SdDialog,
+  SdDialogTitle,
+  SdDialogContent,
+  SdDialogFooter
+} from '@/library'
 
 export default {
   name: 'ModalDemo',

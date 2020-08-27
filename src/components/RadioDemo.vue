@@ -15,8 +15,7 @@
 
 <script>
 import { reactive, defineComponent } from 'vue'
-import { SdFieldset } from '@/library/components/SdField'
-import SdRadio from '@/library/components/SdRadio'
+import { SdRadio, SdFieldset } from '@/library'
 
 export default defineComponent({
   components: {

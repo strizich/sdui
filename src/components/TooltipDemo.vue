@@ -34,9 +34,7 @@
 
 <script>
 import { defineComponent } from 'vue'
-import SdButton from '@/library/components/SdButton'
-import SdTooltip from '@/library/components/SdTooltip'
-import { SdFieldset } from '@/library/components/SdField'
+import { SdFieldset, SdTooltip, SdButton } from '@/library'
 
 export default defineComponent({
   components: { SdTooltip, SdButton, SdFieldset }

@@ -32,8 +32,7 @@ arrayCheck: {{arrayCheck}}
 
 <script>
 import { reactive, toRefs, defineComponent } from 'vue'
-import SdCheckbox from '@/library/components/SdCheckbox'
-import { SdFieldset } from '@/library/components/SdField'
+import { SdCheckbox, SdFieldset } from '@/library'
 
 export default defineComponent({
   name: 'CheckboxDemo',
