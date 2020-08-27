@@ -1,14 +1,29 @@
+
+@mixin handleBodyClass($bodyClass) {
+  #{$bodyClass} &{
+    @content;
+  }
+}
+
 @mixin flatten($base, $highlight, $accent, $contrast) {
+  $lightScheme: $base;
+  $darkScheme: mix($highlight, #fff, 80%);
   // No background, No border, more problems
-  background-color: none;
-  @include sd--elevation(0);
-  @media(prefers-color-scheme: 'dark'){
-    color: $highlight;
+  @include handleBodyClass('.sd--scheme--light'){
+    color: $lightScheme;
+  }
+  @include handleBodyClass('.sd--scheme--dark'){
+    color: $darkScheme
   }
   @media(prefers-color-scheme: 'light'){
-    color: $accent;
+    color: $lightScheme;
   }
-  @content;
+  @media(prefers-color-scheme: 'dark'){
+    color: $darkScheme
+  }
+    background-color: none;
+  @include sd--elevation(0);
+
   &:hover {
     background-color: $base;
     color: sd-color($contrast, text);

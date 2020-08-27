@@ -190,8 +190,8 @@ export default defineComponent({
       pointer-events: auto;
       transform: translate(-50%, -50%);
       transform-origin: center center;
-      transition: opacity .2s ease-in-out,
-                  transform .2s  ease-in-out;
+      transition: opacity .3s ease-in-out,
+                  transform .3s  ease-in-out;
       will-change: opacity, transform, left, top;
       &:focus{
         outline: none;

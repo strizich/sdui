@@ -33,7 +33,7 @@ export default {
     active: Boolean,
     theme: {
       type: String,
-      default: 'primary'
+      default: 'default'
     },
     // FUTURE: Update options obj with editable settings.
     delay: {
@@ -159,7 +159,6 @@ export default {
     })
 
     onUnmounted(() => {
-      // Cleanup Listeners
       document.body.removeEventListener('touchstart', outsideTouch)
       state.targetEl.removeEventListener('touchstart', touched)
       state.targetEl.removeEventListener('mouseenter', show)

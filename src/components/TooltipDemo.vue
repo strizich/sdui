@@ -44,5 +44,11 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
-
+.demo{
+  @include breakpoint-down('sm') {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
 </style>

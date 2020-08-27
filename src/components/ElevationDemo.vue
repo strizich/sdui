@@ -51,6 +51,9 @@ export default defineComponent({
     flex-direction: column;
     align-items:center;
     justify-content:center;
+    @include breakpoint-down('sm') {
+      width: 100%;
+    }
     & > span{
       font-weight: 700;
       font-size: 24px;

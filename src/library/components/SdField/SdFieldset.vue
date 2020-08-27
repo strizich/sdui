@@ -1,14 +1,16 @@
 <template>
   <!-- Should maybe rename this component... -->
-  <div :class="['sd--field__group', classes]">
-    <legend class="sd--field__legend">
-      <span>
-        {{title}}
-        <!-- Likely better to put this into a named slot so that the components are more composable -->
-        <sd-tooltip v-if="tip" theme="default" :placement="tipPlacement">{{tip}}</sd-tooltip>
-      </span>
-    </legend>
-    <div :class="['sd--field__content', childClasses]">
+  <div :class="['sd--fieldset', classes]">
+    <div class="sd--fieldset__header">
+      <sd-label :inline="inlineLabel">
+        <span>{{title}}</span>
+        <span v-if="tip">
+          <sd-icon name="info" size="xs"/>
+          <sd-tooltip :placement="tipPlacement">{{tip}}</sd-tooltip>
+        </span>
+      </sd-label>
+    </div>
+    <div :class="['sd--fieldset__content', childClasses]">
       <slot />
     </div>
   </div>
@@ -17,9 +19,10 @@
 <script>
 import { defineComponent, computed } from 'vue'
 import SdTooltip from '@/library/components/SdTooltip'
-
+import SdIcon from '@/library/components/SdIcon'
+import SdLabel from './SdLabel'
 export default defineComponent({
-  components: { SdTooltip },
+  components: { SdTooltip, SdIcon, SdLabel },
   props: {
     title: String,
     stack: Boolean,
@@ -33,8 +36,9 @@ export default defineComponent({
   setup (props) {
     const classes = computed(() => {
       return {
-        'sd--field__group--inline': props.inlineLabel,
-        'sd--field__group--stacked': props.stack
+        'sd--fieldset--inline': props.inlineLabel,
+        'sd--fieldset--stacked': props.stack,
+        'sd--fieldset--inline-stacked': props.inlineLabel && props.stack
       }
     })
     const childClasses = computed(() => {
@@ -48,32 +52,40 @@ export default defineComponent({
 </script>
 
 <style lang="scss">
-.sd--field{
-  &__group{
-    padding: 0 0 16px 0;
-    display:flex;
-    flex-direction: column;
-    label{
-      display:block;
-    }
-    &:only-child{
-      padding:0;
-    }
-    &--inline{
+.sd--fieldset{
+  padding: 0 0 16px 0;
+  display:flex;
+  flex-direction: column;
+  align-items: flex-start;
+  &:only-child{
+    padding:0;
+  }
+  &--inline{
+    align-items: flex-start;
+    @include breakpoint-up('sm') {
       display:flex;
       flex-direction: row;
       align-items: center;
       justify-content: flex-start;
-      legend{
-        width: auto;
-        margin-top: 8px;
-        margin-right: 16px;
-        flex-shrink: 0;
-      }
     }
-    &--inline{
-      align-items: flex-start;
-    }
+  }
+  &--inline-stacked{
+    align-items: flex-start;
+  }
+  &__header{
+    display:flex;
+    align-items: center;
+  }
+  &__legend{
+    align-items: center;
+    flex-wrap:none;
+    display: flex;
+    flex-shrink: 0;
+  }
+  &__icon{
+    display: inline-flex;
+    align-items: flex-end;
+    justify-content: flex-end;
   }
   &__content{
     display:flex;
