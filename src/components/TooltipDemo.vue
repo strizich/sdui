@@ -2,7 +2,7 @@
   <section>
     <h2>Tooltip</h2>
     <div class="demo">
-      <sd-fieldset title="Tooltips" tip="Tooltip in here too... Hm...need an icon here." stack inline-label>
+      <sd-fieldset title="Tooltips" tip="Tooltip in here too..." stack inline-label>
       <sd-button>
         Tooltip Top
         <sd-tooltip placement="top">

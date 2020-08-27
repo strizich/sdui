@@ -6,6 +6,7 @@
     @click="handleChecked"
   >
     <input
+      ref="radio"
       class="sd--radio__input"
       v-bind="{ name, disabled, required, value, checked: isSelected }"
       @focus="handleFocus"
@@ -20,6 +21,7 @@
 <script>
 import { computed, ref } from 'vue'
 import sdUuid from '@/library/core/utilities/SdUuid'
+import useKeyboardFocus from '@/library/hooks/useKeyboardFocus'
 
 export default {
   name: 'SdRadio',
@@ -42,7 +44,8 @@ export default {
     }
   },
   setup (props, { emit }) {
-    const hasFocus = ref(false)
+    const radio = ref(null)
+    const isFocused = useKeyboardFocus(radio)
 
     const isSelected = computed(() => {
       return props.modelValue === props.value
@@ -52,7 +55,7 @@ export default {
       return {
         'is--required': props.required,
         'is--disabled': props.disabled,
-        'is--focused': hasFocus.value
+        'is--focused': isFocused.value
       }
     })
 
@@ -62,23 +65,10 @@ export default {
       }
     }
 
-    const handleFocus = () => {
-      if (isSelected.value) {
-        hasFocus.value = true
-      }
-    }
-
-    const handleBlur = () => {
-      if (isSelected.value) {
-        hasFocus.value = false
-      }
-    }
-
     return {
+      radio,
       isSelected,
       radioClasses,
-      handleFocus,
-      handleBlur,
       handleChecked
     }
   }
