@@ -1,29 +1,14 @@
 <template>
 <div class="container">
   <div class="container__content">
-    <animated-icon-demo/>
-    <elevation-demo/>
-    <card-demo/>
-    <radio-demo/>
-    <checkbox-demo/>
-    <dialog-demo/>
-    <tooltip-demo/>
-
-    <h3>Work in progress</h3>
-    <p class="sd--text__lead">Lead</p>
-    <h1 class="sd--text__headline">Headline</h1>
-    <sd-fieldset title="Input Fields">
-      <sd-field>
-        <label>behh</label>
-        <input type="text" placeholder="geh"/>
-        <sd-error error="err"/>
-      </sd-field>
-      <sd-field>
-        <label>behh</label>
-        <input type="text" placeholder="geh"/>
-        <sd-error error="err"/>
-      </sd-field>
-    </sd-fieldset>
+    <animated-icon-demo />
+    <elevation-demo />
+    <card-demo />
+    <radio-demo />
+    <checkbox-demo />
+    <dialog-demo />
+    <tooltip-demo />
+    <icon-demo />
   </div>
 </div>
 </template>
@@ -31,24 +16,22 @@
 <script>
 import { defineComponent, reactive, ref, toRefs } from 'vue'
 import AnimatedIconDemo from '@/components/AnimatedIconDemo'
+import IconDemo from '@/components/IconDemo'
 import RadioDemo from '@/components/RadioDemo'
 import CardDemo from '@/components/CardDemo'
 import ElevationDemo from '@/components/ElevationDemo'
 import DialogDemo from '@/components/DialogDemo'
 import CheckboxDemo from '@/components/CheckboxDemo'
 import TooltipDemo from '@/components/TooltipDemo'
-import SdField, { SdFieldset, SdError } from '@/library/components/SdField'
 export default defineComponent({
   name: 'Home',
   components: {
+    IconDemo,
     AnimatedIconDemo,
     CardDemo,
     DialogDemo,
     RadioDemo,
     CheckboxDemo,
-    SdFieldset,
-    SdField,
-    SdError,
     TooltipDemo,
     ElevationDemo
   },
