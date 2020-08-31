@@ -1,6 +1,7 @@
 <template>
 <div class="container">
   <div class="container__content">
+    <animated-icon-demo/>
     <elevation-demo/>
     <card-demo/>
     <radio-demo/>
@@ -29,6 +30,7 @@
 
 <script>
 import { defineComponent, reactive, ref, toRefs } from 'vue'
+import AnimatedIconDemo from '@/components/AnimatedIconDemo'
 import RadioDemo from '@/components/RadioDemo'
 import CardDemo from '@/components/CardDemo'
 import ElevationDemo from '@/components/ElevationDemo'
@@ -39,6 +41,7 @@ import SdField, { SdFieldset, SdError } from '@/library/components/SdField'
 export default defineComponent({
   name: 'Home',
   components: {
+    AnimatedIconDemo,
     CardDemo,
     DialogDemo,
     RadioDemo,

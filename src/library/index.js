@@ -1,4 +1,5 @@
-import SdButton from './components/SdButton'
+import SdButton from './components/SdButton/SdButton'
+import SdHamburger from './components/SdButton/SdHamburger'
 import SdCard from './components/SdCard/SdCard'
 import SdCardBody from './components/SdCard/SdCardBody'
 import SdCardHeader from './components/SdCard/SdCardHeader'
@@ -16,6 +17,7 @@ import SdField from './components/SdField/SdField'
 import SdLabel from './components/SdField/SdLabel'
 import SdError from './components/SdField/SdError'
 import SdIcon from './components/SdIcon/SdIcon'
+import SdMouse from './components/SdIcon/SdMouse'
 import SdTooltip from './components/SdTooltip/SdTooltip'
 
 export {
@@ -42,6 +44,8 @@ export {
   SdOverlay,
   // Icon
   SdIcon,
+  SdMouse,
   // Poppers
-  SdTooltip
+  SdTooltip,
+  SdHamburger
 }

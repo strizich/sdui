@@ -15,30 +15,31 @@
 
       <sd-card>
         <sd-card-header>Generic Card</sd-card-header>
-        <sd-card-body>Generic Body Content</sd-card-body>
+        <sd-card-body>Generic Body Content <sd-hamburger/> <sd-mouse/></sd-card-body>
         <sd-card-footer align="flex-end">
           <sd-button flat theme="default">Button</sd-button>
           <sd-button flat>Button</sd-button>
         </sd-card-footer>
       </sd-card>
-
     </div>
   </section>
 </template>
 
 <script>
 import {
+  SdHamburger,
   SdButton,
   SdCard,
   SdCardHeader,
   SdCardBody,
   SdCardFooter,
-  SdCardMedia
+  SdCardMedia,
+  SdMouse
 } from '@/library'
 
 export default {
   name: 'CardTest',
-  components: { SdButton, SdCard, SdCardHeader, SdCardBody, SdCardFooter, SdCardMedia }
+  components: { SdMouse, SdHamburger, SdButton, SdCard, SdCardHeader, SdCardBody, SdCardFooter, SdCardMedia }
 }
 </script>
 

@@ -103,7 +103,15 @@ export default {
       handleAsideLeftClose
     }
   },
-  components: { SdButton, SdDialog, SdDialogTitle, SdDialogContent, SdDialogFooter, SdRadio, SdFieldset }
+  components: {
+    SdButton,
+    SdDialog,
+    SdDialogTitle,
+    SdDialogContent,
+    SdDialogFooter,
+    SdRadio,
+    SdFieldset
+  }
 }
 </script>
 

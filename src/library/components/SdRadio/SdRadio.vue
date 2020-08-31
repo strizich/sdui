@@ -9,8 +9,6 @@
       ref="radio"
       class="sd--radio__input"
       v-bind="{ name, disabled, required, value, checked: isSelected }"
-      @focus="handleFocus"
-      @blur="handleBlur"
       type="radio"/>
     <span class="sd--radio__content">
       <span><slot/></span>
