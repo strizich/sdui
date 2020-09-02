@@ -15,6 +15,7 @@
       <option value="200">200</option>
       <option value="300">300</option>
       <option value="400">400</option>
+      <option value="2000">400+</option>
     </select>
     <div class="demo__icons">
       <div class="demo__icon" v-for="(name, index) in totalFilteredResults" :key="name + index">
@@ -22,7 +23,7 @@
         <small>{{name}}</small>
       </div>
     </div>
-  {{simpleSearchArray}}
+    <sd-label>Showing {{totalFilteredResults.length}} of {{matIcons.length}}</sd-label>
   </section>
 </template>
 
