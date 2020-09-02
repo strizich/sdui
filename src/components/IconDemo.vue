@@ -36,6 +36,7 @@ export default defineComponent({
     const matIcons = MAT_ICONS.sort()
     const iconSearch = ref('')
     const resultCount = ref(25)
+
     const searchResult = computed(() => {
       return matIcons.filter((icon) => {
         return icon.toLowerCase().includes(iconSearch.value.toLowerCase())
