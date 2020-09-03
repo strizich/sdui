@@ -14,6 +14,7 @@ import SdCheckbox from './components/SdCheckbox/SdCheckbox'
 import SdRadio from './components/SdRadio/SdRadio'
 import SdFieldset from './components/SdField/SdFieldset'
 import SdField from './components/SdField/SdField'
+import SdSelect from './components/SdField/SdSelect'
 import SdLabel from './components/SdField/SdLabel'
 import SdError from './components/SdField/SdError'
 import SdIcon from './components/SdIcon/SdIcon'
@@ -36,6 +37,7 @@ export {
   SdRadio,
   SdField,
   SdError,
+  SdSelect,
   // Dialog (modal)
   SdDialog,
   SdDialogTitle,

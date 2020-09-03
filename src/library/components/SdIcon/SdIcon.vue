@@ -1,5 +1,5 @@
 <template>
-  <i :class="['sd--icon', iconSize]">{{name}}</i>
+  <i :class="['sd--icon', iconSize]" :style="{'color': color}">{{name}}</i>
 </template>
 
 <script>
@@ -14,6 +14,9 @@ export default defineComponent({
     size: {
       type: String,
       default: 'md'
+    },
+    color: {
+      type: String
     }
   },
   setup (props) {

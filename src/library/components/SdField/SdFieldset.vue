@@ -1,7 +1,7 @@
 <template>
   <!-- Should maybe rename this component... -->
   <div :class="['sd--fieldset', classes]">
-    <div class="sd--fieldset__header">
+    <div class="sd--fieldset__header" v-if="title">
       <sd-label :inline="inlineLabel">
         <span>{{title}}</span>
         <span v-if="tip">
@@ -92,6 +92,7 @@ export default defineComponent({
     flex-direction: row;
     align-content: flex-start;
     flex-wrap: wrap;
+    width: 100%;
     .sd--checkbox{
       margin-left:0;
       margin-right: 0;

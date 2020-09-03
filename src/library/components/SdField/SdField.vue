@@ -1,53 +1,134 @@
 <template>
-    <div class="sd--field">
-      <slot />
+    <div :class="[rootClasses]">
+      <sd-label>{{label}}</sd-label>
+      <slot name="label"/>
+      <input
+        :class="[inputClasses]"
+        :id="id"
+        :type="type"
+        :name="name"
+        :placeholder="placeholder"
+        @blur="(e) => handleTouched(e)"
+        @focus="(e) => handleFocused(e)"
+        @input="(e) => handleChange(e)"
+        :value="modelValue"
+      />
+      <sd-error :message="state.touched && isErrorString && error ? error : ''"/>
+      <slot name="error"/>
     </div>
 </template>
 
 <script>
-export default {
+import { defineComponent, reactive, computed } from 'vue'
+import SdUuid from '@/library/core/utilities/SdUuid'
+import SdLabel from './SdLabel'
+import SdError from './SdError'
+export default defineComponent({
+  emits: ['update:modelValue', 'focus', 'blur', 'change'],
   props: {
     modelValue: String,
+    id: {
+      type: String,
+      default: () => 'sd--field--' + SdUuid()
+    },
     label: String,
+    name: String,
     value: [String, Number],
-    placeholder: String
+    placeholder: String,
+    type: {
+      type: String,
+      default: 'text'
+    },
+    error: {
+      type: [Boolean, String]
+    }
+  },
+
+  setup (props, { emit }) {
+    const state = reactive({
+      touched: false,
+      focused: false
+    })
+
+    const isErrorString = computed(() => {
+      return typeof props.error === 'string'
+    })
+
+    const handleChange = (e) => {
+      emit('update:modelValue', e.target.value)
+    }
+
+    const handleTouched = (e) => {
+      state.touched = true
+      state.focused = false
+      emit('blur', e)
+    }
+
+    const handleFocused = (e) => {
+      state.focused = true
+      emit('focus', e)
+    }
+    const rootClasses = computed(() => {
+      return {
+        'sd--field': true,
+        'is--focused': state.focused
+      }
+    })
+    const inputClasses = computed(() => {
+      return {
+        'sd--field__control': true,
+        'is--dirty': state.touched,
+        'is--error': state.touched && props.error
+      }
+    })
+
+    return { handleChange, handleTouched, handleFocused, isErrorString, state, rootClasses, inputClasses }
+  },
+  components: {
+    SdLabel,
+    SdError
   }
-}
+})
 </script>
 
 <style lang="scss">
+  @import "../SdElevation/mixins";
   .sd--field{
-    & > label {
-      display:block;
-      width: 100%;
-      text-transform: uppercase;
-      font-weight: 500;
-      letter-spacing: 1px;
-      font-size: 14px;
-      margin-bottom: 4px;
-      color: var(--text-accent)
+    padding-bottom: 24px;
+    position: relative;
+    &.is {
+      &--focused {
+        & > input{
+          border-color: var(--primary-highlight);
+          @include sd--elevation(1);
+        }
+      }
     }
-    & > input {
+    &__control {
+      appearance: none;
+      -webkit-appearance: none;
       color: var(--text);
       padding: 8px;
       display:block;
       outline: none;
-      border: 1px solid var(--background-accent);
-      border-bottom-width: 0;
-      box-shadow: 0 1px 0 var(--primary);
-      background: var(--background);
-      transition: box-shadow .23s ease-in-out, border .23s ease-in-out, background .23s ease-in-out;
-      &:focus, &:active{
-        border: 1px solid var(--background-highlight);
-        border-bottom-width: 0;
-        box-shadow: 0 4px 0 var(--primary);
-      }
+      border: 1px solid var(--divider);
+      background: var(--background-highlight);
+      border-radius: 3px;
+      transition: all .3s ease-in-out;
+      font-size: 16px;
+      margin-bottom: 4px;
+      width: 100%;
+      display:block;
+      @include sd--elevation(3);
       &:disabled {
         background-color: var(--background-highlight);
         color: var(--text-highlight);
-
+      }
+       &.is--error{
+        border-color: var(--danger);
       }
     }
+
     & > span{
       display:block;
       margin-bottom: 4px;
@@ -55,6 +136,11 @@ export default {
 
     & > input + span{
       margin-top: 8px;
+    }
+    .sd--error{
+      position: absolute;
+      bottom: 10px;
+      left:0;
     }
   }
 </style>

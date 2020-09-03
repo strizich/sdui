@@ -2,45 +2,56 @@
   <section>
     <p class="sd--text__footnote">Powered by: Material Icons Font</p>
     <h1>Icons</h1>
-    <sd-fieldset>
-      <sd-field>
-        <sd-label>Icon Search</sd-label>
-        <input type="search" v-model="iconSearch"/>
-        <sd-error>This component is a WIP</sd-error>
-      </sd-field>
+    <sd-fieldset class="demo__actionbar">
+      <sd-field
+        type="text"
+        label="Icon Lookup"
+        v-model="iconSearch"
+        placeholder="Search all icons"
+      />
+      <sd-select label="results" v-model="resultCount">
+        <option value="25">25</option>
+        <option value="100">100</option>
+        <option value="200">200</option>
+        <option value="300">300</option>
+        <option value="400">400</option>
+        <option value="2000">400+</option>
+      </sd-select>
     </sd-fieldset>
-    <select v-model="resultCount">
-      <option value="25">25</option>
-      <option value="100">100</option>
-      <option value="200">200</option>
-      <option value="300">300</option>
-      <option value="400">400</option>
-      <option value="2000">400+</option>
-    </select>
-    <div class="demo__icons">
-      <div class="demo__icon" v-for="(name, index) in totalFilteredResults" :key="name + index">
-        <sd-icon size="lg" :name="name" />
-        <small>{{name}}</small>
+    <div class="demo__icon-container">
+      <div class="demo__icons" v-if="totalFilteredResults.length >= 1">
+        <div class="demo__icon" v-for="(name, index) in totalFilteredResults" :key="name + index">
+          <sd-icon size="lg" :name="name" />
+          <small>{{name}}</small>
+        </div>
+      </div>
+      <div class="demo__icons--empty" v-else>
+        <sd-icon color="var(--warning)" name="sentiment_very_dissatisfied" size="xxl"/>
+        <span>Nothing here</span>
       </div>
     </div>
-    <sd-label>Showing {{totalFilteredResults.length}} of {{matIcons.length}}</sd-label>
+    <div class="demo__icon-footer">
+      <sd-label>Showing {{totalFilteredResults.length}} of {{matIcons.length}}</sd-label>
+    </div>
   </section>
 </template>
 
 <script>
 import MAT_ICONS from '@/assets/MatIconList'
 import { defineComponent, computed, ref } from 'vue'
-import { SdFieldset, SdIcon, SdLabel, SdField, SdError } from '@/library'
+import { SdIcon, SdLabel, SdField, SdSelect, SdFieldset } from '@/library'
 
 export default defineComponent({
   setup () {
     const matIcons = MAT_ICONS.sort()
     const iconSearch = ref('')
     const resultCount = ref(25)
+    const error = ref(false)
 
     const searchResult = computed(() => {
       return matIcons.filter((icon) => {
-        return icon.toLowerCase().includes(iconSearch.value.toLowerCase())
+        const result = icon.toLowerCase().includes(iconSearch.value.toLowerCase())
+        return result
       })
     })
 
@@ -48,20 +59,44 @@ export default defineComponent({
       return searchResult.value.slice(0, resultCount.value)
     })
 
-    return { iconSearch, matIcons, searchResult, resultCount, totalFilteredResults }
+    return { iconSearch, matIcons, searchResult, resultCount, totalFilteredResults, error }
   },
-  components: { SdIcon, SdFieldset, SdField, SdLabel, SdError }
+  components: { SdIcon, SdField, SdLabel, SdSelect, SdFieldset }
 })
 </script>
 
 <style lang="scss" scoped>
-
+.demo__actionbar{
+  width: 100%;
+}
 .demo{
+  &__icon-container{
+    height: 450px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    margin-bottom: 16px;
+    padding: 16px 0;
+    background-color: var(--background-accent);
+  }
+  &__icon-footer{
+    display: flex;
+    justify-content: center;;
+  }
   &__icons{
     display:flex;
     flex-wrap: wrap;
     small{
       display:block;
+    }
+    &--empty{
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      span {
+        margin-top: 8px;
+      }
     }
   }
   &__icon{
