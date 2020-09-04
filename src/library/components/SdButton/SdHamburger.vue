@@ -1,5 +1,5 @@
 <template>
-   <button ref="hamburgerRef" :class="classes" @click="handleToggle">
+   <button ref="hamburgerRef" :id="id" :class="classes" @click="(e) => handleToggle(e)">
       <span class="sd--hamburger" :class="activeClass">
         <i class="sd--hamburger__bar" :class="`bar--${n}`" v-for="n in 3" :key="n"/>
       </span>
@@ -8,13 +8,17 @@
 
 <script>
 import anime from 'animejs'
-import { ref, computed, watch } from 'vue'
+import { ref, reactive, computed, watch } from 'vue'
 import useKeyboardFocus from '@/library/hooks/useKeyboardFocus'
-
+import sdUuid from '@/library/core/utilities/SdUuid'
 export default {
   name: 'SdHamburger',
   props: {
-    active: [Boolean, String],
+    id: {
+      type: String,
+      default: () => 'sd--hamburger--' + sdUuid()
+    },
+    active: Boolean,
     animated: {
       type: Boolean,
       default: true
@@ -22,11 +26,16 @@ export default {
   },
   setup (props, { emit }) {
     const hamburgerRef = ref(null)
-    const isOpen = ref(false)
     const hasFocus = useKeyboardFocus(hamburgerRef)
-    watch(() => props.active, (newValue) => {
+
+    const state = reactive({
+      active: false
+    })
+
+    watch(() => props.active, (newValue, oldValue) => {
       animateHamburger(newValue)
     })
+
     const classes = computed(() => {
       return {
         'sd--button': true,
@@ -36,7 +45,7 @@ export default {
     })
     const activeClass = computed(() => {
       return {
-        'is--active': isOpen.value
+        'is--active': props.active
       }
     })
 
@@ -47,38 +56,38 @@ export default {
       })
       if (!open) {
         tl.add({
-          targets: '.bar--1',
+          targets: `#${props.id} .bar--1`,
           keyframes: [
             { rotateZ: 0, translateY: 0, translateX: 0, easing: 'easeInOutQuad' },
             { width: 24, easing: 'easeInOutQuad' }
           ]
         }, 0).add({
-          targets: '.bar--3',
+          targets: `#${props.id} .bar--3`,
           keyframes: [
             { rotateZ: 0, translateY: 0, translateX: 0, easing: 'easeInOutQuad' },
             { width: 24, easing: 'easeInOutQuad' }
           ]
         }, 0).add({
-          targets: '.bar--2',
+          targets: `#${props.id} .bar--2`,
           keyframes: [
             { width: 24, translateX: 0, easing: 'easeInOutQuad' }
           ]
         }, 0)
-      } else if (open) {
+      } else {
         tl.add({
-          targets: '.bar--1',
+          targets: `#${props.id} .bar--1`,
           keyframes: [
             { width: 12, easing: 'easeInOutQuad' },
             { rotateZ: -45, translateY: 7, translateX: -4, easing: 'easeInOutQuad' }
           ]
         }, 0).add({
-          targets: '.bar--3',
+          targets: `#${props.id} .bar--3`,
           keyframes: [
             { width: 12, easing: 'easeInOutQuad' },
             { rotateZ: 45, translateY: -7, translateX: -4, easing: 'easeInOutQuad' }
           ]
         }, 0).add({
-          targets: '.bar--2',
+          targets: `#${props.id} .bar--2`,
           keyframes: [
             { width: 21, translateX: 3, easing: 'easeInOutQuad' },
             { translateX: 3 }
@@ -86,18 +95,22 @@ export default {
         }, 0)
       }
     }
-    const handleToggle = () => {
-      isOpen.value = !isOpen.value
-      if (props.animated) {
-        animateHamburger(isOpen.value)
-        emit('update:active', isOpen.value)
-      }
+
+    const handleToggle = (e) => {
+      state.active = !props.active
+      emit('toggled', state.active)
+      // if (e) {
+      //   if (props.animated) {
+      //     animateHamburger(isOpen.value)
+      //   }
+      // }
     }
+
     return {
       hasFocus, handleToggle, classes, activeClass, hamburgerRef
     }
   },
-  emits: ['update:active']
+  emits: ['toggled']
 }
 </script>
 

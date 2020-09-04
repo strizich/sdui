@@ -13,6 +13,7 @@ import SdOverlay from './components/SdDialog/SdOverlay'
 import SdCheckbox from './components/SdCheckbox/SdCheckbox'
 import SdRadio from './components/SdRadio/SdRadio'
 import SdFieldset from './components/SdField/SdFieldset'
+import SdRange from './components/SdField/SdRange'
 import SdField from './components/SdField/SdField'
 import SdSelect from './components/SdField/SdSelect'
 import SdLabel from './components/SdField/SdLabel'
@@ -20,6 +21,10 @@ import SdError from './components/SdField/SdError'
 import SdIcon from './components/SdIcon/SdIcon'
 import SdMouse from './components/SdIcon/SdMouse'
 import SdTooltip from './components/SdTooltip/SdTooltip'
+import SdLayout from './components/SdLayout/SdLayout'
+import SdHeader from './components/SdLayout/SdHeader'
+// import SdFooter from './components/SdLayout/SdFooter'
+// import SdSidebar from './components/SdLayout/SdSidebar'
 
 export {
   // Button
@@ -38,6 +43,7 @@ export {
   SdField,
   SdError,
   SdSelect,
+  SdRange,
   // Dialog (modal)
   SdDialog,
   SdDialogTitle,
@@ -49,5 +55,10 @@ export {
   SdMouse,
   // Poppers
   SdTooltip,
-  SdHamburger
+  SdHamburger,
+  // Layout
+  SdLayout,
+  SdHeader
+  // SdFooter,
+  // SdSidebar
 }

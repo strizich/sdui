@@ -6,7 +6,7 @@
         v-if="active"
       >
         <div
-          :class="['sd--dialog__wrapper', classes ]"
+          :class="['sd--dialog__wrapper','sd--elevation--6', classes ]"
           @keydown.esc="onEsc"
           ref="modalContainer"
           >
@@ -18,10 +18,10 @@
         :parent="`#${id}`"
         fixed
         :class="backdropClass"
-        :blur="backdropBlur"
         :active="active"
         @click="onOutsideClick"
-        v-if="backdrop"
+        v-if="backdrop && active"
+        :blur="backdropBlur"
       />
     </div>
     </transition>
@@ -170,6 +170,10 @@ export default defineComponent({
     left:0;
     right: 0;
     z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform: translate(0, 0);
     &--open{
       @include breakpoint-up('sm') {
         padding-right: 10px;
@@ -182,13 +186,10 @@ export default defineComponent({
       flex-direction: row;
       overflow: hidden;
       position: fixed;
-      top: 50%;
-      left: 50%;
       z-index: 1002;
       border-radius: 2px;
       backface-visibility: hidden;
       pointer-events: auto;
-      transform: translate(-50%, -50%);
       transform-origin: center center;
       transition: opacity .3s ease-in-out,
                   transform .3s  ease-in-out;
@@ -273,14 +274,22 @@ export default defineComponent({
     }
   }
 
-.dialog-leave-active {
+.dialog-leave-active, .dialog-enter-active {
   transition: opacity .3s ease-in-out,
               transform .3s ease-in-out;
+  & > .sd--overlay{
+    will-change: opacity;
+    transition: opacity .5s ease-in-out,
+  }
 }
+
 .dialog-enter-from, .dialog-leave-to{
+  .sd--overlay{
+    opacity: 0;
+  }
   .sd--dialog {
     &__fullscreen {
-      transform: translate3D(-50%, -55%, 0);
+      transform: translate3D(0, -30px, 0);
       opacity: 0;
       @include breakpoint-down("sm") {
         transform: translate3D(0, 100%, 0);
@@ -296,9 +305,6 @@ export default defineComponent({
       @include breakpoint-down("sm") {
         transform: translate3D(0, 100%, 0);
       }
-    }
-    &__overlay {
-      opacity: 0;
     }
   }
 }

@@ -4,6 +4,7 @@ import { defineComponent, computed, ref, h } from 'vue'
 import useKeyboardFocus from '@/library/hooks/useKeyboardFocus'
 import sdUuid from '@/library/core/utilities/SdUuid'
 export default defineComponent({
+  name: 'SdButton',
   props: {
     id: {
       type: String,
@@ -274,7 +275,6 @@ export default defineComponent({
 
         &--pill {
           border-radius: 30px;
-
           .sd--button__content {
             padding-left: 20px;
             padding-right: 20px;
@@ -283,7 +283,7 @@ export default defineComponent({
 
         &--focused {
           box-shadow: 0 0 0 5px $highlight;
-          transition: all .2s ease-out;
+          transition: box-shadow .2s ease-out;
         }
       }
     }

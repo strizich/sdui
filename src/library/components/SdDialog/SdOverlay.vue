@@ -1,6 +1,6 @@
 <template>
   <transition name="sd-overlay">
-    <div :class="['sd--overlay', overlayClasses]" v-if="active"></div>
+    <div :class="['sd--overlay', overlayClasses]" v-if="active" />
   </transition>
 </template>
 
@@ -11,7 +11,6 @@ export default defineComponent({
   props: {
     parent: String,
     active: Boolean,
-    attachToParent: Boolean,
     fixed: Boolean,
     blur: Boolean
   },
@@ -29,7 +28,7 @@ export default defineComponent({
 })
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
   .sd--overlay{
     position: absolute;
     top: 0;
@@ -38,10 +37,11 @@ export default defineComponent({
     right: 0;
     overflow: hidden;
     z-index: 1001;
-    background-color: rgba(0,0,0,.5);
-    transition: .15s opacity ease-in-out;
+    background-color: #161616DD;
     transition-property: opacity;
     will-change: opacity;
+    opacity: 1;
+    transition: .3s 0s opacity ease-in-out;
     body > &,
     &.is--fixed{
       position: fixed
@@ -49,9 +49,15 @@ export default defineComponent({
     &.is--blur{
       backdrop-filter: blur(16px);
     }
+
   }
-  .sd-overlay-enter,
-  .sd-overlay-leave-active {
+  .sd-overlay-enter{
+  transition: .1s .4s opacity ease-in-out;
+  }
+  .sd-overlay-leave{
+  transition: .1s 0 opacity ease-in-out;
+  }
+  .sd-overlay-enter, .sd-overlay-leave{
     opacity: 0;
   }
 </style>
