@@ -30,7 +30,6 @@ export default {
 
     const menuEvent = (e) => {
       state.menuOpen = e
-      console.log('app', state.menuOpen)
     }
 
     return { ...toRefs(state), menuEvent }

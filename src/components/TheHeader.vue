@@ -47,7 +47,6 @@ export default {
 
     const handleMenu = (e) => {
       emit('menu-open', e)
-      console.log('the header', e)
     }
 
     const scheme = computed(() => {
