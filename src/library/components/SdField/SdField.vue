@@ -1,7 +1,7 @@
 <template>
     <div :class="[rootClasses]">
       <sd-label>{{label}}</sd-label>
-      <slot name="label"/>
+      <slot name="header"/>
       <input
         :class="[inputClasses]"
         :id="id"
@@ -13,8 +13,8 @@
         @input="(e) => handleChange(e)"
         :value="modelValue"
       />
-      <sd-error :message="state.touched && isErrorString && error ? error : ''"/>
-      <slot name="error"/>
+      <slot name="footer"/>
+      <sd-error :message="handleValidation && isErrorString ? error : ''"/>
     </div>
 </template>
 
@@ -26,7 +26,7 @@ import SdError from './SdError'
 export default defineComponent({
   emits: ['update:modelValue', 'focus', 'blur', 'change'],
   props: {
-    modelValue: String,
+    modelValue: [String, Number],
     id: {
       type: String,
       default: () => 'sd--field--' + SdUuid()
@@ -41,7 +41,9 @@ export default defineComponent({
     },
     error: {
       type: [Boolean, String]
-    }
+    },
+    // need a better name for this...
+    pristineError: Boolean
   },
 
   setup (props, { emit }) {
@@ -54,6 +56,15 @@ export default defineComponent({
       return typeof props.error === 'string'
     })
 
+    const handleValidation = computed(() => {
+      if (props.pristineError) {
+        return props.error
+      }
+      if (props.error === '') {
+        return false
+      }
+      return state.touched && props.error
+    })
     const handleChange = (e) => {
       emit('update:modelValue', e.target.value)
     }
@@ -78,11 +89,10 @@ export default defineComponent({
       return {
         'sd--field__control': true,
         'is--dirty': state.touched,
-        'is--error': state.touched && props.error
+        'is--error': handleValidation.value
       }
     })
-
-    return { handleChange, handleTouched, handleFocused, isErrorString, state, rootClasses, inputClasses }
+    return { handleChange, handleTouched, handleFocused, isErrorString, state, rootClasses, inputClasses, handleValidation }
   },
   components: {
     SdLabel,

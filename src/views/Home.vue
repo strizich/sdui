@@ -2,6 +2,7 @@
 <div class="container">
   <div class="container__content">
     <animated-icon-demo />
+    <form-control-demo />
     <elevation-demo />
     <card-demo />
     <radio-demo />
@@ -16,13 +17,14 @@
 <script>
 import { defineComponent, reactive, ref, toRefs } from 'vue'
 import AnimatedIconDemo from '@/components/AnimatedIconDemo'
-import IconDemo from '@/components/IconDemo'
+import FormControlDemo from '@/components/FormControlDemo'
 import RadioDemo from '@/components/RadioDemo'
 import CardDemo from '@/components/CardDemo'
 import ElevationDemo from '@/components/ElevationDemo'
 import DialogDemo from '@/components/DialogDemo'
 import CheckboxDemo from '@/components/CheckboxDemo'
 import TooltipDemo from '@/components/TooltipDemo'
+import IconDemo from '@/components/IconDemo'
 export default defineComponent({
   name: 'Home',
   components: {
@@ -33,7 +35,8 @@ export default defineComponent({
     RadioDemo,
     CheckboxDemo,
     TooltipDemo,
-    ElevationDemo
+    ElevationDemo,
+    FormControlDemo
   },
   setup (props, context) {
     const list = ['apple', 'orange', 'pear']
