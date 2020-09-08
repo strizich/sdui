@@ -10,7 +10,7 @@
         :placeholder="placeholder"
         @blur="(e) => handleTouched(e)"
         @focus="(e) => handleFocused(e)"
-        @input="(e) => handleChange(e)"
+        @input="(e) => handleInput(e)"
         :value="modelValue"
       />
       <slot name="footer"/>
@@ -19,7 +19,7 @@
 </template>
 
 <script>
-import { defineComponent, reactive, computed } from 'vue'
+import { defineComponent, reactive, computed, toRefs } from 'vue'
 import SdUuid from '@/library/core/utilities/SdUuid'
 import SdLabel from './SdLabel'
 import SdError from './SdError'
@@ -30,6 +30,9 @@ export default defineComponent({
     id: {
       type: String,
       default: () => 'sd--field--' + SdUuid()
+    },
+    modelModifiers: {
+      default: () => ({})
     },
     label: String,
     name: String,
@@ -52,10 +55,6 @@ export default defineComponent({
       focused: false
     })
 
-    const isErrorString = computed(() => {
-      return typeof props.error === 'string'
-    })
-
     const handleValidation = computed(() => {
       if (props.pristineError) {
         return props.error
@@ -65,8 +64,17 @@ export default defineComponent({
       }
       return state.touched && props.error
     })
-    const handleChange = (e) => {
-      emit('update:modelValue', e.target.value)
+
+    const isErrorString = computed(() => {
+      return typeof props.error === 'string'
+    })
+
+    const handleInput = (e) => {
+      let value = e.target.value
+      if (props.modelModifiers.number || props.type === 'number') {
+        value = parseInt(value)
+      }
+      emit('update:modelValue', value)
     }
 
     const handleTouched = (e) => {
@@ -85,6 +93,7 @@ export default defineComponent({
         'is--focused': state.focused
       }
     })
+
     const inputClasses = computed(() => {
       return {
         'sd--field__control': true,
@@ -92,7 +101,17 @@ export default defineComponent({
         'is--error': handleValidation.value
       }
     })
-    return { handleChange, handleTouched, handleFocused, isErrorString, state, rootClasses, inputClasses, handleValidation }
+
+    return {
+      ...toRefs(state),
+      rootClasses,
+      inputClasses,
+      handleInput,
+      handleTouched,
+      handleFocused,
+      isErrorString,
+      handleValidation
+    }
   },
   components: {
     SdLabel,

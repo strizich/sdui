@@ -37,11 +37,11 @@ export default {
 }
 </script>
 <style lang="scss">
-@import './library/scss/reset';
 @import './library/scss/css-vars';
 
 #app {
-  height: fit-content;
+  min-height:100vh;
+  height: 100%;
 }
 html, body{
   transition: background .6s 0s ease-in,

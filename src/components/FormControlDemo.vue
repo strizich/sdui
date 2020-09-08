@@ -21,7 +21,6 @@
         <sd-col :md="4">
           <sd-field
             label="Error as a boolean"
-            v-model="inputTwo"
             pristine-error
             error
           />
@@ -30,9 +29,9 @@
           <sd-field
             label="1 + 1 = ?"
             type="number"
-            v-model="inputThree"
-            :error="validateMuth"
+            v-model.number="inputThree"
             pristine-error
+            :error="validateMuth"
           />
         </sd-col>
       </sd-row>
@@ -73,7 +72,8 @@ export default {
       inputTwo: '',
       inputThree: 2,
       inputFour: '',
-      inputFive: ''
+      inputFive: '',
+      inputNum: 3
     })
     const aNumber = computed(() => {
       return parseInt(state.inputThree)

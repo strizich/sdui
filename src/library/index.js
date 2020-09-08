@@ -25,6 +25,7 @@ import SdLayout from './components/SdLayout/SdLayout'
 import SdHeader from './components/SdLayout/SdHeader'
 // import SdFooter from './components/SdLayout/SdFooter'
 // import SdSidebar from './components/SdLayout/SdSidebar'
+import SdNav from './components/SdLayout/SdNav'
 import SdRow from './components/SdGrid/SdRow'
 import SdCol from './components/SdGrid/SdCol'
 import SdContainer from './components/SdGrid/SdContainer'
@@ -62,6 +63,7 @@ export {
   // Layout
   SdLayout,
   SdHeader,
+  SdNav,
   // SdFooter,
   // SdSidebar
   // Grid

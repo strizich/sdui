@@ -1,8 +1,9 @@
 <template>
-  <div class="sd--select">
+  <div :class="['sd--select', baseClasses]">
     <sd-label v-if="label">{{label}}</sd-label>
     <div class="sd--select__content">
-      <select class="sd--select__control"
+      <select
+        :class="['sd--select__control', classes]"
         :value="modelValue"
         @click="(e) => handleClick(e)"
         @change="(e) => handleChange(e)"
@@ -26,16 +27,22 @@ export default defineComponent({
   components: { SdIcon, SdLabel },
   props: {
     modelValue: [String, Object, Number],
-    label: String
+    label: String,
+    block: Boolean
   },
   setup (props, { emit }) {
     const state = reactive({
-      hasFocus: 0
+      hasFocus: false
     })
 
     const classes = computed(() => {
       return {
         'is--focused': state.hasFocus
+      }
+    })
+    const baseClasses = computed(() => {
+      return {
+        'is--block': props.block
       }
     })
 
@@ -63,7 +70,8 @@ export default defineComponent({
       handleFocus,
       handleBlur,
       handleClick,
-      classes
+      classes,
+      baseClasses
     }
   }
 })
@@ -71,6 +79,9 @@ export default defineComponent({
 
 <style lang="scss" scoped>
   .sd--select {
+    &.is--block{
+      width: 100%;
+    }
     &__content{
       position: relative;
     }
@@ -107,11 +118,14 @@ export default defineComponent({
         background-color: var(--background-highlight);
         color: var(--text-highlight);
       }
-      &:focus {
+      &:focus{
+        outline: none;
+      }
+      &:active {
         background-color: var(--background-highlight);
         border-color: var(--primary);
       }
-        &.is--error{
+      &.is--error{
         border-color: var(--danger);
       }
     }

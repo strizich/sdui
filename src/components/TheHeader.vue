@@ -15,56 +15,32 @@
         </sd-button>
       </div>
     </template>
-    <template v-slot:subheader>
-      <div class="scheme">
-        <sd-fieldset title="Color Scheme" inline-label>
-          <sd-radio v-model="mode" value="auto">Auto</sd-radio>
-          <sd-radio v-model="mode" value="light">Light</sd-radio>
-          <sd-radio v-model="mode" value="dark">Dark</sd-radio>
-        </sd-fieldset>
-      </div>
-    </template>
   </sd-header>
 </template>
 
 <script>
-import { computed, watch, reactive, toRefs, nextTick } from 'vue'
+import { defineComponent } from 'vue'
 import JsLogo from '@/components/JsLogo'
-import { SdHeader, SdButton, SdRadio, SdFieldset } from '@/library'
+import { SdHeader, SdButton } from '@/library'
 
-export default {
+export default defineComponent({
   emits: ['menu-open'],
   components: {
-    JsLogo, SdHeader, SdButton, SdRadio, SdFieldset
+    JsLogo, SdHeader, SdButton
   },
   props: {
     asideOpen: Boolean
   },
   setup (props, { emit }) {
-    const state = reactive({
-      mode: 'auto'
-    })
-
     const handleMenu = (e) => {
       emit('menu-open', e)
     }
 
-    const scheme = computed(() => {
-      return `sd--scheme--${state.mode}`
-    })
-    watch(() => scheme.value, (newValue, oldValue) => {
-      nextTick().then(() => {
-        document.body.classList.remove(`${oldValue}`)
-        document.body.classList.add(`${newValue}`)
-      })
-    })
-
     return {
-      ...toRefs(state),
       handleMenu
     }
   }
-}
+})
 </script>
 
 <style lang="scss" scoped>

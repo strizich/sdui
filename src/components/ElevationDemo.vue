@@ -3,7 +3,7 @@
     <sd-container full>
     <h1>Elevation System</h1>
       <sd-row>
-        <sd-col :md="2" v-for="n of 24" :key="n">
+        <sd-col :lg="2" :md="4" v-for="n of 24" :key="n">
           <div :class="['elevation__item', makeElevationClass(n)]">
             <span>{{n}}</span>
             <small>{{makeElevationClass(n)}}</small>
@@ -51,6 +51,7 @@ export default defineComponent({
     flex-direction: column;
     align-items:center;
     justify-content:center;
+    margin-bottom: 32px;
     @include breakpoint-down('sm') {
       width: 100%;
     }
