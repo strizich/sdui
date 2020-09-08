@@ -1,55 +1,72 @@
 <template>
   <section>
-    <h1>Input</h1>
+    <sd-container full>
+      <h1>Input</h1>
+      <sd-row>
+        <sd-col :md="6">
+          <input class="rm--range" type="range" min="1" max="3" v-model="inputThree"/>
+        </sd-col>
+        <sd-col :md="6">
+          <sd-range label="thing" v-model="inputThree"/>
+        </sd-col>
+      </sd-row>
 
-    <input class="rm--range" type="range" min="1" max="3" v-model="inputThree"/>
+      <sd-row>
+        <sd-col :md="4">
+          <sd-field
+            label="Text Input"
+            v-model="inputOne"
+          />
+        </sd-col>
+        <sd-col :md="4">
+          <sd-field
+            label="Error as a boolean"
+            v-model="inputTwo"
+            pristine-error
+            error
+          />
+        </sd-col>
+        <sd-col :md="4">
+          <sd-field
+            label="1 + 1 = ?"
+            type="number"
+            v-model="inputThree"
+            :error="validateMuth"
+            pristine-error
+          />
+        </sd-col>
+      </sd-row>
 
-    <sd-range label="thing" v-model="inputThree"/>
-
-    <sd-field
-      label="Text Input"
-      v-model="inputOne"
-    />
-
-    <sd-field
-      label="Error as a boolean"
-      v-model="inputTwo"
-      pristine-error
-      error
-    />
-
-    <sd-field
-      label="1 + 1 = ?"
-      type="number"
-      v-model="inputThree"
-      :error="validateMuth"
-      pristine-error
-    />
-
-    <sd-field
-      label="Error as a String"
-      v-model="inputFour"
-      pristine-error
-      error="This is message"
-    />
-    <sd-field v-model="inputFive">
-      <template v-slot:header>
-        custom content slot
-      </template>
-      <template v-slot:footer>
-        custom content slot
-      </template>
-    </sd-field>
-    {{inputFive}}
+      <sd-row>
+        <sd-col :md="4">
+          <sd-field
+            label="Error as a String"
+            v-model="inputFour"
+            pristine-error
+            error="This is message"
+          />
+        </sd-col>
+        <sd-col :md="4">
+          <sd-field v-model="inputFive">
+            <template v-slot:header>
+              custom content slot
+            </template>
+            <template v-slot:footer>
+              custom content slot
+            </template>
+          </sd-field>
+        </sd-col>
+      </sd-row>
+    </sd-container>
   </section>
 </template>
 
 <script>
 import { reactive, toRefs, computed } from 'vue'
-import { SdField, SdRange } from '@/library'
+import { SdField, SdRange, SdRow, SdContainer, SdCol } from '@/library'
 export default {
   name: 'InputDemo',
-  components: { SdField, SdRange },
+  components: { SdField, SdRange, SdRow, SdCol, SdContainer },
   setup () {
     const state = reactive({
       inputOne: '',
