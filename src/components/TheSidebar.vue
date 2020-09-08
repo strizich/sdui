@@ -16,5 +16,6 @@ export default {
   position: sticky;
   top: 0;
   left:0;
+  height: 100vh;
 }
 </style>

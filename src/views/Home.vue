@@ -1,7 +1,6 @@
 <template>
 <div class="container">
   <div class="container__content">
-    <animated-icon-demo />
     <form-control-demo />
     <elevation-demo />
     <card-demo />
@@ -16,7 +15,6 @@
 
 <script>
 import { defineComponent, reactive, ref, toRefs } from 'vue'
-import AnimatedIconDemo from '@/components/AnimatedIconDemo'
 import FormControlDemo from '@/components/FormControlDemo'
 import RadioDemo from '@/components/RadioDemo'
 import CardDemo from '@/components/CardDemo'
@@ -29,7 +27,6 @@ export default defineComponent({
   name: 'Home',
   components: {
     IconDemo,
-    AnimatedIconDemo,
     CardDemo,
     DialogDemo,
     RadioDemo,

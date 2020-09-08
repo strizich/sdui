@@ -62,7 +62,9 @@ export default {
       width: 100%;
       max-width: 200px;
       background: var(--background-accent);
-      height: 100%;
+      height: 100vh;
+      position:sticky;
+      top: 0;
     }
   }
   .sidebar-enter-active, .sidebar-leave-active{
