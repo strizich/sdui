@@ -5,8 +5,8 @@
     <router-link to="#elevation">Elevation</router-link>
     <router-link to="#cards">Cards</router-link>
     <router-link to="#radios">Elevation</router-link>
-    <router-link to="#checkboxes">Cards</router-link>
-    <router-link to="#dialogs">Radios</router-link>
+    <router-link to="#checkboxes">Checkboxes</router-link>
+    <router-link to="#dialogs">Dialogs</router-link>
     <router-link to="#tooltips">Tooltips</router-link>
     <router-link to="#icons">Icons</router-link>
   </sd-container>
