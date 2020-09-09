@@ -35,7 +35,6 @@ export default {
     const state = reactive({
       menuOpen: false,
       floating: false
-      // sidebarType: 'fixed'
     })
     const { smallDevice } = useWindowWidth()
 

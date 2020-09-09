@@ -81,16 +81,10 @@ export default {
 
 <style lang="scss" scoped>
 .sidebar{
-  position: sticky;
-  top: 50px;
-  left:0;
-  bottom:0;
-  align-self: stretch;
   display:flex;
   flex-direction: column;
   justify-content: space-between;
   height: 100%;
-  max-height: calc(100vh - 50px);
   &__list{
     margin:32px 0 0 0;
     padding:0;
