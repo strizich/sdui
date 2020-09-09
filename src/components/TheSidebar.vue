@@ -26,43 +26,54 @@
     </ul>
     <div class="sidebar__options">
       <color-scheme />
-      <hr class="sd--divider" />
-      <sd-fieldset stack>
-        <sd-select label="Sidebar Type" v-model="sidebarType" block>
-          <option value="fixed">Fixed</option>
-          <option value="floating">Floating</option>
-        </sd-select>
-      </sd-fieldset>
+      <template v-if="!smallDevice">
+        <hr class="sd--divider" />
+        <sd-fieldset stack >
+          <sd-checkbox v-model="float">Floating Sidebar</sd-checkbox>
+        </sd-fieldset>
+      </template>
     </div>
   </div>
 </template>
 
 <script>
 import ColorScheme from '@/components/ColorScheme'
-import { reactive, toRefs, watchEffect } from 'vue'
-import { SdIcon, SdFieldset, SdSelect } from '@/library'
+import { reactive, toRefs, watchEffect, onMounted, watch } from 'vue'
+import { SdIcon, SdFieldset, SdCheckbox } from '@/library'
 export default {
   name: 'TheSidebar',
   components: {
     ColorScheme,
     SdIcon,
     SdFieldset,
-    SdSelect
+    SdCheckbox
   },
-  emits: ['update:type'],
+  emits: ['update:floating'],
   props: {
-    type: String
+    floating: Boolean,
+    smallDevice: Boolean
   },
   setup (props, { emit }) {
-    const state = reactive({
-      sidebarType: props.type
-    })
-    watchEffect(() => {
-      emit('update:type', state.sidebarType)
+    const sidebar = reactive({
+      type: 'fixed',
+      float: false
     })
 
+    watchEffect(() => {
+      emit('update:floating', sidebar.float)
+    })
+
+    watch(() => props.smallDevice, (newValue) => {
+      if (newValue === true) {
+        sidebar.float = newValue
+      }
+    })
+
+    onMounted(() => {
+      sidebar.float = props.floating
+    })
     return {
-      ...toRefs(state)
+      ...toRefs(sidebar)
     }
   }
 }

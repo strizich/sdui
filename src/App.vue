@@ -12,8 +12,9 @@
     </template>
     <template v-slot:sidebar>
       <the-sidebar
-        :type="sidebarType"
-        @update:type="handleSidebarType"
+        :floating="floating"
+        :smallDevice="smallDevice"
+        @update:floating="(e) => handleSidebarType(e)"
       />
     </template>
     <template v-slot:content>
@@ -33,15 +34,14 @@ export default {
   setup () {
     const state = reactive({
       menuOpen: false,
-      floating: false,
-      sidebarType: 'fixed'
+      floating: false
+      // sidebarType: 'fixed'
     })
     const { smallDevice } = useWindowWidth()
 
     watchEffect(() => {
       if (smallDevice.value) {
         state.floating = smallDevice.value
-        state.sidebarType = 'floating'
       }
     })
 
@@ -49,20 +49,11 @@ export default {
       state.menuOpen = e
     }
 
-    const outsideClick = (e) => {
-      state.menuOpen = e
-    }
-
     const handleSidebarType = (e) => {
-      state.sidebarType = e
-      if (e === 'floating') {
-        state.floating = true
-      } else {
-        state.floating = false
-      }
+      state.floating = e
     }
 
-    return { ...toRefs(state), menuEvent, outsideClick, handleSidebarType }
+    return { ...toRefs(state), menuEvent, handleSidebarType, smallDevice }
   }
 }
 </script>

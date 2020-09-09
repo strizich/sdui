@@ -4,7 +4,7 @@
     <div class="sd--select__content">
       <select
         :class="['sd--select__control', classes]"
-        :value="modelValue"
+        :value="modelValue || value"
         @click="(e) => handleClick(e)"
         @change="(e) => handleChange(e)"
         @focus="(e) => handleFocus(e)"
@@ -23,12 +23,13 @@ import SdIcon from '../SdIcon'
 import SdLabel from './SdLabel'
 export default defineComponent({
   name: 'SdSelect',
-  emits: ['update:modelValue', 'focus', 'blur', 'click'],
+  emits: ['update:modelValue', 'focus', 'blur', 'click', 'change'],
   components: { SdIcon, SdLabel },
   props: {
     modelValue: [String, Object, Number],
     label: String,
-    block: Boolean
+    block: Boolean,
+    value: String
   },
   setup (props, { emit }) {
     const state = reactive({
@@ -48,7 +49,11 @@ export default defineComponent({
 
     const handleChange = (event) => {
       state.hasFocus = false
-      emit('update:modelValue', event.target.value)
+      if (props.modelValue) {
+        emit('update:modelValue', event.target.value)
+      } else {
+        emit('change', event)
+      }
     }
 
     const handleClick = (event) => {
