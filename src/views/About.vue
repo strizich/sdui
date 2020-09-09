@@ -5,7 +5,4 @@
 </template>
 
 <style lang="scss">
-  .about{
-    height: 120vh;
-  }
 </style>
