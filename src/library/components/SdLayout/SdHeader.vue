@@ -100,12 +100,12 @@ export default {
 .sd--header{
   &__container{
     display: flex;
+    background-color: var(--background-highlight);
   }
   &__content{
     width: 100%;
     flex-wrap: wrap;
     padding: 8px 0px 8px 16px;
-    background-color: var(--background-highlight);
     display: flex;
     justify-content: space-between;
     align-items: center;

@@ -12,13 +12,15 @@ export default defineComponent({
     parent: String,
     active: Boolean,
     fixed: Boolean,
-    blur: Boolean
+    blur: Boolean,
+    transparent: Boolean
   },
   setup (props) {
     const overlayClasses = computed(() => {
       return {
         'is--fixed': props.fixed,
-        'is--blur': props.blur
+        'is--blur': props.blur,
+        'is--transparent': props.transparent
       }
     })
     return {
@@ -49,7 +51,9 @@ export default defineComponent({
     &.is--blur{
       backdrop-filter: blur(16px);
     }
-
+    &.is--transparent{
+      opacity: 0;
+    }
   }
   .sd-overlay-enter{
   transition: .1s .4s opacity ease-in-out;

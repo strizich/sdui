@@ -1,12 +1,17 @@
 <template>
-  <sd-layout :sidebar="menuOpen">
+  <sd-layout
+    @update:sidebar="menuEvent"
+    :sidebar="menuOpen"
+    floating
+  >
     <template v-slot:header>
       <the-header
-      :aside-open="menuOpen"
-      @menu-open="menuEvent" />
+        @menu-open="menuEvent"
+        :aside-open="menuOpen"
+      />
     </template>
     <template v-slot:sidebar>
-      <the-sidebar/>
+      <the-sidebar />
     </template>
     <template v-slot:content>
       <router-view/>
@@ -21,6 +26,7 @@ import TheHeader from '@/components/TheHeader'
 import TheSidebar from '@/components/TheSidebar'
 import { SdLayout } from '@/library'
 import { reactive, toRefs } from 'vue'
+
 export default {
   components: { SdLayout, TheHeader, TheSidebar },
   setup () {
@@ -32,7 +38,11 @@ export default {
       state.menuOpen = e
     }
 
-    return { ...toRefs(state), menuEvent }
+    const outsideClick = (e) => {
+      state.menuOpen = e
+    }
+
+    return { ...toRefs(state), menuEvent, outsideClick }
   }
 }
 </script>

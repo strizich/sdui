@@ -40,7 +40,8 @@ export default {
       return {
         'sd--button': true,
         'sd--button__flat': true,
-        'is--focused': hasFocus.value
+        'is--focused': hasFocus.value,
+        'is--active': props.active
       }
     })
     const activeClass = computed(() => {
@@ -120,6 +121,9 @@ export default {
   align-items: center;
   justify-content: center;
   border: none;
+  &.is--active{
+    background-color: var(--background-accent);
+  }
   &:focus{
     outline:none;
   }
