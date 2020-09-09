@@ -3,23 +3,22 @@
     <div class="sd--layout__header">
       <slot name="header"/>
     </div>
-      <div :class="['sd--layout__body', layoutClasses]">
-          <transition name="sidebar">
-            <div :class="['sd--layout__sidebar', sidebarClasses]">
-              <slot name="sidebar"/>
-            </div>
-          </transition>
-          <div class="sd--layout__content">
-            <slot name="subheader"/>
-            <slot name="content"/>
-            <slot name="footer"/>
+    <div :class="['sd--layout__body', layoutClasses]">
+        <transition name="sidebar">
+          <div :class="['sd--layout__sidebar', sidebarClasses]">
+            <slot name="sidebar"/>
           </div>
-      </div>
-
+        </transition>
+        <div class="sd--layout__content">
+          <slot name="subheader"/>
+          <slot name="content"/>
+          <slot name="footer"/>
+        </div>
+    </div>
+    <transition name="fade">
+      <sd-overlay v-if="sidebar" :active="floating && sidebar" @click="() => handleOutsideClick()" :transparent="overlay"/>
+    </transition>
   </div>
-  <transition name="fade">
-    <sd-overlay v-if="sidebar" :active="floating && sidebar" @click="() => handleOutsideClick()" :transparent="overlay"/>
-  </transition>
 </template>
 
 <script>
@@ -82,6 +81,9 @@ export default {
     position: relative;
     display:flex;
     flex-direction: column;
+    & > .sd--overlay{
+      z-index: 999;
+    }
     &__body {
       display:flex;
       flex-grow: 2;
@@ -125,7 +127,7 @@ export default {
       width:100%;
       top:0;
       left:0;
-      z-index: 1002;
+      z-index: 1000;
     }
   }
   .sidebar-enter-active, .sidebar-leave-active{

@@ -96,7 +96,8 @@ p{
 }
 
 .sd--divider{
-  border-color: v(--divider);
+  border:none;
+  box-shadow: 0 0 0 1px var(--divider);
   margin-bottom: 16px;
   margin-top: 16px;
 }

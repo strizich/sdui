@@ -16,8 +16,8 @@ $sd-color-global: (
 
 $sd-color-schemes: (
   light: (
-    background: #f9f9f9,
-    background-accent: #efefef,
+    background: #f6f6f6,
+    background-accent: #e3e3e3,
     background-highlight: #ffffff,
     background-inverse: #161616,
     background-opaque: #efefefef,
@@ -35,7 +35,7 @@ $sd-color-schemes: (
     highlight: rgba(0,0,0,.12),
     icon: rgba(0,0,0,.54),
     icon-disabled: rgba(0,0,0,.38),
-    divider: darken(#efefef, 5%),
+    divider: lighten(#161616, 54%),
     scrollbar: #434444,
     tooltip: #2E2F2F
   ),

@@ -121,9 +121,9 @@ export default {
   align-items: center;
   justify-content: center;
   border: none;
-  &.is--active{
-    background-color: var(--background-accent);
-  }
+  // &.is--active{
+  //   background-color: var(--background-accent);
+  // }
   &:focus{
     outline:none;
   }
@@ -143,6 +143,7 @@ export default {
   width: 24px;
   justify-content: space-between;
   flex-direction: column;
+  position:relative;
   &__bar{
     width: 24px;
     height: 2px;
