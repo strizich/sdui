@@ -19,8 +19,8 @@
 
 <script>
 import { SdHamburger } from '@/library'
-import SdThrottle from '@/library/core/utilities/SdThrottle'
-import { reactive, computed, onMounted, onUnmounted } from 'vue'
+import useWindowWidth from '@/library/hooks/useWindowWidth'
+import { reactive } from 'vue'
 export default {
   emits: ['toggle-aside'],
   components: { SdHamburger },
@@ -29,9 +29,7 @@ export default {
     drawerFloat: Boolean
   },
   setup (props, { emit }) {
-    const state = reactive({
-      windowWidth: 0
-    })
+    const { smallDevice } = useWindowWidth()
 
     const sidebar = reactive({
       open: false
@@ -44,49 +42,20 @@ export default {
     }
 
     const updateWindowWidth = () => {
-      const width = window.innerWidth
-      state.windowWidth = width
-      if (isWindowSmall.value === true) {
+      if (smallDevice.value === true) {
         window.localStorage.setItem('SDUI:navState', false)
         emit('toggle-aside', false)
       }
     }
 
-    const addResizeListener = () => {
-      window.addEventListener('resize', () => {
-        SdThrottle(600, updateWindowWidth())
-      }, false)
-    }
-
-    const removeResizeListener = () => {
-      window.removeEventListener('resize', () => {
-        props.updateWindowWidth()
-      }, false)
-    }
-
-    const isWindowSmall = computed(() => {
-      if (state.windowWidth <= 768) {
-        return true
-      }
-      return false
-    })
-
     const handleMenu = (e) => {
-      if (!isWindowSmall.value) {
+      if (!smallDevice.value) {
         window.localStorage.setItem('SDUI:navState', !props.asideOpen)
       } else {
         window.localStorage.setItem('SDUI:navState', false)
       }
       emit('toggle-aside', e)
     }
-
-    onMounted(() => {
-      addResizeListener()
-    })
-
-    onUnmounted(() => {
-      removeResizeListener()
-    })
 
     updateWindowWidth()
     getStoredMenuState()

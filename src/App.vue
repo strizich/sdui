@@ -25,7 +25,8 @@
 import TheHeader from '@/components/TheHeader'
 import TheSidebar from '@/components/TheSidebar'
 import { SdLayout } from '@/library'
-import { reactive, toRefs } from 'vue'
+import { reactive, toRefs, watchEffect } from 'vue'
+import useWindowWidth from '@/library/hooks/useWindowWidth'
 
 export default {
   components: { SdLayout, TheHeader, TheSidebar },
@@ -34,6 +35,14 @@ export default {
       menuOpen: false,
       floating: false,
       sidebarType: 'fixed'
+    })
+    const { smallDevice } = useWindowWidth()
+
+    watchEffect(() => {
+      if (smallDevice.value) {
+        state.floating = smallDevice.value
+        state.sidebarType = 'floating'
+      }
     })
 
     const menuEvent = (e) => {

@@ -44,5 +44,8 @@ export default {
   &--full {
     max-width: 100%;
   }
+  @include breakpoint-down('sm') {
+    padding: 0;
+  }
 }
 </style>

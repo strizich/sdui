@@ -39,7 +39,7 @@
 
 <script>
 import ColorScheme from '@/components/ColorScheme'
-import { reactive, toRefs, watch } from 'vue'
+import { reactive, toRefs, watchEffect } from 'vue'
 import { SdIcon, SdFieldset, SdSelect } from '@/library'
 export default {
   name: 'TheSidebar',
@@ -57,9 +57,8 @@ export default {
     const state = reactive({
       sidebarType: props.type
     })
-
-    watch(() => state.sidebarType, (newValue) => {
-      emit('update:type', newValue)
+    watchEffect(() => {
+      emit('update:type', state.sidebarType)
     })
 
     return {
