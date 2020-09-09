@@ -19,9 +19,6 @@
     <template v-slot:content>
       <router-view/>
     </template>
-    <template v-slot:footer>
-
-    </template>
   </sd-layout>
 </template>
 <script>

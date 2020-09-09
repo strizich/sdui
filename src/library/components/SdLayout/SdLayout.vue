@@ -12,11 +12,10 @@
           <div class="sd--layout__content">
             <slot name="subheader"/>
             <slot name="content"/>
+            <slot name="footer"/>
           </div>
       </div>
-    <div class="sd--layout__footer">
-      <slot name="footer"/>
-    </div>
+
   </div>
   <transition name="fade">
     <sd-overlay v-if="sidebar" :active="floating && sidebar" @click="() => handleOutsideClick()" :transparent="overlay"/>
