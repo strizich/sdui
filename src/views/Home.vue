@@ -1,14 +1,26 @@
 <template>
-<div class="container">
+<div class="home__nav">
+  <sd-container full>
+    <router-link to="#controls">Controls</router-link>
+    <router-link to="#elevation">Elevation</router-link>
+    <router-link to="#cards">Cards</router-link>
+    <router-link to="#radios">Elevation</router-link>
+    <router-link to="#checkboxes">Cards</router-link>
+    <router-link to="#dialogs">Radios</router-link>
+    <router-link to="#tooltips">Tooltips</router-link>
+    <router-link to="#icons">Icons</router-link>
+  </sd-container>
+</div>
+<div class="home container">
   <div class="container__content">
-    <form-control-demo />
-    <elevation-demo />
-    <card-demo />
-    <radio-demo />
-    <checkbox-demo />
-    <dialog-demo />
-    <tooltip-demo />
-    <icon-demo />
+    <form-control-demo id="controls"/>
+    <elevation-demo id="elevation" />
+    <card-demo id="cards"/>
+    <radio-demo id="radios"/>
+    <checkbox-demo id="checkboxes"/>
+    <dialog-demo id="dialogs"/>
+    <tooltip-demo id="tooltips"/>
+    <icon-demo id="icons"/>
   </div>
 </div>
 </template>
@@ -23,6 +35,7 @@ import DialogDemo from '@/components/DialogDemo'
 import CheckboxDemo from '@/components/CheckboxDemo'
 import TooltipDemo from '@/components/TooltipDemo'
 import IconDemo from '@/components/IconDemo'
+import { SdContainer } from '@/library'
 export default defineComponent({
   name: 'Home',
   components: {
@@ -33,7 +46,8 @@ export default defineComponent({
     CheckboxDemo,
     TooltipDemo,
     ElevationDemo,
-    FormControlDemo
+    FormControlDemo,
+    SdContainer
   },
   setup (props, context) {
     const list = ['apple', 'orange', 'pear']
@@ -69,10 +83,39 @@ export default defineComponent({
 </script>
 
 <style lang="scss">
+  .home{
+    &__nav{
+      position: sticky;
+      top: 50px;
+      padding: 8px 24px;
+      background: var(--background);
+      z-index: 500;
+      border-bottom: 1px solid var(--background-accent);
+      @include breakpoint-down('sm'){
+        display: none;
+      }
+      a{
+        padding: 8px 16px;
+        margin-right: 8px;
+        display: inline-block;
+        color: var(--secondary);
+        border-radius: 3px;
+        transition: color .1s ease-in-out, background-color .2s ease-in-out;
+        &.router-link-exact-active{
+          background-color: var(--background-highlight);
+        }
+        &:hover{
+          background-color: var(--secondary);
+          color: #fff;
+          transition: color .3s ease-in-out;
+        }
+      }
+    }
+  }
   .container{
     padding: 24px;
     &__content{
-      padding: 32px 0;
+      padding: 0;
     }
   }
   section{

@@ -36,6 +36,7 @@ export default defineComponent({
   position: relative;
   align-items: center;
   border-top: 1px solid v(--divider);
+  flex-grow: 0;
   //  &:after{
   //    position: absolute;
   //    left: spacing(inset);

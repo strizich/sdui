@@ -16,7 +16,12 @@
         </div>
     </div>
     <transition name="fade">
-      <sd-overlay v-if="sidebar" :active="floating && sidebar" @click="() => handleOutsideClick()" :transparent="overlay"/>
+      <sd-overlay
+        v-if="sidebar"
+        :active="floating && sidebar"
+        @click="() => handleOutsideClick()"
+        :transparent="overlay"
+      />
     </transition>
   </div>
 </template>

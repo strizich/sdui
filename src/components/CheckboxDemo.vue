@@ -1,43 +1,47 @@
 <template>
 <section>
-  <h2>Checkboxes</h2>
-  <div>
-    <sd-fieldset title="Simple checkbox with boolean values">
-      <sd-checkbox v-model="simpleCheck">Simple Checkbox</sd-checkbox>
-    </sd-fieldset>
-    <sd-fieldset title="Object binding">
-      <sd-checkbox v-model="objectCheck.checked">{{objectCheck.name}}</sd-checkbox>
-    </sd-fieldset>
-    <sd-fieldset title="Custom true/false values">
-      <sd-checkbox v-model="valueCheck" true-value="yup" false-value="nope">Single Checkbox w/ value</sd-checkbox>
-    </sd-fieldset>
-    <sd-fieldset title="Array of checkboxes" stack>
-      <sd-checkbox v-model="arrayCheck" value="First">Simple Checkbox</sd-checkbox>
-      <sd-checkbox v-model="arrayCheck" value="Second">{{objectCheck.name}}</sd-checkbox>
-      <sd-checkbox v-model="arrayCheck" value="Third">Single Checkbox w/ value</sd-checkbox>
-    </sd-fieldset>
-  </div>
-<pre>
-
-<code>
-simpleCheck: {{simpleCheck}}
-objectCheck: {{objectCheck}}
-valueCheck: {{valueCheck}}
-arrayCheck: {{arrayCheck}}
-</code>
-</pre>
-
+  <sd-container full>
+    <h2>Checkboxes</h2>
+    <sd-row>
+      <sd-col :md="4">
+        <sd-fieldset title="Simple checkbox with boolean values">
+          <sd-checkbox v-model="simpleCheck">Simple Checkbox</sd-checkbox>
+        </sd-fieldset>
+      </sd-col>
+      <sd-col :md="4">
+        <sd-fieldset title="Object binding">
+          <sd-checkbox v-model="objectCheck.checked">{{objectCheck.name}}</sd-checkbox>
+        </sd-fieldset>
+      </sd-col>
+      <sd-col :md="4">
+        <sd-fieldset title="Custom true/false values">
+          <sd-checkbox v-model="valueCheck" true-value="yup" false-value="nope">Single Checkbox w/ value</sd-checkbox>
+        </sd-fieldset>
+      </sd-col>
+      <sd-col :md="4">
+        <sd-fieldset title="Array of checkboxes" stack>
+          <sd-checkbox v-model="arrayCheck" value="First">Simple Checkbox</sd-checkbox>
+          <sd-checkbox v-model="arrayCheck" value="Second">{{objectCheck.name}}</sd-checkbox>
+          <sd-checkbox v-model="arrayCheck" value="Third">Single Checkbox w/ value</sd-checkbox>
+        </sd-fieldset>
+      </sd-col>
+    </sd-row>
+    <code>simpleCheck: {{simpleCheck}}</code><br/>
+    <code>objectCheck: {{objectCheck}}</code><br/>
+    <code>valueCheck: {{valueCheck}}</code><br/>
+    <code>arrayCheck: {{arrayCheck}}</code><br/>
+  </sd-container>
 </section>
 </template>
 
 <script>
 import { reactive, toRefs, defineComponent } from 'vue'
-import { SdCheckbox, SdFieldset } from '@/library'
+import { SdCheckbox, SdFieldset, SdContainer, SdCol, SdRow } from '@/library'
 
 export default defineComponent({
   name: 'CheckboxDemo',
   components: {
-    SdCheckbox, SdFieldset
+    SdCheckbox, SdFieldset, SdContainer, SdCol, SdRow
   },
   setup () {
     const state = reactive({

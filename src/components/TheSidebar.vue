@@ -131,7 +131,6 @@ export default {
   }
   &__options{
     margin: 8px 16px;
-
   }
 }
 </style>

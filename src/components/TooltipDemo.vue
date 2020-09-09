@@ -1,5 +1,6 @@
 <template>
   <section>
+    <sd-container full>
     <h2>Tooltip</h2>
     <div class="demo">
       <sd-fieldset title="Tooltips" tip="Tooltip in here too..." stack inline-label>
@@ -29,15 +30,16 @@
       </sd-button>
       </sd-fieldset>
     </div>
+    </sd-container>
   </section>
 </template>
 
 <script>
 import { defineComponent } from 'vue'
-import { SdFieldset, SdTooltip, SdButton } from '@/library'
+import { SdFieldset, SdTooltip, SdButton, SdContainer } from '@/library'
 
 export default defineComponent({
-  components: { SdTooltip, SdButton, SdFieldset }
+  components: { SdTooltip, SdButton, SdFieldset, SdContainer }
 })
 </script>
 

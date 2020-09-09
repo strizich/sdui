@@ -1,5 +1,6 @@
 <template>
   <section>
+    <sd-container full>
     <p class="sd--text__footnote">Powered by: Material Icons Font</p>
     <h1>Icons</h1>
     <sd-fieldset class="demo__actionbar">
@@ -33,13 +34,14 @@
     <div class="demo__icon-footer">
       <sd-label>Showing {{totalFilteredResults.length}} of {{matIcons.length}}</sd-label>
     </div>
+    </sd-container>
   </section>
 </template>
 
 <script>
 import MAT_ICONS from '@/assets/MatIconList'
 import { defineComponent, computed, ref } from 'vue'
-import { SdIcon, SdLabel, SdField, SdSelect, SdFieldset } from '@/library'
+import { SdIcon, SdLabel, SdField, SdSelect, SdFieldset, SdContainer } from '@/library'
 
 export default defineComponent({
   setup () {
@@ -61,7 +63,7 @@ export default defineComponent({
 
     return { iconSearch, matIcons, searchResult, resultCount, totalFilteredResults, error }
   },
-  components: { SdIcon, SdField, SdLabel, SdSelect, SdFieldset }
+  components: { SdIcon, SdField, SdLabel, SdSelect, SdFieldset, SdContainer }
 })
 </script>
 

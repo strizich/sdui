@@ -1,5 +1,6 @@
 <template>
   <section>
+    <sd-container full>
     <h2>Dialogs (Modals)</h2>
     <div class="demo__content">
       <div class="demo__triggers">
@@ -50,6 +51,7 @@
         </sd-dialog-footer>
       </sd-dialog>
     </div>
+    </sd-container>
   </section>
 </template>
 
@@ -62,7 +64,8 @@ import {
   SdDialog,
   SdDialogTitle,
   SdDialogContent,
-  SdDialogFooter
+  SdDialogFooter,
+  SdContainer
 } from '@/library'
 
 export default {
@@ -110,7 +113,8 @@ export default {
     SdDialogContent,
     SdDialogFooter,
     SdRadio,
-    SdFieldset
+    SdFieldset,
+    SdContainer
   }
 }
 </script>
