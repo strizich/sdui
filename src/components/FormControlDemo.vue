@@ -3,15 +3,6 @@
     <sd-container full>
       <h1>Input</h1>
       <sd-row>
-        <sd-col :md="6">
-          <input class="rm--range" type="range" min="1" max="3" v-model="inputThree"/>
-        </sd-col>
-        <sd-col :md="6">
-          <sd-range label="thing" v-model="inputThree"/>
-        </sd-col>
-      </sd-row>
-
-      <sd-row>
         <sd-col :md="4">
           <sd-field
             label="Text Input"
@@ -62,10 +53,10 @@
 
 <script>
 import { reactive, toRefs, computed } from 'vue'
-import { SdField, SdRange, SdRow, SdContainer, SdCol } from '@/library'
+import { SdField, SdRow, SdContainer, SdCol } from '@/library'
 export default {
   name: 'InputDemo',
-  components: { SdField, SdRange, SdRow, SdCol, SdContainer },
+  components: { SdField, SdRow, SdCol, SdContainer },
   setup () {
     const state = reactive({
       inputOne: '',
