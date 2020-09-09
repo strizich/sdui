@@ -2,7 +2,7 @@
   <sd-layout
     @update:sidebar="menuEvent"
     :sidebar="menuOpen"
-    floating
+    :floating="floating"
   >
     <template v-slot:header>
       <the-header
@@ -11,7 +11,10 @@
       />
     </template>
     <template v-slot:sidebar>
-      <the-sidebar />
+      <the-sidebar
+        :type="sidebarType"
+        @update:type="handleSidebarType"
+      />
     </template>
     <template v-slot:content>
       <router-view/>
@@ -31,7 +34,9 @@ export default {
   components: { SdLayout, TheHeader, TheSidebar },
   setup () {
     const state = reactive({
-      menuOpen: false
+      menuOpen: false,
+      floating: false,
+      sidebarType: 'fixed'
     })
 
     const menuEvent = (e) => {
@@ -42,7 +47,16 @@ export default {
       state.menuOpen = e
     }
 
-    return { ...toRefs(state), menuEvent, outsideClick }
+    const handleSidebarType = (e) => {
+      state.sidebarType = e
+      if (e === 'floating') {
+        state.floating = true
+      } else {
+        state.floating = false
+      }
+    }
+
+    return { ...toRefs(state), menuEvent, outsideClick, handleSidebarType }
   }
 }
 </script>
@@ -55,8 +69,8 @@ export default {
 }
 html, body{
   transition: background .6s 0s ease-in,
-            color .6s 0s ease-in
-            background-color .6s 0s ease-in;
+              color .6s 0s ease-in
+              background-color .6s 0s ease-in;
   background-color: var(--background);
   color: var(--text);
 }

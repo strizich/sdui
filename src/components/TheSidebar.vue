@@ -26,18 +26,45 @@
     </ul>
     <div class="sidebar__options">
       <color-scheme />
+      <hr class="sd--divider" />
+      <sd-fieldset stack>
+        <sd-select label="Sidebar Type" v-model="sidebarType" block>
+          <option value="fixed">Fixed</option>
+          <option value="floating">Floating</option>
+        </sd-select>
+      </sd-fieldset>
     </div>
   </div>
 </template>
 
 <script>
 import ColorScheme from '@/components/ColorScheme'
-import { SdIcon } from '@/library'
+import { reactive, toRefs, watch } from 'vue'
+import { SdIcon, SdFieldset, SdSelect } from '@/library'
 export default {
   name: 'TheSidebar',
   components: {
     ColorScheme,
-    SdIcon
+    SdIcon,
+    SdFieldset,
+    SdSelect
+  },
+  emits: ['update:type'],
+  props: {
+    type: String
+  },
+  setup (props, { emit }) {
+    const state = reactive({
+      sidebarType: props.type
+    })
+
+    watch(() => state.sidebarType, (newValue) => {
+      emit('update:type', newValue)
+    })
+
+    return {
+      ...toRefs(state)
+    }
   }
 }
 </script>
