@@ -128,6 +128,7 @@ export default defineComponent({
   font-weight: 500;
   letter-spacing: 1px;
   display: inline-flex;
+  align-self: center;
   align-items: center;
   padding: 0;
   &:focus{

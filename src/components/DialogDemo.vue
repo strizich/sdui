@@ -1,7 +1,8 @@
 <template>
   <section>
     <sd-container full>
-    <h2>Dialogs (Modals)</h2>
+    <section-header hash="#dialogs" title="Dialogs" sub-title="The developer's worst nightmare." />
+
     <div class="demo__content">
       <div class="demo__triggers">
       <sd-fieldset title="Dialog Size" tip="No effect on mobile devices" tip-placement="right">
@@ -57,6 +58,7 @@
 
 <script>
 import { reactive, toRefs } from 'vue'
+import SectionHeader from '@/components/SectionHeader'
 import {
   SdButton,
   SdFieldset,
@@ -114,7 +116,8 @@ export default {
     SdDialogFooter,
     SdRadio,
     SdFieldset,
-    SdContainer
+    SdContainer,
+    SectionHeader
   }
 }
 </script>

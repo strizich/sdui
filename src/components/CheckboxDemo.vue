@@ -1,7 +1,9 @@
 <template>
 <section>
   <sd-container full>
-    <h2>Checkboxes</h2>
+    <section-header title="Checkbox" sub-title="I want that one... and that one... and that one." hash="#checkbox">
+      Checkbox
+    </section-header>
     <sd-row>
       <sd-col :md="4">
         <sd-fieldset title="Simple checkbox with boolean values">
@@ -37,11 +39,12 @@
 <script>
 import { reactive, toRefs, defineComponent } from 'vue'
 import { SdCheckbox, SdFieldset, SdContainer, SdCol, SdRow } from '@/library'
+import SectionHeader from '@/components/SectionHeader'
 
 export default defineComponent({
   name: 'CheckboxDemo',
   components: {
-    SdCheckbox, SdFieldset, SdContainer, SdCol, SdRow
+    SdCheckbox, SdFieldset, SdContainer, SdCol, SdRow, SectionHeader
   },
   setup () {
     const state = reactive({

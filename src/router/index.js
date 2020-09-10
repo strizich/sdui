@@ -25,7 +25,7 @@ const router = createRouter({
       return {
         el: to.hash,
         top: 110,
-        behavior: 'smooth'
+        behavior: 'auto'
       }
     }
     if (savedPosition) {

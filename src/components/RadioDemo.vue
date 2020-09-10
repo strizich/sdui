@@ -1,7 +1,7 @@
 <template>
   <section>
     <sd-container full>
-      <h2>Radio buttons</h2>
+      <section-header hash="#radios" title="Radio Buttons" sub-title="Only take one." />
       <sd-row>
         <sd-col :md="12">
           <sd-fieldset title="Radios">
@@ -22,10 +22,11 @@
 <script>
 import { reactive, defineComponent } from 'vue'
 import { SdRadio, SdFieldset, SdContainer, SdRow, SdCol } from '@/library'
+import SectionHeader from '@/components/SectionHeader'
 
 export default defineComponent({
   components: {
-    SdFieldset, SdRadio, SdContainer, SdRow, SdCol
+    SdFieldset, SdRadio, SdContainer, SdRow, SdCol, SectionHeader
   },
   setup () {
     const state = reactive({

@@ -1,7 +1,7 @@
 <template>
   <div class="elevation">
     <sd-container full>
-    <h1>Elevation System</h1>
+      <section-header hash="#elevation" title="Elevation" sub-title="Feeling a bit light headed."/>
       <sd-row>
         <sd-col :lg="2" :md="4" v-for="n of 24" :key="n">
           <div :class="['elevation__item', makeElevationClass(n)]">
@@ -18,9 +18,10 @@
 import { defineComponent } from 'vue'
 import { SdRow, SdContainer, SdCol } from '@/library'
 import '@/library/components/SdElevation'
+import SectionHeader from '@/components/SectionHeader'
 export default defineComponent({
   components: {
-    SdRow, SdContainer, SdCol
+    SdRow, SdContainer, SdCol, SectionHeader
   },
   setup () {
     // Future: Make demo dynamic... Likely after SdRange is finished.

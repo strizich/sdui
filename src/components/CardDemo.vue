@@ -1,7 +1,11 @@
 <template>
   <section>
       <sd-container full>
-        <h2>Cards</h2>
+        <section-header
+          title="Cards"
+          sub-title="Not at all like trading cards."
+          hash="#cards"
+        />
         <sd-row>
           <sd-col :sm="12" :md="6">
             <sd-card>
@@ -43,6 +47,7 @@ import {
   SdRow,
   SdCol
 } from '@/library'
+import SectionHeader from '@/components/SectionHeader'
 
 export default {
   name: 'CardTest',
@@ -56,7 +61,8 @@ export default {
     SdCardMedia,
     SdContainer,
     SdRow,
-    SdCol
+    SdCol,
+    SectionHeader
   }
 }
 </script>

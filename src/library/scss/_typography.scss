@@ -49,6 +49,18 @@ p{
       color: v(--text-accent-dark);
     }
   }
+  &__header{
+    font-weight: 300;
+    letter-spacing: rem(1.2);
+    color: v(--text);
+    margin: 0;
+    &--light{
+      color:v(--text-light);
+    }
+    &--dark{
+      color: v(--text-dark);
+    }
+  }
   &__headline{
     font-size: rem(40);
     line-height: rem(42);
@@ -63,14 +75,16 @@ p{
     }
   }
   &__caption{
-    color: v(--text-accent);
+    color: v(--text-hint);
     font-size: rem(16);
     font-weight: 500;
-    text-transform: uppercase;
     line-height: rem(16);
-    letter-spacing: rem(2);
+    letter-spacing: rem(1);
     padding-bottom: rem(4);
     margin:0;
+    &--uppercase {
+      text-transform: uppercase;
+    }
     &--light{
       color:v(--text-accent-light);
     }
@@ -80,7 +94,7 @@ p{
   }
   &__footnote{
     color: v(--text-accent);
-    font-size: rem(14);
+    font-size: rem(12);
     line-height: rem(14);
     margin-bottom: 0;
     &--light{

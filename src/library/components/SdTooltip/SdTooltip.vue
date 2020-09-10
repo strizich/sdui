@@ -31,10 +31,7 @@ export default {
   emits: ['update:active', 'open', 'close'],
   props: {
     active: Boolean,
-    theme: {
-      type: String,
-      default: 'default'
-    },
+    theme: String,
     // FUTURE: Update options obj with editable settings.
     delay: {
       type: [String, Number],
@@ -43,6 +40,10 @@ export default {
     placement: {
       type: String,
       default: 'top'
+    },
+    autoOpen: {
+      type: Boolean,
+      default: true
     }
   },
   setup (props, { emit }) {
@@ -143,7 +144,7 @@ export default {
       await nextTick().then(() => {
         // Gets the orignal parent instance of <teleport />
         state.targetEl = tooltipPortal.value?.parentNode
-        if (state.targetEl) {
+        if (props.autoOpen && state.targetEl) {
           document.body.addEventListener('touchstart', outsideTouch, false)
           state.targetEl.addEventListener('touchstart', touched, false)
           state.targetEl.addEventListener('mouseenter', show, false)
@@ -158,10 +159,12 @@ export default {
     })
 
     onUnmounted(() => {
-      document.body.removeEventListener('touchstart', outsideTouch)
-      state.targetEl.removeEventListener('touchstart', touched)
-      state.targetEl.removeEventListener('mouseenter', show)
-      state.targetEl.removeEventListener('mouseleave', hide)
+      if (props.autoOpen) {
+        document.body.removeEventListener('touchstart', outsideTouch)
+        state.targetEl.removeEventListener('touchstart', touched)
+        state.targetEl.removeEventListener('mouseenter', show)
+        state.targetEl.removeEventListener('mouseleave', hide)
+      }
     })
 
     return {
@@ -194,25 +197,29 @@ export default {
     white-space: wrap;
     opacity: 1;
     background-color: var(--background-highlight);
+    font-weight: 500;
     @include sd--elevation(4);
     @each $state, $color in $sd-color-global {
       $default: nth($color, 1);
       $variant: nth($color, 2);
-      $contrast: sd-pick-contrast($default);
+      $contrast: sd-pick-contrast($variant);
          &.is--#{$state} {
-          background-color: $default;
+          background-color: $variant;
           color: sd-color($contrast, text)
         }
       }
     }
     &__arrow{
+      &:before{
+        background-color: var(--background-highlight);
+      }
       @each $state, $color in $sd-color-global {
       $default: nth($color, 1);
       $variant: nth($color, 2);
       $contrast: sd-pick-contrast($default);
         &.is--#{$state} {
           &:before{
-            background-color: $default;
+            background-color: $variant;
           }
         }
       }

@@ -1,7 +1,7 @@
 <template>
   <section>
     <sd-container full>
-      <h1>Input</h1>
+      <section-header hash="#controls" title="Form Controls" sub-title="What goes in. Comes back out?"/>
       <sd-row>
         <sd-col :md="4">
           <sd-field
@@ -54,9 +54,10 @@
 <script>
 import { reactive, toRefs, computed } from 'vue'
 import { SdField, SdRow, SdContainer, SdCol } from '@/library'
+import SectionHeader from '@/components/SectionHeader'
 export default {
   name: 'InputDemo',
-  components: { SdField, SdRow, SdCol, SdContainer },
+  components: { SdField, SdRow, SdCol, SdContainer, SectionHeader },
   setup () {
     const state = reactive({
       inputOne: '',

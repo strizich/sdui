@@ -1,7 +1,7 @@
 <template>
 <div class="home">
   <div class="home__nav">
-    <sd-container full>
+  <sd-container full>s
       <sd-router-link
         v-for="(link, index) in linkList"
         :key="`${link.name}-${index}`"
