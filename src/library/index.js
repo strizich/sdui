@@ -1,4 +1,5 @@
 import SdButton from './components/SdButton/SdButton'
+import SdRouterLink from './components/SdButton/SdRouterLink'
 import SdHamburger from './components/SdButton/SdHamburger'
 import SdCard from './components/SdCard/SdCard'
 import SdCardBody from './components/SdCard/SdCardBody'
@@ -33,6 +34,7 @@ import SdContainer from './components/SdGrid/SdContainer'
 export {
   // Button
   SdButton,
+  SdRouterLink,
   // Cards
   SdCard,
   SdCardBody,

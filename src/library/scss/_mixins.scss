@@ -28,7 +28,7 @@
     background-color: $base;
     color: sd-color($contrast, text);
   }
-  &:active {
+  &:active, &.is--active, &.is--exact-active {
     background-color:$accent;
   }
 }

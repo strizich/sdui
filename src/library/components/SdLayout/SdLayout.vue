@@ -4,6 +4,7 @@
       <slot name="header"/>
     </div>
     <div :class="['sd--layout__body', layoutClasses]">
+      <!-- FUTURE: Disable transition on mobile and set body to fixed when floating-->
         <transition name="sidebar">
           <div :class="['sd--layout__sidebar', sidebarClasses]">
             <slot name="sidebar"/>
@@ -31,6 +32,7 @@ import { reactive, toRefs, computed, watch } from 'vue'
 import { SdOverlay } from '@/library'
 import { useRouter } from 'vue-router'
 export default {
+  // may be able to use provide/inject to handing the excessive prop casting.
   props: {
     sidebar: Boolean,
     floating: Boolean,

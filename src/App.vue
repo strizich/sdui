@@ -22,6 +22,7 @@
     </template>
   </sd-layout>
 </template>
+
 <script>
 import TheHeader from '@/components/TheHeader'
 import TheSidebar from '@/components/TheSidebar'

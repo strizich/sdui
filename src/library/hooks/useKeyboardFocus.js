@@ -1,10 +1,10 @@
 import { ref, computed, onMounted } from 'vue'
 
 const useKeyboardFocus = ($el) => {
+  const currentElement = ref(null)
   let hasEvents = false
   let eventTarget = null
   let supportsPassiveEvent = false
-  const currentElement = ref(null)
 
   const checkPassiveEventSupport = () => {
     try {
@@ -66,7 +66,10 @@ const useKeyboardFocus = ($el) => {
   }
 
   const hasFocus = computed(() => {
-    return currentElement.value === $el.value
+    // For some reason this resolves to true while the app is mounting. Checking if all of the values are available appears to fix this.
+    if ($el.value && currentElement.value) {
+      return $el.value === currentElement.value
+    }
   })
 
   onMounted(() => {

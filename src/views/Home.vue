@@ -1,32 +1,36 @@
 <template>
-<div class="home__nav">
-  <sd-container full>
-    <router-link to="#controls">Controls</router-link>
-    <router-link to="#elevation">Elevation</router-link>
-    <router-link to="#cards">Cards</router-link>
-    <router-link to="#radios">Elevation</router-link>
-    <router-link to="#checkboxes">Checkboxes</router-link>
-    <router-link to="#dialogs">Dialogs</router-link>
-    <router-link to="#tooltips">Tooltips</router-link>
-    <router-link to="#icons">Icons</router-link>
-  </sd-container>
-</div>
-<div class="home container">
-  <div class="container__content">
-    <form-control-demo id="controls"/>
-    <elevation-demo id="elevation" />
-    <card-demo id="cards"/>
-    <radio-demo id="radios"/>
-    <checkbox-demo id="checkboxes"/>
-    <dialog-demo id="dialogs"/>
-    <tooltip-demo id="tooltips"/>
-    <icon-demo id="icons"/>
+<div class="home">
+  <div class="home__nav">
+    <sd-container full>
+      <sd-router-link
+        v-for="(link, index) in linkList"
+        :key="`${link.name}-${index}`"
+        :to="link.id"
+        theme="secondary"
+        flat
+        hash
+      >
+        {{link.name}}
+      </sd-router-link>
+    </sd-container>
+  </div>
+  <div class="container">
+    <div class="container__content">
+      <form-control-demo id="controls" />
+      <elevation-demo id="elevation" />
+      <card-demo id="cards" />
+      <radio-demo id="radios" />
+      <checkbox-demo id="checkboxes" />
+      <dialog-demo id="dialogs" />
+      <tooltip-demo id="tooltips" />
+      <icon-demo id="icons" />
+    </div>
   </div>
 </div>
 </template>
 
 <script>
-import { defineComponent, reactive, ref, toRefs } from 'vue'
+import { defineComponent, reactive, toRefs } from 'vue'
 import FormControlDemo from '@/components/FormControlDemo'
 import RadioDemo from '@/components/RadioDemo'
 import CardDemo from '@/components/CardDemo'
@@ -35,7 +39,36 @@ import DialogDemo from '@/components/DialogDemo'
 import CheckboxDemo from '@/components/CheckboxDemo'
 import TooltipDemo from '@/components/TooltipDemo'
 import IconDemo from '@/components/IconDemo'
-import { SdContainer } from '@/library'
+import { SdContainer, SdRouterLink } from '@/library'
+
+const COMPONENT_SECTIONS = [
+  {
+    name: 'Controls',
+    id: '#controls'
+  }, {
+    name: 'Elevation',
+    id: '#elevation'
+  }, {
+    name: 'Cards',
+    id: '#cards'
+  }, {
+    name: 'Radios',
+    id: '#radios'
+  }, {
+    name: 'Checkboxes',
+    id: '#checkboxes'
+  }, {
+    name: 'Dialogs',
+    id: '#dialogs'
+  }, {
+    name: 'Tooltips',
+    id: '#tooltips'
+  }, {
+    name: 'Icons',
+    id: '#icons'
+  }
+]
+
 export default defineComponent({
   name: 'Home',
   components: {
@@ -47,11 +80,12 @@ export default defineComponent({
     TooltipDemo,
     ElevationDemo,
     FormControlDemo,
-    SdContainer
+    SdContainer,
+    SdRouterLink
   },
   setup (props, context) {
     const list = ['apple', 'orange', 'pear']
-    const meh = ref(null)
+    const linkList = COMPONENT_SECTIONS
     const state = reactive({
       modal: false,
       modalTwo: false,
@@ -77,7 +111,15 @@ export default defineComponent({
       state.modalTwo = event
     }
 
-    return { ...toRefs(state), handleClose, buttonClick, list, handleModalTwo, handleModalTwoClose, meh }
+    return {
+      ...toRefs(state),
+      handleClose,
+      buttonClick,
+      list,
+      handleModalTwo,
+      handleModalTwoClose,
+      linkList
+    }
   }
 })
 </script>
@@ -94,7 +136,7 @@ export default defineComponent({
       @include breakpoint-down('sm'){
         display: none;
       }
-      a{
+      a {
         padding: 8px 16px;
         margin-right: 8px;
         display: inline-block;

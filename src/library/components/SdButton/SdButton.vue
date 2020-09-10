@@ -43,6 +43,8 @@ export default defineComponent({
       type: String,
       default: 'primary'
     },
+    active: Boolean,
+    exactActive: Boolean,
     align: {
       type: String,
       default: 'center'
@@ -54,10 +56,10 @@ export default defineComponent({
   },
   setup (props, { slots, emits }) {
     const root = ref(null)
-    const isFocused = useKeyboardFocus(root)
-    const attrs = computed(() => {
+    const hasFocus = useKeyboardFocus(root)
+
+    const rootClasses = computed(() => {
       return {
-        'is--focused': isFocused.value,
         'is--disabled': props.disabled,
         'is--rounded': props.rounded,
         'is--pill': props.pill,
@@ -65,9 +67,14 @@ export default defineComponent({
         'is--outline': props.outline,
         'is--icon-only': props.iconOnly,
         'is--block': props.block,
-        'is--link': elementTag.value === 'a'
+        // useKeyboardEvent Hook
+        'is--focused': hasFocus.value,
+        // Props related to RouterLink
+        'is--active': props.active,
+        'is--exact-active': props.exactActive
       }
     })
+
     const alignmentStyle = computed(() => {
       return {
         'justify-content': props.align,
@@ -84,7 +91,6 @@ export default defineComponent({
     })
 
     const elementTag = computed(() => {
-      // TODO: Additional research need to convert this button into a router-link
       if (props.href || props.type === 'link') return 'a'
       return 'button'
     })
@@ -95,7 +101,7 @@ export default defineComponent({
         {
           ref: root,
           type: !props.href && (props.type || 'button'),
-          class: ['sd--button', themeClass.value, attrs.value],
+          class: ['sd--button', themeClass.value, rootClasses.value],
           href: props.href,
           disabled: props.disabled
         },
@@ -208,8 +214,11 @@ export default defineComponent({
           display: block;
           width: 100%;
         }
-        &--active{
-          border:red;
+        &--active, &--exact-active{
+          @include sd--elevation(6);
+          color: sd-color($contrast-highlight, text);
+          background-color: $highlight;
+          transition: all .13s ease-out;
         }
         &--disabled{
           background-color: transparentize($highlight, .7);
