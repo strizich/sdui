@@ -40,7 +40,6 @@ const useDraggable = (root, element) => {
     position.dragStartX = clientX - position.x
     position.dragStartY = clientY - position.y
     position.isDragging = true
-    console.log(position.value)
     document.addEventListener('mouseup', onMouseUp)
     document.addEventListener('mousemove', onMouseMove)
   }
@@ -65,7 +64,6 @@ const useDraggable = (root, element) => {
       const rect = root.getBoundingClientRect(root)
       position.maxX = Math.round(rect.width - position.width)
       position.minX = 0
-      console.log(rect)
     }
 
     onCleanup(() => {
@@ -79,7 +77,6 @@ const useDraggable = (root, element) => {
       position.init = true
       position.width = Math.round(handle.width)
       position.height = Math.round(handle.height)
-      console.log(position.x > position.maxX)
       element.addEventListener('mousedown', onMouseDown)
       onCleanup(() => {
         // cleanup
