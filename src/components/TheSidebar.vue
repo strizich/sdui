@@ -14,6 +14,16 @@
       </li>
       <li class="sd--nav__list-item">
         <router-link
+          to="/components/slider"
+          exact-active-class="sidebar__link--exact-active"
+          active-class="sidebar__link--active"
+          class="sidebar__link"
+        >
+          <span>Slider</span>
+        </router-link>
+      </li>
+      <li class="sd--nav__list-item">
+        <router-link
           to="/about"
           exact-active-class="sidebar__link--exact-active"
           active-class="sidebar__link--active"

@@ -1,5 +1,5 @@
 <template>
-  <teleport ref="tooltipPortal" to="#app">
+  <teleport ref="tooltipPortal" to="#app" :disabled="attachToParent">
     <transition name="tooltip">
       <div ref="tooltipRef" class="sd--tooltip" v-if="state.shouldRender">
         <div :class="['sd--tooltip__content', themeClass]">
@@ -44,7 +44,8 @@ export default {
     autoOpen: {
       type: Boolean,
       default: true
-    }
+    },
+    attachToParent: Boolean
   },
   setup (props, { emit }) {
     // Element Bindings
@@ -185,6 +186,7 @@ export default {
   min-height: 32px;
   transition: opacity .5s;
   z-index: 110;
+  user-select: none;
   &__content {
     max-width: 300px;
     min-height: 24px;
