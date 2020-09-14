@@ -3,14 +3,29 @@
   <div class="sd--slider" ref="slider">
     <div class="sd--slider__container">
       <div class="sd--slider__track-container">
-        <div class="sd--slider__track" :style="`right: ${position.maxX - position.x + position.width/2}px;`"></div>
+        <!-- attach theme class to the bg of the track -->
+        <div class="sd--slider__track" :style="`right: ${position.maxX - position.x + position.width}px;`"></div>
       </div>
         <div class="sd--slider__thumb-container" ref="handle" :style="thumbStyle">
-          <svg class="sd--slider__thumb" width="24" height="24"  >
+          <!--
+           - figure out how to set the original value of the slider
+           - to get an output value
+           - figure out how to calulate the slider steps
+           - set position of the slider when clicking on the track
+           -->
+          <svg class="sd--slider__thumb" width="24" height="24">
             <circle cx="12" cy="12" r="8"></circle>
           </svg>
-          <sd-tooltip attach-to-parent :active="position.isDragging" :autoOpen="false">
-            <div class="sd--center">
+          <sd-tooltip class="sd--tooltip--slider"
+            ref="ttip"
+            attach-to-parent
+            :theme="theme"
+            :active="position.isDragging"
+            :autoOpen="false"
+            :show-arrow="false"
+            :offset="[-12, 8]"
+          >
+            <div class="sd--center sd--big">
               {{position.x}}
             </div>
           </sd-tooltip>
@@ -47,6 +62,7 @@ export default defineComponent({
       type: Number,
       default: 1
     },
+    theme: String,
     modelValue: Number
   },
   emits: ['update:modelValue'],
@@ -69,6 +85,8 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
+@import '../SdElevation/mixins';
+
 .sd--slider{
   position:relative;
   margin-top: 32px;
@@ -76,6 +94,7 @@ export default defineComponent({
   height: 24px;
   max-width: 400px;
   margin: 32px auto;
+  border-radius: 30px;
   &__track-container{
     background-color: var(--background-accent);
     position: absolute;
@@ -92,6 +111,7 @@ export default defineComponent({
     left: 0;
     bottom: 0;
     z-index: 0;
+    border-radius: 30px;
   }
   &__thumb-container{
     width: 24px;
@@ -99,9 +119,12 @@ export default defineComponent({
   }
   &__thumb{
     fill: #fff;
+    margin-left: -12px;
+    margin-right: -12px;
   }
 }
 .sd--center{
   text-align:center;
+  font-size: 16px;
 }
 </style>

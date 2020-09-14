@@ -23,6 +23,7 @@ const useDraggable = (root, element) => {
       position: 'absolute',
       left: position.x + 'px',
       // top: position.y + 'px',
+      transition: 'transform .23s ease-in-out',
       transform: position.isDragging ? 'scale(1.1)' : '',
       cursor: position.isDragging ? 'grab' : 'pointer'
     }

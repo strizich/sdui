@@ -1,8 +1,8 @@
 <template>
   <div>
-    <sd-slider :min="0" :max="100" v-model="sliderOne"/>
+    <sd-slider :min="0" :max="100" v-model="sliderOne" theme="primary"/>
 
-    <sd-slider :min="0" :max="100" v-model="sliderOne"/>
+    <sd-slider :min="0" :max="100" v-model="sliderOne" theme="primary"/>
 
   </div>
 </template>

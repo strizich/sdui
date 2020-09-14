@@ -6,7 +6,7 @@
           <div>
             <slot />
           </div>
-          <div :class="['sd--tooltip__arrow', themeClass]" data-popper-arrow/>
+          <div v-if="showArrow" :class="['sd--tooltip__arrow', themeClass]" data-popper-arrow/>
         </div>
       </div>
     </transition>
@@ -45,6 +45,11 @@ export default {
       type: Boolean,
       default: true
     },
+    offset: {
+      type: Array,
+      default: () => [0, 8]
+    },
+    showArrow: Boolean,
     attachToParent: Boolean
   },
   setup (props, { emit }) {
@@ -68,7 +73,7 @@ export default {
       modifiers: [{
         name: 'offset',
         options: {
-          offset: [0, 8]
+          offset: props.offset
         }
       },
       {
@@ -200,6 +205,7 @@ export default {
     opacity: 1;
     background-color: var(--background-highlight);
     font-weight: 500;
+    min-width: 40px;
     @include sd--elevation(4);
     @each $state, $color in $sd-color-global {
       $default: nth($color, 1);
