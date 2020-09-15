@@ -76,10 +76,9 @@ export default defineComponent({
   components: {
     SdOverlay
   },
-
+  emits: ['update:active', 'clicked-outside', 'opened', 'closed'],
   setup (props, { emit, root, attrs }) {
     const modalContainer = ref(null)
-
     const classes = computed(() => {
       const sizeClass = `is--${props.size}`
       const asidePlacement = `sd--dialog__aside--${props.placement}`
@@ -119,13 +118,13 @@ export default defineComponent({
           document.body.style.left = '0'
           document.body.style.right = '0'
           setFocus()
-          emit('sd-opened')
+          emit('opened')
         } else {
           const scrollY = document.body.style.top
           document.body.classList.remove('sd--dialog--open')
           document.body.removeAttribute('style')
           window.scrollTo(0, parseInt(scrollY || '0') * -1)
-          emit('sd-closed')
+          emit('closed')
         }
       })
     })

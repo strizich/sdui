@@ -1,9 +1,11 @@
-import { reactive, computed, watch } from 'vue'
+import { ref, reactive, computed, watch, onUpdated } from 'vue'
 
-const useDraggable = (root, element) => {
+const useDraggable = (rootEl, handleEl, initValue, step, min, max) => {
+  const thing = ref(initValue)
+  console.log('huh', thing.value)
   const position = reactive({
     init: false,
-    x: 0,
+    x: 207,
     y: 0,
     minX: 0,
     maxX: 0,
@@ -15,27 +17,15 @@ const useDraggable = (root, element) => {
     dragStartY: null,
     isDragging: false,
     width: 0,
-    height: 0
+    height: 0,
+    rootWidth: 0,
+    rootHeight: 0,
+    initValue: initValue,
+    pctComplete: 0,
+    step,
+    min,
+    max
   })
-
-  const thumbStyle = computed(() => {
-    return {
-      position: 'absolute',
-      left: position.x + 'px',
-      // top: position.y + 'px',
-      transition: 'transform .23s ease-in-out',
-      transform: position.isDragging ? 'scale(1.1)' : '',
-      cursor: position.isDragging ? 'grab' : 'pointer'
-    }
-  })
-
-  const containerStyle = computed(() => {
-    return {
-      width: position.width + 'px',
-      height: position.height + 'px'
-    }
-  })
-
   const onMouseDown = e => {
     const { clientX, clientY } = e
     position.dragStartX = clientX - position.x
@@ -47,7 +37,7 @@ const useDraggable = (root, element) => {
 
   const onMouseMove = e => {
     const { clientX, clientY } = e
-    position.x = Math.max(0, Math.min(clientX - position.dragStartX, position.maxX))
+    position.x = Math.max(1, Math.min(clientX - position.dragStartX, position.maxX))
     position.y = clientY - position.dragStartY
   }
 
@@ -59,32 +49,55 @@ const useDraggable = (root, element) => {
     document.removeEventListener('mouseup', onMouseUp)
     document.removeEventListener('mousemove', onMouseMove)
   }
-
-  watch(root, (root, prevRoot, onCleanup) => {
-    if (root instanceof HTMLElement) {
-      const rect = root.getBoundingClientRect(root)
-      position.maxX = Math.round(rect.width - position.width)
+  // const getInitalValue = (value, max, width) => {
+  //   return (value / max) * width
+  // }
+  watch(rootEl, (rootEl, prevRootEl, onCleanup) => {
+    if (rootEl instanceof HTMLElement) {
+      const rect = rootEl.getBoundingClientRect(rootEl)
+      position.maxX = Math.round(rect.width - (2 / position.width))
       position.minX = 0
+      position.rootWidth = rect.width
+      position.rootHeight = rect.height
     }
-
-    onCleanup(() => {
-      // cleanup
-    })
   })
 
-  watch(element, (element, prevElement, onCleanup) => {
-    if (element instanceof HTMLElement) {
-      const handle = element.getBoundingClientRect(element)
+  watch(handleEl, (handleEl, prevHandleEl, onCleanup) => {
+    if (handleEl instanceof HTMLElement) {
+      const handle = handleEl.getBoundingClientRect(handleEl)
       position.init = true
       position.width = Math.round(handle.width)
       position.height = Math.round(handle.height)
-      element.addEventListener('mousedown', onMouseDown)
+      handleEl.addEventListener('mousedown', onMouseDown)
       onCleanup(() => {
         // cleanup
       })
     }
   })
-  return { position, thumbStyle, containerStyle }
+
+  onUpdated(() => {
+    console.log(initValue)
+  })
+
+  const quantize = (value) => {
+    const numSteps = Math.round(value / step)
+    return numSteps * step
+  }
+
+  const result = computed(() => {
+    // const delta = props.step || (props.max - props.min) / 100
+    position.pctComplete = position.x / position.rootWidth
+    const value = min + position.pctComplete * (max - min)
+    if (value !== max && value !== min) {
+      return quantize(value)
+    }
+    if (position.initValue > value) {
+      return position.initValue
+    }
+    return value
+  })
+
+  return { position, result }
 }
 
 export default useDraggable

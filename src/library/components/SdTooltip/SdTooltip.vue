@@ -190,7 +190,7 @@ export default {
   // position:fixed;
   min-height: 32px;
   transition: opacity .5s;
-  z-index: 110;
+  z-index: 120;
   user-select: none;
   &__content {
     max-width: 300px;

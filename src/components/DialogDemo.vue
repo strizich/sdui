@@ -29,11 +29,12 @@
           <sd-button size="sm" flat @click="handleModalClose">Button</sd-button>
         </sd-dialog-footer>
       </sd-dialog>
-      <sd-dialog :active="activeAside" @update:active="handleAsideClose" :size="modalSize" aside>
+      <sd-dialog v-model:active="activeAside" :size="modalSize" aside>
         <sd-dialog-title title="Aside Modal" subtitle="Subtitles go here"/>
         <sd-dialog-content>
           <div>
             All sorts of things go in here.
+            This model is using v-model:active`
           </div>
         </sd-dialog-content>
         <sd-dialog-footer>

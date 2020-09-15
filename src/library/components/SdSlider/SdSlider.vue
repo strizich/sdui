@@ -1,85 +1,205 @@
 <template>
-<div>
   <div class="sd--slider" ref="slider">
     <div class="sd--slider__container">
       <div class="sd--slider__track-container">
-        <!-- attach theme class to the bg of the track -->
-        <div class="sd--slider__track" :style="`right: ${position.maxX - position.x + position.width}px;`"></div>
+        <div
+          class="sd--slider__track"
+          :style="thumbTrackStyle"
+        />
       </div>
-        <div class="sd--slider__thumb-container" ref="handle" :style="thumbStyle">
-          <!--
-           - figure out how to set the original value of the slider
-           - to get an output value
-           - figure out how to calulate the slider steps
-           - set position of the slider when clicking on the track
-           -->
-          <svg class="sd--slider__thumb" width="24" height="24">
-            <circle cx="12" cy="12" r="8"></circle>
-          </svg>
-          <sd-tooltip class="sd--tooltip--slider"
-            ref="ttip"
-            attach-to-parent
-            :theme="theme"
-            :active="position.isDragging"
-            :autoOpen="false"
-            :show-arrow="false"
-            :offset="[-12, 8]"
-          >
-            <div class="sd--center sd--big">
-              {{position.x}}
-            </div>
-          </sd-tooltip>
-        </div>
+      <div
+        ref="handle"
+        class="sd--slider__thumb-container"
+        :style="thumbStyle"
+      >
+        <svg class="sd--slider__thumb" width="24" height="24">
+          <circle cx="12" cy="12" r="12"></circle>
+        </svg>
+        <sd-tooltip
+          ref="ttip"
+          attach-to-parent
+          :active="state.isDragging"
+          :autoOpen="false"
+          :show-arrow="false"
+          :offset="[0, 8]"
+        >
+          <div class="sd--center sd--big">
+            {{result}}
+          </div>
+        </sd-tooltip>
+      </div>
     </div>
   </div>
-</div>
-
-<pre>
-<code>
-{{position}}
-</code>
-</pre>
 </template>
 
 <script>
-import { defineComponent, ref, reactive } from 'vue'
+import { defineComponent, ref, reactive, computed, watchEffect, onMounted } from 'vue'
 import { SdTooltip } from '@/library'
-import useDraggable from './useDraggable'
+
 export default defineComponent({
+  name: 'SdSlider',
   components: {
     SdTooltip
   },
   props: {
+    value: Number,
     min: {
       type: Number,
-      required: true
+      default: () => 1
     },
     max: {
       type: Number,
-      required: true
+      default: () => 100
     },
     step: {
       type: Number,
-      default: 1
+      default: () => 1
     },
-    theme: String,
-    modelValue: Number
+    theme: String
   },
-  emits: ['update:modelValue'],
-  setup (props) {
+  emits: ['update:value'],
+  setup (props, { emit }) {
     const slider = ref(null)
     const handle = ref(null)
-    const { position, thumbStyle, containerStyle } = useDraggable(slider, handle)
     const state = reactive({
-      tip: false
+      init: false,
+      x: 207,
+      minX: 0,
+      maxX: 0,
+      dragStartX: null,
+      isDragging: false,
+      width: 0,
+      height: 0,
+      rootWidth: 0,
+      rootHeight: 0,
+      initValue: props.value,
+      step: props.step,
+      min: props.min,
+      max: props.max,
+      newValue: null,
+      pctComplete: 0
     })
-    const mouseDown = () => {
-      state.tip = true
+
+    const containerStyle = computed(() => {
+      return {
+        width: state.width + 'px',
+        height: state.height + 'px'
+      }
+    })
+
+    const thumbTrackStyle = computed(() => {
+      return {
+        width: state.x + (state.width / 2) + 'px'
+      }
+    })
+
+    const thumbStyle = computed(() => {
+      return {
+        transition: 'transform .23s ease-in-out',
+        position: 'absolute',
+        left: state.x + 'px',
+        transform: state.isDragging ? 'scale(1.1)' : '',
+        cursor: state.isDragging ? 'grab' : 'pointer'
+      }
+    })
+
+    // // watch initValue?
+    // const setInitial = computed(() => {
+    //   return Math.round(state.initValue / props.max * state.rootWidth)
+    // })
+
+    const result = computed(() => {
+      const currentValue = props.min + state.pctComplete * (props.max - props.min)
+      const quantize = Math.round(currentValue / props.step) * props.step
+      if (currentValue !== props.max && currentValue !== props.min) {
+        emit('update:value', quantize)
+        return Math.round(currentValue / props.step) * props.step
+      }
+      if (currentValue) {
+        return props.value
+      }
+      emit('update:value', currentValue)
+      return currentValue
+    })
+
+    const onMouseDown = e => {
+      const { clientX } = e
+      state.dragStartX = clientX - state.x
+      state.isDragging = true
+      document.addEventListener('mouseup', onMouseUp)
+      document.addEventListener('mousemove', onMouseMove)
     }
-    const mouseUp = () => {
-      state.tip = false
+
+    const onMouseMove = e => {
+      const { clientX } = e
+      state.x = Math.max(1, Math.min(clientX - state.dragStartX, state.maxX))
     }
-    return { position, slider, handle, thumbStyle, containerStyle, state, mouseUp, mouseDown }
+
+    const onRailClick = e => {
+      const { clientX } = e
+      const clickX = Math.round((clientX - state.maxX / 2) - state.width)
+      state.x = Math.max(1, Math.min(clickX, state.maxX))
+      state.isDragging = true
+      state.dragStartX = clientX - state.x
+      document.addEventListener('mouseup', onMouseUp)
+      document.addEventListener('mousemove', onMouseMove)
+    }
+
+    const onMouseUp = e => {
+      // const { clientX, clientY } = e
+      state.dragStartX = null
+      state.isDragging = false
+      document.removeEventListener('mouseup', onMouseUp)
+      document.removeEventListener('mousemove', onMouseMove)
+      document.removeEventListener('mousedown', onRailClick)
+    }
+
+    watchEffect(() => {
+      if (
+        slider.value instanceof HTMLElement &&
+        handle.value instanceof HTMLElement
+      ) {
+        state.init = true
+        state.width = Math.round(handle.value.clientWidth)
+        state.height = Math.round(handle.value.clientHeight)
+        state.rootWidth = Math.round(slider.value.clientWidth)
+        state.rootHeight = Math.round(slider.value.clientHeight)
+        state.maxX = Math.round(state.rootWidth - state.width)
+        state.minX = 0
+        state.pctComplete = state.x / state.rootWidth
+        // state.x = Math.round(props.value / props.max * state.rootWidth)
+        handle.value.addEventListener('mousedown', onMouseDown)
+        slider.value.addEventListener('mousedown', onRailClick)
+      }
+    })
+
+    onMounted(() => {
+      window.addEventListener('resize', () => {
+        if (
+          slider.value instanceof HTMLElement &&
+          handle.value instanceof HTMLElement
+        ) {
+          // update bounderies on resize
+          state.width = Math.round(handle.value.clientWidth)
+          state.height = Math.round(handle.value.clientHeight)
+          state.rootWidth = Math.round(slider.value.clientWidth)
+          state.rootHeight = Math.round(slider.value.clientHeight)
+        }
+        // recalulate width on resize
+        state.x = state.pctComplete * state.rootWidth
+      })
+    })
+
+    return {
+      slider,
+      handle,
+      thumbStyle,
+      state,
+      containerStyle,
+      thumbTrackStyle,
+      result,
+      onRailClick
+    }
   }
 })
 </script>
@@ -92,7 +212,7 @@ export default defineComponent({
   margin-top: 32px;
   margin-bottom: 32px;
   height: 24px;
-  max-width: 400px;
+  max-width: 50%;
   margin: 32px auto;
   border-radius: 30px;
   &__track-container{
@@ -103,6 +223,7 @@ export default defineComponent({
     right:0;
     top: 50%;
     margin-top: -4px;
+    border-radius: 30px;
   }
   &__track{
     background-color: var(--primary);
@@ -118,9 +239,7 @@ export default defineComponent({
     height:24px;
   }
   &__thumb{
-    fill: #fff;
-    margin-left: -12px;
-    margin-right: -12px;
+    fill: var(--primary);
   }
 }
 .sd--center{
