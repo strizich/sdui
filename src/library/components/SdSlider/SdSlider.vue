@@ -1,8 +1,7 @@
 <template>
-  <div class="sd--slider" ref="slider">
-    <!-- Needs additional stying features (maybe new component) -->
-    <!-- Need to setup touch events. -->
-    <div class="sd--slider__container">
+  <div class="sd--slider" >
+    <sd-label v-if="label">{{label}}</sd-label>
+    <div class="sd--slider__container" ref="slider">
       <div class="sd--slider__track-container">
         <div
           class="sd--slider__track"
@@ -29,26 +28,24 @@
             {{result}}
           </div>
         </sd-tooltip>
-        initX{{state.initX}}
-        X: {{state.x}}
       </div>
     </div>
+     <p class="sd--text--hint">Yeet?</p>
   </div>
-  <pre>
-    {{state}}
-  </pre>
 </template>
 
 <script>
 import { defineComponent, ref, reactive, computed, watchEffect, onMounted } from 'vue'
-import { SdTooltip } from '@/library'
+import { SdTooltip, SdLabel } from '@/library'
 
 export default defineComponent({
   name: 'SdSlider',
   components: {
-    SdTooltip
+    SdTooltip,
+    SdLabel
   },
   props: {
+    label: String,
     value: Number,
     min: {
       type: Number,
@@ -118,28 +115,16 @@ export default defineComponent({
         emit('update:value', quantize)
         return Math.round(currentValue / props.step) * props.step
       }
-      if (currentValue) {
-        return props.value
-      }
       emit('update:value', currentValue)
       return currentValue
     })
-
-    const onMouseDown = e => {
-      const { clientX } = e
-      state.dragStartX = clientX - state.x
-      state.isDragging = true
-      document.addEventListener('mouseup', onMouseUp)
-      document.addEventListener('mousemove', onMouseMove)
-      console.log(e)
-    }
 
     const onMouseMove = e => {
       const { clientX } = e
       state.x = Math.max(1, Math.min(clientX - state.dragStartX, state.maxX))
     }
 
-    const onRailClick = e => {
+    const onMouseDown = e => {
       const { clientX } = e
       const clickX = Math.round((clientX - state.offset))
       state.x = Math.max(1, Math.min(clickX, state.maxX))
@@ -155,7 +140,7 @@ export default defineComponent({
       state.isDragging = false
       document.removeEventListener('mouseup', onMouseUp)
       document.removeEventListener('mousemove', onMouseMove)
-      document.removeEventListener('mousedown', onRailClick)
+      document.removeEventListener('mousedown', onMouseDown)
     }
 
     const onTouchStart = e => {
@@ -195,13 +180,12 @@ export default defineComponent({
         state.handleHeight = Math.round(handle.value.clientHeight)
         state.rootWidth = Math.round(slider.value.clientWidth)
         state.rootHeight = Math.round(slider.value.clientHeight)
+        state.minX = props.min
         state.maxX = Math.round(state.rootWidth)
-        state.minX = 0
         state.pctComplete = state.x / state.rootWidth
         state.initX = Math.round(props.value / props.max * state.rootWidth)
-        handle.value.addEventListener('touchstart', onTouchStart)
-        handle.value.addEventListener('mousedown', onMouseDown)
-        slider.value.addEventListener('mousedown', onRailClick)
+        slider.value.addEventListener('touchstart', onTouchStart)
+        slider.value.addEventListener('mousedown', onMouseDown)
       }
     })
 
@@ -230,24 +214,23 @@ export default defineComponent({
       state,
       containerStyle,
       thumbTrackStyle,
-      result,
-      onRailClick
+      result
     }
   }
 })
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 @import '../SdElevation/mixins';
 
 .sd--slider{
-  position:relative;
-  margin-top: 32px;
-  margin-bottom: 32px;
-  height: 24px;
-  margin: 32px auto;
-  border-radius: 30px;
-  width: 100%;
+  padding: 0 16px;
+  &__container{
+    position:relative;
+    height: 24px;
+    border-radius: 30px;
+    width: 100%;
+  }
   &__track-container{
     background-color: var(--background-accent);
     position: absolute;

@@ -8,6 +8,7 @@
         :type="type"
         :name="name"
         :placeholder="placeholder"
+        :disabled="disabled"
         @blur="(e) => handleTouched(e)"
         @focus="(e) => handleFocused(e)"
         @input="(e) => handleInput(e)"
@@ -38,6 +39,7 @@ export default defineComponent({
     name: String,
     value: [String, Number],
     placeholder: String,
+    disabled: Boolean,
     type: {
       type: String,
       default: 'text'
@@ -98,7 +100,8 @@ export default defineComponent({
       return {
         'sd--field__control': true,
         'is--dirty': state.touched,
-        'is--error': handleValidation.value
+        'is--error': handleValidation.value,
+        'is--disabled': props.disabled
       }
     })
 
@@ -149,8 +152,9 @@ export default defineComponent({
       width: 100%;
       display:block;
       @include sd--elevation(3);
-      &:disabled {
-        background-color: var(--background-highlight);
+      &:disabled, &.is--disabled {
+        opacity: .35;
+        background-color: var(--background-accent);
         color: var(--text-highlight);
       }
        &.is--error{

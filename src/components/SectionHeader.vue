@@ -14,7 +14,7 @@
     >
       <sd-icon name="link"/>
       <sd-tooltip
-        placement="right"
+        placement="top"
         :theme="theme"
         :auto-open="false"
         :active="active"

@@ -1,5 +1,5 @@
 <template>
-  <div :class="['sd--container', classes]">
+  <div :class="[classes]">
     <slot/>
   </div>
 </template>
@@ -45,7 +45,7 @@ export default {
     max-width: 100%;
   }
   @include breakpoint-down('sm') {
-    padding: 0;
+    padding: 0 24px;
   }
 }
 </style>
