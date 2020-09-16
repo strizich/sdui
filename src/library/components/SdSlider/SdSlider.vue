@@ -80,6 +80,7 @@ export default defineComponent({
       rootWidth: 0,
       rootHeight: 0,
       initX: 0,
+      offset: null,
       step: props.step,
       min: props.min,
       max: props.max,
@@ -130,6 +131,7 @@ export default defineComponent({
       state.isDragging = true
       document.addEventListener('mouseup', onMouseUp)
       document.addEventListener('mousemove', onMouseMove)
+      console.log(e)
     }
 
     const onMouseMove = e => {
@@ -139,9 +141,7 @@ export default defineComponent({
 
     const onRailClick = e => {
       const { clientX } = e
-      const rect = slider.value.getBoundingClientRect()
-      const offset = rect.left
-      const clickX = Math.round((clientX - offset))
+      const clickX = Math.round((clientX - state.offset))
       state.x = Math.max(1, Math.min(clickX, state.maxX))
       state.isDragging = true
       state.dragStartX = clientX - state.x
@@ -156,6 +156,31 @@ export default defineComponent({
       document.removeEventListener('mouseup', onMouseUp)
       document.removeEventListener('mousemove', onMouseMove)
       document.removeEventListener('mousedown', onRailClick)
+    }
+
+    const onTouchStart = e => {
+      const { clientX } = e.touches[0]
+      state.dragStartX = clientX - state.x
+      state.isDragging = true
+      document.addEventListener('touchend', onTouchEnd)
+      document.addEventListener('touchmove', onTouchMove, { passive: false })
+    }
+
+    const onTouchMove = e => {
+      e.preventDefault()
+      const { clientX } = e.touches[0]
+      const clickX = Math.round((clientX - state.offset))
+      state.x = Math.max(1, Math.min(clickX, state.maxX))
+      state.isDragging = true
+      state.dragStartX = clientX - state.x
+    }
+
+    const onTouchEnd = e => {
+      state.dragStartX = null
+      state.isDragging = false
+      document.removeEventListener('touchstart', onTouchStart)
+      document.removeEventListener('touchend', onTouchEnd)
+      document.removeEventListener('touchmove', onTouchMove)
     }
 
     watchEffect(() => {
@@ -174,6 +199,7 @@ export default defineComponent({
         state.minX = 0
         state.pctComplete = state.x / state.rootWidth
         state.initX = Math.round(props.value / props.max * state.rootWidth)
+        handle.value.addEventListener('touchstart', onTouchStart)
         handle.value.addEventListener('mousedown', onMouseDown)
         slider.value.addEventListener('mousedown', onRailClick)
       }
