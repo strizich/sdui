@@ -46,6 +46,9 @@ export default defineComponent({
   &__wrapper {
     margin-top: 32px;
     width: 75%;
+    @include breakpoint-down('sm') {
+      width: 100%;
+    }
   }
 }
 </style>

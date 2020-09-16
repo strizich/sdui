@@ -112,9 +112,18 @@ export default defineComponent({
       return currentValue
     })
 
+    // Alot of repeated code here that can be split into reuseable functions.
+
     const onMouseMove = e => {
       const { clientX } = e
       state.x = Math.max(1, Math.min(clientX - state.dragStartX, state.maxX))
+    }
+
+    const onTouchMove = e => {
+      e.preventDefault()
+      const { clientX } = e.touches[0]
+      const clickX = Math.round((clientX - state.offset))
+      state.x = Math.max(1, Math.min(clickX, state.maxX))
     }
 
     const onMouseDown = e => {
@@ -129,33 +138,25 @@ export default defineComponent({
     const onTouchStart = e => {
       const { clientX } = e.touches[0]
       const clickX = Math.round((clientX - state.offset))
-      state.dragStartX = clientX - state.x
       state.isDragging = true
+      state.dragStartX = clientX - state.x
       state.x = Math.max(1, Math.min(clickX, state.maxX))
-
       document.addEventListener('touchend', onTouchEnd)
       document.addEventListener('touchmove', onTouchMove, { passive: false })
     }
 
     const onMouseUp = e => {
       // const { clientX, clientY } = e
-      state.dragStartX = null
       state.isDragging = false
+      state.dragStartX = null
       document.removeEventListener('mouseup', onMouseUp)
       document.removeEventListener('mousemove', onMouseMove)
       document.removeEventListener('mousedown', onMouseDown)
     }
 
-    const onTouchMove = e => {
-      e.preventDefault()
-      const { clientX } = e.touches[0]
-      const clickX = Math.round((clientX - state.offset))
-      state.x = Math.max(1, Math.min(clickX, state.maxX))
-    }
-
     const onTouchEnd = e => {
-      state.dragStartX = null
       state.isDragging = false
+      state.dragStartX = null
       document.removeEventListener('touchstart', onTouchStart)
       document.removeEventListener('touchend', onTouchEnd)
       document.removeEventListener('touchmove', onTouchMove)
