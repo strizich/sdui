@@ -1,5 +1,7 @@
 <template>
   <div class="sd--slider" ref="slider">
+    <!-- Needs additional stying features (maybe new component) -->
+    <!-- Need to setup touch events. -->
     <div class="sd--slider__container">
       <div class="sd--slider__track-container">
         <div
