@@ -27,9 +27,14 @@
             {{result}}
           </div>
         </sd-tooltip>
+        initX{{state.initX}}
+        X: {{state.x}}
       </div>
     </div>
   </div>
+  <pre>
+    {{state}}
+  </pre>
 </template>
 
 <script>
@@ -45,15 +50,15 @@ export default defineComponent({
     value: Number,
     min: {
       type: Number,
-      default: () => 1
+      default: 1
     },
     max: {
       type: Number,
-      default: () => 100
+      default: 100
     },
     step: {
       type: Number,
-      default: () => 1
+      default: 1
     },
     theme: String
   },
@@ -63,16 +68,16 @@ export default defineComponent({
     const handle = ref(null)
     const state = reactive({
       init: false,
-      x: 207,
+      x: 0,
       minX: 0,
       maxX: 0,
       dragStartX: null,
       isDragging: false,
-      width: 0,
-      height: 0,
+      handleWidth: 0,
+      handleHeight: 0,
       rootWidth: 0,
       rootHeight: 0,
-      initValue: props.value,
+      initX: 0,
       step: props.step,
       min: props.min,
       max: props.max,
@@ -82,14 +87,14 @@ export default defineComponent({
 
     const containerStyle = computed(() => {
       return {
-        width: state.width + 'px',
-        height: state.height + 'px'
+        width: state.handleWidth + 'px',
+        height: state.handleHeight + 'px'
       }
     })
 
     const thumbTrackStyle = computed(() => {
       return {
-        width: state.x + (state.width / 2) + 'px'
+        width: state.initX + (state.handleWidth / 2) + 'px'
       }
     })
 
@@ -97,16 +102,11 @@ export default defineComponent({
       return {
         transition: 'transform .23s ease-in-out',
         position: 'absolute',
-        left: state.x + 'px',
-        transform: state.isDragging ? 'scale(1.1)' : '',
+        left: state.initX - (state.handleWidth / 2) + 'px',
+        // transform: state.isDragging ? 'scale(1.1)' : '',
         cursor: state.isDragging ? 'grab' : 'pointer'
       }
     })
-
-    // // watch initValue?
-    // const setInitial = computed(() => {
-    //   return Math.round(state.initValue / props.max * state.rootWidth)
-    // })
 
     const result = computed(() => {
       const currentValue = props.min + state.pctComplete * (props.max - props.min)
@@ -137,7 +137,9 @@ export default defineComponent({
 
     const onRailClick = e => {
       const { clientX } = e
-      const clickX = Math.round((clientX - state.maxX / 2) - state.width)
+      const rect = slider.value.getBoundingClientRect()
+      const offset = rect.left
+      const clickX = Math.round((clientX - offset))
       state.x = Math.max(1, Math.min(clickX, state.maxX))
       state.isDragging = true
       state.dragStartX = clientX - state.x
@@ -159,20 +161,23 @@ export default defineComponent({
         slider.value instanceof HTMLElement &&
         handle.value instanceof HTMLElement
       ) {
+        const rect = slider.value.getBoundingClientRect()
+        state.offset = rect.left
         state.init = true
-        state.width = Math.round(handle.value.clientWidth)
-        state.height = Math.round(handle.value.clientHeight)
+        state.handleWidth = Math.round(handle.value.clientWidth)
+        state.handleHeight = Math.round(handle.value.clientHeight)
         state.rootWidth = Math.round(slider.value.clientWidth)
         state.rootHeight = Math.round(slider.value.clientHeight)
-        state.maxX = Math.round(state.rootWidth - state.width)
+        state.maxX = Math.round(state.rootWidth)
         state.minX = 0
         state.pctComplete = state.x / state.rootWidth
-        // state.x = Math.round(props.value / props.max * state.rootWidth)
+        state.initX = Math.round(props.value / props.max * state.rootWidth)
         handle.value.addEventListener('mousedown', onMouseDown)
         slider.value.addEventListener('mousedown', onRailClick)
       }
     })
 
+    // watch initValue?
     onMounted(() => {
       window.addEventListener('resize', () => {
         if (
@@ -180,8 +185,8 @@ export default defineComponent({
           handle.value instanceof HTMLElement
         ) {
           // update bounderies on resize
-          state.width = Math.round(handle.value.clientWidth)
-          state.height = Math.round(handle.value.clientHeight)
+          state.handleWidth = Math.round(handle.value.clientWidth)
+          state.handleHeight = Math.round(handle.value.clientHeight)
           state.rootWidth = Math.round(slider.value.clientWidth)
           state.rootHeight = Math.round(slider.value.clientHeight)
         }
@@ -212,9 +217,9 @@ export default defineComponent({
   margin-top: 32px;
   margin-bottom: 32px;
   height: 24px;
-  max-width: 50%;
   margin: 32px auto;
   border-radius: 30px;
+  width: 100%;
   &__track-container{
     background-color: var(--background-accent);
     position: absolute;
