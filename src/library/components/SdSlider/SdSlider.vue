@@ -35,7 +35,7 @@
 </template>
 
 <script>
-import { defineComponent, ref, reactive, computed, watchEffect, onMounted } from 'vue'
+import { defineComponent, ref, reactive, computed, watchEffect, onMounted, onUnmounted } from 'vue'
 import { SdTooltip, SdLabel } from '@/library'
 
 export default defineComponent({
@@ -85,16 +85,10 @@ export default defineComponent({
       pctComplete: 0
     })
 
-    const containerStyle = computed(() => {
-      return {
-        width: state.handleWidth + 'px',
-        height: state.handleHeight + 'px'
-      }
-    })
-
     const thumbTrackStyle = computed(() => {
       return {
         width: state.initX + (state.handleWidth / 2) + 'px'
+        // FUTURE: add representation of step indicators
       }
     })
 
@@ -103,7 +97,6 @@ export default defineComponent({
         transition: 'transform .23s ease-in-out',
         position: 'absolute',
         left: state.initX - (state.handleWidth / 2) + 'px',
-        // transform: state.isDragging ? 'scale(1.1)' : '',
         cursor: state.isDragging ? 'grab' : 'pointer'
       }
     })
@@ -133,6 +126,16 @@ export default defineComponent({
       document.addEventListener('mouseup', onMouseUp)
       document.addEventListener('mousemove', onMouseMove)
     }
+    const onTouchStart = e => {
+      const { clientX } = e.touches[0]
+      const clickX = Math.round((clientX - state.offset))
+      state.dragStartX = clientX - state.x
+      state.isDragging = true
+      state.x = Math.max(1, Math.min(clickX, state.maxX))
+
+      document.addEventListener('touchend', onTouchEnd)
+      document.addEventListener('touchmove', onTouchMove, { passive: false })
+    }
 
     const onMouseUp = e => {
       // const { clientX, clientY } = e
@@ -143,21 +146,11 @@ export default defineComponent({
       document.removeEventListener('mousedown', onMouseDown)
     }
 
-    const onTouchStart = e => {
-      const { clientX } = e.touches[0]
-      state.dragStartX = clientX - state.x
-      state.isDragging = true
-      document.addEventListener('touchend', onTouchEnd)
-      document.addEventListener('touchmove', onTouchMove, { passive: false })
-    }
-
     const onTouchMove = e => {
       e.preventDefault()
       const { clientX } = e.touches[0]
       const clickX = Math.round((clientX - state.offset))
       state.x = Math.max(1, Math.min(clickX, state.maxX))
-      state.isDragging = true
-      state.dragStartX = clientX - state.x
     }
 
     const onTouchEnd = e => {
@@ -176,10 +169,6 @@ export default defineComponent({
         const rect = slider.value.getBoundingClientRect()
         state.offset = rect.left
         state.init = true
-        state.handleWidth = Math.round(handle.value.clientWidth)
-        state.handleHeight = Math.round(handle.value.clientHeight)
-        state.rootWidth = Math.round(slider.value.clientWidth)
-        state.rootHeight = Math.round(slider.value.clientHeight)
         state.minX = props.min
         state.maxX = Math.round(state.rootWidth)
         state.pctComplete = state.x / state.rootWidth
@@ -189,22 +178,27 @@ export default defineComponent({
       }
     })
 
-    // watch initValue?
+    // saves the dimensions of the slider and handle
+    const setElementDimensions = () => {
+      if (
+        slider.value instanceof HTMLElement &&
+        handle.value instanceof HTMLElement
+      ) {
+        state.handleWidth = Math.round(handle.value.clientWidth)
+        state.handleHeight = Math.round(handle.value.clientHeight)
+        state.rootWidth = Math.round(slider.value.clientWidth)
+        state.rootHeight = Math.round(slider.value.clientHeight)
+      }
+    }
+
     onMounted(() => {
-      window.addEventListener('resize', () => {
-        if (
-          slider.value instanceof HTMLElement &&
-          handle.value instanceof HTMLElement
-        ) {
-          // update bounderies on resize
-          state.handleWidth = Math.round(handle.value.clientWidth)
-          state.handleHeight = Math.round(handle.value.clientHeight)
-          state.rootWidth = Math.round(slider.value.clientWidth)
-          state.rootHeight = Math.round(slider.value.clientHeight)
-        }
-        // recalulate width on resize
-        state.x = state.pctComplete * state.rootWidth
-      })
+      setElementDimensions()
+      // We need to update the dimensions of our elements if the user resizes the window.
+      window.addEventListener('resize', () => setElementDimensions())
+    })
+
+    onUnmounted(() => {
+      window.removeEventListener('resize', () => setElementDimensions())
     })
 
     return {
@@ -212,7 +206,6 @@ export default defineComponent({
       handle,
       thumbStyle,
       state,
-      containerStyle,
       thumbTrackStyle,
       result
     }
