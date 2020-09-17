@@ -29,7 +29,6 @@ export default {
 <style lang="scss">
   .sd--row {
     @include make-row();
-    margin: 0 -16px;
     &.is{
       &--gutterless {
         margin-right: 0;

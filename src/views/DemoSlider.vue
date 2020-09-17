@@ -2,15 +2,26 @@
   <div class="demo-slider">
   <sd-container>
     <section-header title="Slider" sub-title="woooooo" placement="bottom"/>
-    <sd-fieldset>
-      <sd-field label="Set Label" type="text" v-model="label"/>
-      <sd-field label="Set step" type="number" v-model.number="step"/>
-      <sd-field label="Set value" type="number" v-model.number="value1"/>
-    </sd-fieldset>
-    <sd-fieldset>
-      <sd-field label="Set min" type="number" v-model.number="min"/>
-      <sd-field label="Set max" type="number" v-model.number="max"/>
-    </sd-fieldset>
+    <sd-row>
+      <sd-col :md="6">
+        <sd-checkbox v-model="showOptions">Additional Settings</sd-checkbox>
+      </sd-col>
+    </sd-row>
+    <sd-row v-if="showOptions">
+      <sd-col :xs="6" :sm="6" :md="6">
+        <sd-fieldset stack>
+          <sd-field label="Set Label" type="text" v-model="label"/>
+          <sd-field label="Set Step" type="number" v-model.number="step"/>
+          <sd-field label="Set Value" type="number" v-model.number="value1"/>
+        </sd-fieldset>
+      </sd-col>
+      <sd-col :xs="6" :sm="6" :md="6">
+        <sd-fieldset stack>
+          <sd-field label="Set Min" type="number" v-model.number="min"/>
+          <sd-field label="Set Max" type="number" v-model.number="max"/>
+        </sd-fieldset>
+      </sd-col>
+    </sd-row>
     <div class="demo-slider__wrapper">
       <sd-slider
         show-tooltip
@@ -34,7 +45,23 @@
         label="Slider with min/max"
         show-indicators
         v-model:value="value3"
+        :hint="`${value3} of ${max} Somethings`"
       />
+    </div>
+    <div class="demo-slider__wrapper">
+      <sd-slider
+        show-indicators
+        v-model:value="value3 "
+      >
+        <template #label>
+          <sd-label>Woooo! I am such a slot.</sd-label>
+        </template>
+        <template #hint>
+          <small class="sd--text__footnote">
+            Custom <strong>{{value3}}</strong> of <strong>{{max}}</strong> thingies.
+          </small>
+        </template>
+      </sd-slider>
     </div>
   </sd-container>
   </div>
@@ -44,10 +71,10 @@
 import { defineComponent, reactive, toRefs } from 'vue'
 import SdSlider from '@/library/components/SdSlider/SdSlider'
 import SectionHeader from '@/components/SectionHeader'
-import { SdContainer, SdField, SdFieldset } from '@/library'
+import { SdContainer, SdField, SdFieldset, SdLabel, SdCol, SdRow, SdCheckbox } from '@/library'
 
 export default defineComponent({
-  components: { SdSlider, SdContainer, SdField, SdFieldset, SectionHeader },
+  components: { SdSlider, SdContainer, SdField, SdFieldset, SectionHeader, SdLabel, SdCol, SdRow, SdCheckbox },
   setup () {
     const slider = reactive({
       label: 'Label',
@@ -56,7 +83,8 @@ export default defineComponent({
       max: 100,
       value1: 25,
       value2: 50,
-      value3: 75
+      value3: 75,
+      showOptions: false
     })
 
     return {

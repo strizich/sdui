@@ -128,6 +128,7 @@ export default defineComponent({
   .sd--field{
     padding-bottom: 24px;
     position: relative;
+    width: 100%;
     &.is {
       &--focused {
         & > input{

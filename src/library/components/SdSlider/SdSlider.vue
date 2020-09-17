@@ -1,6 +1,7 @@
 <template>
   <div class="sd--slider" >
     <sd-label v-if="label">{{label}}</sd-label>
+    <slot name="label"/>
     <div class="sd--slider__container">
       <div class="sd--slider__min" v-if="showIndicators">
         {{min}}
@@ -42,6 +43,8 @@
         {{max}}
       </div>
     </div>
+    <small v-if="hint" class="sd--text__footnote">{{hint}}</small>
+    <slot name="hint"/>
   </div>
 </template>
 
@@ -72,7 +75,8 @@ export default defineComponent({
     },
     showIndicators: Boolean,
     showTooltip: Boolean,
-    theme: String
+    theme: String,
+    hint: String
   },
   emits: ['update:value'],
   setup (props, { emit }) {
@@ -259,7 +263,6 @@ export default defineComponent({
 @import '../SdElevation/mixins';
 
 .sd--slider{
-  padding: 0 16px;
   &__container{
     display:flex;
     width:100%;
