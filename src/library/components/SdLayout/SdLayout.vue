@@ -99,7 +99,7 @@ export default {
       &--open {
         .sd--layout__content {
           transition: margin-left .2s ease-in-out;
-          margin-left: 200px;
+          margin-left: 250px;
         }
       }
     }
@@ -111,13 +111,13 @@ export default {
     }
     &__sidebar {
       transition: opacity .2s ease-in-out, left .2s ease-in-out;
-      max-width: 200px;
+      max-width: 250px;
       width: 100%;
       background: var(--background-highlight);
       align-self: stretch;
       position:fixed;
       top: 50px;
-      left: -200px;
+      left: -250px;
       bottom: 0;
       opacity: 1;
       z-index:1000;

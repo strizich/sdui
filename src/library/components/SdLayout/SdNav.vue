@@ -21,7 +21,7 @@ export default {
 
   .sd--nav{
     list-style-type: none;
-    margin: 0;
+    margin: 16px 0 16px;
     padding: 0;
     &__list-item {
       margin:0;

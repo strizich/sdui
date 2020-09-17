@@ -77,6 +77,8 @@ export default {
   flex-direction: column;
   justify-content: space-between;
   height: 100%;
+  max-height: 100vh;
+  overflow-y: auto ;
   &__list{
     margin:32px 0 0 0;
     padding:0;

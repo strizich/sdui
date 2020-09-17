@@ -21,9 +21,7 @@
       <card-demo id="cards" />
       <radio-demo id="radios" />
       <checkbox-demo id="checkboxes" />
-      <dialog-demo id="dialogs" />
       <tooltip-demo id="tooltips" />
-      <icon-demo id="icons" />
     </div>
   </div>
 </div>
@@ -35,10 +33,8 @@ import FormControlDemo from '@/components/FormControlDemo'
 import RadioDemo from '@/components/RadioDemo'
 import CardDemo from '@/components/CardDemo'
 import ElevationDemo from '@/components/ElevationDemo'
-import DialogDemo from '@/components/DialogDemo'
 import CheckboxDemo from '@/components/CheckboxDemo'
 import TooltipDemo from '@/components/TooltipDemo'
-import IconDemo from '@/components/IconDemo'
 import { SdContainer, SdRouterLink } from '@/library'
 
 const COMPONENT_SECTIONS = [
@@ -58,23 +54,15 @@ const COMPONENT_SECTIONS = [
     name: 'Checkboxes',
     id: '#checkboxes'
   }, {
-    name: 'Dialogs',
-    id: '#dialogs'
-  }, {
     name: 'Tooltips',
     id: '#tooltips'
-  }, {
-    name: 'Icons',
-    id: '#icons'
   }
 ]
 
 export default defineComponent({
   name: 'Home',
   components: {
-    IconDemo,
     CardDemo,
-    DialogDemo,
     RadioDemo,
     CheckboxDemo,
     TooltipDemo,
