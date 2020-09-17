@@ -69,6 +69,7 @@ export default defineComponent({
 <style lang="scss" scoped>
 .demo-slider {
   margin-top: 32px;
+  margin-bottom: 64px;
   &__wrapper {
     margin-top: 32px;
     width: 75%;
