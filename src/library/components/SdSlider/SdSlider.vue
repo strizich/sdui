@@ -105,7 +105,6 @@ export default defineComponent({
     const thumbTrackStyle = computed(() => {
       return {
         width: state.initX + (state.handleWidth / 2) + 'px'
-        // FUTURE: add representation of step indicators
       }
     })
 
@@ -125,10 +124,6 @@ export default defineComponent({
       }
     })
 
-    const clampValue = (value) => {
-      value = Math.min(Math.max(value, props.min), props.max)
-      return value
-    }
     const minMax = (min, value, max) => {
       return Math.max(min, Math.min(value, max))
     }
@@ -137,11 +132,10 @@ export default defineComponent({
       const currentValue = Math.round(props.min + state.pctComplete * (props.max - props.min))
       const quantize = Math.round(currentValue / props.step) * props.step
       if (currentValue !== props.max && currentValue !== props.min) {
-        return minMax(props.min, clampValue(quantize), props.max)
+        return minMax(props.min, quantize, props.max)
       }
       return minMax(props.min, currentValue, props.max)
     })
-    // Alot of repeated code here that can be split into reuseable functions.
 
     const handleMove = (e) => {
       const { clientX } = e
@@ -236,13 +230,10 @@ export default defineComponent({
 
     onMounted(() => {
       setElementBounds()
-      // We need to update the dimensions of our elements if the user resizes the window.
       observeWindow.value = new ResizeObserver(setElementBounds).observe(slider.value)
-      // window.addEventListener('resize', () => setElementBounds())
     })
 
     onUnmounted(() => {
-      // window.removeEventListener('resize', () => setElementBounds())
       observeWindow.value = null
     })
 

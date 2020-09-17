@@ -89,6 +89,7 @@ export default defineComponent({
       state.focused = true
       emit('focus', e)
     }
+
     const rootClasses = computed(() => {
       return {
         'sd--field': true,
