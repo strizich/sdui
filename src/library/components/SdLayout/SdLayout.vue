@@ -82,6 +82,8 @@ export default {
 </script>
 
 <style lang="scss">
+  $sidebar-width: 220px;
+
   .sd--layout {
     min-height: 100vh;
     min-width: 100%;
@@ -99,7 +101,7 @@ export default {
       &--open {
         .sd--layout__content {
           transition: margin-left .2s ease-in-out;
-          margin-left: 250px;
+          margin-left: $sidebar-width;
         }
       }
     }
@@ -111,13 +113,13 @@ export default {
     }
     &__sidebar {
       transition: opacity .2s ease-in-out, left .2s ease-in-out;
-      max-width: 250px;
+      max-width: $sidebar-width;
       width: 100%;
       background: var(--background-highlight);
       align-self: stretch;
       position:fixed;
       top: 50px;
-      left: -250px;
+      left: -$sidebar-width;
       bottom: 0;
       opacity: 1;
       z-index:1000;
