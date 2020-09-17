@@ -4,7 +4,7 @@
     <sd-fieldset>
       <sd-field label="Set Label" type="text" v-model="label"/>
       <sd-field label="Set step" type="number" v-model.number="step"/>
-      <sd-field label="Set value" type="number" v-model.number="value"/>
+      <sd-field label="Set value" type="number" v-model.number="value1"/>
     </sd-fieldset>
     <sd-fieldset title="WIP">
       <sd-field label="Set min" type="number" v-model.number="min"/>
@@ -25,22 +25,17 @@
       <sd-slider
         show-tooltip
         label="Slider with tooltip"
-        :min="min"
-        :max="max"
-        :step="step"
         v-model:value="value2"
       />
     </div>
     <div class="demo-slider__wrapper">
       <sd-slider
         label="Slider with min/max"
-        :min="min"
-        :max="max"
-        :step="step"
         show-indicators
         v-model:value="value3"
       />
     </div>
+    {{value1}} {{value2}} {{value3}}
   </sd-container>
   </div>
 </template>
@@ -55,8 +50,8 @@ export default defineComponent({
   setup () {
     const slider = reactive({
       label: 'Label',
-      min: 10,
       step: 1,
+      min: 10,
       max: 100,
       value1: 25,
       value2: 50,

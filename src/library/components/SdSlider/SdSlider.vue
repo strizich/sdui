@@ -23,10 +23,11 @@
           <sd-tooltip
             ref="ttip"
             attach-to-parent
-            :active="state.isDragging && showTooltip"
+            :active="state.isDragging"
             :autoOpen="false"
             :show-arrow="false"
             :offset="[0, 8]"
+            v-if="showTooltip"
           >
             <div class="sd--center sd--big">
               {{result}}
@@ -45,8 +46,8 @@
 </template>
 
 <script>
-import { defineComponent, ref, reactive, computed, watchEffect, onMounted, onUnmounted } from 'vue'
-import { SdTooltip, SdLabel } from '@/library'
+import { defineComponent, ref, reactive, computed, watchEffect, onMounted, onUnmounted, watch } from 'vue'
+import { SdLabel, SdTooltip } from '@/library'
 
 export default defineComponent({
   name: 'SdSlider',
@@ -123,22 +124,20 @@ export default defineComponent({
       value = Math.min(Math.max(value, props.min), props.max)
       return value
     }
+    const minMax = (min, value, max) => {
+      return Math.max(min, Math.min(value, max))
+    }
 
     const result = computed(() => {
       const currentValue = Math.round(props.min + state.pctComplete * (props.max - props.min))
       const quantize = Math.round(currentValue / props.step) * props.step
       if (currentValue !== props.max && currentValue !== props.min) {
-        emit('update:value', clampValue(quantize))
+        return minMax(props.min, clampValue(quantize), props.max)
       }
-
-      emit('update:value', clampValue(currentValue))
-      return currentValue
+      return minMax(props.min, currentValue, props.max)
     })
-
     // Alot of repeated code here that can be split into reuseable functions.
-    const minMax = (min, value, max) => {
-      return Math.max(min, Math.min(value, max))
-    }
+
     const handleMove = (e) => {
       const { clientX } = e
       state.x = Math.max(0, Math.min(clientX - state.dragStartX, state.maxX))
@@ -204,10 +203,14 @@ export default defineComponent({
         state.init = true
         state.maxX = Math.round(state.rootWidth)
         state.pctComplete = minMax(0, state.x / state.rootWidth, 1)
-        state.initX = Math.round((props.value - props.min) / (props.max - props.min) * state.rootWidth)
+        state.initX = minMax(0, Math.round((props.value - props.min) / (props.max - props.min) * state.rootWidth), state.rootWidth)
         slider.value.addEventListener('touchstart', onTouchStart)
         slider.value.addEventListener('mousedown', onMouseDown)
       }
+    })
+
+    watch(() => result.value, (newValue) => {
+      emit('update:value', newValue)
     })
 
     const setElementBounds = () => {
@@ -239,8 +242,7 @@ export default defineComponent({
       thumbClass,
       state,
       thumbTrackStyle,
-      result,
-      clampValue
+      result
     }
   }
 })
