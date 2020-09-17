@@ -6,7 +6,7 @@
       <sd-field label="Set step" type="number" v-model.number="step"/>
       <sd-field label="Set value" type="number" v-model.number="value1"/>
     </sd-fieldset>
-    <sd-fieldset title="WIP">
+    <sd-fieldset>
       <sd-field label="Set min" type="number" v-model.number="min"/>
       <sd-field label="Set max" type="number" v-model.number="max"/>
     </sd-fieldset>
@@ -35,7 +35,6 @@
         v-model:value="value3"
       />
     </div>
-    {{value1}} {{value2}} {{value3}}
   </sd-container>
   </div>
 </template>
