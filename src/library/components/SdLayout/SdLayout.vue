@@ -136,7 +136,7 @@ export default {
       top:0;
       left:0;
       right:0;
-      z-index: 100;
+      z-index: 1000;
     }
   }
   .sidebar-enter-active, .sidebar-leave-active{

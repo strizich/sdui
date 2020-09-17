@@ -78,6 +78,7 @@ export default defineComponent({
   setup (props, { emit }) {
     const slider = ref(null)
     const handle = ref(null)
+    const observeWindow = ref(null)
     const state = reactive({
       init: false,
       initX: 0,
@@ -198,7 +199,6 @@ export default defineComponent({
         handle.value instanceof HTMLElement
       ) {
         const rect = slider.value.getBoundingClientRect()
-        // const valueToPx = Math.round(props.value / props.max * state.rootWidth)
         state.offset = rect.left
         state.init = true
         state.maxX = Math.round(state.rootWidth)
@@ -206,6 +206,7 @@ export default defineComponent({
         state.initX = minMax(0, Math.round((props.value - props.min) / (props.max - props.min) * state.rootWidth), state.rootWidth)
         slider.value.addEventListener('touchstart', onTouchStart)
         slider.value.addEventListener('mousedown', onMouseDown)
+        window.addEventListener('resize', () => setElementBounds())
       }
     })
 
@@ -218,6 +219,8 @@ export default defineComponent({
         slider.value instanceof HTMLElement &&
         handle.value instanceof HTMLElement
       ) {
+        const rect = slider.value.getBoundingClientRect()
+        state.offset = rect.left
         state.handleWidth = Math.round(handle.value.clientWidth)
         state.handleHeight = Math.round(handle.value.clientHeight)
         state.rootWidth = Math.round(slider.value.clientWidth)
@@ -228,11 +231,13 @@ export default defineComponent({
     onMounted(() => {
       setElementBounds()
       // We need to update the dimensions of our elements if the user resizes the window.
-      window.addEventListener('resize', () => setElementBounds())
+      observeWindow.value = new ResizeObserver(setElementBounds).observe(slider.value)
+      // window.addEventListener('resize', () => setElementBounds())
     })
 
     onUnmounted(() => {
-      window.removeEventListener('resize', () => setElementBounds())
+      // window.removeEventListener('resize', () => setElementBounds())
+      observeWindow.value = null
     })
 
     return {
