@@ -1,6 +1,7 @@
 <template>
   <div class="demo-slider">
   <sd-container>
+    <section-header title="Slider" sub-title="woooooo" placement="bottom"/>
     <sd-fieldset>
       <sd-field label="Set Label" type="text" v-model="label"/>
       <sd-field label="Set step" type="number" v-model.number="step"/>
@@ -42,10 +43,11 @@
 <script>
 import { defineComponent, reactive, toRefs } from 'vue'
 import SdSlider from '@/library/components/SdSlider/SdSlider'
+import SectionHeader from '@/components/SectionHeader'
 import { SdContainer, SdField, SdFieldset } from '@/library'
 
 export default defineComponent({
-  components: { SdSlider, SdContainer, SdField, SdFieldset },
+  components: { SdSlider, SdContainer, SdField, SdFieldset, SectionHeader },
   setup () {
     const slider = reactive({
       label: 'Label',

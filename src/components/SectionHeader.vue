@@ -14,7 +14,7 @@
     >
       <sd-icon name="link"/>
       <sd-tooltip
-        placement="top"
+        :placement="placement"
         :theme="theme"
         :auto-open="false"
         :active="active"
@@ -38,11 +38,14 @@ export default defineComponent({
   components: { SdTooltip, SdButton, SdIcon },
   props: {
     hash: {
-      type: String,
-      required: true
+      type: String
     },
     title: String,
-    subTitle: String
+    subTitle: String,
+    placement: {
+      type: String,
+      default: 'top'
+    }
   },
   setup (props) {
     const tooltip = reactive({
@@ -57,7 +60,12 @@ export default defineComponent({
     const handleCopy = () => {
       const host = window.location.host
       const currentRoute = route.currentRoute.value.path
-      const copiedResult = host + currentRoute + props.hash
+      let copiedResult = ''
+      if (props.hash) {
+        copiedResult = host + currentRoute + props.hash
+      } else {
+        copiedResult = host + currentRoute
+      }
       navigator.clipboard.writeText(copiedResult).then(
         () => {
           tooltip.theme = ''
