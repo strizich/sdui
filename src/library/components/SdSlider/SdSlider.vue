@@ -142,6 +142,7 @@ export default defineComponent({
     const handleMove = (e) => {
       const { clientX } = e
       state.x = Math.max(0, Math.min(clientX - state.dragStartX, state.maxX))
+      console.log(e)
     }
 
     const handleStart = (e) => {
@@ -164,7 +165,7 @@ export default defineComponent({
 
     const onTouchMove = e => {
       e.preventDefault()
-      handleMove(e.touched[0])
+      handleMove(e.touches[0])
     }
 
     const onMouseDown = e => {
@@ -174,7 +175,8 @@ export default defineComponent({
     }
 
     const onTouchStart = e => {
-      handleStart(e.touched[0])
+      console.log(e)
+      handleStart(e.touches[0])
       document.addEventListener('touchend', onTouchEnd)
       document.addEventListener('touchmove', onTouchMove, { passive: false })
     }
@@ -187,7 +189,7 @@ export default defineComponent({
     }
 
     const onTouchEnd = e => {
-      handleEnd(e.touched[0])
+      handleEnd(e.touches[0])
       document.removeEventListener('touchstart', onTouchStart)
       document.removeEventListener('touchend', onTouchEnd)
       document.removeEventListener('touchmove', onTouchMove)
