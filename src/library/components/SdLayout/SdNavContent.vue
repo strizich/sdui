@@ -40,10 +40,11 @@ export default defineComponent({
     // }
     &__item{
     color: var(--text);
-    font-weight: 300;
+    font-weight: 400;
     letter-spacing: 1.5;
     transition: background-color .23s ease-in-out;
     position: relative;
+    font-size: 14px;
     &:after{
       transition: all .23s ease-in-out;
       content: '';
