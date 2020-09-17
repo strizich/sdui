@@ -1,15 +1,19 @@
 <template>
-  <ul class="sd--nav">
+  <div class="sd--nav">
+    <sd-nav-heading v-if="title">{{title}}</sd-nav-heading>
     <slot />
-  </ul>
+  </div>
 </template>
 
 <script>
+import SdNavHeading from './SdNavHeading'
+
 export default {
   name: 'SdNav',
-  setup (props, { slots }) {
-
-  }
+  props: {
+    title: String
+  },
+  components: { SdNavHeading }
 }
 </script>
 

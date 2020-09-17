@@ -1,7 +1,10 @@
 <template>
   <header class="sd--header">
     <div class="sd--header__container">
-      <sd-hamburger :active="asideOpen" @toggled="handleMenu"/>
+    <sd-hamburger
+      :active="asideOpen"
+      @toggled="handleMenu"
+    />
       <div class="sd--header__content">
         <div class="sd--header__brand">
           <slot name="brand" />

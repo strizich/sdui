@@ -1,39 +1,20 @@
 <template>
   <div class="sidebar">
-    <ul class="sidebar__list">
-      <li class="sidebar__item">
-        <router-link
-          to="/"
-          exact-active-class="sidebar__link--exact-active"
-          active-class="sidebar__link--active"
-          class="sidebar__link"
-        >
-          <sd-icon name="home"/>
-          <span>Home</span>
-        </router-link>
-      </li>
-      <li class="sd--nav__list-item">
-        <router-link
-          to="/components/slider"
-          exact-active-class="sidebar__link--exact-active"
-          active-class="sidebar__link--active"
-          class="sidebar__link"
-        >
-          <span>Slider</span>
-        </router-link>
-      </li>
-      <li class="sd--nav__list-item">
-        <router-link
-          to="/about"
-          exact-active-class="sidebar__link--exact-active"
-          active-class="sidebar__link--active"
-          class="sidebar__link"
-        >
-          <sd-icon name="info"/>
-          <span>About</span>
-        </router-link>
-      </li>
-    </ul>
+    <div>
+      <sd-nav>
+        <sd-nav-link to="/" icon="home">Home</sd-nav-link>
+        <sd-nav-link to="/about" icon="info">About</sd-nav-link>
+      </sd-nav>
+      <sd-nav title="Components">
+        <sd-nav-link to="/components/buttons">Button</sd-nav-link>
+        <sd-nav-link to="/components/form-controls">Inputs</sd-nav-link>
+        <sd-nav-link to="/components/slider">Slider</sd-nav-link>
+        <sd-nav-link to="/components/icons">Icons</sd-nav-link>
+        <sd-nav-link to="/components/dialog">Dialog</sd-nav-link>
+        <sd-nav-link to="/">Cards</sd-nav-link>
+        <sd-nav-link to="/">Tooltip</sd-nav-link>
+      </sd-nav>
+    </div>
     <div class="sidebar__options">
       <color-scheme />
       <template v-if="!smallDevice">
@@ -49,14 +30,15 @@
 <script>
 import ColorScheme from '@/components/ColorScheme'
 import { reactive, toRefs, watchEffect, onMounted, watch } from 'vue'
-import { SdIcon, SdFieldset, SdCheckbox } from '@/library'
+import { SdFieldset, SdCheckbox, SdNav, SdNavLink } from '@/library'
 export default {
   name: 'TheSidebar',
   components: {
     ColorScheme,
-    SdIcon,
     SdFieldset,
-    SdCheckbox
+    SdCheckbox,
+    SdNavLink,
+    SdNav
   },
   emits: ['update:floating'],
   props: {

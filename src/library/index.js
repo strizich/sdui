@@ -24,12 +24,16 @@ import SdMouse from './components/SdIcon/SdMouse'
 import SdTooltip from './components/SdTooltip/SdTooltip'
 import SdLayout from './components/SdLayout/SdLayout'
 import SdHeader from './components/SdLayout/SdHeader'
+import SdNavLink from './components/SdLayout/SdNavLink'
 // import SdFooter from './components/SdLayout/SdFooter'
 // import SdSidebar from './components/SdLayout/SdSidebar'
 import SdNav from './components/SdLayout/SdNav'
+import SdNavHeading from './components/SdLayout/SdNavHeading'
+
 import SdRow from './components/SdGrid/SdRow'
 import SdCol from './components/SdGrid/SdCol'
 import SdContainer from './components/SdGrid/SdContainer'
+import SdSlider from './components/SdSlider/SdSlider'
 
 export {
   // Button
@@ -66,10 +70,13 @@ export {
   SdLayout,
   SdHeader,
   SdNav,
+  SdNavLink,
+  SdNavHeading,
   // SdFooter,
   // SdSidebar
   // Grid
   SdRow,
   SdCol,
-  SdContainer
+  SdContainer,
+  SdSlider
 }
