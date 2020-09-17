@@ -1,40 +1,46 @@
 <template>
   <div class="sd--slider" >
     <sd-label v-if="label">{{label}}</sd-label>
-    <div class="sd--slider__container" ref="slider">
-      <div class="sd--slider__track-container">
-        <div
-          class="sd--slider__track"
-          :style="thumbTrackStyle"
-        />
+    <div class="sd--slider__container">
+      <div class="sd--slider__min" v-if="showIndicators">
+        {{min}}
       </div>
-      <div
-        ref="handle"
-        class="sd--slider__thumb-container"
-        :style="thumbStyle"
-      >
-        <svg class="sd--slider__thumb" width="24" height="24">
-          <circle cx="12" cy="12" r="12"></circle>
-        </svg>
-        <sd-tooltip
-          ref="ttip"
-          attach-to-parent
-          :active="state.isDragging"
-          :autoOpen="false"
-          :show-arrow="false"
-          :offset="[0, 8]"
+      <div class="sd--slider__content" ref="slider">
+        <div class="sd--slider__track-container">
+          <div
+            class="sd--slider__track"
+            :style="thumbTrackStyle"
+          />
+        </div>
+        <div
+          ref="handle"
+          class="sd--slider__thumb-container"
+          :style="thumbStyle"
         >
-          <div class="sd--center sd--big">
-            {{result}}
-          </div>
-        </sd-tooltip>
+          <svg class="sd--slider__thumb" width="24" height="24">
+            <circle cx="12" cy="12" r="12"/>
+          </svg>
+          <sd-tooltip
+            ref="ttip"
+            attach-to-parent
+            :active="state.isDragging && showTooltip"
+            :autoOpen="false"
+            :show-arrow="false"
+            :offset="[0, 8]"
+          >
+            <div class="sd--center sd--big">
+              {{result}}
+            </div>
+          </sd-tooltip>
+          <transition name="dragging">
+            <div class="sd--slider__pulse" v-if="state.isDragging"></div>
+          </transition>
+        </div>
+      </div>
+      <div class="sd--slider__max" v-if="showIndicators">
+        {{max}}
       </div>
     </div>
-     <p class="sd--text--hint">{{state.initX}}</p>
-     <p>minX: {{state.minX}}</p>
-     <p>{{state}}</p>
-     <p>Clamped: {{clampValue(result)}}</p>
-     <p>Return Value: {{result}}</p>
   </div>
 </template>
 
@@ -63,6 +69,8 @@ export default defineComponent({
       type: Number,
       default: 1
     },
+    showIndicators: Boolean,
+    showTooltip: Boolean,
     theme: String
   },
   emits: ['update:value'],
@@ -99,11 +107,18 @@ export default defineComponent({
       return {
         transition: 'transform .23s ease-in-out',
         position: 'absolute',
-        // left: state.initX - (state.handleWidth / 2) + 'px',
-        left: state.initX + 'px',
-        cursor: state.isDragging ? 'grab' : 'pointer'
+        left: state.initX - (state.handleWidth / 2) + 'px',
+        cursor: state.isDragging ? 'grab' : 'pointer',
+        zIndex: state.isDragging ? 1000 : 0
       }
     })
+
+    const thumbClass = computed(() => {
+      return {
+        'is--dragging': state.isDragging
+      }
+    })
+
     const clampValue = (value) => {
       value = Math.min(Math.max(value, props.min), props.max)
       return value
@@ -221,6 +236,7 @@ export default defineComponent({
       slider,
       handle,
       thumbStyle,
+      thumbClass,
       state,
       thumbTrackStyle,
       result,
@@ -236,10 +252,28 @@ export default defineComponent({
 .sd--slider{
   padding: 0 16px;
   &__container{
+    display:flex;
+    width:100%;
+    justify-content: space-between;
+    align-items: center;
+  }
+  &__min, &__max{
+    margin: 0 8px;
+    padding: 8px 16px;
+    font-size: 11px;
+    background-color: var(--background-accent)
+  }
+  &__min {
+    margin-left: 0;
+  }
+  &__max {
+    margin-right:0;
+  }
+  &__content{
     position:relative;
     height: 24px;
     border-radius: 30px;
-    width: 100%;
+    width:100%;
   }
   &__track-container{
     background-color: var(--background-accent);
@@ -263,13 +297,44 @@ export default defineComponent({
   &__thumb-container{
     width: 24px;
     height:24px;
+    &.is--dragging{
+      &:after{
+        content: '';
+        background-color: green;
+        left: 50%;
+        opacity: .5;
+        transform: transition(-0.5, 0.5);
+      }
+    }
   }
   &__thumb{
     fill: var(--primary);
+  }
+  &__pulse{
+    transition: all .13s ease-in-out;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: var(--primary-accent);
+    border-radius: 30px;
+    z-index: 1;
+    opacity: .25;
+    transform: scale(2);
   }
 }
 .sd--center{
   text-align:center;
   font-size: 16px;
+}
+
+.dragging-enter-from, .dragging-leave-to{
+  opacity: 0;
+  transform: scale(0);
+}
+.dragging-enter-to{
+  opacity: .25;
+  transform: scale(2);
 }
 </style>

@@ -11,7 +11,35 @@
       <sd-field label="Set max" type="number" v-model.number="max"/>
     </sd-fieldset>
     <div class="demo-slider__wrapper">
-      <sd-slider :label="label" :min="min" :max="max" :step="step" v-model:value="value"/>
+      <sd-slider
+        show-tooltip
+        show-indicators
+        :label="label"
+        :min="min"
+        :max="max"
+        :step="step"
+        v-model:value="value1"
+      />
+    </div>
+    <div class="demo-slider__wrapper">
+      <sd-slider
+        show-tooltip
+        label="Slider with tooltip"
+        :min="min"
+        :max="max"
+        :step="step"
+        v-model:value="value2"
+      />
+    </div>
+    <div class="demo-slider__wrapper">
+      <sd-slider
+        label="Slider with min/max"
+        :min="min"
+        :max="max"
+        :step="step"
+        show-indicators
+        v-model:value="value3"
+      />
     </div>
   </sd-container>
   </div>
@@ -30,7 +58,9 @@ export default defineComponent({
       min: 10,
       step: 1,
       max: 100,
-      value: 50
+      value1: 25,
+      value2: 50,
+      value3: 75
     })
 
     return {
