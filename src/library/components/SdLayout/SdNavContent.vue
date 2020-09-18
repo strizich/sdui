@@ -70,7 +70,9 @@ export default defineComponent({
       &.is--secondary{
         font-size: 12px;
         padding-left: 20px;
-        background-color: var(--background);
+          &.is--active, &.is--exact-active {
+            background-color: var(--background-accent);
+          }
         &:hover{
           background-color: rgba(0,0,0, .1);
         }

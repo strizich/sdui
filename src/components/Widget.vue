@@ -1,11 +1,11 @@
 <template>
-  <sd-card>
+  <sd-card class="widget">
     <sd-card-header :title="title"/>
     <sd-card-footer>
       <slot/>
     </sd-card-footer>
     <sd-card-media ratio="16x9" v-if="image">
-      <img src="" :alt="title" />
+      <img :src="image" :alt="title" />
     </sd-card-media>
   </sd-card>
 </template>
@@ -27,5 +27,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
+.widget{
+  &:hover{
+    cursor: pointer;
+  }
+}
 </style>

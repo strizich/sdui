@@ -4,27 +4,50 @@
   <sd-container>
     <sd-row>
       <sd-col :xl="2" :lg="3" :md="4" :sm="6" :xs="6">
-        <widget title="Button">
-          img here
-        </widget>
+        <router-link
+          to="/components/buttons"
+          v-slot="{navigate}"
+          custom
+        >
+          <widget title="Button" @click="navigate">
+            img here
+          </widget>
+        </router-link>
       </sd-col>
       <sd-col :xl="2" :lg="3" :md="4" :sm="6" :xs="6">
-        <widget title="Button">
-          img here
-        </widget>
-      </sd-col>
-            <sd-col :xl="2" :lg="3" :md="4" :sm="6" :xs="6">
-        <widget title="Button">
-          img here
-        </widget>
+        <router-link
+          to="/components/form-controls"
+          v-slot="{navigate}"
+          custom
+        >
+          <widget title="Form Control" @click="navigate">
+            img here
+          </widget>
+        </router-link>
       </sd-col>
       <sd-col :xl="2" :lg="3" :md="4" :sm="6" :xs="6">
-        <widget title="Button">
-          img here
-        </widget>
+        <router-link
+          to="/components/slider"
+          v-slot="{navigate}"
+          custom
+        >
+          <widget title="Slider"  @click="navigate">
+            img here
+          </widget>
+        </router-link>
+      </sd-col>
+      <sd-col :xl="2" :lg="3" :md="4" :sm="6" :xs="6">
+        <router-link
+          to="/components/icons"
+          v-slot="{navigate}"
+          custom
+        >
+          <widget title="Icons" @click="navigate">
+            img here
+          </widget>
+        </router-link>
       </sd-col>
     </sd-row>
-
   </sd-container>
 </div>
 </template>
@@ -33,6 +56,7 @@
 import { defineComponent, ref } from 'vue'
 import { SdMast, SdContainer, SdRow, SdCol } from '@/library'
 import Widget from '@/components/Widget'
+
 export default defineComponent({
   name: 'Home',
   components: { SdMast, SdContainer, SdRow, SdCol, Widget },
@@ -47,6 +71,7 @@ export default defineComponent({
 
 <style lang="scss">
   .home{
+    padding-bottom: 64px;
     &__nav{
       position: sticky;
       top: 50px;
@@ -83,6 +108,9 @@ export default defineComponent({
   }
   section{
     margin-bottom: 64px;
+  }
+  .sd--card{
+    margin-bottom: 16px;
   }
 
 </style>
