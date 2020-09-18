@@ -10,49 +10,41 @@ const routes = [
   {
     path: '/components/buttons',
     name: 'Buttons',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
     component: () => import(/* webpackChunkName: "button" */ '../views/DemoButton.vue')
   },
   {
     path: '/components/icons',
     name: 'Icons',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
     component: () => import(/* webpackChunkName: "icons" */ '../views/DemoIcons.vue')
   },
   {
     path: '/components/form-controls',
     name: 'FormControls',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
     component: () => import(/* webpackChunkName: "form" */ '../views/DemoForm.vue')
   },
   {
     path: '/components/dialog',
     name: 'Dialog',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
     component: () => import(/* webpackChunkName: "dialog" */ '../views/DemoDialog.vue')
   },
   {
     path: '/components/slider',
     name: 'Slider',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
     component: () => import(/* webpackChunkName: "slider" */ '../views/DemoSlider.vue')
+  },
+  {
+    path: '/components/cards',
+    name: 'Cards',
+    component: () => import(/* webpackChunkName: "cards" */ '../views/DemoCards.vue')
+  },
+  {
+    path: '/components/tooltips',
+    name: 'Tooltips',
+    component: () => import(/* webpackChunkName: "tooltip" */ '../views/DemoTooltips.vue')
   },
   {
     path: '/about',
     name: 'About',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
     component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
   }
 ]

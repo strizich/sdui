@@ -1,112 +1,18 @@
 <template>
 <div class="home">
-  <div class="home__nav">
-  <sd-container full>
-      <sd-router-link
-        v-for="(link, index) in linkList"
-        :key="`${link.name}-${index}`"
-        :to="link.id"
-        theme="secondary"
-        flat
-        hash
-      >
-        {{link.name}}
-      </sd-router-link>
-    </sd-container>
-  </div>
-  <div class="container">
-    <div class="container__content">
-      <form-control-demo id="controls" />
-      <elevation-demo id="elevation" />
-      <card-demo id="cards" />
-      <radio-demo id="radios" />
-      <checkbox-demo id="checkboxes" />
-      <tooltip-demo id="tooltips" />
-    </div>
-  </div>
+  Stuff will go in here.
 </div>
 </template>
 
 <script>
-import { defineComponent, reactive, toRefs } from 'vue'
-import FormControlDemo from '@/components/FormControlDemo'
-import RadioDemo from '@/components/RadioDemo'
-import CardDemo from '@/components/CardDemo'
-import ElevationDemo from '@/components/ElevationDemo'
-import CheckboxDemo from '@/components/CheckboxDemo'
-import TooltipDemo from '@/components/TooltipDemo'
-import { SdContainer, SdRouterLink } from '@/library'
-
-const COMPONENT_SECTIONS = [
-  {
-    name: 'Controls',
-    id: '#controls'
-  }, {
-    name: 'Elevation',
-    id: '#elevation'
-  }, {
-    name: 'Cards',
-    id: '#cards'
-  }, {
-    name: 'Radios',
-    id: '#radios'
-  }, {
-    name: 'Checkboxes',
-    id: '#checkboxes'
-  }, {
-    name: 'Tooltips',
-    id: '#tooltips'
-  }
-]
+import { defineComponent } from 'vue'
 
 export default defineComponent({
   name: 'Home',
-  components: {
-    CardDemo,
-    RadioDemo,
-    CheckboxDemo,
-    TooltipDemo,
-    ElevationDemo,
-    FormControlDemo,
-    SdContainer,
-    SdRouterLink
-  },
-  setup (props, context) {
-    const list = ['apple', 'orange', 'pear']
-    const linkList = COMPONENT_SECTIONS
-    const state = reactive({
-      modal: false,
-      modalTwo: false,
-      someText: 'hey you',
-      asideSize: 'sm',
-      radioValue: '',
-      popoverState: false
-    })
 
-    const buttonClick = () => {
-      state.modal = !state.modal
-    }
-
-    const handleClose = (event) => {
-      state.modal = event
-    }
-
-    const handleModalTwo = () => {
-      state.modalTwo = !state.modalTwo
-    }
-
-    const handleModalTwoClose = (event) => {
-      state.modalTwo = event
-    }
-
+  setup (props) {
     return {
-      ...toRefs(state),
-      handleClose,
-      buttonClick,
-      list,
-      handleModalTwo,
-      handleModalTwoClose,
-      linkList
+
     }
   }
 })

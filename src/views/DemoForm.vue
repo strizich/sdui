@@ -1,15 +1,19 @@
 <template>
-  <div>
-    <h1>FormControls Here</h1>
+  <div class="demo__forms">
+    <form-control-demo />
   </div>
 </template>
 
 <script>
-export default {
+import FormControlDemo from '@/components/FormControlDemo'
 
+export default {
+  components: { FormControlDemo }
 }
 </script>
 
 <style lang="scss" scoped>
-
+  .demo__forms{
+    padding:32px;
+  }
 </style>

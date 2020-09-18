@@ -11,8 +11,8 @@
         <sd-nav-link to="/components/slider">Slider</sd-nav-link>
         <sd-nav-link to="/components/icons">Icons</sd-nav-link>
         <sd-nav-link to="/components/dialog">Dialog</sd-nav-link>
-        <sd-nav-link to="/">Cards</sd-nav-link>
-        <sd-nav-link to="/">Tooltip</sd-nav-link>
+        <sd-nav-link to="/components/cards">Cards</sd-nav-link>
+        <sd-nav-link to="/components/tooltips">Tooltip</sd-nav-link>
       </sd-nav>
     </div>
     <div class="sidebar__options">
