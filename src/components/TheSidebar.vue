@@ -51,7 +51,6 @@ export default {
   },
   setup (props, { emit }) {
     const sidebar = reactive({
-      type: 'fixed',
       float: props.floating
     })
 
@@ -84,6 +83,7 @@ export default {
   height: 100%;
   max-height: 100vh;
   overflow-y: auto ;
+  overflow-x: hidden;
   &__list{
     margin:32px 0 0 0;
     padding:0;

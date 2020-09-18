@@ -23,19 +23,20 @@
 </template>
 
 <script>
+import { reactive, toRefs, watchEffect } from 'vue'
 import TheHeader from '@/components/TheHeader'
 import TheSidebar from '@/components/TheSidebar'
-import { SdLayout } from '@/library'
-import { reactive, toRefs, watchEffect } from 'vue'
 import useWindowWidth from '@/library/hooks/useWindowWidth'
+import { SdLayout } from '@/library'
 
 const floatState = window.localStorage.getItem('SDUI:sidebarFloating') === 'true'
+const navState = window.localStorage.getItem('SDUI:navState') === 'true'
 
 export default {
   components: { SdLayout, TheHeader, TheSidebar },
   setup () {
     const state = reactive({
-      menuOpen: false,
+      menuOpen: navState,
       floating: floatState
     })
 
@@ -49,7 +50,9 @@ export default {
 
     const menuEvent = (e) => {
       state.menuOpen = e
+      window.localStorage.setItem('SDUI:navState', e)
     }
+
     const handleSidebarType = (e) => {
       state.floating = e
       console.log(e)
