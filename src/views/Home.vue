@@ -1,18 +1,45 @@
 <template>
 <div class="home">
-  Stuff will go in here.
+  <sd-mast title="Yay for components" subtitle="UI library built with Vue3" />
+  <sd-container>
+    <sd-row>
+      <sd-col :xl="2" :lg="3" :md="4" :sm="6" :xs="6">
+        <widget title="Button">
+          img here
+        </widget>
+      </sd-col>
+      <sd-col :xl="2" :lg="3" :md="4" :sm="6" :xs="6">
+        <widget title="Button">
+          img here
+        </widget>
+      </sd-col>
+            <sd-col :xl="2" :lg="3" :md="4" :sm="6" :xs="6">
+        <widget title="Button">
+          img here
+        </widget>
+      </sd-col>
+      <sd-col :xl="2" :lg="3" :md="4" :sm="6" :xs="6">
+        <widget title="Button">
+          img here
+        </widget>
+      </sd-col>
+    </sd-row>
+
+  </sd-container>
 </div>
 </template>
 
 <script>
-import { defineComponent } from 'vue'
-
+import { defineComponent, ref } from 'vue'
+import { SdMast, SdContainer, SdRow, SdCol } from '@/library'
+import Widget from '@/components/Widget'
 export default defineComponent({
   name: 'Home',
-
+  components: { SdMast, SdContainer, SdRow, SdCol, Widget },
   setup (props) {
+    const switchVal = ref(false)
     return {
-
+      switchVal
     }
   }
 })

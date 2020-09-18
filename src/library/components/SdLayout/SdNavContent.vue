@@ -1,5 +1,5 @@
 <template>
-  <a :href="href" :class="[linkClasses]" >
+  <a :href="href" :class="[linkClasses, variantClass]" >
     <sd-icon :name="icon" v-if="icon"/>
     <span class="sd--nav__content">
       <slot />
@@ -16,13 +16,14 @@ export default defineComponent({
     href: String,
     active: Boolean,
     exactActive: Boolean,
-    variant: String,
+    secondary: Boolean,
     icon: String
   },
   setup (props) {
     const linkClasses = computed(() => {
       return {
         'sd--nav__item': true,
+        'is--secondary': props.secondary,
         'is--active': props.active,
         'is--exact-active': props.exactActive
       }
@@ -35,48 +36,45 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
-.sd--nav{
-    // &__content{
-    // }
-    &__item{
+  .sd--nav{
+    &__item {
     color: var(--text);
     font-weight: 400;
     letter-spacing: 1.5;
-    transition: background-color .23s ease-in-out;
+    transition: box-shadow .23s ease-in-out, background-color .23s ease-in-out;
     position: relative;
     font-size: 14px;
-    &:after{
-      transition: all .23s ease-in-out;
-      content: '';
-      position: absolute;
-      top: 0;
-      bottom: 0;
-      left: 100%;
-      right: 0;
-      background-color: var(--background);
-      z-index: -1;
-      opacity: 0;
-    }
-    &:hover{
-      background-color: transparentize(#000, 0.9);
-    }
-    .sd--icon{
-      margin-right: 4px;
-    }
-    &.is--active, &.is--exact-active{
-      color: #fff;
+      .sd--icon{
+        margin-right: 4px;
+      }
       &:after{
-        transition: left .23s ease-in-out, opacity .23s ease-in-out, right .23s ease-in-out;
-        background-image: linear-gradient(90deg, var(--background-highlight) 50%,var(--primary-accent) 100%);
-        opacity: 1;
-        left: 0%;
-        right: 0%
+        transition: all .23s ease-in-out;
+        content: '';
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 100%;
+        right: 0;
+        background-color: var(--background);
+        z-index: -1;
+        opacity: 0;
+      }
+      &:hover{
+        background-color: rgba(0,0,0, .1);
+      }
+      &.is--active, &.is--exact-active {
+        color: var(--text);
+        box-shadow: inset 4px 0 0 var(--primary);
+        background-color: var(--background-accent);
+      }
+      &.is--secondary{
+        font-size: 12px;
+        padding-left: 20px;
+        background-color: var(--background);
+        &:hover{
+          background-color: rgba(0,0,0, .1);
+        }
       }
     }
-    // &.is--exact-active{
-    //   color: #fff;
-    //   background: var(--primary-accent);
-    // }
   }
-}
 </style>

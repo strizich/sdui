@@ -93,12 +93,17 @@ export default defineComponent({
     align-content: flex-start;
     flex-wrap: wrap;
     width: 100%;
-    .sd--checkbox{
+    .sd--checkbox, .sd--switch{
       margin-left:0;
       margin-right: 0;
+      width:100%;
+    }
+    .sd--switch:not(:last-child){
+      border-bottom: 1px solid var(--divider)
     }
     .sd--radio{
       margin-bottom:0;
+      width:100%;
     }
     .sd--button{
       margin: 0 4px;

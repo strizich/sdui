@@ -58,13 +58,13 @@ export default defineComponent({
     const route = useRouter()
 
     const handleCopy = () => {
-      const host = window.location.host
+      // const host = window.location.host
       const currentRoute = route.currentRoute.value.path
       let copiedResult = ''
       if (props.hash) {
-        copiedResult = host + currentRoute + props.hash
+        copiedResult = currentRoute + props.hash
       } else {
-        copiedResult = host + currentRoute
+        copiedResult = currentRoute
       }
       navigator.clipboard.writeText(copiedResult).then(
         () => {

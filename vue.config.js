@@ -15,5 +15,11 @@ module.exports = {
       .loader('vue-svg-loader')
   },
 
-  productionSourceMap: false
+  pwa: {
+    productionSourceMap: false,
+    workboxPluginMode: 'GenerateSW',
+    workboxOptions: {
+      exclude: [/\.map$/, /_redirects/]
+    }
+  }
 }

@@ -26,7 +26,7 @@ export default defineComponent({
 <style lang="scss" scoped>
 .sd--label {
   font-size: 14px;
-  letter-spacing: 1px;
+  letter-spacing: .5px;
   line-height: 1;
   display:flex;
   align-items: center;

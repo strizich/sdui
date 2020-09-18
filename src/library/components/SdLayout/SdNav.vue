@@ -13,7 +13,12 @@ export default {
   props: {
     title: String
   },
-  components: { SdNavHeading }
+  components: { SdNavHeading },
+  setup () {
+    return {
+
+    }
+  }
 }
 </script>
 

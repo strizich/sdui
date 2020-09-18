@@ -27,7 +27,7 @@
 import TheHeader from '@/components/TheHeader'
 import TheSidebar from '@/components/TheSidebar'
 import { SdLayout } from '@/library'
-import { reactive, toRefs, watchEffect } from 'vue'
+import { reactive, toRefs, watchEffect, watch, onMounted } from 'vue'
 import useWindowWidth from '@/library/hooks/useWindowWidth'
 
 export default {
@@ -42,17 +42,29 @@ export default {
     watchEffect(() => {
       if (smallDevice.value) {
         state.floating = smallDevice.value
+        window.localStorage.removeItem('SDUI:sidebarType')
+      }
+    })
+
+    watch(() => state.floating, (newValue) => {
+      if (newValue) {
+        window.localStorage.setItem('SDUI:sidebarType', 'floating')
+      } else {
+        window.localStorage.removeItem('SDUI:sidebarType')
       }
     })
 
     const menuEvent = (e) => {
       state.menuOpen = e
     }
-
     const handleSidebarType = (e) => {
       state.floating = e
     }
-
+    onMounted(() => {
+      const floatState = window.localStorage.getItem('SDUI:sidebarType')
+      state.floating = floatState === 'floating'
+      console.log(floatState === 'floating', state.floating)
+    })
     return { ...toRefs(state), menuEvent, handleSidebarType, smallDevice }
   }
 }

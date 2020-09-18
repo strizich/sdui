@@ -12,6 +12,7 @@ import SdDialogContent from './components/SdDialog/SdDialogContent'
 import SdDialogFooter from './components/SdDialog/SdDialogFooter'
 import SdOverlay from './components/SdDialog/SdOverlay'
 import SdCheckbox from './components/SdCheckbox/SdCheckbox'
+import SdSwitch from './components/SdCheckbox/SdSwitch'
 import SdRadio from './components/SdRadio/SdRadio'
 import SdFieldset from './components/SdField/SdFieldset'
 import SdRange from './components/SdField/SdRange'
@@ -29,7 +30,7 @@ import SdNavLink from './components/SdLayout/SdNavLink'
 // import SdSidebar from './components/SdLayout/SdSidebar'
 import SdNav from './components/SdLayout/SdNav'
 import SdNavHeading from './components/SdLayout/SdNavHeading'
-
+import SdMast from './components/SdMast'
 import SdRow from './components/SdGrid/SdRow'
 import SdCol from './components/SdGrid/SdCol'
 import SdContainer from './components/SdGrid/SdContainer'
@@ -78,5 +79,7 @@ export {
   SdRow,
   SdCol,
   SdContainer,
-  SdSlider
+  SdSlider,
+  SdMast,
+  SdSwitch
 }
