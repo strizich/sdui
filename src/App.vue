@@ -49,8 +49,8 @@ export default {
     })
 
     const menuEvent = (e) => {
-      state.menuOpen = e
       window.localStorage.setItem('SDUI:navState', e)
+      state.menuOpen = e
     }
 
     const handleSidebarType = (e) => {

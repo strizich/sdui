@@ -152,7 +152,6 @@ export default {
   .sidebar-enter-to{
     opacity: 1;
     left: 10px;
-    background-color:red;
   }
   .fade-enter-active, .fade-leave-active{
     transition: opacity .2s ease-in-out;

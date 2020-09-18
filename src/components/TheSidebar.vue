@@ -8,7 +8,7 @@
       <sd-nav title="Components">
         <sd-nav-link to="/components/buttons">Button</sd-nav-link>
         <sd-nav-link to="/components/form-controls">Inputs</sd-nav-link>
-        <sd-nav-link to="/components/form-controls#input" variant="sub">Input</sd-nav-link>
+        <sd-nav-link to="/components/form-controls#input" secondary>Input</sd-nav-link>
         <sd-nav-link to="/components/form-controls#checkbox" secondary>Checkbox</sd-nav-link>
         <sd-nav-link to="/components/form-controls#switch" secondary>Switch</sd-nav-link>
         <sd-nav-link to="/components/slider">Slider</sd-nav-link>
