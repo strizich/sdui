@@ -109,8 +109,5 @@ export default defineComponent({
   section{
     margin-bottom: 64px;
   }
-  .sd--card{
-    margin-bottom: 16px;
-  }
 
 </style>

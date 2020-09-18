@@ -1,17 +1,17 @@
 <template>
   <section>
-      <sd-container full>
+      <sd-container>
         <section-header
           title="Cards"
           sub-title="Not at all like trading cards."
           hash="#cards"
         />
         <sd-row>
-          <sd-col :sm="12" :md="6">
+          <sd-col :sm="6" :md="4">
             <sd-card>
               <sd-card-header>Card Media</sd-card-header>
               <sd-card-media ratio="16x9">
-                <img src="http://place-puppy.com/400x400" alt="place-puppy.com"/>
+                <img src="/img/Dispatching.png" alt="place-puppy.com"/>
               </sd-card-media>
               <sd-card-footer align="center">
                 <sd-button flat theme="default">Button</sd-button>
@@ -19,14 +19,36 @@
               </sd-card-footer>
             </sd-card>
           </sd-col>
-          <sd-col :sm="12" :md="6">
+          <sd-col :sm="6" :md="4">
             <sd-card>
               <sd-card-header>Generic Card</sd-card-header>
-              <sd-card-body>Generic Body Content <sd-mouse/></sd-card-body>
+              <sd-card-media ratio="16x9">
+                <img src="/img/Reservations.png" alt="place-puppy.com"/>
+              </sd-card-media>
               <sd-card-footer align="flex-end">
                 <sd-button flat theme="default">Button</sd-button>
                 <sd-button flat>Button</sd-button>
               </sd-card-footer>
+            </sd-card>
+          </sd-col>
+          <sd-col :sm="6" :md="4">
+            <sd-card>
+              <sd-card-header>Generic Card</sd-card-header>
+              <sd-card-media ratio="16x9">
+                <img src="/img/StyleGuide.png" alt="place-puppy.com"/>
+              </sd-card-media>
+              <sd-card-footer align="flex-end">
+                <sd-button flat theme="default">Button</sd-button>
+                <sd-button flat>Button</sd-button>
+              </sd-card-footer>
+            </sd-card>
+          </sd-col>
+          <sd-col :sm="6" :md="8">
+            <sd-card>
+              <sd-card-header>Generic Card</sd-card-header>
+              <sd-card-body>
+                Content here
+              </sd-card-body>
             </sd-card>
           </sd-col>
         </sd-row>
@@ -39,10 +61,9 @@ import {
   SdButton,
   SdCard,
   SdCardHeader,
-  SdCardBody,
   SdCardFooter,
+  SdCardBody,
   SdCardMedia,
-  SdMouse,
   SdContainer,
   SdRow,
   SdCol
@@ -52,7 +73,6 @@ import SectionHeader from '@/components/SectionHeader'
 export default {
   name: 'CardTest',
   components: {
-    SdMouse,
     SdButton,
     SdCard,
     SdCardHeader,
@@ -70,7 +90,6 @@ export default {
 <style lang="scss" scoped>
   .sd--card{
     align-self: stretch;
-    height: 100%;
     @include breakpoint-down('sm') {
       margin-bottom: 30px;
       height: inherit;

@@ -20,12 +20,13 @@ export default {
 .sd--card{
   &__header{
     display: flex;
-    padding: 16px;
+    padding: 16px 16px 8px;
     justify-content: space-between;
     align-items: center;
+    font-weight: 400;
     position:relative;
+    color: var(--text-accent);
     border-radius: 3px 3px 0 0;
-    border-bottom: 1px solid var(--divider);
     // &:after{
     //   content: '';
     //   position: absolute;

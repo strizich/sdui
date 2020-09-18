@@ -29,6 +29,8 @@ export default {
 </script>
 
 <style lang="scss">
+@import '../SdElevation/mixins';
+
 .sd--card{
   background-color: v(--background-highlight);
   border-radius: 3px;
@@ -36,8 +38,11 @@ export default {
   flex-direction: column;
   position: relative;
   z-index: 1;
+  transition: box-shadow .23s ease-in-out;
+  margin: 16px 0;
   &:hover{
     z-index: 10;
+    @include sd--elevation(24);
   }
   &--inset{
     padding: 0 16px;
