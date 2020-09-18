@@ -19,7 +19,7 @@ module.exports = {
     productionSourceMap: false,
     workboxPluginMode: 'GenerateSW',
     workboxOptions: {
-      exclude: [/\.map$/, /_redirects/]
+      exclude: [/_redirects/]
     }
   }
 }
