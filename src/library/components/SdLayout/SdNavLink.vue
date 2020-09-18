@@ -10,6 +10,7 @@
       :active="isActive"
       :exact-active="isExactActive"
       @click="navigate"
+      :secondary="secondary"
     >
       <slot />
     </sd-nav-content>
@@ -23,7 +24,8 @@ import SdNavContent from './SdNavContent'
 export default defineComponent({
   props: {
     icon: String,
-    to: String
+    to: String,
+    secondary: Boolean
   },
   components: { SdNavContent }
 })

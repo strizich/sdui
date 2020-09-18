@@ -23,7 +23,6 @@
       <template v-if="!smallDevice">
         <hr class="sd--divider" />
         <sd-fieldset stack >
-          {{float}} {{floating}}
           <sd-checkbox v-model="float">Floating Sidebar</sd-checkbox>
         </sd-fieldset>
       </template>
