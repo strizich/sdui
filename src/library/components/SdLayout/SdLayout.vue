@@ -97,7 +97,6 @@ export default {
       display:flex;
       flex-grow: 2;
       height:100%;
-      margin-top: 50px;
       &--open {
         .sd--layout__content {
           transition: margin-left .2s ease-in-out;
@@ -133,7 +132,7 @@ export default {
       }
     }
     &__header {
-      position:fixed;
+      position:sticky;
       width:100%;
       top:0;
       left:0;
