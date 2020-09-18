@@ -11,6 +11,7 @@
         <sd-nav-link to="/components/form-controls#input" secondary>Input</sd-nav-link>
         <sd-nav-link to="/components/form-controls#checkbox" secondary>Checkbox</sd-nav-link>
         <sd-nav-link to="/components/form-controls#switch" secondary>Switch</sd-nav-link>
+        <sd-nav-link to="/components/form-controls#radio" secondary>Radio</sd-nav-link>
         <sd-nav-link to="/components/slider">Slider</sd-nav-link>
         <sd-nav-link to="/components/icons">Icons</sd-nav-link>
         <sd-nav-link to="/components/dialog">Dialog</sd-nav-link>

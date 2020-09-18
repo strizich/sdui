@@ -99,10 +99,10 @@
 
 <script>
 import { reactive, toRefs } from 'vue'
-import { SdContainer, SdRow, SdCol, SdFieldset, SdRadio, SdButton, SdCheckbox } from '@/library'
+import { SdIcon, SdContainer, SdRow, SdCol, SdFieldset, SdRadio, SdButton, SdCheckbox } from '@/library'
 import SectionHeader from '@/components/SectionHeader'
 export default {
-  components: { SectionHeader, SdContainer, SdRow, SdCol, SdFieldset, SdRadio, SdButton, SdCheckbox },
+  components: { SdIcon, SectionHeader, SdContainer, SdRow, SdCol, SdFieldset, SdRadio, SdButton, SdCheckbox },
   setup () {
     const state = reactive({
       selectedSize: 'md',
