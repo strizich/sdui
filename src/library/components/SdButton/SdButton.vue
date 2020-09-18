@@ -120,6 +120,7 @@ export default defineComponent({
 
 <style lang="scss">
 @import '../SdElevation/mixins';
+@import '../../scss/colors';
 .sd--button {
   touch-action: manipulation;
   -webkit-user-select: none;

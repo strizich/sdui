@@ -23,7 +23,7 @@ export default defineComponent({
 })
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 .sd--label {
   font-size: 14px;
   letter-spacing: .5px;

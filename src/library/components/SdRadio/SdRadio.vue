@@ -73,7 +73,7 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 %radio {
   width: 0;
   height:0;

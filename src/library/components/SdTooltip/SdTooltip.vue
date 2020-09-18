@@ -183,8 +183,9 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 @import '../SdElevation/mixins';
+@import '../../scss/colors';
 
 .sd--tooltip{
   // position:fixed;

@@ -28,7 +28,7 @@ export default defineComponent({
 })
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss" >
 .sd--card__footer{
   padding: spacing(offset);
   display:flex;

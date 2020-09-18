@@ -11,7 +11,7 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 .sd--card {
   &__body{
     padding: spacing(inset);
