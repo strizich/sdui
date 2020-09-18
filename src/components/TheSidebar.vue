@@ -23,6 +23,7 @@
       <template v-if="!smallDevice">
         <hr class="sd--divider" />
         <sd-fieldset stack >
+          {{float}} {{floating}}
           <sd-checkbox v-model="float">Floating Sidebar</sd-checkbox>
         </sd-fieldset>
       </template>
@@ -32,7 +33,7 @@
 
 <script>
 import ColorScheme from '@/components/ColorScheme'
-import { reactive, toRefs, watchEffect, onMounted, watch } from 'vue'
+import { reactive, toRefs, watch, onUnmounted } from 'vue'
 import { SdFieldset, SdCheckbox, SdNav, SdNavLink } from '@/library'
 export default {
   name: 'TheSidebar',
@@ -51,7 +52,7 @@ export default {
   setup (props, { emit }) {
     const sidebar = reactive({
       type: 'fixed',
-      float: null
+      float: props.floating
     })
 
     watch(() => props.smallDevice, (newValue) => {
@@ -60,12 +61,13 @@ export default {
       }
     })
 
-    watchEffect(() => {
-      emit('update:floating', sidebar.float)
+    watch(() => sidebar.float, (newValue) => {
+      window.localStorage.setItem('SDUI:sidebarFloating', newValue)
+      emit('update:floating', newValue)
     })
 
-    onMounted(() => {
-      sidebar.float = props.floating
+    onUnmounted(() => {
+      window.localStorage.setItem('SDUI:sidebarFloating', sidebar.float)
     })
     return {
       ...toRefs(sidebar)

@@ -1,5 +1,5 @@
 <template>
-  <a :href="href" :class="[linkClasses, variantClass]" >
+  <a :href="href" :class="[linkClasses]" >
     <sd-icon :name="icon" v-if="icon"/>
     <span class="sd--nav__content">
       <slot />

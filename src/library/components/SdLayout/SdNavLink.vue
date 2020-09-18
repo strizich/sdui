@@ -22,7 +22,8 @@ import SdNavContent from './SdNavContent'
 
 export default defineComponent({
   props: {
-    icon: String
+    icon: String,
+    to: String
   },
   components: { SdNavContent }
 })

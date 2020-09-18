@@ -12,9 +12,8 @@
     </template>
     <template v-slot:sidebar>
       <the-sidebar
-        :floating="floating"
+        v-model:floating="floating"
         :smallDevice="smallDevice"
-        @update:floating="(e) => handleSidebarType(e)"
       />
     </template>
     <template v-slot:content>
@@ -27,30 +26,24 @@
 import TheHeader from '@/components/TheHeader'
 import TheSidebar from '@/components/TheSidebar'
 import { SdLayout } from '@/library'
-import { reactive, toRefs, watchEffect, watch, onMounted } from 'vue'
+import { reactive, toRefs, watchEffect } from 'vue'
 import useWindowWidth from '@/library/hooks/useWindowWidth'
+
+const floatState = window.localStorage.getItem('SDUI:sidebarFloating') === 'true'
 
 export default {
   components: { SdLayout, TheHeader, TheSidebar },
   setup () {
     const state = reactive({
       menuOpen: false,
-      floating: false
+      floating: floatState
     })
+
     const { smallDevice } = useWindowWidth()
 
     watchEffect(() => {
       if (smallDevice.value) {
         state.floating = smallDevice.value
-        window.localStorage.removeItem('SDUI:sidebarType')
-      }
-    })
-
-    watch(() => state.floating, (newValue) => {
-      if (newValue) {
-        window.localStorage.setItem('SDUI:sidebarType', 'floating')
-      } else {
-        window.localStorage.removeItem('SDUI:sidebarType')
       }
     })
 
@@ -59,12 +52,9 @@ export default {
     }
     const handleSidebarType = (e) => {
       state.floating = e
+      console.log(e)
     }
-    onMounted(() => {
-      const floatState = window.localStorage.getItem('SDUI:sidebarType')
-      state.floating = floatState === 'floating'
-      console.log(floatState === 'floating', state.floating)
-    })
+
     return { ...toRefs(state), menuEvent, handleSidebarType, smallDevice }
   }
 }
