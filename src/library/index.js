@@ -35,6 +35,7 @@ import SdRow from './components/SdGrid/SdRow'
 import SdCol from './components/SdGrid/SdCol'
 import SdContainer from './components/SdGrid/SdContainer'
 import SdSlider from './components/SdSlider/SdSlider'
+import SdProgress from './components/SdProgress/SdProgress'
 
 export {
   // Button
@@ -81,5 +82,6 @@ export {
   SdContainer,
   SdSlider,
   SdMast,
-  SdSwitch
+  SdSwitch,
+  SdProgress
 }

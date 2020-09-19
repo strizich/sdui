@@ -43,6 +43,11 @@ const routes = [
     component: () => import(/* webpackChunkName: "tooltip" */ '../views/DemoTooltips.vue')
   },
   {
+    path: '/components/progress',
+    name: 'progress',
+    component: () => import(/* webpackChunkName: "progress" */ '../views/DemoProgress.vue')
+  },
+  {
     path: '/about',
     name: 'About',
     component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
