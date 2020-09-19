@@ -70,7 +70,7 @@ export default {
         theme: 'success',
         total: null,
         current: null,
-        progress: 0.4,
+        progress: 0.5,
         animated: false
       }, {
         label: 'Warning Theme',
