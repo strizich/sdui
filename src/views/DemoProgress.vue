@@ -1,6 +1,6 @@
 <template>
   <div class="demo">
-      <section-header title="Progress" sub-title="Some clever tagline" placement="bottom"/>
+      <section-header title="Progress Bars" sub-title="Some clever tagline" placement="bottom"/>
       <div class="demo__body">
         <template
           v-for="bar in bars"
