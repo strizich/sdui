@@ -17,11 +17,7 @@
 </template>
 
 <script>
-import {
-  reactive,
-  computed,
-  toRefs
-} from 'vue'
+import { computed } from 'vue'
 import { SdLabel } from '@/library'
 import '@/library/components/SdElevation'
 export default {
@@ -37,6 +33,10 @@ export default {
       type: String,
       default: 'primary'
     },
+    decimalPlaces: {
+      type: Number,
+      default: 2
+    },
     progress: {
       type: Number,
       default: 0
@@ -44,18 +44,15 @@ export default {
     animated: Boolean
   },
   setup (props) {
-    const state = reactive({
-
-    })
     const roundNumber = (number, decimalPlaces) =>
       Number(Math.round(number + 'e' + decimalPlaces) + 'e-' + decimalPlaces)
 
     const progressDisplay = computed(() => {
       if (props.progress) {
-        return props.progress * 100 + '%'
+        return roundNumber(props.progress * 100, props.decimalPlaces) + '%'
       }
       if (props.current && props.total) {
-        return roundNumber(props.current / props.total, 3) * 100 + '%'
+        return roundNumber(props.current / props.total * 100, props.decimalPlaces) + '%'
       }
       if (props.current && !props.total) {
         return 'Count is required with value'
@@ -73,14 +70,15 @@ export default {
         'is--animated': props.animated
       }
     })
+
     const computedStyles = computed(() => {
       return {
         width: progressDisplay.value,
         transition: props.animated ? 'width .23s ease-in-out' : 'unset'
       }
     })
+
     return {
-      ...toRefs(state),
       computedStyles,
       progressDisplay,
       computedClasses

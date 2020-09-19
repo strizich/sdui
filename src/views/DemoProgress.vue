@@ -14,8 +14,15 @@
               :progress="bar.progress"
               :total="bar.total"
               :current="bar.current"
+              :animated="bar.animated"
             />
-            <code>{{bar}}</code>
+            <code>title: {{bar.label}}<br/></code>
+            <code>theme: {{bar.theme}}<br/></code>
+            <code v-if="bar.hint">hint: {{bar.hint}}<br/></code>
+            <code v-if="bar.progress">progress: {{bar.progress}}<br/></code>
+            <code v-if="bar.total">total: {{bar.total}}<br/></code>
+            <code v-if="bar.current">current: {{bar.current}}<br/></code>
+            <code>animated: {{bar.animated}}<br/></code>
           </div>
         </template>
       </div>
@@ -34,14 +41,14 @@ export default {
         theme: 'primary',
         hint: 'Aye a hint.',
         total: 100,
-        current: 50,
+        current: 90,
         progress: null,
         animated: true
       }, {
         label: 'Secondary Theme',
         theme: 'secondary',
-        total: 2345,
-        current: 1233,
+        total: 99,
+        current: 80,
         progress: null,
         animated: false
       }, {
@@ -49,28 +56,28 @@ export default {
         theme: 'default',
         total: null,
         current: null,
-        progress: 0.9,
+        progress: 0.7,
         animated: true
       }, {
         label: 'Danger Theme',
         theme: 'danger',
         total: null,
         current: null,
-        progress: 0.855,
+        progress: 0.605,
         animated: true
       }, {
         label: 'Success Theme',
         theme: 'success',
         total: null,
         current: null,
-        progress: 0.6,
+        progress: 0.4,
         animated: false
       }, {
         label: 'Warning Theme',
         theme: 'warning',
         total: null,
         current: null,
-        progress: 0.6,
+        progress: 0.33333,
         animated: false
       }]
     })
