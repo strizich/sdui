@@ -30,58 +30,56 @@
 </template>
 
 <script>
-import { reactive, toRefs } from 'vue'
 import { SdProgress } from '@/library'
 import SectionHeader from '@/components/SectionHeader'
 export default {
   setup () {
-    const state = reactive({
-      bars: [{
-        label: 'Primary Theme',
-        theme: 'primary',
-        hint: 'Aye a hint.',
-        total: 100,
-        current: 90,
-        progress: null,
-        animated: true
-      }, {
-        label: 'Secondary Theme',
-        theme: 'secondary',
-        total: 99,
-        current: 80,
-        progress: null,
-        animated: false
-      }, {
-        label: 'Success Theme',
-        theme: 'default',
-        total: null,
-        current: null,
-        progress: 0.7,
-        animated: true
-      }, {
-        label: 'Danger Theme',
-        theme: 'danger',
-        total: null,
-        current: null,
-        progress: 0.605,
-        animated: true
-      }, {
-        label: 'Success Theme',
-        theme: 'success',
-        total: null,
-        current: null,
-        progress: 0.5,
-        animated: false
-      }, {
-        label: 'Warning Theme',
-        theme: 'warning',
-        total: null,
-        current: null,
-        progress: 0.33333,
-        animated: false
-      }]
-    })
-    return { ...toRefs(state) }
+    const bars = [{
+      label: 'Primary Theme',
+      theme: 'primary',
+      hint: 'Aye a hint.',
+      total: 100,
+      current: 90,
+      progress: null,
+      animated: true
+    }, {
+      label: 'Secondary Theme',
+      theme: 'secondary',
+      total: 99,
+      current: 80,
+      progress: null,
+      animated: false
+    }, {
+      label: 'Default Theme',
+      theme: 'default',
+      total: null,
+      current: null,
+      progress: 0.7,
+      animated: true
+    }, {
+      label: 'Danger Theme',
+      theme: 'danger',
+      total: null,
+      current: null,
+      progress: 0.605,
+      animated: true
+    }, {
+      label: 'Success Theme',
+      theme: 'success',
+      total: null,
+      current: null,
+      progress: 0.5,
+      animated: false
+    }, {
+      label: 'Warning Theme',
+      theme: 'warning',
+      total: null,
+      current: null,
+      progress: 0.43333,
+      animated: false
+    }]
+
+    return { bars }
   },
   components: {
     SdProgress,
