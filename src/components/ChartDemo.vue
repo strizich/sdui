@@ -4,7 +4,7 @@
         <section-header
           title="Charts"
           sub-title="Not at all like trading cards."
-          hash="#cards"
+          placement="bottom"
         />
         <sd-row>
           <sd-col :sm="6" :md="6" v-for="(data, index) in data.chartData" :key="index">
