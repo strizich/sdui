@@ -3,7 +3,7 @@
       <sd-container>
         <section-header
           title="Charts"
-          sub-title="Not at all like trading cards."
+          sub-title="Lines go up. Lines go down."
           placement="bottom"
         />
         <sd-row>
