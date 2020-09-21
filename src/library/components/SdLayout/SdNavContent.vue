@@ -36,6 +36,7 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
+@import '../../scss/mixins';
   .sd--nav{
     &__item {
     color: var(--text);
@@ -44,6 +45,9 @@ export default defineComponent({
     transition: box-shadow .23s ease-in-out, background-color .23s ease-in-out;
     position: relative;
     font-size: 14px;
+    @include breakpoint-down('sm') {
+      font-size: 16px;
+    }
       .sd--icon{
         margin-right: 4px;
       }
@@ -70,9 +74,12 @@ export default defineComponent({
       &.is--secondary{
         font-size: 12px;
         padding-left: 20px;
-          &.is--active, &.is--exact-active {
-            background-color: var(--background-accent);
-          }
+        @include breakpoint-down('sm') {
+          font-size: 14px;
+        }
+        &.is--active, &.is--exact-active {
+          background-color: var(--background-accent);
+        }
         &:hover{
           background-color: rgba(0,0,0, .1);
         }
