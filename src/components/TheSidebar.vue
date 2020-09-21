@@ -7,16 +7,16 @@
       </sd-nav>
       <sd-nav title="Components">
         <sd-nav-link to="/components/buttons">Button</sd-nav-link>
+        <sd-nav-link to="/components/cards">Cards</sd-nav-link>
+        <sd-nav-link to="/components/charts">Charts</sd-nav-link>
+        <sd-nav-link to="/components/dialog">Dialog</sd-nav-link>
         <sd-nav-link to="/components/form-controls">Form Controls</sd-nav-link>
         <sd-nav-link to="/components/form-controls#input" secondary>Input</sd-nav-link>
         <sd-nav-link to="/components/form-controls#checkbox" secondary>Checkbox</sd-nav-link>
         <sd-nav-link to="/components/form-controls#switch" secondary>Switch</sd-nav-link>
         <sd-nav-link to="/components/form-controls#radio" secondary>Radio</sd-nav-link>
-        <sd-nav-link to="/components/slider">Slider</sd-nav-link>
         <sd-nav-link to="/components/icons">Icons</sd-nav-link>
-        <sd-nav-link to="/components/dialog">Dialog</sd-nav-link>
-        <sd-nav-link to="/components/cards">Cards</sd-nav-link>
-        <sd-nav-link to="/components/charts">Charts</sd-nav-link>
+        <sd-nav-link to="/components/slider">Slider</sd-nav-link>
         <sd-nav-link to="/components/tooltips">Tooltip</sd-nav-link>
         <sd-nav-link to="/components/progress">Progress</sd-nav-link>
       </sd-nav>
