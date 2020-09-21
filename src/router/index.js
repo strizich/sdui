@@ -28,6 +28,11 @@ const routes = [
     component: () => import(/* webpackChunkName: "dialog" */ '../views/DemoDialog.vue')
   },
   {
+    path: '/components/dropdown',
+    name: 'Dropdown',
+    component: () => import(/* webpackChunkName: "dropdown" */ '../views/DemoDropdown.vue')
+  },
+  {
     path: '/components/slider',
     name: 'Slider',
     component: () => import(/* webpackChunkName: "slider" */ '../views/DemoSlider.vue')

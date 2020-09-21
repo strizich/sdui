@@ -53,18 +53,12 @@
 </template>
 
 <script>
-import { defineComponent, ref } from 'vue'
+import { defineComponent } from 'vue'
 import { SdMast, SdContainer, SdRow, SdCol } from '@/library'
 import Widget from '@/components/Widget'
 export default defineComponent({
   name: 'Home',
-  components: { SdMast, SdContainer, SdRow, SdCol, Widget },
-  setup (props) {
-    const switchVal = ref(false)
-    return {
-      switchVal
-    }
-  }
+  components: { SdMast, SdContainer, SdRow, SdCol, Widget }
 })
 </script>
 

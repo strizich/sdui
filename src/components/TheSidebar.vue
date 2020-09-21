@@ -10,6 +10,7 @@
         <sd-nav-link to="/components/cards">Cards</sd-nav-link>
         <sd-nav-link to="/components/charts">Charts</sd-nav-link>
         <sd-nav-link to="/components/dialog">Dialog</sd-nav-link>
+        <sd-nav-link to="/components/dropdown">Dropdown</sd-nav-link>
         <sd-nav-link to="/components/form-controls">Form Controls</sd-nav-link>
         <sd-nav-link to="/components/form-controls#input" secondary>Input</sd-nav-link>
         <sd-nav-link to="/components/form-controls#checkbox" secondary>Checkbox</sd-nav-link>

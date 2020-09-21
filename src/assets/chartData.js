@@ -1,5 +1,6 @@
 export const mockChartData = [
   {
+    title: 'Planet Mass - Line Chart',
     type: 'line',
     data: {
       labels: ['Mercury', 'Venus', 'Earth', 'Mars', 'Jupiter', 'Saturn', 'Uranus', 'Neptune'],
@@ -31,6 +32,7 @@ export const mockChartData = [
     }
   },
   {
+    title: 'Number of Moons - Line Chart',
     type: 'line',
     data: {
       labels: ['Mercury', 'Venus', 'Earth', 'Mars', 'Jupiter', 'Saturn', 'Uranus', 'Neptune'],

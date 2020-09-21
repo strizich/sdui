@@ -244,9 +244,6 @@ export default defineComponent({
       outline:none;
     }
     -webkit-user-select: none;
-    &:first-of-type{
-      margin-left:0;
-    }
     &:hover{
       cursor: pointer;
       &:after{

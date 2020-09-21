@@ -7,9 +7,9 @@
           placement="bottom"
         />
         <sd-row>
-          <sd-col :sm="6" :md="6" v-for="(data, index) in data.chartData" :key="index">
+          <sd-col :sm="12" :md="6" v-for="(data, index) in data.chartData" :key="index">
             <sd-card>
-              <sd-card-header>Generic Card</sd-card-header>
+              <sd-card-header>{{data.title}}</sd-card-header>
               <sd-card-body>
                 <sd-base-chart :chart-data="data"/>
               </sd-card-body>
