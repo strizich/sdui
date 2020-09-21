@@ -38,6 +38,11 @@ const routes = [
     component: () => import(/* webpackChunkName: "cards" */ '../views/DemoCards.vue')
   },
   {
+    path: '/components/charts',
+    name: 'Charts',
+    component: () => import(/* webpackChunkName: "charts" */ '../views/DemoChart.vue')
+  },
+  {
     path: '/components/tooltips',
     name: 'Tooltips',
     component: () => import(/* webpackChunkName: "tooltip" */ '../views/DemoTooltips.vue')

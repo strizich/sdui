@@ -24,7 +24,6 @@ export default {
   components: { SdLabel },
   name: 'SdProgress',
   props: {
-    elevation: [Number, String],
     title: String,
     hint: String,
     total: Number,
@@ -33,13 +32,13 @@ export default {
       type: String,
       default: 'primary'
     },
-    decimalPlaces: {
-      type: Number,
-      default: 2
-    },
     progress: {
       type: Number,
       default: 0
+    },
+    decimalPlaces: {
+      type: Number,
+      default: 2
     },
     animated: Boolean
   },

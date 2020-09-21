@@ -56,7 +56,6 @@
 import { defineComponent, ref } from 'vue'
 import { SdMast, SdContainer, SdRow, SdCol } from '@/library'
 import Widget from '@/components/Widget'
-
 export default defineComponent({
   name: 'Home',
   components: { SdMast, SdContainer, SdRow, SdCol, Widget },

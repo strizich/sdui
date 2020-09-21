@@ -43,14 +43,6 @@
               </sd-card-footer>
             </sd-card>
           </sd-col>
-          <sd-col :sm="6" :md="8">
-            <sd-card>
-              <sd-card-header>Generic Card</sd-card-header>
-              <sd-card-body>
-                Content here
-              </sd-card-body>
-            </sd-card>
-          </sd-col>
         </sd-row>
       </sd-container>
   </section>
@@ -62,7 +54,6 @@ import {
   SdCard,
   SdCardHeader,
   SdCardFooter,
-  SdCardBody,
   SdCardMedia,
   SdContainer,
   SdRow,
@@ -76,13 +67,15 @@ export default {
     SdButton,
     SdCard,
     SdCardHeader,
-    SdCardBody,
     SdCardFooter,
     SdCardMedia,
     SdContainer,
     SdRow,
     SdCol,
     SectionHeader
+  },
+  setup () {
+
   }
 }
 </script>

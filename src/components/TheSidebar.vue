@@ -16,6 +16,7 @@
         <sd-nav-link to="/components/icons">Icons</sd-nav-link>
         <sd-nav-link to="/components/dialog">Dialog</sd-nav-link>
         <sd-nav-link to="/components/cards">Cards</sd-nav-link>
+        <sd-nav-link to="/components/charts">Charts</sd-nav-link>
         <sd-nav-link to="/components/tooltips">Tooltip</sd-nav-link>
         <sd-nav-link to="/components/progress">Progress</sd-nav-link>
       </sd-nav>
