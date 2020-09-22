@@ -167,13 +167,13 @@ export default defineComponent({
 
     const onMouseDown = e => {
       handleStart(e)
-      document.addEventListener('mouseup', onMouseUp)
+      document.addEventListener('mouseup', onMouseUp, { passive: true })
       document.addEventListener('mousemove', onMouseMove, { passive: false })
     }
 
     const onTouchStart = e => {
       handleStart(e.touches[0])
-      document.addEventListener('touchend', onTouchEnd)
+      document.addEventListener('touchend', onTouchEnd, { passive: true })
       document.addEventListener('touchmove', onTouchMove, { passive: false })
     }
 
@@ -202,7 +202,7 @@ export default defineComponent({
         state.maxX = Math.round(state.rootWidth)
         state.pctComplete = minMax(0, state.x / state.rootWidth, 1)
         state.initX = minMax(0, Math.round((props.value - props.min) / (props.max - props.min) * state.rootWidth), state.rootWidth)
-        slider.value.addEventListener('touchstart', onTouchStart)
+        slider.value.addEventListener('touchstart', onTouchStart, { passive: true })
         slider.value.addEventListener('mousedown', onMouseDown)
         window.addEventListener('resize', () => setElementBounds())
       }
