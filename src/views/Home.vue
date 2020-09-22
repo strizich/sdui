@@ -49,26 +49,17 @@
       </sd-col>
     </sd-row>
   </sd-container>
-  <sd-chip v-model="state.chipList"/>
-  {{state.chipList}}
 </div>
 </template>
 
 <script>
-import { defineComponent, reactive } from 'vue'
-import { SdMast, SdContainer, SdRow, SdCol, SdChip } from '@/library'
+import { defineComponent } from 'vue'
+import { SdMast, SdContainer, SdRow, SdCol } from '@/library'
 import Widget from '@/components/Widget'
 export default defineComponent({
   name: 'Home',
-  components: { SdMast, SdContainer, SdRow, SdCol, Widget, SdChip },
-  setup () {
-    const state = reactive({
-      chiplist: []
-    })
-    return {
-      state
-    }
-  }
+  components: { SdMast, SdContainer, SdRow, SdCol, Widget }
+
 })
 </script>
 
