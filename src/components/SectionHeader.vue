@@ -60,21 +60,18 @@ export default defineComponent({
     const handleCopy = () => {
       const host = window.location.host
       const currentRoute = route.currentRoute.value.path
-      let displayedContent = ''
       let copiedResult = ''
       if (props.hash) {
         copiedResult = host + currentRoute + props.hash
-        displayedContent = currentRoute + props.hash
       } else {
         copiedResult = host + currentRoute
-        displayedContent = currentRoute + props.hash
       }
       navigator.clipboard.writeText(copiedResult).then(
         () => {
           tooltip.theme = ''
           tooltip.active = true
-          tooltip.content = displayedContent
-          tooltip.subContent = 'Ready for paste!'
+          tooltip.content = 'Copied!'
+          tooltip.subContent = 'Ready for paste.'
         }, () => {
           tooltip.active = true
           tooltip.theme = 'danger'
