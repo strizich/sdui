@@ -43,14 +43,6 @@
       <hr class="sd--divider"/>
         <code>{{state.chipsArrayThree}}</code>
       <hr class="sd--divider"/>
-
-      <sd-chip
-        label="Chicklets are lowercase"
-        v-model="state.chipsArrayThree"
-        :error="true"
-        lowercase
-        placeholder="placeholder"
-      />
     </div>
   </div>
 </template>
