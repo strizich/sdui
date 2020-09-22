@@ -28,7 +28,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '../../scss/mixins';
+@import '../library/scss/mixins';
 .demo__item{
   width: 50%;
   @include breakpoint-down('sm') {
