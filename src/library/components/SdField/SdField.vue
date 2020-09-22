@@ -5,7 +5,7 @@
       <div :class="[inputClasses]">
         <slot name="addon"/>
         <input
-
+          ref="inputRef"
           :id="id"
           :type="type"
           :name="name"
@@ -23,7 +23,7 @@
 </template>
 
 <script>
-import { defineComponent, reactive, computed, toRefs } from 'vue'
+import { defineComponent, reactive, computed, toRefs, watch, ref } from 'vue'
 import SdUuid from '@/library/core/utilities/SdUuid'
 import SdLabel from './SdLabel'
 import SdError from './SdError'
@@ -41,6 +41,7 @@ export default defineComponent({
     label: String,
     name: String,
     value: [String, Number],
+    setFocus: Boolean,
     placeholder: String,
     disabled: Boolean,
     type: {
@@ -55,6 +56,8 @@ export default defineComponent({
   },
 
   setup (props, { emit }) {
+    const inputRef = ref(null)
+
     const state = reactive({
       touched: false,
       focused: false
@@ -109,6 +112,13 @@ export default defineComponent({
       }
     })
 
+    watch(() => props.setFocus, () => {
+      state.focused = props.setFocus
+      if (props.setFocus) {
+        inputRef.value.focus()
+      }
+    })
+
     return {
       ...toRefs(state),
       rootClasses,
@@ -117,7 +127,8 @@ export default defineComponent({
       handleTouched,
       handleFocused,
       isErrorString,
-      handleValidation
+      handleValidation,
+      inputRef
     }
   },
   components: {

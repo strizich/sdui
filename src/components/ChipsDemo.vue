@@ -1,15 +1,63 @@
 <template>
   <div class="demo">
-    <div class="demo__item">
     <section-header title="Chips" sub-title="Smallish thing" hash="#chips"/>
-    <sd-chip label="chips here" v-model="state.chipsArray" placeholder="placeholder"/>
+    <div class="demo__item">
+      <!-- TODO: snake, camel, and kebab casing options for output -->
+      <!-- TODO: error handling -->
+      <sd-chip
+        label="Dynamic Chips (success theme)"
+        theme="success"
+        v-model="state.chipsArrayFour"
+        placeholder="press enter to add"
+      />
+      <hr class="sd--divider"/>
+        <code>{{state.chipsArrayFour}}</code>
+      <hr class="sd--divider"/>
+      <sd-chip
+        label="Chicklets are captialized"
+        v-model="state.chipsArrayOne"
+        theme="warning"
+        captialize
+        placeholder="press enter to add"
+      />
+      <hr class="sd--divider"/>
+        <code>{{state.chipsArrayOne}}</code>
+      <hr class="sd--divider"/>
+
+      <sd-chip
+        label="Chicklets are uppercase"
+        v-model="state.chipsArrayTwo"
+        uppercase
+        placeholder="placeholder"
+      />
+      <hr class="sd--divider"/>
+        <code>{{state.chipsArrayTwo}}</code>
+      <hr class="sd--divider"/>
+
+      <sd-chip
+        label="Chicklets are lowercase"
+        v-model="state.chipsArrayThree"
+        lowercase
+        placeholder="placeholder"
+      />
+      <hr class="sd--divider"/>
+        <code>{{state.chipsArrayThree}}</code>
+      <hr class="sd--divider"/>
+
+      <sd-chip
+        label="Chicklets are lowercase"
+        v-model="state.chipsArrayThree"
+        :error="true"
+        lowercase
+        placeholder="placeholder"
+      />
     </div>
   </div>
 </template>
 
 <script>
 import SectionHeader from '@/components/SectionHeader'
-import { reactive } from 'vue'
+import { reactive, watch } from 'vue'
 import { SdChip } from '@/library'
 
 export default {
@@ -19,11 +67,20 @@ export default {
   },
   setup () {
     const state = reactive({
-      chipsArray: ['one', 'two', 'three']
+      chipsArrayOne: [],
+      chipsArrayTwo: [],
+      chipsArrayThree: [],
+      chipsArrayFour: [],
+      setting: 'none'
+    })
+
+    watch(() => state.setting, (newValue) => {
+      if (newValue) {
+        state.chipsArray = []
+      }
     })
     return { state }
   }
-
 }
 </script>
 
