@@ -39,6 +39,8 @@ import SdProgress from './components/SdProgress/SdProgress'
 import SdDropdown from './components/SdDropdown/SdDropdown'
 import SdDropdownMenu from './components/SdDropdown/SdDropdownMenu'
 import SdDropdownHeader from './components/SdDropdown/SdDropdownHeader'
+import SdChicklet from './components/SdChicklet/SdChicklet'
+import SdChip from './components/SdChicklet/SdChip'
 
 export {
   // Button
@@ -89,5 +91,7 @@ export {
   SdProgress,
   SdDropdown,
   SdDropdownMenu,
-  SdDropdownHeader
+  SdDropdownHeader,
+  SdChicklet,
+  SdChip
 }

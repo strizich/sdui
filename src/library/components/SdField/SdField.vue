@@ -2,18 +2,21 @@
     <div :class="[rootClasses]">
       <sd-label>{{label}}</sd-label>
       <slot name="header"/>
-      <input
-        :class="[inputClasses]"
-        :id="id"
-        :type="type"
-        :name="name"
-        :placeholder="placeholder"
-        :disabled="disabled"
-        @blur="(e) => handleTouched(e)"
-        @focus="(e) => handleFocused(e)"
-        @input="(e) => handleInput(e)"
-        :value="modelValue"
-      />
+      <div :class="[inputClasses]">
+        <slot name="addon"/>
+        <input
+
+          :id="id"
+          :type="type"
+          :name="name"
+          :placeholder="placeholder"
+          :disabled="disabled"
+          @blur="(e) => handleTouched(e)"
+          @focus="(e) => handleFocused(e)"
+          @input="(e) => handleInput(e)"
+          :value="modelValue"
+        />
+      </div>
       <slot name="footer"/>
       <sd-error :message="handleValidation && isErrorString ? error : ''"/>
     </div>
@@ -132,17 +135,21 @@ export default defineComponent({
     width: 100%;
     &.is {
       &--focused {
-        & > input{
+        .sd--field__control{
           border-color: var(--primary-highlight);
           @include sd--elevation(1);
         }
       }
     }
+    &__body{
+      display:flex;
+      flex-wrap: wrap;
+      align-items: center;
+    }
     &__control {
       appearance: none;
       -webkit-appearance: none;
       color: var(--text);
-      padding: 8px;
       display:block;
       outline: none;
       border: 1px solid var(--divider);
@@ -152,12 +159,25 @@ export default defineComponent({
       font-size: 16px;
       margin-bottom: 4px;
       width: 100%;
-      display:block;
+      display:flex;
+      flex-wrap: wrap;
+      align-items:center;
       @include sd--elevation(3);
       &:disabled, &.is--disabled {
         opacity: .35;
         background-color: var(--background-accent);
         color: var(--text-highlight);
+      }
+      & > input{
+        background:transparent;
+        flex-grow: 2;
+        outline: none;
+        color: var(--text);
+        font-size: 16px;
+        border:none;
+        padding: 8px;
+        // padding: 4px 0;
+        // margin: -4px 0;
       }
        &.is--error{
         border-color: var(--danger);
