@@ -1,7 +1,7 @@
 <template>
   <div class="demo">
     <div class="demo__item">
-    <section-header title="Chips" sub-title="Smallish thing"/>
+    <section-header title="Chips" sub-title="Smallish thing" hash="#chips"/>
     <sd-chip label="chips here" v-model="state.chipsArray" placeholder="placeholder"/>
     </div>
   </div>
