@@ -118,13 +118,13 @@ export default defineComponent({
         content: 'keyboard_return';
         position: absolute;
         right: 4px;
-        bottom: 35px;
+        bottom: 37px;
         padding: 2px 4px;
         display:block;
         color: var(--text-accent);
         background-color:var(--background);
         border-radius: 3px;
-        margin-top: -24px;
+        font-size: 12px;
       }
     }
   }
