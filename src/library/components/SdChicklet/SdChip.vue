@@ -105,9 +105,29 @@ export default defineComponent({
 })
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 .sd--chip{
   margin: 0 auto;
+  .sd--field{
+    position: relative;
+    &__control{
+      &:after{
+        font-family: 'Material Icons';
+        font-feature-settings: 'liga';
+        pointer-events: none;
+        content: 'keyboard_return';
+        position: absolute;
+        right: 4px;
+        bottom: 35px;
+        padding: 2px 4px;
+        display:block;
+        color: var(--text-accent);
+        background-color:var(--background);
+        border-radius: 3px;
+        margin-top: -24px;
+      }
+    }
+  }
 }
 .sd--chicklet{
   margin-right: 8px;
