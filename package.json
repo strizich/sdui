@@ -39,7 +39,9 @@
     "eslint-plugin-vue": "^7.0.0-beta.3",
     "lint-staged": "^9.5.0",
     "node-sass": "^4.12.0",
-    "sass-loader": "^8.0.2"
+    "sass-loader": "^8.0.2",
+    "vue-jest": "^5.0.0-alpha.4",
+    "typescript": "^4.0.0"
   },
   "eslintConfig": {
     "root": true,
@@ -58,7 +60,8 @@
       {
         "files": [
           "**/__tests__/*.{j,t}s?(x)",
-          "**/tests/unit/**/*.spec.{j,t}s?(x)"
+          "**/tests/unit/**/*.spec.{j,t}s?(x)",
+          "**/**/*.test.{j,t}s?(x)"
         ],
         "env": {
           "jest": true
@@ -71,9 +74,6 @@
     "last 2 versions",
     "not dead"
   ],
-  "jest": {
-    "preset": "@vue/cli-plugin-unit-jest"
-  },
   "gitHooks": {
     "pre-commit": "lint-staged"
   },

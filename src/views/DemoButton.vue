@@ -94,7 +94,7 @@
         </sd-col>
       </sd-row>
     </sd-container>
-    </div>
+  </div>
 </template>
 
 <script>
