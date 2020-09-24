@@ -14,6 +14,7 @@
       :outline="outline"
       :disabled="disabled"
       :flat="flat"
+      :pill="pill"
     >
       <slot />
     </sd-button>
@@ -32,6 +33,7 @@ export default {
     to: String,
     flat: Boolean,
     outline: Boolean,
+    pill: Boolean,
     disabled: Boolean,
     theme: String,
     hash: Boolean

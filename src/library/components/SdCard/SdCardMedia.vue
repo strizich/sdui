@@ -46,7 +46,7 @@ export default defineComponent({
       return props.ratio.indexOf(divider) !== -1
     }
 
-    const getAspectRatio = () => {
+    const getAspectRatio = computed(() => {
       let ratio = []
       if (getRatioFormat(':')) {
         ratio = props.ratio.split(':')
@@ -58,24 +58,24 @@ export default defineComponent({
         ratio = props.ratio.split('x')
       }
       return ratio.length === 2 ? ratio : null
-    }
+    })
 
     const mediaSize = computed(() => {
       return `sd--card__media--${props.size}`
     })
 
     const mediaClasses = computed(() => {
-      const classes = {}
+      let classes = ''
       if (props.ratio) {
-        const ratio = getAspectRatio()
+        const ratio = getAspectRatio.value
         if (ratio) {
           const [horz, vert] = ratio
-          classes[`sd--card__media--${horz}-${vert}`] = true
+          classes = `sd--card__media--${horz}-${vert}`
         }
       }
       return classes
     })
-    return { mediaClasses, mediaSize }
+    return { mediaClasses, mediaSize, getAspectRatio }
   }
 })
 </script>
