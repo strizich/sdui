@@ -148,7 +148,7 @@ export default defineComponent({
       &--focused {
         .sd--field__control{
           border-color: var(--primary-highlight);
-          @include sd--elevation(1);
+          @include elevation(1);
         }
       }
     }
@@ -173,7 +173,7 @@ export default defineComponent({
       display:flex;
       flex-wrap: wrap;
       align-items:center;
-      @include sd--elevation(3);
+      @include elevation(3);
       &:disabled, &.is--disabled {
         opacity: .35;
         background-color: var(--background-accent);

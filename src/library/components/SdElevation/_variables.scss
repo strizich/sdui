@@ -1,8 +1,8 @@
-$sd--elevation-umbra-color: rgba(#000, .2);
-$sd--elevation-penumbra-color: rgba(#000, .14);
-$sd--elevation-ambient-color: rgba(#000, .12);
+$elevation-umbra-color: rgba(#000, .2);
+$elevation-penumbra-color: rgba(#000, .14);
+$elevation-ambient-color: rgba(#000, .12);
 
-$sd--elevation-umbra: (
+$elevation-umbra: (
   0: "0 0 0 0",
   1: "0 2px 1px -1px",
   2: "0 3px 1px -2px",
@@ -30,7 +30,7 @@ $sd--elevation-umbra: (
   24: "0 11px 15px -7px"
 );
 
-$sd--elevation-penumbra: (
+$elevation-penumbra: (
   0: "0 0 0 0",
   1: "0 1px 1px 0",
   2: "0 2px 2px 0",
@@ -58,7 +58,7 @@ $sd--elevation-penumbra: (
   24: "0 24px 38px 3px"
 );
 
-$sd--elevation-ambient: (
+$elevation-ambient: (
   0: "0 0 0 0",
   1: "0 1px 3px 0",
   2: "0 1px 5px 0",
@@ -95,4 +95,4 @@ $sd--elevation-ambient: (
  * @group transition
  */
 
-$sd--elevation-transition-duration: .3s;
+$elevation-transition-duration: .3s;

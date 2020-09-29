@@ -207,7 +207,7 @@ export default {
     background-color: var(--background-highlight);
     font-weight: 500;
     min-width: 40px;
-    @include sd--elevation(4);
+    @include elevation(4);
     @each $state, $color in $sd-color-global {
       $default: nth($color, 1);
       $variant: nth($color, 2);

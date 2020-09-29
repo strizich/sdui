@@ -28,6 +28,7 @@ export default {
 </script>
 
 <style lang="scss">
+@import '../../scss/grid';
 .sd--container {
   @each $size, $value in $container-max-widths{
     @include media-breakpoint-down($size){

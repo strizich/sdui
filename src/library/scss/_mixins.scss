@@ -13,8 +13,6 @@
   }
 }
 
-
-
 @mixin flatten($base, $highlight, $accent, $contrast) {
   $lightScheme: $base;
   $darkScheme: mix($highlight, #fff, 80%);
@@ -25,7 +23,7 @@
     color: $lightScheme;
   }
     background-color: none;
-  @include sd--elevation(0);
+  @include elevation(0);
 
   &:hover {
     background-color: $base;

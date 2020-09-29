@@ -83,6 +83,8 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
+  @import '../SdElevation/mixins';
+  @import '../../scss/colors';
   .sd--select {
     &.is--block{
       width: 100%;
@@ -118,7 +120,7 @@ export default defineComponent({
     width: 100%;
     padding-right: 24px;
     display:block;
-    @include sd--elevation(3);
+    @include elevation(3);
       &:disabled {
         background-color: var(--background-highlight);
         color: var(--text-highlight);

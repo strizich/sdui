@@ -6,7 +6,7 @@
         v-if="active"
       >
         <div
-          :class="['sd--dialog__wrapper','sd--elevation--6', classes ]"
+          :class="['sd--dialog__wrapper','elevation--6', classes ]"
           @keydown.esc="onEsc"
           ref="modalContainer"
           >

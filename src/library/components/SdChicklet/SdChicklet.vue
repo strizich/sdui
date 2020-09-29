@@ -29,8 +29,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '../../scss/css-vars.scss';
-
+@import '../SdElevation/mixins';
+@import '../../scss/colors';
 .sd--chicklet {
   padding: 4px;
   font-size: 14px;
@@ -47,7 +47,7 @@ export default {
     $contrast-accent: sd-pick-contrast($accent);
 
     &__#{$state} {
-      @include sd--elevation(2);
+      @include elevation(2);
       color: sd-color($contrast, text);
       background-color: $base;
       transition: all .13s ease-out;

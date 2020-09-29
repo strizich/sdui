@@ -30,7 +30,7 @@ export default defineComponent({
     //   return makeElevationClass(elevation.value)
     // })
     const makeElevationClass = (elevation) => {
-      return `sd--elevation--${elevation}`
+      return `elevation--${elevation}`
     }
     return {
       makeElevationClass

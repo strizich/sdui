@@ -9,7 +9,7 @@ describe('SdCard', () => {
       }
     })
     console.log()
-    const expected = 'sd--elevation--7'
+    const expected = 'elevation--7'
     expect(wrapper.vm.cardElevation).toBe(expected)
   })
 })

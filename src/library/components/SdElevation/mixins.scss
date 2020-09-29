@@ -1,6 +1,6 @@
 @import "./variables";
 
-@mixin sd--elevation($z-value, $inset:null) {
+@mixin elevation($z-value, $inset:null) {
   @if type-of($z-value) != number or not unitless($z-value) {
     @error "$z-value must be a unitless number";
   }
@@ -11,14 +11,14 @@
 
   @if $inset{
     box-shadow:
-    inset #{map-get($sd--elevation-umbra, $z-value)} $sd--elevation-umbra-color,
-    inset #{map-get($sd--elevation-penumbra, $z-value)} $sd--elevation-penumbra-color,
-    inset #{map-get($sd--elevation-ambient, $z-value)} $sd--elevation-ambient-color;
+    inset #{map-get($elevation-umbra, $z-value)} $elevation-umbra-color,
+    inset #{map-get($elevation-penumbra, $z-value)} $elevation-penumbra-color,
+    inset #{map-get($elevation-ambient, $z-value)} $elevation-ambient-color;
   } @else {
     box-shadow:
-    #{map-get($sd--elevation-umbra, $z-value)} $sd--elevation-umbra-color,
-    #{map-get($sd--elevation-penumbra, $z-value)} $sd--elevation-penumbra-color,
-    #{map-get($sd--elevation-ambient, $z-value)} $sd--elevation-ambient-color;
+    #{map-get($elevation-umbra, $z-value)} $elevation-umbra-color,
+    #{map-get($elevation-penumbra, $z-value)} $elevation-penumbra-color,
+    #{map-get($elevation-ambient, $z-value)} $elevation-ambient-color;
   }
  
 }

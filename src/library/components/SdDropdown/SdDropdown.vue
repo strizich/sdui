@@ -226,7 +226,7 @@ export default {
     background-color: var(--background-accent);
     font-weight: 500;
     min-width: 40px;
-    @include sd--elevation(4);
+    @include elevation(4);
     div > * {
       display:block;
       width: 100%;

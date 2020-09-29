@@ -48,6 +48,7 @@ export default {
 </script>
 
 <style lang="scss">
+  @import '../../scss/grid';
   @if $enable-grid-classes {
     @include make-grid-columns();
   }

@@ -191,21 +191,21 @@ export default defineComponent({
     $contrast-accent: sd-pick-contrast($accent);
 
     &__#{$state} {
-      @include sd--elevation(2);
+      @include elevation(2);
       color: sd-color($contrast, text);
       background-color: $base;
       transition: all .13s ease-out;
       border-radius: 3px;
 
       &:hover {
-        @include sd--elevation(4);
+        @include elevation(4);
         color: sd-color($contrast-accent, text);
         background-color: $accent;
         transition: all .13s ease-out;
       }
 
       &:active {
-        @include sd--elevation(6);
+        @include elevation(6);
         color: sd-color($contrast-highlight, text);
         background-color: $highlight;
         transition: all .13s ease-out;
@@ -217,7 +217,7 @@ export default defineComponent({
           width: 100%;
         }
         &--active, &--exact-active{
-          @include sd--elevation(6);
+          @include elevation(6);
           color: sd-color($contrast-highlight, text);
           background-color: $highlight;
           transition: all .13s ease-out;
@@ -225,7 +225,7 @@ export default defineComponent({
         &--disabled{
           background-color: transparentize($highlight, .7);
           color: transparentize(sd-color($contrast-highlight, text), .6);
-          @include sd--elevation(0);
+          @include elevation(0);
         }
         &--icon-only {
           display: flex;

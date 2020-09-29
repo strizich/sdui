@@ -63,7 +63,7 @@ export default {
 }
 </script>
 <style lang="scss">
-@import './library/scss/css-vars';
+@import './library/scss/main';
 
 #app {
   min-height:100vh;

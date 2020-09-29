@@ -20,7 +20,7 @@ export default {
   },
   setup (props) {
     const cardElevation = computed(() => {
-      return `sd--elevation--${props.elevation}`
+      return `elevation--${props.elevation}`
     })
     return { cardElevation }
   }
@@ -42,7 +42,7 @@ export default {
   margin: 16px 0;
   &:hover{
     z-index: 10;
-    @include sd--elevation(24);
+    @include elevation(24);
   }
   &--inset{
     padding: 0 16px;
