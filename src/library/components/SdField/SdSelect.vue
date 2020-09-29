@@ -84,7 +84,7 @@ export default defineComponent({
 
 <style lang="scss" scoped>
   @import '../SdElevation/mixins';
-  @import '../../scss/colors';
+  @import '../../scss/variables';
   .sd--select {
     &.is--block{
       width: 100%;

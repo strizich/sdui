@@ -120,7 +120,7 @@ export default defineComponent({
 
 <style lang="scss">
 @import '../SdElevation/mixins';
-@import '../../scss/colors';
+@import '../../scss/variables';
 .sd--button {
   touch-action: manipulation;
   -webkit-user-select: none;
@@ -193,7 +193,7 @@ export default defineComponent({
     &__#{$state} {
       @include elevation(2);
       color: sd-color($contrast, text);
-      background-color: $base;
+      background-color: var(--#{$state});
       transition: all .13s ease-out;
       border-radius: 3px;
 

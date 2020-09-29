@@ -30,7 +30,7 @@ export default {
 
 <style lang="scss" scoped>
 @import '../SdElevation/mixins';
-@import '../../scss/colors';
+@import '../../scss/variables';
 .sd--chicklet {
   padding: 4px;
   font-size: 14px;

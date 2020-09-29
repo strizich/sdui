@@ -100,7 +100,7 @@ const MAT_ICONS = [
   'important_devices',
   'info',
   'input',
-  'invert_colors',
+  'invert_variables',
   'label',
   'label_important',
   'language',

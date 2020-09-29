@@ -87,7 +87,7 @@ export default {
 </script>
 
 <style lang="scss">
-  @import '../../scss/colors';
+  @import '../../scss/variables';
 
   .sd--progress{
     margin-bottom: 16px;

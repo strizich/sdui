@@ -204,7 +204,7 @@ export default {
 
 <style lang="scss">
 @import '../SdElevation/mixins';
-@import '../../scss/colors';
+@import '../../scss/variables';
 
 .sd--dropdown{
   // position:fixed;
