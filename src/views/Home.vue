@@ -3,7 +3,7 @@
   <sd-mast title="Yay for components" subtitle="UI library built with Vue3" />
   <sd-container>
     <sd-row>
-      <sd-col :xl="2" :lg="3" :md="4" :sm="6" :xs="6">
+      <sd-col :lg="3" :md="3" :sm="6" :xs="6">
         <router-link
           to="/components/buttons"
           v-slot="{navigate}"
@@ -14,7 +14,7 @@
           </widget>
         </router-link>
       </sd-col>
-      <sd-col :xl="2" :lg="3" :md="4" :sm="6" :xs="6">
+      <sd-col :lg="3" :md="3" :sm="6" :xs="6">
         <router-link
           to="/components/form-controls"
           v-slot="{navigate}"
@@ -25,7 +25,7 @@
           </widget>
         </router-link>
       </sd-col>
-      <sd-col :xl="2" :lg="3" :md="4" :sm="6" :xs="6">
+      <sd-col :lg="3" :md="3" :sm="6" :xs="6">
         <router-link
           to="/components/slider"
           v-slot="{navigate}"
@@ -36,14 +36,19 @@
           </widget>
         </router-link>
       </sd-col>
-      <sd-col :xl="2" :lg="3" :md="4" :sm="6" :xs="6">
+      <sd-col :lg="3" :md="3" :sm="6" :xs="6">
         <router-link
           to="/components/icons"
           v-slot="{navigate}"
           custom
         >
           <widget title="Icons" @click="navigate">
-            img here
+            <div>
+              <sd-skeleton :height="16"/>
+            </div>
+            <div>
+              <sd-skeleton :height="16"/>
+            </div>
           </widget>
         </router-link>
       </sd-col>
@@ -54,12 +59,11 @@
 
 <script>
 import { defineComponent } from 'vue'
-import { SdMast, SdContainer, SdRow, SdCol } from '@/library'
+import { SdMast, SdContainer, SdRow, SdCol, SdSkeleton } from '@/library'
 import Widget from '@/components/Widget'
 export default defineComponent({
   name: 'Home',
-  components: { SdMast, SdContainer, SdRow, SdCol, Widget }
-
+  components: { SdMast, SdContainer, SdRow, SdCol, Widget, SdSkeleton }
 })
 </script>
 

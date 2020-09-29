@@ -37,15 +37,5 @@ export default defineComponent({
   align-items: center;
   border-top: 1px solid v(--divider);
   flex-grow: 0;
-  //  &:after{
-  //    position: absolute;
-  //    left: spacing(inset);
-  //    content: '';
-  //    height: 1px;
-  //    top:0;
-  //    right:0;
-  //    bottom: auto;
-  //    background-color: v(--divider);
-  //  }
 }
 </style>

@@ -1,25 +1,28 @@
-
-@mixin handleBodyClass($bodyClass) {
+@mixin use-body-class($bodyClass) {
   #{$bodyClass} &{
     @content;
   }
 }
 
+@mixin color-scheme($scheme) {
+  @media(prefers-color-scheme: $scheme){
+    @content;
+  }
+  @include use-body-class('.sd--scheme--#{$scheme}'){
+    @content;
+  }
+}
+
+
+
 @mixin flatten($base, $highlight, $accent, $contrast) {
   $lightScheme: $base;
   $darkScheme: mix($highlight, #fff, 80%);
-  // No background, No border, more problems
-  @include handleBodyClass('.sd--scheme--light'){
-    color: $lightScheme;
-  }
-  @include handleBodyClass('.sd--scheme--dark'){
+  @include color-scheme('dark') {
     color: $darkScheme
   }
-  @media(prefers-color-scheme: 'light'){
+  @include color-scheme('light') {
     color: $lightScheme;
-  }
-  @media(prefers-color-scheme: 'dark'){
-    color: $darkScheme
   }
     background-color: none;
   @include sd--elevation(0);

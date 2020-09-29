@@ -14,7 +14,7 @@ export default {
 <style lang="scss">
 .sd--card {
   &__body{
-    padding: spacing(inset);
+    padding: 16px;
     flex-grow: 2;
   }
 }

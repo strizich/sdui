@@ -41,8 +41,10 @@ import SdDropdownMenu from './components/SdDropdown/SdDropdownMenu'
 import SdDropdownHeader from './components/SdDropdown/SdDropdownHeader'
 import SdChicklet from './components/SdChicklet/SdChicklet'
 import SdChip from './components/SdChicklet/SdChip'
+import SdSkeleton from './components/SdLoader/SdSkeleton'
 
 export {
+  SdSkeleton,
   // Button
   SdButton,
   SdRouterLink,

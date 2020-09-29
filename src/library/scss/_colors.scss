@@ -37,7 +37,8 @@ $sd-color-schemes: (
     icon-disabled: rgba(0,0,0,.38),
     divider: lighten(#161616, 80%),
     scrollbar: #434444,
-    tooltip: #2E2F2F
+    tooltip: #2E2F2F,
+    skeleton:#{90deg, rgba(#434444, 0) 0, rgba(#434444, 0.1) 20%, rgba(#434444, 0.15) 60%, rgba(#434444, 0)}
   ),
   dark: (
     background: #161616,
@@ -61,6 +62,7 @@ $sd-color-schemes: (
     icon-disabled: rgba(255,255,255,.38),
     divider: lighten(#161616, 12%),
     scrollbar: #434444,
-    tooltip: #000
+    tooltip: #000,
+    skeleton: #{90deg, rgba(#f9f9f9, 0) 0, rgba(#f9f9f9, 0.1) 20%, rgba(#f9f9f9, 0.15) 60%, rgba(#f9f9f9, 0)}
   )
 );

@@ -4,5 +4,5 @@ import SdCardBody from './SdCardBody'
 import SdCardFooter from './SdCardFooter'
 import SdCardMedia from './SdCardMedia'
 
-export { SdCardHeader, SdCardBody, SdCardFooter, SdCardMedia }
+export { SdCard, SdCardHeader, SdCardBody, SdCardFooter, SdCardMedia }
 export default SdCard
