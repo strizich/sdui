@@ -19,6 +19,7 @@
                 :block="isBlock"
                 :icon-only="isIconOnly"
                 :align="selectedAlignment"
+                :disabled="disabled"
               >
                   <sd-icon :size="selectedSize" name="link" v-if="showIcon" />
                   <span v-if="!isIconOnly">{{color}}</span>
@@ -74,6 +75,9 @@
             <sd-checkbox v-model="showIcon">
               Icon
             </sd-checkbox>
+            <sd-checkbox v-model="disabled">
+              Disabled
+            </sd-checkbox>
             <sd-checkbox v-model="isIconOnly" :disabled="!showIcon">
               Icon Only
             </sd-checkbox>
@@ -112,6 +116,7 @@ export default {
       isBlock: false,
       isIconOnly: false,
       showIcon: false,
+      disabled: false,
       selectedAlignment: 'center',
       alignmentOptions: [
         { name: 'Center', value: 'center' },

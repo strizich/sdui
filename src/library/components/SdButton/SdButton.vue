@@ -199,15 +199,15 @@ export default defineComponent({
 
       &:hover {
         @include elevation(4);
-        color: sd-color($contrast-accent, text);
-        background-color: $accent;
+        color: var(--#{$state}-accent-text);
+        background-color: var(--#{$state}-accent);
         transition: all .13s ease-out;
       }
 
       &:active {
         @include elevation(6);
-        color: sd-color($contrast-highlight, text);
-        background-color: $highlight;
+         color: var(--#{$state}-highlight-text);
+        background-color: var(--#{$state}-highlight);
         transition: all .13s ease-out;
       }
 
@@ -218,14 +218,15 @@ export default defineComponent({
         }
         &--active, &--exact-active{
           @include elevation(6);
-          color: sd-color($contrast-highlight, text);
-          background-color: $highlight;
+          color: var(--#{$state}-highlight-text);
+          background-color: var(--#{$state}-highlight);
           transition: all .13s ease-out;
         }
         &--disabled{
-          background-color: transparentize($highlight, .7);
-          color: transparentize(sd-color($contrast-highlight, text), .6);
+          background-color: var(--disabled-background);
+          color: var(--disabled);
           @include elevation(0);
+
         }
         &--icon-only {
           display: flex;

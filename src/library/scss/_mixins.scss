@@ -3,6 +3,16 @@
     @content;
   }
 }
+@mixin root-color-scheme($scheme) {
+  @media(prefers-color-scheme: $scheme){
+    :root{
+      @content;
+    }
+  }
+  .sd--scheme--#{$scheme}{
+    @content;
+  }
+}
 
 @mixin color-scheme($scheme) {
   @media(prefers-color-scheme: $scheme){
@@ -11,6 +21,7 @@
   @include use-body-class('.sd--scheme--#{$scheme}'){
     @content;
   }
+  
 }
 
 @mixin flatten($base, $highlight, $accent, $contrast) {
