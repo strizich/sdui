@@ -59,7 +59,7 @@ export default {
   },
   setup () {
     const state = reactive({
-      chipsArrayOne: [],
+      chipsArrayOne: ['hey', 'you', 'guys'],
       chipsArrayTwo: [],
       chipsArrayThree: [],
       chipsArrayFour: [],

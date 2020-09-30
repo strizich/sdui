@@ -5,8 +5,9 @@
       <sd-row>
         <sd-col :md="4">
           <sd-field
-            label="Text Input"
+            label="Text Input One"
             v-model="inputOne"
+            required
           />
         </sd-col>
         <sd-col :md="4">
@@ -32,7 +33,7 @@
           <sd-field
             label="Error as a String"
             v-model="inputFour"
-            pristine-error
+            required
             error="This is message"
           />
         </sd-col>

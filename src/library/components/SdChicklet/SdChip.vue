@@ -28,7 +28,7 @@
 </template>
 
 <script>
-import { defineComponent, reactive, computed, watch, ref, nextTick } from 'vue'
+import { defineComponent, reactive, computed, watch, ref, nextTick, watchEffect } from 'vue'
 import { SdChicklet, SdField } from '@/library'
 
 export default defineComponent({
@@ -121,7 +121,8 @@ export default defineComponent({
       checkDuplicate()
     })
 
-    watch(() => props.modelValue, () => {
+    // NOTES: Watcheffect runs once on mount. Then reruns on change
+    watchEffect(() => {
       state.chipList = props.modelValue
     })
 

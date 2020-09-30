@@ -11,6 +11,7 @@
           :name="name"
           :placeholder="placeholder"
           :disabled="disabled"
+          :required="required"
           @blur="(e) => handleTouched(e)"
           @focus="(e) => handleFocused(e)"
           @input="(e) => handleInput(e)"
@@ -18,7 +19,7 @@
         />
       </div>
       <slot name="footer"/>
-      <sd-error :message="handleValidation && isErrorString ? error : ''"/>
+      <sd-error :message="handleValidation"/>
     </div>
 </template>
 
@@ -28,9 +29,14 @@ import SdUuid from '@/library/core/utilities/SdUuid'
 import SdLabel from './SdLabel'
 import SdError from './SdError'
 export default defineComponent({
+  // Support manual binding with :value/@input as well as v-model bindings
+  // emit @input for manual binding
   emits: ['update:modelValue', 'focus', 'blur', 'change'],
   props: {
+    // TODO: Add prop validaton to disallow having both value and modelValue
     modelValue: [String, Number],
+    // Link props.value as an alternitave to modelValue for added flexability
+    value: [String, Number],
     id: {
       type: String,
       default: () => 'sd--field--' + SdUuid()
@@ -40,10 +46,10 @@ export default defineComponent({
     },
     label: String,
     name: String,
-    value: [String, Number],
     setFocus: Boolean,
     placeholder: String,
     disabled: Boolean,
+    required: Boolean,
     type: {
       type: String,
       default: 'text'
@@ -64,11 +70,21 @@ export default defineComponent({
     })
 
     const handleValidation = computed(() => {
+      // shows error on blur
+      if (!props.pristineError && !state.touched) {
+        return false
+      }
+      // show error on load
       if (props.pristineError) {
         return props.error
       }
-      if (props.error === '') {
+      // handle empty string
+      if (isErrorString.value && props.error === '') {
         return false
+      }
+      // handled error === null and required
+      if (props.required) {
+        return props.error || 'Required'
       }
       return state.touched && props.error
     })
