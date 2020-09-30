@@ -100,6 +100,7 @@ export default defineComponent({
         elementTag.value,
         {
           ref: root,
+          id: props.id,
           type: !props.href && (props.type || 'button'),
           class: ['sd--button', themeClass.value, rootClasses.value],
           href: props.href,
@@ -132,9 +133,11 @@ export default defineComponent({
   align-self: center;
   align-items: center;
   padding: 0;
+
   &:focus{
     outline: none;
   }
+
   &__content {
     position: relative;
     z-index: 10;
@@ -167,6 +170,12 @@ export default defineComponent({
       &--lg {
         font-size: rem(18);
         line-height: rem(18);
+        padding: 12px 16px;
+      }
+
+      &--xl {
+        font-size: rem(18);
+        line-height: rem(18);
         padding: 16px 24px
       }
     }
@@ -183,16 +192,9 @@ export default defineComponent({
   }
 
   @each $state, $color in $sd-color-global {
-    $base: nth($color, 1);
-    $highlight: nth($color, 2);
-    $accent: nth($color, 3);
-    $contrast: sd-pick-contrast($base);
-    $contrast-highlight: sd-pick-contrast($highlight);
-    $contrast-accent: sd-pick-contrast($accent);
-
     &__#{$state} {
       @include elevation(2);
-      color: sd-color($contrast, text);
+      color: var(--#{$state}-text);
       background-color: var(--#{$state});
       transition: all .13s ease-out;
       border-radius: 3px;
@@ -206,7 +208,7 @@ export default defineComponent({
 
       &:active {
         @include elevation(6);
-         color: var(--#{$state}-highlight-text);
+        color: var(--#{$state}-highlight-text);
         background-color: var(--#{$state}-highlight);
         transition: all .13s ease-out;
       }
@@ -216,27 +218,28 @@ export default defineComponent({
           display: block;
           width: 100%;
         }
+
         &--active, &--exact-active{
           @include elevation(6);
           color: var(--#{$state}-highlight-text);
           background-color: var(--#{$state}-highlight);
           transition: all .13s ease-out;
         }
+
         &--disabled{
           background-color: var(--disabled-background);
           color: var(--disabled);
           @include elevation(0);
-
         }
+
         &--icon-only {
           display: flex;
           align-items: center;
           justify-content: center;
-
           .is {
             &--sm,
             &--md,
-            &--lg {
+            &--xl {
               padding: 0;
               margin: 0;
               display: flex;
@@ -250,7 +253,6 @@ export default defineComponent({
                 margin: 0;
               }
             }
-
             &--sm {
               width: 24px;
               height: 24px;
@@ -261,7 +263,7 @@ export default defineComponent({
               height: 32px;
             }
 
-            &--lg {
+            &--xl {
               width: 52px;
               height: 52px;
             }
@@ -269,16 +271,23 @@ export default defineComponent({
         }
 
         &--outline {
-          border: 1px solid $base;
           background: none;
-          @include flatten($base, $highlight, $accent, $contrast);
+          border: 1px solid var(--#{$state});
+          @include flatten-theme($state);
+          &.is--disabled {
+            border: 1px solid var(--disabled);
+            @include flatten-theme(disabled);
+          }
         }
 
         &--flat {
           background: none;
           border: none;
           outline: none;
-          @include flatten($base, $highlight, $accent, $contrast);
+          @include flatten-theme($state);
+          &.is--disabled {
+            @include flatten-theme(disabled);
+          }
         }
 
         &--rounded {
@@ -294,7 +303,7 @@ export default defineComponent({
         }
 
         &--focused {
-          box-shadow: 0 0 0 5px $highlight;
+          box-shadow: 0 0 0 5px var(--#{$state}-highlight);
           transition: box-shadow .2s ease-out;
         }
       }

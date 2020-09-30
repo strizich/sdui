@@ -1,12 +1,12 @@
 <template>
-  <div :class="['sd--layout']">
+  <div class="sd--layout">
     <div class="sd--layout__header">
       <slot name="header"/>
     </div>
     <div :class="['sd--layout__body', layoutClasses]">
       <!-- FUTURE: Disable transition on mobile and set body to fixed when floating-->
-        <transition name="sidebar">
-          <div :class="['sd--layout__sidebar', sidebarClasses]">
+        <transition name="sidebar" @leave="afterLeave">
+          <div :class="['sd--layout__sidebar', sidebarClasses]" :style="{handleTabIndex}">
             <slot name="sidebar"/>
           </div>
         </transition>
@@ -53,13 +53,14 @@ export default {
     })
 
     const state = reactive({
-      count: 0
+      shouldSkip: false
     })
     const layoutClasses = computed(() => {
       return {
         'sd--layout__body--open': props.sidebar && !props.floating
       }
     })
+
     const sidebarClasses = computed(() => {
       return {
         'sd--layout__sidebar--open': props.sidebar,
@@ -70,12 +71,22 @@ export default {
     const handleOutsideClick = () => {
       emit('update:sidebar', false)
     }
+    const afterLeave = () => {
+      if (!props.sidebar) {
+        state.shouldSkip = true
+      }
+    }
+    const handleTabIndex = () => {
+      return state.shouldSkip ? { visibility: 'hidden' } : null
+    }
 
     return {
       ...toRefs(state),
       sidebarClasses,
       layoutClasses,
-      handleOutsideClick
+      handleOutsideClick,
+      handleTabIndex,
+      afterLeave
     }
   }
 }
@@ -123,9 +134,15 @@ export default {
       opacity: 1;
       z-index:1000;
       will-change: opacity, left;
+      a {
+        visibility: hidden;
+      }
       &--open {
         left: 0;
         opacity: 1;
+        a {
+          visibility: inherit;
+        }
       }
       &--floating{
         z-index: 1002;
@@ -154,6 +171,7 @@ export default {
   }
   .fade-enter-active, .fade-leave-active{
     transition: opacity .2s ease-in-out;
+
   }
   .fade-enter-from, .fade-leave-to{
     transition: opacity .2s ease-in-out;

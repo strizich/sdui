@@ -21,17 +21,17 @@
                 :align="selectedAlignment"
                 :disabled="disabled"
               >
-                  <sd-icon :size="selectedSize" name="link" v-if="showIcon" />
-                  <span v-if="!isIconOnly">{{color}}</span>
+                <sd-icon :size="selectedSize" name="link" v-if="showIcon" />
+                <span v-if="!isIconOnly">{{color}}</span>
               </sd-button>
             </template>
           </div>
         </sd-col>
       </sd-row>
     </sd-container>
-    <sd-container full>
+    <sd-container>
       <sd-row class="group" gutterless>
-        <sd-col class="group__options" :lg="2" :md="2" :sm="6" :xs="6">
+        <sd-col class="group__options" :lg="3" :md="4" :sm="6" :xs="6">
           <sd-fieldset title="Button Size" stack>
             <sd-radio
               name="sizes"
@@ -43,7 +43,7 @@
             </sd-radio>
           </sd-fieldset>
         </sd-col>
-        <sd-col class="group__options" :lg="2" :md="2" :sm="6" :xs="6">
+        <sd-col class="group__options" :lg="3" :md="4" :sm="6" :xs="6">
           <sd-fieldset title="Types" stack>
             <sd-radio
               name="pills"
@@ -55,7 +55,7 @@
             </sd-radio>
           </sd-fieldset>
         </sd-col>
-        <sd-col class="group__options" :lg="2" :md="2" :sm="6" :xs="6">
+        <sd-col class="group__options" :lg="3" :md="4" :sm="6" :xs="6">
           <sd-fieldset title="Style" stack>
             <sd-radio
               name="Styles"
@@ -67,7 +67,7 @@
             </sd-radio>
           </sd-fieldset>
         </sd-col>
-        <sd-col class="group__options" :lg="2" :md="3" :sm="6" :xs="6">
+        <sd-col class="group__options" :lg="3" :md="4" :sm="6" :xs="6">
           <sd-fieldset title="Layout" stack>
             <sd-checkbox v-model="isBlock">
               Full Width
@@ -91,7 +91,8 @@
               v-model="selectedAlignment"
               :key="`alignment-${index}`"
               :value="align.value"
-              :disabled="!isBlock">
+              :disabled="!isBlock"
+            >
               {{align.name}}
             </sd-radio>
           </sd-fieldset>
@@ -137,9 +138,10 @@ export default {
       boxStyle: ['Default', 'Flat', 'Outline'],
       pills: ['Default', 'Pill', 'Rounded'],
       sizes: [
-        { name: 'Default', value: 'md' },
         { name: 'Small', value: 'sm' },
-        { name: 'Large', value: 'lg' }
+        { name: 'Medium (Default)', value: 'md' },
+        { name: 'Large', value: 'lg' },
+        { name: 'Extra Large', value: 'xl' }
       ]
     })
     return { ...toRefs(state) }
@@ -151,7 +153,9 @@ export default {
 .demo__buttons{
   padding: 32px;
 }
-
+.group__options{
+  margin-bottom: 32px;
+}
 .buttons__results{
   padding: 64px 32px;
   margin-bottom: 32px;
