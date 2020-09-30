@@ -113,6 +113,20 @@ export default {
       }
     }
   }
+   &:disabled{
+    outline:none;
+    &:checked{
+      &:before{
+        box-shadow: inset 0 0 0 2px v(--disabled),
+                    inset 0 0 0 4px v(--background);
+        background-color: v(--disabled);
+      }
+    }
+    &:before{
+      box-shadow: inset 0 0 0 2px v(--disabled),
+                  inset 0 0 0 10px v(--background);
+    }
+  }
   &:hover{
     outline:none;
     &:checked{

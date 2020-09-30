@@ -230,6 +230,11 @@ export default defineComponent({
     opacity: .65;
     cursor: not-allowed;
     color: var(--disabled);
+     &:before{
+      box-shadow: inset 0 0 0 0 var(--disabled);
+      border-color: var(--disabled);
+      background-color: var(--disabled);
+    }
   }
 
   .sd--checkbox {

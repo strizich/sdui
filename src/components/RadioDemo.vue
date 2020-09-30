@@ -7,6 +7,7 @@
           <sd-fieldset title="Radios">
             <sd-radio name="radios" v-model="state.string" value="Radio 1">Radio 1</sd-radio>
             <sd-radio name="radios" v-model="state.string" value="Radio 2">Radio 2</sd-radio>
+            <sd-radio name="radios" v-model="state.string" value="Radio 3" disabled>Radio 2</sd-radio>
           </sd-fieldset>
         </sd-col>
       </sd-row>
