@@ -15,7 +15,6 @@ import SdCheckbox from './components/SdCheckbox/SdCheckbox'
 import SdSwitch from './components/SdCheckbox/SdSwitch'
 import SdRadio from './components/SdRadio/SdRadio'
 import SdFieldset from './components/SdField/SdFieldset'
-import SdRange from './components/SdField/SdRange'
 import SdField from './components/SdField/SdField'
 import SdSelect from './components/SdField/SdSelect'
 import SdLabel from './components/SdField/SdLabel'
@@ -42,6 +41,7 @@ import SdDropdownHeader from './components/SdDropdown/SdDropdownHeader'
 import SdChicklet from './components/SdChicklet/SdChicklet'
 import SdChip from './components/SdChicklet/SdChip'
 import SdSkeleton from './components/SdLoader/SdSkeleton'
+import SdSheet from './components/SdSheet'
 
 export {
   SdSkeleton,
@@ -62,7 +62,6 @@ export {
   SdField,
   SdError,
   SdSelect,
-  SdRange,
   // Dialog (modal)
   SdDialog,
   SdDialogTitle,
@@ -95,5 +94,6 @@ export {
   SdDropdownMenu,
   SdDropdownHeader,
   SdChicklet,
-  SdChip
+  SdChip,
+  SdSheet
 }

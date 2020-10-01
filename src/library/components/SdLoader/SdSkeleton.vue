@@ -50,7 +50,7 @@ export default {
     display:inline-block;
     position:relative;
     overflow: hidden;
-    background-color: var(--background-accent);
+    backdrop-filter: brightness(76%);
     &:after{
       position:absolute;
       top:0;

@@ -4,6 +4,12 @@
   <sd-container>
     <sd-row>
       <sd-col :lg="3" :md="3" :sm="6" :xs="6">
+        <sd-sheet padded>
+          <h3>This is a sheet</h3>
+          <p>It is a generic container with light styling</p>
+        </sd-sheet>
+      </sd-col>
+      <sd-col :lg="3" :md="3" :sm="6" :xs="6">
         <router-link
           to="/components/buttons"
           v-slot="{navigate}"
@@ -59,11 +65,11 @@
 
 <script>
 import { defineComponent } from 'vue'
-import { SdMast, SdContainer, SdRow, SdCol, SdSkeleton } from '@/library'
+import { SdMast, SdContainer, SdRow, SdCol, SdSkeleton, SdSheet } from '@/library'
 import Widget from '@/components/Widget'
 export default defineComponent({
   name: 'Home',
-  components: { SdMast, SdContainer, SdRow, SdCol, Widget, SdSkeleton }
+  components: { SdMast, SdContainer, SdRow, SdCol, Widget, SdSkeleton, SdSheet }
 })
 </script>
 

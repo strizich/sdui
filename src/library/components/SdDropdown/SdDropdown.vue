@@ -8,10 +8,10 @@
       </div>
     </transition>
     <sd-overlay
-        :active="state.shouldRender"
-        @click.passive="hide"
-        transparent
-      />
+      :active="state.shouldRender"
+      @click.passive="hide"
+      transparent
+    />
   </teleport>
 </template>
 
