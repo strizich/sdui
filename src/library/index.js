@@ -117,7 +117,6 @@ const sdInstall = (app) => {
     const kebabCaseName = kebab(item.name)
     const camelCaseName = transformCamelCase(`-${kebabCaseName}`)
     const registerComponent = item.component
-    console.log(kebabCaseName, camelCaseName)
     app.component(kebabCaseName, registerComponent)
     app.component(camelCaseName, registerComponent)
   })
