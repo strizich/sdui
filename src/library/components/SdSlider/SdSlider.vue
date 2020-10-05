@@ -229,7 +229,6 @@ export default defineComponent({
 
     onMounted(() => {
       window.addEventListener('resize', updateElementBounds)
-      slider.value = new ResizeObserver(updateElementBounds).observe(slider.value)
     })
 
     watch(() => observeWindow.value, (newValue) => {

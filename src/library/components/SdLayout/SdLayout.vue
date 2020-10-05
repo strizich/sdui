@@ -81,7 +81,8 @@ export default {
     const handleTabIndex = () => {
       return state.shouldSkip ? { visibility: 'hidden' } : null
     }
-    watch(() => props.sidebar, (newValue) => {
+    watch(() => [props.sidebar, props.floating], ([sidebarVal, floatVal]) => {
+      console.log('hm')
       const animationTiming = 200 // ms
       setTimeout(() => {
         nextTick().then(() => {
