@@ -4,6 +4,8 @@
 * {
   box-sizing: border-box;
   -webkit-font-smoothing: subpixel-antialiased;
+  scrollbar-color: var(--disabled) var(--background-highlight);
+  scrollbar-width: thin;
   &:before, &:after{
     @extend *;
   }
