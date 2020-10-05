@@ -11,7 +11,7 @@
 <script>
 export default {
   props: {
-    message: String
+    message: [String, Boolean]
   }
 }
 </script>

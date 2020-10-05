@@ -15,7 +15,7 @@
           @blur="(e) => handleTouched(e)"
           @focus="(e) => handleFocused(e)"
           @input="(e) => handleInput(e)"
-          :value="modelValue"
+          :value="modelValue ? modelValue : value"
         />
       </div>
       <slot name="footer"/>
@@ -29,13 +29,10 @@ import SdUuid from '@/library/core/utilities/SdUuid'
 import SdLabel from './SdLabel'
 import SdError from './SdError'
 export default defineComponent({
-  // Support manual binding with :value/@input as well as v-model bindings
-  // emit @input for manual binding
-  emits: ['update:modelValue', 'focus', 'blur', 'change'],
+  emits: ['update:modelValue', 'focus', 'blur', 'change', 'input'],
   props: {
     // TODO: Add prop validaton to disallow having both value and modelValue
     modelValue: [String, Number],
-    // Link props.value as an alternitave to modelValue for added flexability
     value: [String, Number],
     id: {
       type: String,
@@ -97,6 +94,9 @@ export default defineComponent({
       let value = e.target.value
       if (props.modelModifiers.number || props.type === 'number') {
         value = parseInt(value)
+      }
+      if (!props.modelValue) {
+        emit('input', e)
       }
       emit('update:modelValue', value)
     }

@@ -19,6 +19,13 @@
         </sd-col>
         <sd-col :md="4">
           <sd-field
+            label="Manual Binding"
+            @input="(e) => inputSixEvent(e)"
+            :value="inputSix"
+          />
+        </sd-col>
+        <sd-col :md="4">
+          <sd-field
             label="1 + 1 = ?"
             type="number"
             v-model.number="inputThree"
@@ -49,6 +56,7 @@
         </sd-col>
       </sd-row>
     </sd-container>
+  {{state}}
   </section>
 </template>
 
@@ -66,8 +74,10 @@ export default {
       inputThree: 2,
       inputFour: '',
       inputFive: '',
-      inputNum: 3
+      inputNum: 3,
+      inputSix: 'oiu'
     })
+
     const aNumber = computed(() => {
       return parseInt(state.inputThree)
     })
@@ -76,7 +86,12 @@ export default {
       // input is always going to emit a string
       return aNumber.value !== 2 ? 'not 2' : false
     })
-    return { ...toRefs(state), validateMuth, aNumber }
+
+    const inputSixEvent = (event) => {
+      state.inputSix = event.target.value
+    }
+
+    return { ...toRefs(state), validateMuth, aNumber, inputSixEvent, state }
   }
 }
 </script>
