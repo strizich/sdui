@@ -21,11 +21,13 @@
 </template>
 
 <script>
-import { reactive } from 'vue'
-
-import SdBaseChart from '@/library/components/SdChart/SdBaseChart'
+import { reactive, defineAsyncComponent } from 'vue'
 import SectionHeader from '@/components/SectionHeader'
 import mockChartData from '@/assets/chartData'
+
+const SdBaseChart = defineAsyncComponent(
+  () => import('@/library/components/SdChart/SdBaseChart')
+)
 
 export default {
   name: 'CardTest',
