@@ -28,7 +28,7 @@
 </template>
 
 <script>
-import { reactive, toRefs, computed, watch } from 'vue'
+import { reactive, toRefs, computed, watch, nextTick } from 'vue'
 import { SdOverlay } from '../..'
 import { useRouter } from 'vue-router'
 export default {
@@ -56,6 +56,7 @@ export default {
     const state = reactive({
       shouldSkip: false
     })
+
     const layoutClasses = computed(() => {
       return {
         'sd--layout__body--open': props.sidebar && !props.floating
@@ -80,6 +81,14 @@ export default {
     const handleTabIndex = () => {
       return state.shouldSkip ? { visibility: 'hidden' } : null
     }
+    watch(() => props.sidebar, (newValue) => {
+      const animationTiming = 200 // ms
+      setTimeout(() => {
+        nextTick().then(() => {
+          window.dispatchEvent(new Event('resize'))
+        })
+      }, animationTiming)
+    })
 
     return {
       ...toRefs(state),

@@ -1,5 +1,5 @@
 import packageData from '../../package.json'
-import { transformCamelCase, kebab } from './core/utilities/SdTextTransform'
+import { camelCase, kebab } from './core/utilities/SdTextTransform'
 
 // Components
 import './scss/main.scss'
@@ -115,7 +115,7 @@ const sdInstall = (app) => {
   }
   componentsDesc.forEach((item) => {
     const kebabCaseName = kebab(item.name)
-    const camelCaseName = transformCamelCase(`-${kebabCaseName}`)
+    const camelCaseName = camelCase(`-${kebabCaseName}`)
     const registerComponent = item.component
     app.component(kebabCaseName, registerComponent)
     app.component(camelCaseName, registerComponent)

@@ -10,6 +10,7 @@
 
 <script>
 export default {
+  name: 'SdError',
   props: {
     message: [String, Boolean]
   }

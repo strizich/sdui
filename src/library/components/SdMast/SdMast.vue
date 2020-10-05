@@ -10,6 +10,7 @@
 
 <script>
 export default {
+  name: 'SdMast',
   props: {
     alignment: String,
     title: String,

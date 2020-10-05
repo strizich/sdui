@@ -1,5 +1,5 @@
 <template>
-  <div class="sd--slider" >
+  <div class="sd--slider" ref="observeWindow" >
     <sd-label v-if="label">{{label}}</sd-label>
     <slot name="label"/>
     <div class="sd--slider__container">
@@ -45,12 +45,14 @@
     </div>
     <small v-if="hint" class="sd--text__footnote">{{hint}}</small>
     <slot name="hint"/>
+    {{state}}
   </div>
 </template>
 
 <script>
-import { defineComponent, ref, reactive, computed, watchEffect, onMounted, onUnmounted, watch } from 'vue'
-import { SdLabel, SdTooltip } from '../..'
+import { defineComponent, ref, reactive, computed, watchEffect, onMounted, onUnmounted, watch, nextTick } from 'vue'
+import SdLabel from '../SdField/SdLabel'
+import SdTooltip from '../SdTooltip'
 
 export default defineComponent({
   name: 'SdSlider',
@@ -85,7 +87,7 @@ export default defineComponent({
     const observeWindow = ref(null)
     const state = reactive({
       init: false,
-      initX: 0,
+      computedX: 0,
       x: 0,
       minX: 0,
       maxX: 0,
@@ -93,8 +95,6 @@ export default defineComponent({
       isDragging: false,
       handleWidth: 0,
       handleHeight: 0,
-      rootWidth: 0,
-      rootHeight: 0,
       offset: null,
       step: props.step,
       min: props.min,
@@ -104,7 +104,7 @@ export default defineComponent({
 
     const thumbTrackStyle = computed(() => {
       return {
-        width: state.initX + (state.handleWidth / 2) + 'px'
+        width: state.computedX + (state.handleWidth / 2) + 'px'
       }
     })
 
@@ -112,7 +112,7 @@ export default defineComponent({
       return {
         transition: 'transform .23s ease-in-out',
         position: 'absolute',
-        left: state.initX - (state.handleWidth / 2) + 'px',
+        left: state.computedX - (state.handleWidth / 2) + 'px',
         cursor: state.isDragging ? 'grab' : 'pointer',
         zIndex: state.isDragging ? 1000 : 0
       }
@@ -137,15 +137,21 @@ export default defineComponent({
       return minMax(props.min, currentValue, props.max)
     })
 
+    watch(() => result.value, (newValue) => {
+      emit('update:value', newValue)
+    })
+
     const handleMove = (e) => {
       const { clientX } = e
       state.x = Math.max(0, Math.min(clientX - state.dragStartX, state.maxX))
+      state.pctComplete = Number(Math.round(minMax(0, state.x / state.maxX, 1) + 'e2') + 'e-2')
     }
 
     const handleStart = (e) => {
       const { clientX } = e
       const clickX = Math.round((clientX - state.offset))
       state.x = Math.max(0, Math.min(clickX, state.maxX))
+      state.pctComplete = Number(Math.round(minMax(0, state.x / state.maxX, 1) + 'e2') + 'e-2')
       state.isDragging = true
       state.dragStartX = clientX - state.x
     }
@@ -197,41 +203,41 @@ export default defineComponent({
         handle.value instanceof HTMLElement
       ) {
         const rect = slider.value.getBoundingClientRect()
-        state.offset = rect.left
+        state.offset = Math.round(rect.left)
+        state.handleWidth = Math.round(handle.value.clientWidth)
+        state.maxX = Math.round(slider.value.clientWidth)
         state.init = true
-        state.maxX = Math.round(state.rootWidth)
-        state.pctComplete = minMax(0, state.x / state.rootWidth, 1)
-        state.initX = minMax(0, Math.round((props.value - props.min) / (props.max - props.min) * state.rootWidth), state.rootWidth)
+        state.computedX = minMax(0, Math.round((props.value - props.min) / (props.max - props.min) * state.maxX), state.maxX)
         slider.value.addEventListener('touchstart', onTouchStart, { passive: true })
         slider.value.addEventListener('mousedown', onMouseDown)
-        window.addEventListener('resize', () => setElementBounds())
       }
-    })
+    }, { flush: 'post' })
 
-    watch(() => result.value, (newValue) => {
-      emit('update:value', newValue)
-    })
-
-    const setElementBounds = () => {
-      if (
-        slider.value instanceof HTMLElement &&
-        handle.value instanceof HTMLElement
-      ) {
-        const rect = slider.value.getBoundingClientRect()
-        state.offset = rect.left
-        state.handleWidth = Math.round(handle.value.clientWidth)
-        state.handleHeight = Math.round(handle.value.clientHeight)
-        state.rootWidth = Math.round(slider.value.clientWidth)
-        state.rootHeight = Math.round(slider.value.clientHeight)
-      }
+    const updateElementBounds = () => {
+      nextTick().then(() => {
+        if (
+          slider.value instanceof HTMLElement &&
+          handle.value instanceof HTMLElement
+        ) {
+          const rect = slider.value.getBoundingClientRect()
+          state.offset = Math.round(rect.left)
+          state.handleWidth = Math.round(handle.value.clientWidth)
+          state.maxX = Math.round(slider.value.clientWidth)
+        }
+      })
     }
 
     onMounted(() => {
-      setElementBounds()
-      observeWindow.value = new ResizeObserver(setElementBounds).observe(slider.value)
+      window.addEventListener('resize', updateElementBounds)
+      slider.value = new ResizeObserver(updateElementBounds).observe(slider.value)
+    })
+
+    watch(() => observeWindow.value, (newValue) => {
+      console.log(newValue)
     })
 
     onUnmounted(() => {
+      window.removeEventListener('resize', updateElementBounds)
       observeWindow.value = null
     })
 
@@ -242,6 +248,7 @@ export default defineComponent({
       thumbClass,
       state,
       thumbTrackStyle,
+      observeWindow,
       result
     }
   }

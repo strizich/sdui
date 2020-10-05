@@ -1,3 +1,5 @@
+// Needs upgrading to v3
+
 import Vue from 'vue'
 
 export default (name, options) => {
