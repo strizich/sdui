@@ -33,7 +33,7 @@ Are made for clicking.
 ## API
 #### Themes and Styling
 |Name|Type|Description|
-|--|--|--|--|--|
+|--|--|--|
 |disabled|`boolean`|Removes the ability to interact with the element.
 |rounded|`boolean`|Rounds the corners of the button. Adds class `is--rounded`.|
 |pill|`boolean`|Rounds the corners of the button with additional padding.|
@@ -49,18 +49,18 @@ Are made for clicking.
 
 ## Fine tuning
 |Name|Type|Description|
-|--|--|--|--|--|
+|--|--|--|
 |align|`string`|Set the position of the component's content. Must also be set to `block`. Use `justify-content` styles for positioning. eg. `space-around`, `space-between`, `flex-start`, `flex-end`|
 |casing|`string`|Adjust the casing of the rendered. Accepts: `uppercase`, `captialize`, `lowercase` content.|
 
 ### External links 
 |Name|Type|Description|
-|--|--|--|--|--|
+|--|--|--|
 |href|`string`|Makes external URLs targetable. Changes the component's root element from a `button` to an `a`.|
 
 
 ### Additional
 |Name|Type|Description|
-|--|--|--|--|--|
+|--|--|--|
 |id|`string`|Populates the `id` attribute of the component. Default: `Randomized UUID`|
 |type|`string`|Sets the `type` attribute of the component.|
