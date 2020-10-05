@@ -1,12 +1,11 @@
 import { reactive, toRefs, onMounted, onUnmounted } from 'vue'
-import SdThrottle from '@/library/core/utilities/SdThrottle'
+import SdThrottle from '../core/utilities/SdThrottle'
 
 const useWindowWidth = () => {
   const state = reactive({
     windowWidth: null,
     smallDevice: false
   })
-  // const small = computed(() => state.windowWidth <= 768)
 
   const updateWindowWidth = () => {
     const width = window.innerWidth

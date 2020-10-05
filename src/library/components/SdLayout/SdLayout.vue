@@ -29,9 +29,10 @@
 
 <script>
 import { reactive, toRefs, computed, watch } from 'vue'
-import { SdOverlay } from '@/library'
+import { SdOverlay } from '../..'
 import { useRouter } from 'vue-router'
 export default {
+  name: 'SdLayout',
   // may be able to use provide/inject to handing the excessive prop casting.
   props: {
     sidebar: Boolean,

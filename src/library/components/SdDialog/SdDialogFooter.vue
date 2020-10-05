@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import useAlignment from '@/library/hooks/useAlignment'
+import useAlignment from '../../hooks/useAlignment'
 
 export default {
   name: 'SdModalFooter',

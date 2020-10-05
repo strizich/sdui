@@ -8,7 +8,7 @@
 </template>
 
 <script>
-import { SdIcon } from '@/library'
+import { SdIcon } from '../..'
 import { computed } from 'vue'
 export default {
   components: { SdIcon },

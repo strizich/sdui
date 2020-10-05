@@ -9,7 +9,7 @@
 
 <script>
 import { computed, defineComponent } from 'vue'
-import { SdIcon } from '@/library'
+import { SdIcon } from '../..'
 export default defineComponent({
   components: { SdIcon },
   props: {

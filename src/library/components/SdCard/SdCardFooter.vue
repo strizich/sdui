@@ -6,7 +6,7 @@
 
 <script>
 import { defineComponent } from 'vue'
-import useAlignment from '@/library/hooks/useAlignment'
+import useAlignment from '../../hooks/useAlignment'
 
 export default defineComponent({
   name: 'SdCardFooter',

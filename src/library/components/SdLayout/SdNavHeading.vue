@@ -3,6 +3,11 @@
   <h4 class="sd--text__footnote"><slot/></h4>
 </div>
 </template>
+<script>
+export default {
+  name: 'SdNavHeading'
+}
+</script>
 <style lang="scss" scoped>
 .sd--nav__heading{
   padding: 16px 16px 8px;

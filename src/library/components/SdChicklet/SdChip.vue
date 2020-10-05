@@ -29,7 +29,7 @@
 
 <script>
 import { defineComponent, reactive, computed, watch, ref, nextTick, watchEffect } from 'vue'
-import { SdChicklet, SdField } from '@/library'
+import { SdChicklet, SdField } from '../..'
 
 export default defineComponent({
   name: 'Home',

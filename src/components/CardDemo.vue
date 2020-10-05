@@ -49,29 +49,11 @@
 </template>
 
 <script>
-import {
-  SdButton,
-  SdCard,
-  SdCardHeader,
-  SdCardFooter,
-  SdCardMedia,
-  SdContainer,
-  SdRow,
-  SdCol
-} from '@/library'
 import SectionHeader from '@/components/SectionHeader'
 
 export default {
   name: 'CardTest',
   components: {
-    SdButton,
-    SdCard,
-    SdCardHeader,
-    SdCardFooter,
-    SdCardMedia,
-    SdContainer,
-    SdRow,
-    SdCol,
     SectionHeader
   },
   setup () {

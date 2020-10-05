@@ -21,10 +21,11 @@
 </template>
 
 <script>
-import { SdHamburger } from '@/library'
-import useWindowWidth from '@/library/hooks/useWindowWidth'
+import { SdHamburger } from '../..'
+import useWindowWidth from '../../hooks/useWindowWidth'
 import { reactive } from 'vue'
 export default {
+  name: 'SdHeader',
   emits: ['toggle-aside'],
   components: { SdHamburger },
   props: {

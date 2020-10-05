@@ -1,4 +1,4 @@
-// import SdFocused from '@/library/core/mixins/SdFocused'
+// import SdFocused from '../../core/mixins/SdFocused'
 // Rework this mixin to use the new v-modal pattern.
 export default {
   data () {

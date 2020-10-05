@@ -25,7 +25,7 @@
 
 <script>
 import { defineComponent, reactive, computed, toRefs, watch, ref } from 'vue'
-import SdUuid from '@/library/core/utilities/SdUuid'
+import SdUuid from '../../core/utilities/SdUuid'
 import SdLabel from './SdLabel'
 import SdError from './SdError'
 export default defineComponent({

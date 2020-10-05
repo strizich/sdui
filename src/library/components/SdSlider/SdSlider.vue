@@ -50,7 +50,7 @@
 
 <script>
 import { defineComponent, ref, reactive, computed, watchEffect, onMounted, onUnmounted, watch } from 'vue'
-import { SdLabel, SdTooltip } from '@/library'
+import { SdLabel, SdTooltip } from '../..'
 
 export default defineComponent({
   name: 'SdSlider',

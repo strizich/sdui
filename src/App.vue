@@ -63,7 +63,6 @@ export default {
 }
 </script>
 <style lang="scss">
-@import './library/scss/main';
 
 #app {
   min-height:100vh;

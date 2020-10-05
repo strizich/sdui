@@ -67,7 +67,7 @@ import anime from 'animejs'
 import { onMounted } from 'vue'
 
 export default {
-  name: 'IconMouse',
+  name: 'SdIconMouse',
   props: {
     hover: Boolean,
     delay: {

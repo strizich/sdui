@@ -25,7 +25,7 @@ import {
   onMounted,
   onUnmounted
 } from 'vue'
-import { SdOverlay } from '@/library'
+import { SdOverlay } from '../..'
 import { createPopper } from '@popperjs/core'
 
 export default {

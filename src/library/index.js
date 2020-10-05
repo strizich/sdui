@@ -1,3 +1,6 @@
+import packageData from '../../package.json'
+import { transformCamelCase, kebab } from './core/utilities/SdTextTransform'
+import './scss/main.scss'
 import SdButton from './components/SdButton/SdButton'
 import SdRouterLink from './components/SdButton/SdRouterLink'
 import SdHamburger from './components/SdButton/SdHamburger'
@@ -43,7 +46,7 @@ import SdChip from './components/SdChicklet/SdChip'
 import SdSkeleton from './components/SdLoader/SdSkeleton'
 import SdSheet from './components/SdSheet'
 
-export {
+const components = {
   SdSkeleton,
   // Button
   SdButton,
@@ -74,6 +77,90 @@ export {
   // Poppers
   SdTooltip,
   SdHamburger,
+  // Layout
+  SdLayout,
+  SdHeader,
+  SdNav,
+  SdNavLink,
+  SdNavHeading,
+  // SdFooter,
+  // SdSidebar
+  // Grid
+  SdRow,
+  SdCol,
+  SdContainer,
+  SdSlider,
+  SdMast,
+  SdSwitch,
+  SdProgress,
+  SdDropdown,
+  SdDropdownMenu,
+  SdDropdownHeader,
+  SdChicklet,
+  SdChip,
+  SdSheet
+}
+
+const componentsDesc = Object.keys(components).map((item) => {
+  const component = components[item]
+  return {
+    name: component.name || 'sd-comp',
+    component
+  }
+})
+
+const componentsSd = Object.keys(components).map((item) => item.slice(1))
+
+const install = (app) => {
+  if (!app || install.installed) {
+    return
+  }
+  componentsDesc.forEach((item) => {
+    const kebabCaseName = kebab(item.name)
+    const camelCaseName = transformCamelCase(`-${kebabCaseName}`)
+    const registerComponent = item.component
+    console.log(kebabCaseName, camelCaseName)
+    app.component(kebabCaseName, registerComponent)
+    app.component(camelCaseName, registerComponent)
+  })
+}
+
+const version = packageData.version
+
+export {
+  componentsSd,
+  install,
+  version,
+  SdSkeleton,
+  // Button
+  SdButton,
+  SdRouterLink,
+  SdHamburger,
+  // Cards
+  SdCard,
+  SdCardBody,
+  SdCardHeader,
+  SdCardFooter,
+  SdCardMedia,
+  // Control Fields
+  SdFieldset,
+  SdLabel,
+  SdCheckbox,
+  SdRadio,
+  SdField,
+  SdError,
+  SdSelect,
+  // Dialog (modal)
+  SdDialog,
+  SdDialogTitle,
+  SdDialogContent,
+  SdDialogFooter,
+  SdOverlay,
+  // Icon
+  SdIcon,
+  SdMouse,
+  // Poppers
+  SdTooltip,
   // Layout
   SdLayout,
   SdHeader,

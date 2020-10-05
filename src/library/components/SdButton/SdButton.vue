@@ -1,8 +1,8 @@
 
 <script>
 import { defineComponent, computed, ref, h } from 'vue'
-import useKeyboardFocus from '@/library/hooks/useKeyboardFocus'
-import sdUuid from '@/library/core/utilities/SdUuid'
+import useKeyboardFocus from '../../hooks/useKeyboardFocus'
+import sdUuid from '../../core/utilities/SdUuid'
 export default defineComponent({
   name: 'SdButton',
   props: {

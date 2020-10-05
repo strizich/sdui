@@ -6,7 +6,7 @@
 
 <script>
 import { ref, onMounted } from 'vue'
-import SdUuid from '@/library/core/utilities/SdUuid'
+import SdUuid from '../../core/utilities/SdUuid'
 import Chart from 'chart.js'
 export default {
   props: {

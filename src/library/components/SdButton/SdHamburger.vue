@@ -9,8 +9,8 @@
 <script>
 import anime from 'animejs'
 import { ref, reactive, computed, watch } from 'vue'
-import useKeyboardFocus from '@/library/hooks/useKeyboardFocus'
-import sdUuid from '@/library/core/utilities/SdUuid'
+import useKeyboardFocus from '../../hooks/useKeyboardFocus'
+import sdUuid from '../../core/utilities/SdUuid'
 export default {
   name: 'SdHamburger',
   props: {

@@ -27,8 +27,8 @@
 // Research way to properly split this code.
 
 import { defineComponent, ref, computed } from 'vue'
-import sdUuid from '@/library/core/utilities/SdUuid'
-import useKeyboardFocus from '@/library/hooks/useKeyboardFocus'
+import sdUuid from '../../core/utilities/SdUuid'
+import useKeyboardFocus from '../../hooks/useKeyboardFocus'
 
 export default defineComponent({
   name: 'SdSwitch',
