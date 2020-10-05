@@ -109,8 +109,8 @@ const componentsDesc = Object.keys(components).map((item) => {
 
 const componentsSd = Object.keys(components).map((item) => item.slice(1))
 
-const install = (app) => {
-  if (!app || install.installed) {
+const sdInstall = (app) => {
+  if (!app || sdInstall.installed) {
     return
   }
   componentsDesc.forEach((item) => {
@@ -127,7 +127,7 @@ const version = packageData.version
 
 export {
   componentsSd,
-  install,
+  sdInstall,
   version,
   SdSkeleton,
   // Button
