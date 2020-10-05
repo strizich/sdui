@@ -22,14 +22,7 @@
 
 <script>
 import { reactive } from 'vue'
-import {
-  SdCard,
-  SdCardHeader,
-  SdCardBody,
-  SdContainer,
-  SdRow,
-  SdCol
-} from '@/library'
+
 import SdBaseChart from '@/library/components/SdChart/SdBaseChart'
 import SectionHeader from '@/components/SectionHeader'
 import mockChartData from '@/assets/chartData'
@@ -37,12 +30,6 @@ import mockChartData from '@/assets/chartData'
 export default {
   name: 'CardTest',
   components: {
-    SdCard,
-    SdCardHeader,
-    SdCardBody,
-    SdContainer,
-    SdRow,
-    SdCol,
     SectionHeader,
     SdBaseChart
   },

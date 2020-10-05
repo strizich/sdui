@@ -21,12 +21,11 @@
 <script>
 import { defineComponent } from 'vue'
 import JsLogo from '@/components/JsLogo'
-import { SdHeader, SdButton } from '@/library'
 
 export default defineComponent({
   emits: ['menu-open'],
   components: {
-    JsLogo, SdHeader, SdButton
+    JsLogo
   },
   props: {
     asideOpen: Boolean

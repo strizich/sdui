@@ -62,11 +62,10 @@
 
 <script>
 import { reactive, toRefs, computed } from 'vue'
-import { SdField, SdRow, SdContainer, SdCol } from '@/library'
 import SectionHeader from '@/components/SectionHeader'
 export default {
   name: 'InputDemo',
-  components: { SdField, SdRow, SdCol, SdContainer, SectionHeader },
+  components: { SectionHeader },
   setup () {
     const state = reactive({
       inputOne: '',

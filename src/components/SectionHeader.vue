@@ -31,11 +31,9 @@
 <script>
 import { defineComponent, reactive, watch, nextTick, toRefs } from 'vue'
 import { useRouter } from 'vue-router'
-import { SdTooltip, SdButton, SdIcon } from '@/library'
 
 export default defineComponent({
   name: 'SectionHeader',
-  components: { SdTooltip, SdButton, SdIcon },
   props: {
     hash: {
       type: String

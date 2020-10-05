@@ -60,16 +60,6 @@
 <script>
 import { reactive, toRefs } from 'vue'
 import SectionHeader from '@/components/SectionHeader'
-import {
-  SdButton,
-  SdFieldset,
-  SdRadio,
-  SdDialog,
-  SdDialogTitle,
-  SdDialogContent,
-  SdDialogFooter,
-  SdContainer
-} from '@/library'
 
 export default {
   name: 'ModalDemo',
@@ -110,14 +100,6 @@ export default {
     }
   },
   components: {
-    SdButton,
-    SdDialog,
-    SdDialogTitle,
-    SdDialogContent,
-    SdDialogFooter,
-    SdRadio,
-    SdFieldset,
-    SdContainer,
     SectionHeader
   }
 }

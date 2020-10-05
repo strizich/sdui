@@ -30,7 +30,6 @@
 </template>
 
 <script>
-import { SdProgress } from '@/library'
 import SectionHeader from '@/components/SectionHeader'
 export default {
   setup () {
@@ -82,7 +81,6 @@ export default {
     return { bars }
   },
   components: {
-    SdProgress,
     SectionHeader
   }
 }

@@ -12,9 +12,7 @@
 
 <script>
 import { computed, watch, reactive, toRefs, nextTick } from 'vue'
-import { SdFieldset, SdSelect } from '@/library'
 export default {
-  components: { SdFieldset, SdSelect },
   setup () {
     const state = reactive({
       mode: 'auto'

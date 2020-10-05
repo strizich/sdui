@@ -104,10 +104,10 @@
 
 <script>
 import { reactive, toRefs } from 'vue'
-import { SdIcon, SdContainer, SdRow, SdCol, SdFieldset, SdRadio, SdButton, SdCheckbox } from '@/library'
 import SectionHeader from '@/components/SectionHeader'
 export default {
-  components: { SdIcon, SectionHeader, SdContainer, SdRow, SdCol, SdFieldset, SdRadio, SdButton, SdCheckbox },
+  name: 'DemoButton',
+  components: { SectionHeader },
   setup () {
     const state = reactive({
       selectedSize: 'md',

@@ -69,12 +69,10 @@
 
 <script>
 import { defineComponent, reactive, toRefs } from 'vue'
-import SdSlider from '@/library/components/SdSlider/SdSlider'
 import SectionHeader from '@/components/SectionHeader'
-import { SdContainer, SdField, SdFieldset, SdLabel, SdCol, SdRow, SdCheckbox } from '@/library'
 
 export default defineComponent({
-  components: { SdSlider, SdContainer, SdField, SdFieldset, SectionHeader, SdLabel, SdCol, SdRow, SdCheckbox },
+  components: { SectionHeader },
   setup () {
     const slider = reactive({
       label: 'Label',

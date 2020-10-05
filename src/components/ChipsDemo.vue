@@ -50,11 +50,9 @@
 <script>
 import SectionHeader from '@/components/SectionHeader'
 import { reactive, watch } from 'vue'
-import { SdChip } from '@/library'
 
 export default {
   components: {
-    SdChip,
     SectionHeader
   },
   setup () {

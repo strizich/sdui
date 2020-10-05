@@ -27,13 +27,12 @@ import { reactive, toRefs, watchEffect } from 'vue'
 import TheHeader from '@/components/TheHeader'
 import TheSidebar from '@/components/TheSidebar'
 import useWindowWidth from '@/library/hooks/useWindowWidth'
-import { SdLayout } from '@/library'
 
 const floatState = window.localStorage.getItem('SDUI:sidebarFloating') === 'true'
 const navState = window.localStorage.getItem('SDUI:navState') === 'true'
 
 export default {
-  components: { SdLayout, TheHeader, TheSidebar },
+  components: { TheHeader, TheSidebar },
   setup () {
     const state = reactive({
       menuOpen: navState,
@@ -69,7 +68,7 @@ export default {
   height: 100%;
 }
 html, body{
-  transition: background .6s 0s ease-in,
+  transition: background-color .6s 0s ease-in,
               color .6s 0s ease-in
               background-color .6s 0s ease-in;
   background-color: var(--background);
@@ -80,7 +79,7 @@ html, body{
   display:flex;
   justify-content: flex-end;
   padding: 4px 32px;
-  background: var(--background-accent);
+  background-color: var(--background-accent);
 }
 
 </style>

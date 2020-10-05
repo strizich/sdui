@@ -11,17 +11,11 @@
 </template>
 
 <script>
-import { SdCard, SdCardHeader, SdCardMedia, SdCardBody } from '@/library'
 export default {
+  name: 'ChartDemo',
   props: {
     title: String,
     image: String
-  },
-  components: {
-    SdCard,
-    SdCardHeader,
-    SdCardMedia,
-    SdCardBody
   }
 }
 </script>

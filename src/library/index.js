@@ -1,6 +1,9 @@
 import packageData from '../../package.json'
 import { transformCamelCase, kebab } from './core/utilities/SdTextTransform'
+
+// Components
 import './scss/main.scss'
+import './components/SdElevation/elevation.scss'
 import SdButton from './components/SdButton/SdButton'
 import SdRouterLink from './components/SdButton/SdRouterLink'
 import SdHamburger from './components/SdButton/SdHamburger'
@@ -28,11 +31,9 @@ import SdTooltip from './components/SdTooltip/SdTooltip'
 import SdLayout from './components/SdLayout/SdLayout'
 import SdHeader from './components/SdLayout/SdHeader'
 import SdNavLink from './components/SdLayout/SdNavLink'
-// import SdFooter from './components/SdLayout/SdFooter'
-// import SdSidebar from './components/SdLayout/SdSidebar'
 import SdNav from './components/SdLayout/SdNav'
 import SdNavHeading from './components/SdLayout/SdNavHeading'
-import SdMast from './components/SdMast'
+import SdMast from './components/SdMast/SdMast'
 import SdRow from './components/SdGrid/SdRow'
 import SdCol from './components/SdGrid/SdCol'
 import SdContainer from './components/SdGrid/SdContainer'
@@ -44,7 +45,7 @@ import SdDropdownHeader from './components/SdDropdown/SdDropdownHeader'
 import SdChicklet from './components/SdChicklet/SdChicklet'
 import SdChip from './components/SdChicklet/SdChip'
 import SdSkeleton from './components/SdLoader/SdSkeleton'
-import SdSheet from './components/SdSheet'
+import SdSheet from './components/SdSheet/SdSheet'
 
 const components = {
   SdSkeleton,
@@ -83,9 +84,6 @@ const components = {
   SdNav,
   SdNavLink,
   SdNavHeading,
-  // SdFooter,
-  // SdSidebar
-  // Grid
   SdRow,
   SdCol,
   SdContainer,

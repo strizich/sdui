@@ -38,15 +38,10 @@
 <script>
 import ColorScheme from '@/components/ColorScheme'
 import { reactive, toRefs, watch, onUnmounted } from 'vue'
-import { SdFieldset, SdCheckbox, SdNav, SdNavLink } from '@/library'
 export default {
   name: 'TheSidebar',
   components: {
-    ColorScheme,
-    SdFieldset,
-    SdCheckbox,
-    SdNavLink,
-    SdNav
+    ColorScheme
   },
   emits: ['update:floating'],
   props: {

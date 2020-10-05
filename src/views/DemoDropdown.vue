@@ -33,9 +33,8 @@
 <script>
 import { defineComponent, ref } from 'vue'
 import SectionHeader from '@/components/SectionHeader'
-import { SdButton, SdDropdown, SdDropdownMenu, SdIcon } from '@/library'
 export default defineComponent({
-  components: { SdButton, SdDropdown, SdDropdownMenu, SdIcon, SectionHeader },
+  components: { SectionHeader },
   setup () {
     const dropdown = ref(false)
     const dropdown2 = ref(false)

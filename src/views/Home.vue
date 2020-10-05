@@ -65,11 +65,10 @@
 
 <script>
 import { defineComponent } from 'vue'
-import { SdMast, SdContainer, SdRow, SdCol, SdSkeleton, SdSheet } from '@/library'
 import Widget from '@/components/Widget'
 export default defineComponent({
-  name: 'Home',
-  components: { SdMast, SdContainer, SdRow, SdCol, Widget, SdSkeleton, SdSheet }
+  name: 'AppHome',
+  components: { Widget }
 })
 </script>
 

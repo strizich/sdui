@@ -40,7 +40,6 @@
 <script>
 import MAT_ICONS from '@/assets/MatIconList'
 import { defineComponent, computed, ref } from 'vue'
-import { SdIcon, SdLabel, SdField, SdSelect, SdFieldset, SdContainer } from '@/library'
 import SectionHeader from '@/components/SectionHeader'
 
 export default defineComponent({
@@ -63,7 +62,7 @@ export default defineComponent({
 
     return { iconSearch, matIcons, searchResult, resultCount, totalFilteredResults, error }
   },
-  components: { SdIcon, SdField, SdLabel, SdSelect, SdFieldset, SdContainer, SectionHeader }
+  components: { SectionHeader }
 })
 </script>
 

@@ -16,13 +16,9 @@
 
 <script>
 import { defineComponent } from 'vue'
-import { SdRow, SdContainer, SdCol } from '@/library'
-import '@/library/components/SdElevation'
 import SectionHeader from '@/components/SectionHeader'
 export default defineComponent({
-  components: {
-    SdRow, SdContainer, SdCol, SectionHeader
-  },
+  components: { SectionHeader },
   setup () {
     // Future: Make demo dynamic... Likely after SdRange is finished.
     // const elevation = ref(0)

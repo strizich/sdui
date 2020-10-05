@@ -7,6 +7,7 @@
 <script>
 import { computed } from 'vue'
 export default {
+  name: 'SdCard',
   props: {
     title: String,
     baseClass: {
@@ -29,7 +30,6 @@ export default {
 
 <style lang="scss">
 @import '../SdElevation/mixins';
-@import '../SdElevation/elevation';
 
 .sd--card{
   background-color: v(--background-highlight);

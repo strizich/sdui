@@ -22,13 +22,10 @@
 
 <script>
 import { reactive, defineComponent } from 'vue'
-import { SdRadio, SdFieldset, SdContainer, SdRow, SdCol } from '@/library'
 import SectionHeader from '@/components/SectionHeader'
 
 export default defineComponent({
-  components: {
-    SdFieldset, SdRadio, SdContainer, SdRow, SdCol, SectionHeader
-  },
+  components: { SectionHeader },
   setup () {
     const state = reactive({
       string: ''

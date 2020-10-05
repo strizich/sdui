@@ -36,11 +36,10 @@
 
 <script>
 import { defineComponent } from 'vue'
-import { SdFieldset, SdTooltip, SdButton, SdContainer } from '@/library'
 import SectionHeader from '@/components/SectionHeader'
 
 export default defineComponent({
-  components: { SectionHeader, SdTooltip, SdButton, SdFieldset, SdContainer }
+  components: { SectionHeader }
 })
 </script>
 

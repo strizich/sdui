@@ -20,7 +20,7 @@ export default {
 .sd--card{
   &__header{
     display: flex;
-    padding: 16px 16px 8px;
+    padding: 8px 16px;
     justify-content: space-between;
     align-items: center;
     font-weight: 400;

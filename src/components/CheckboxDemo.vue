@@ -38,13 +38,12 @@
 
 <script>
 import { reactive, toRefs, defineComponent } from 'vue'
-import { SdCheckbox, SdFieldset, SdContainer, SdCol, SdRow } from '@/library'
 import SectionHeader from '@/components/SectionHeader'
 
 export default defineComponent({
   name: 'CheckboxDemo',
   components: {
-    SdCheckbox, SdFieldset, SdContainer, SdCol, SdRow, SectionHeader
+    SectionHeader
   },
   setup () {
     const state = reactive({

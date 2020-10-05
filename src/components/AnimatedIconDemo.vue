@@ -12,10 +12,8 @@
 </template>
 
 <script>
-import { SdMouse, SdHamburger } from '@/library'
 export default {
-  name: 'AnimatedIconDemo',
-  components: { SdMouse, SdHamburger }
+  name: 'AnimatedIconDemo'
 }
 </script>
 
