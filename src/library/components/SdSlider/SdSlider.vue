@@ -1,5 +1,5 @@
 <template>
-  <div class="sd--slider" ref="observeWindow" >
+  <div class="sd--slider">
     <sd-label v-if="label">{{label}}</sd-label>
     <slot name="label"/>
     <div class="sd--slider__container">
@@ -45,14 +45,13 @@
     </div>
     <small v-if="hint" class="sd--text__footnote">{{hint}}</small>
     <slot name="hint"/>
-    {{state}}
   </div>
 </template>
 
 <script>
 import { defineComponent, ref, reactive, computed, watchEffect, onMounted, onUnmounted, watch, nextTick } from 'vue'
 import SdLabel from '../SdField/SdLabel'
-import SdTooltip from '../SdTooltip'
+import SdTooltip from '../SdTooltip/SdTooltip'
 
 export default defineComponent({
   name: 'SdSlider',
@@ -102,12 +101,14 @@ export default defineComponent({
       pctComplete: 0
     })
 
+    // Styles
     const thumbTrackStyle = computed(() => {
       return {
         width: state.computedX + (state.handleWidth / 2) + 'px'
       }
     })
 
+    // Classes
     const thumbStyle = computed(() => {
       return {
         transition: 'transform .23s ease-in-out',
@@ -124,10 +125,12 @@ export default defineComponent({
       }
     })
 
+    // Utility function to simplify value boundries
     const minMax = (min, value, max) => {
       return Math.max(min, Math.min(value, max))
     }
 
+    // Final Calculations
     const result = computed(() => {
       const currentValue = Math.round(props.min + state.pctComplete * (props.max - props.min))
       const quantize = Math.round(currentValue / props.step) * props.step
@@ -137,10 +140,28 @@ export default defineComponent({
       return minMax(props.min, currentValue, props.max)
     })
 
+    // Emits the result on change
     watch(() => result.value, (newValue) => {
       emit('update:value', newValue)
     })
 
+    // Update element bounderies and offset when the window size changes.
+    const handleWindowResize = () => {
+      nextTick().then(() => {
+        if (
+          slider.value instanceof HTMLElement &&
+          handle.value instanceof HTMLElement
+        ) {
+          const rect = slider.value.getBoundingClientRect()
+          state.offset = Math.round(rect.left)
+          state.handleWidth = Math.round(handle.value.clientWidth)
+          state.maxX = Math.round(slider.value.clientWidth)
+        }
+      })
+    }
+
+    // Interaction Bindings for touch and mouse.
+    // FUTURE: Add keyboard bindings.
     const handleMove = (e) => {
       const { clientX } = e
       state.x = Math.max(0, Math.min(clientX - state.dragStartX, state.maxX))
@@ -150,9 +171,9 @@ export default defineComponent({
     const handleStart = (e) => {
       const { clientX } = e
       const clickX = Math.round((clientX - state.offset))
+      state.isDragging = true
       state.x = Math.max(0, Math.min(clickX, state.maxX))
       state.pctComplete = Number(Math.round(minMax(0, state.x / state.maxX, 1) + 'e2') + 'e-2')
-      state.isDragging = true
       state.dragStartX = clientX - state.x
     }
 
@@ -197,46 +218,36 @@ export default defineComponent({
       document.removeEventListener('touchmove', onTouchMove)
     }
 
+    // Core of the maths. Recalculates if any of the dependencies change.
     watchEffect(() => {
       if (
         slider.value instanceof HTMLElement &&
         handle.value instanceof HTMLElement
       ) {
         const rect = slider.value.getBoundingClientRect()
-        state.offset = Math.round(rect.left)
-        state.handleWidth = Math.round(handle.value.clientWidth)
-        state.maxX = Math.round(slider.value.clientWidth)
         state.init = true
+        // Used to offset the click position. Useful if the element has moved since the last interaction.
+        state.offset = Math.round(rect.left)
+        // Allows for more flexability in future iterations. (Mostly useless right now)
+        state.handleWidth = Math.round(handle.value.clientWidth)
+        // The width of the slider element. Used to calculate the % complete and lock the handle in the upper bounds
+        state.maxX = Math.round(slider.value.clientWidth)
+        // Core calculation to convert an arbitrary value into pixels
         state.computedX = minMax(0, Math.round((props.value - props.min) / (props.max - props.min) * state.maxX), state.maxX)
+
+        // Adds listeners when mounted. Not totally sure why I put it here.
         slider.value.addEventListener('touchstart', onTouchStart, { passive: true })
         slider.value.addEventListener('mousedown', onMouseDown)
       }
     }, { flush: 'post' })
 
-    const updateElementBounds = () => {
-      nextTick().then(() => {
-        if (
-          slider.value instanceof HTMLElement &&
-          handle.value instanceof HTMLElement
-        ) {
-          const rect = slider.value.getBoundingClientRect()
-          state.offset = Math.round(rect.left)
-          state.handleWidth = Math.round(handle.value.clientWidth)
-          state.maxX = Math.round(slider.value.clientWidth)
-        }
-      })
-    }
-
     onMounted(() => {
-      window.addEventListener('resize', updateElementBounds)
-    })
-
-    watch(() => observeWindow.value, (newValue) => {
-      console.log(newValue)
+      // Listens to resize events. `SdLayout` will also emit resize events when the state of the sidebar changes.
+      window.addEventListener('resize', handleWindowResize)
     })
 
     onUnmounted(() => {
-      window.removeEventListener('resize', updateElementBounds)
+      window.removeEventListener('resize', handleWindowResize)
       observeWindow.value = null
     })
 

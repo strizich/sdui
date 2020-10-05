@@ -18,8 +18,8 @@
 
 <script>
 import { defineComponent, computed } from 'vue'
-import SdTooltip from '../SdTooltip'
-import SdIcon from '../SdIcon'
+import SdTooltip from '../SdTooltip/SdTooltip'
+import SdIcon from '../SdIcon/SdIcon'
 import SdLabel from './SdLabel'
 export default defineComponent({
   name: 'SdFieldset',
