@@ -8,6 +8,7 @@
 // import SdPortal from '@/layout/SdPortal'
 import { computed, defineComponent } from 'vue'
 export default defineComponent({
+  name: 'SdOverlay',
   props: {
     parent: String,
     active: Boolean,

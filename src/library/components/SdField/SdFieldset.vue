@@ -22,6 +22,7 @@ import SdTooltip from '../SdTooltip'
 import SdIcon from '../SdIcon'
 import SdLabel from './SdLabel'
 export default defineComponent({
+  name: 'SdFieldset',
   components: { SdTooltip, SdIcon, SdLabel },
   props: {
     title: String,

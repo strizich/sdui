@@ -9,6 +9,7 @@ import { ref, onMounted } from 'vue'
 import SdUuid from '../../core/utilities/SdUuid'
 import Chart from 'chart.js'
 export default {
+  name: 'SdBaseChart',
   props: {
     id: {
       type: String,

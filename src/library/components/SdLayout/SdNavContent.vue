@@ -11,6 +11,7 @@
 import { computed, defineComponent } from 'vue'
 import { SdIcon } from '../..'
 export default defineComponent({
+  name: 'SdNavContent',
   components: { SdIcon },
   props: {
     href: String,

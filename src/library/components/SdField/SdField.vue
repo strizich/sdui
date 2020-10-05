@@ -29,6 +29,7 @@ import SdUuid from '../../core/utilities/SdUuid'
 import SdLabel from './SdLabel'
 import SdError from './SdError'
 export default defineComponent({
+  name: 'SdField',
   emits: ['update:modelValue', 'focus', 'blur', 'change', 'input'],
   props: {
     // TODO: Add prop validaton to disallow having both value and modelValue

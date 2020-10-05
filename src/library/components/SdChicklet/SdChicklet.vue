@@ -11,6 +11,7 @@
 import { SdIcon } from '../..'
 import { computed } from 'vue'
 export default {
+  name: 'SdChicklet',
   components: { SdIcon },
   props: {
     theme: {

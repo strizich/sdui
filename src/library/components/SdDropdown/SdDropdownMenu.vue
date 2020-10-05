@@ -7,6 +7,7 @@
 <script>
 import SdDropdownHeader from './SdDropdownHeader'
 export default {
+  name: 'SdDropdownHeader',
   props: {
     title: String
   },

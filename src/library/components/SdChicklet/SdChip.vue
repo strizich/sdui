@@ -32,7 +32,7 @@ import { defineComponent, reactive, computed, watch, ref, nextTick, watchEffect 
 import { SdChicklet, SdField } from '../..'
 
 export default defineComponent({
-  name: 'Home',
+  name: 'SdChip',
   components: { SdChicklet, SdField },
   props: {
     label: String,

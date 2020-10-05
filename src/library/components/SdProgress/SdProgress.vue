@@ -21,8 +21,8 @@ import { computed } from 'vue'
 import { SdLabel } from '../..'
 import '../../components/SdElevation'
 export default {
-  components: { SdLabel },
   name: 'SdProgress',
+  components: { SdLabel },
   props: {
     title: String,
     hint: String,
