@@ -18,9 +18,6 @@ if (process.env.NODE_ENV === 'production') {
     },
     updatefound () {
       console.log('New content is downloading.')
-    },
-    updated () {
-      console.log('New content is available.')
       // Caching with service workers: https://developers.google.com/web/ilt/pwa/caching-files-with-service-worker#removing_outdated_caches
       self.addEventListener('activate', (event) => {
         event.waitUntil(
@@ -39,6 +36,9 @@ if (process.env.NODE_ENV === 'production') {
           })
         )
       })
+    },
+    updated () {
+      console.log('New content is available.')
     },
     offline () {
       console.log('No internet connection found. App is running in offline mode.')
