@@ -232,6 +232,9 @@ export default {
       width: 100%;
     }
   }
+  & ~ .sd--overlay{
+    pointer-events: none;
+  }
 }
   // FUTURE: Make this into a mixin for reuse
   .dropdown-enter-active, .dropdown-leave-active{

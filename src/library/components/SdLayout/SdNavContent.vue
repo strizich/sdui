@@ -46,6 +46,10 @@ export default defineComponent({
     transition: box-shadow .23s ease-in-out, background-color .23s ease-in-out;
     position: relative;
     font-size: 14px;
+    &:focus{
+      background-color: var(--background);
+      outline:none;
+    }
     @include breakpoint-down('sm') {
       font-size: 16px;
     }

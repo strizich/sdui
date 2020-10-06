@@ -1,5 +1,5 @@
 <template>
-  <div :class="['sd--chicklet', themeClasses]">
+  <div :class="['sd--chicklet', classes]">
     <span class="sd--chicklet__content">
       <slot/>
     </span>
@@ -21,10 +21,15 @@ export default {
     dismissable: Boolean
   },
   setup (props) {
-    const themeClasses = computed(() => {
-      return `sd--chicklet__${props.theme}`
+    const classes = computed(() => {
+      return {
+        [`sd--chicklet__${props.theme}`]: true,
+        'is--dismissable': props.dismissable
+      }
     })
-    return { themeClasses }
+    return {
+      classes
+    }
   }
 }
 </script>
@@ -40,6 +45,9 @@ export default {
   align-items: center;
   transition: background-color .23s ease-in-out;
   margin: 4px 0 4px 4px;
+  &.is--dismissable{
+    cursor: pointer;
+  }
   @each $state, $color in $sd-color-global {
     &__#{$state} {
       @include elevation(2);
