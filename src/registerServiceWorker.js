@@ -20,8 +20,10 @@ if (process.env.NODE_ENV === 'production') {
       console.log('New content is downloading.')
       // Caching with service workers: https://developers.google.com/web/ilt/pwa/caching-files-with-service-worker#removing_outdated_caches
       self.addEventListener('activate', (event) => {
+        console.log('Service Worker: Activated')
         event.waitUntil(
           caches.keys().then((cacheNames) => {
+            console.log(cacheNames)
             return Promise.all(
               cacheNames.filter((cacheName) => {
                 console.log('Service Worker: Cache Cleared')

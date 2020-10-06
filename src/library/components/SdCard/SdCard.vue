@@ -1,5 +1,5 @@
 <template>
-  <div :class="['sd--card', cardElevation]">
+  <div :class="['sd--card', classes]">
     <slot/>
   </div>
 </template>
@@ -17,13 +17,17 @@ export default {
     elevation: {
       type: [Number, String],
       default: 6
-    }
+    },
+    clickable: Boolean
   },
   setup (props) {
-    const cardElevation = computed(() => {
-      return `elevation--${props.elevation}`
+    const classes = computed(() => {
+      return {
+        [`elevation--${props.elevation}`]: true,
+        'is--clickable': props.clickable
+      }
     })
-    return { cardElevation }
+    return { classes }
   }
 }
 </script>
@@ -40,9 +44,12 @@ export default {
   z-index: 1;
   transition: box-shadow .23s ease-in-out;
   margin: 16px 0;
-  &:hover{
-    z-index: 10;
-    @include elevation(24);
+  &.is--clickable{
+    &:hover{
+      z-index: 10;
+      @include elevation(24);
+      cursor:pointer;
+    }
   }
   &--inset{
     padding: 0 16px;
