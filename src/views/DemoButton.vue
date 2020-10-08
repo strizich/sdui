@@ -2,32 +2,32 @@
   <div class="demo__buttons">
     <sd-container full>
     <section-header title="Buttons" sub-title="clicky clicky" />
-      <sd-row>
-        <sd-col :md="12">
-          <div class="buttons__results">
-            <template v-for="(color, index) in colors" :key="index">
-              <sd-button
-                :aria-label="`${color} button`"
-                :theme="color"
-                :icon="showIcon ? 'face' : null"
-                :href="selectedTag === 'Link' ? '/link' : ''"
-                :to="selectedTag === 'Route' ? '/route' : ''"
-                :pill="selectedPill === 'Pill'"
-                :rounded="selectedPill === 'Rounded'"
-                :flat="selectedStyle === 'Flat'"
-                :outline="selectedStyle === 'Outline'"
-                :size="selectedSize"
-                :block="isBlock"
-                :align="selectedAlignment"
-                :disabled="disabled"
-                :icon-only="isIconOnly"
-              >
-                <span v-if="!isIconOnly">{{color}}</span>
-              </sd-button>
-            </template>
-          </div>
-        </sd-col>
-      </sd-row>
+    <sd-row>
+      <sd-col :md="12">
+        <div class="buttons__results">
+          <template v-for="(color, index) in colors" :key="index">
+            <sd-button
+              :aria-label="`${color} button`"
+              :theme="color"
+              :icon="showIcon ? 'face' : null"
+              :href="selectedTag === 'Link' ? '/link' : ''"
+              :to="selectedTag === 'Route' ? '/route' : ''"
+              :pill="selectedPill === 'Pill'"
+              :rounded="selectedPill === 'Rounded'"
+              :flat="selectedStyle === 'Flat'"
+              :outline="selectedStyle === 'Outline'"
+              :size="selectedSize"
+              :block="isBlock"
+              :align="selectedAlignment"
+              :disabled="disabled"
+              :icon-only="isIconOnly"
+            >
+              <span v-if="!isIconOnly">{{color}}</span>
+            </sd-button>
+          </template>
+        </div>
+      </sd-col>
+    </sd-row>
     </sd-container>
     <sd-container>
       <sd-row class="group" gutterless>
@@ -58,7 +58,7 @@
         <sd-col class="group__options" :lg="3" :md="4" :sm="6" :xs="6">
           <sd-fieldset title="Style" stack>
             <sd-radio
-              name="Styles"
+              name="styles"
               v-for="(style, index) in boxStyle"
               :key="`style-${index}`"
               :value="style"
