@@ -8,7 +8,11 @@ describe('SdCard', () => {
         elevation: 7
       }
     })
-    const expected = 'elevation--7'
-    expect(wrapper.vm.cardElevation).toBe(expected)
+    const expected = {
+      'elevation--7': true,
+      'is--clickable': false
+    }
+
+    expect(wrapper.vm.classes).toStrictEqual(expected)
   })
 })
