@@ -167,21 +167,20 @@ export default defineComponent({
       &--md {
         font-size: rem(16);
         line-height: 1;
-        padding: spacing(offset);
-        padding: inherit 16px;
+        padding: spacing(offset, md);
       }
 
       &--lg {
         font-size: rem(18);
         line-height: 1;
-        padding: 0 16px;
+        padding: spacing(offset, lg);
       }
 
       &--xl {
         font-size: rem(28);
         font-weight: 300;
         line-height: 1;
-        padding: 0 16px;
+        padding: spacing(offset, xl);
       }
     }
   }
