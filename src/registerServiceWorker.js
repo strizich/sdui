@@ -18,30 +18,9 @@ if (process.env.NODE_ENV === 'production') {
     },
     updatefound () {
       console.log('New content is downloading.')
-      // Caching with service workers: https://developers.google.com/web/ilt/pwa/caching-files-with-service-worker#removing_outdated_caches
-      self.addEventListener('activate', (event) => {
-        console.log('Service Worker: Activated')
-        event.waitUntil(
-          caches.keys().then((cacheNames) => {
-            console.log(cacheNames)
-            return Promise.all(
-              cacheNames.filter((cacheName) => {
-                console.log('Service Worker: Cache Cleared')
-                return true
-                // Return true if you want to remove this cache,
-                // but remember that caches are shared across
-                // the whole origin
-              }).map((cacheName) => {
-                return caches.delete(cacheName)
-              })
-            )
-          })
-        )
-      })
     },
     updated () {
       console.log('New content is available.')
-      self.skipWaiting()
     },
     offline () {
       console.log('No internet connection found. App is running in offline mode.')
