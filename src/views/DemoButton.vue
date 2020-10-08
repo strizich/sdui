@@ -9,7 +9,7 @@
             <sd-button
               :aria-label="`${color} button`"
               :theme="color"
-              :icon="showIcon ? 'face' : null"
+              :icon="showIcon ? iconName : ''"
               :href="selectedTag === 'Link' ? '/link' : ''"
               :to="selectedTag === 'Route' ? '/route' : ''"
               :pill="selectedPill === 'Pill'"
@@ -30,7 +30,7 @@
     </sd-row>
     </sd-container>
     <sd-container>
-      <sd-row class="group" gutterless>
+      <sd-row class="group">
         <sd-col class="group__options" :lg="3" :md="4" :sm="6" :xs="6">
           <sd-fieldset title="Button Size" stack>
             <sd-radio
@@ -97,6 +97,15 @@
             </sd-radio>
           </sd-fieldset>
         </sd-col>
+        <sd-col class="group__options" :lg="3" :md="4" :sm="6" :xs="6">
+          <sd-field
+            label="Icon Name"
+            name="sizes"
+            :disabled="!showIcon"
+            v-model="iconName">
+            {{size.name}}
+          </sd-field>
+        </sd-col>
       </sd-row>
     </sd-container>
   </div>
@@ -110,6 +119,7 @@ export default {
   components: { SectionHeader },
   setup () {
     const state = reactive({
+      iconName: 'face',
       selectedSize: 'md',
       selectedPill: 'Default',
       selectedStyle: 'Default',

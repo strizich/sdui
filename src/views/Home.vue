@@ -12,7 +12,7 @@
       <sd-col :lg="3" :md="3" :sm="6" :xs="6">
         <sd-sheet theme="secondary" padded>
           <h3>
-            <sd-skeleton height="24"/>
+            <sd-skeleton :height="24"/>
           </h3>
           <p>
             <sd-skeleton/>
