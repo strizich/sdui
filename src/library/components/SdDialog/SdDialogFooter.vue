@@ -8,7 +8,7 @@
 import useAlignment from '../../hooks/useAlignment'
 
 export default {
-  name: 'SdModalFooter',
+  name: 'SdDialogFooter',
   props: {
     align: {
       type: String,

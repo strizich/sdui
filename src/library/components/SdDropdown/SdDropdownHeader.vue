@@ -21,7 +21,7 @@ export default {
     top:0;
     left:0;
     right:0;
-    padding:8px;
+    padding:8px 16px;;
     background-color: var(--background-accent);
     z-index: 1000;
 }

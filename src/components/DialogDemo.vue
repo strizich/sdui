@@ -107,8 +107,6 @@ export default {
 
 <style lang="scss" scoped>
 .demo__triggers{
-  .sd--button{
-    margin-right: 16px;
-  }
+
 }
 </style>

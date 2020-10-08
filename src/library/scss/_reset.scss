@@ -3,9 +3,11 @@
 
 * {
   box-sizing: border-box;
-  -webkit-font-smoothing: subpixel-antialiased;
   scrollbar-color: var(--disabled) var(--background-highlight);
   scrollbar-width: thin;
+  font-smooth: auto;
+  -webkit-font-smoothing: auto;
+  -moz-osx-font-smoothing: auto;
   &:before, &:after{
     @extend *;
   }
@@ -17,7 +19,7 @@ body{
   min-height: 100%;
 }
 body, html {
-  font-family: -apple-system, BlinkMacSystemFont, Roboto;
+  font-family: Roboto;
   font-display: swap;
   font-size: 16px;
   margin: 0;
@@ -223,6 +225,7 @@ label {
 }
 
 button {
+  font-family: Roboto;
   &:focus {
     outline:none;
   }

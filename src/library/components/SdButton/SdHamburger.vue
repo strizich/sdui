@@ -39,6 +39,7 @@ export default {
     const classes = computed(() => {
       return {
         'sd--button': true,
+        'sd--button__hamburger': true,
         'sd--button__flat': true,
         'is--focused': hasFocus.value,
         'is--active': props.active
@@ -117,23 +118,24 @@ export default {
 
 <style lang="scss">
 .sd--button{
-  display:flex;
-  align-items: center;
-  justify-content: center;
-  border: none;
-  // &.is--active{
-  //   background-color: var(--background-accent);
-  // }
-  &:focus{
-    outline:none;
-  }
-  &.is--focused{
-    box-shadow: inset 0 0 0 4px var(--primary-accent);
+  &__hamburger{
+    align-items: center;
+    justify-content: center;
+    border: none;
+    height: 50px;
+    width: 50px;
+    // &.is--active{
+    //   background-color: var(--background-accent);
+    // }
+    &:focus{
+      outline:none;
+    }
+    &.is--focused{
+      box-shadow: inset 0 0 0 4px var(--primary-accent);
+    }
   }
   &__flat{
     background: none;
-    height: 50px;
-    width: 50px;
   }
 }
 .sd--hamburger{

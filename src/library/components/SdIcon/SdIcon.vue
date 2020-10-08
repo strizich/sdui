@@ -34,7 +34,7 @@ $icon-sizes: (
   sm: 18px,
   md: 24px,
   lg: 32px,
-  xxl: 64px
+  xl: 32px
 );
 
 @font-face {
@@ -59,7 +59,7 @@ $icon-sizes: (
   word-wrap: normal;
   direction: ltr;
   font-feature-settings: 'liga';
-  -webkit-font-smoothing: antialiased;
+  font-smooth: antialiased;
   &.is{
     @each $size, $value in $icon-sizes{
       &--#{$size}{

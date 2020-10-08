@@ -9,6 +9,7 @@
               <sd-button
                 :aria-label="`${color} button`"
                 :theme="color"
+                :icon="showIcon ? 'face' : null"
                 :href="selectedTag === 'Link' ? '/link' : ''"
                 :to="selectedTag === 'Route' ? '/route' : ''"
                 :pill="selectedPill === 'Pill'"
@@ -17,14 +18,14 @@
                 :outline="selectedStyle === 'Outline'"
                 :size="selectedSize"
                 :block="isBlock"
-                :icon-only="isIconOnly"
                 :align="selectedAlignment"
                 :disabled="disabled"
+                :icon-only="isIconOnly"
               >
-                <sd-icon :size="selectedSize" name="link" v-if="showIcon" />
                 <span v-if="!isIconOnly">{{color}}</span>
               </sd-button>
             </template>
+            <sd-button>huh</sd-button>
           </div>
         </sd-col>
       </sd-row>

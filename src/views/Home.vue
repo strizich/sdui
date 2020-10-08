@@ -10,6 +10,26 @@
         </sd-sheet>
       </sd-col>
       <sd-col :lg="3" :md="3" :sm="6" :xs="6">
+        <sd-sheet theme="secondary" padded>
+          <h3>
+            <sd-skeleton height="24"/>
+          </h3>
+          <p>
+            <sd-skeleton/>
+            <sd-skeleton/>
+          </p>
+        </sd-sheet>
+      </sd-col>
+      <sd-col :lg="3" :md="3" :sm="6" :xs="6">
+        <sd-sheet theme="success" padded>
+          <sd-skeleton :height="250" :min-width="100"/>
+          <p>
+            <sd-skeleton/>
+            <sd-skeleton/>
+          </p>
+        </sd-sheet>
+      </sd-col>
+      <sd-col :lg="3" :md="3" :sm="6" :xs="6">
         <router-link
           to="/components/buttons"
           v-slot="{navigate}"
@@ -60,15 +80,49 @@
       </sd-col>
     </sd-row>
   </sd-container>
+  <sd-list>
+    <sd-list-item>
+      <template #default>
+        boop
+      </template>
+      <template #expandable>
+        <sd-list>
+          <sd-list-item>boop</sd-list-item>
+          <sd-list-item>boop</sd-list-item>
+          <sd-list-item>boop</sd-list-item>
+          <sd-list-item>boop</sd-list-item>
+          <sd-list-item>boop</sd-list-item>
+        </sd-list>
+      </template>
+    </sd-list-item>
+    <sd-list-item>boop</sd-list-item>
+    <sd-list-item>boop</sd-list-item>
+    <sd-list-item>boop</sd-list-item>
+    <sd-list-item>boop</sd-list-item>
+  </sd-list>
+  <sd-list>
+    <sd-list-item>boop</sd-list-item>
+    <sd-list-item>boop</sd-list-item>
+    <sd-list-item>boop</sd-list-item>
+    <sd-list-item>boop</sd-list-item>
+  </sd-list>
 </div>
 </template>
 
 <script>
-import { defineComponent } from 'vue'
+import { defineComponent, reactive } from 'vue'
+import SdList from '@/library/components/SdList/SdList'
+import SdListItem from '@/library/components/SdList/SdListItem'
 import Widget from '@/components/Widget'
 export default defineComponent({
   name: 'AppHome',
-  components: { Widget }
+  components: { Widget, SdList, SdListItem },
+  setup () {
+    const state = reactive({
+      isLoading: true
+    })
+    return { state }
+  }
 })
 </script>
 

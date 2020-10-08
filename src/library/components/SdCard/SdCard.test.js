@@ -8,7 +8,6 @@ describe('SdCard', () => {
         elevation: 7
       }
     })
-    console.log()
     const expected = 'elevation--7'
     expect(wrapper.vm.cardElevation).toBe(expected)
   })

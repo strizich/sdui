@@ -20,7 +20,11 @@ export default {
   max-height: 300px;
   overflow-y: auto;
   overflow-x: hidden;
-  padding: 0 8px;
+  padding: 0 8px 8px;
+  & > .sd--button{
+    margin:0;
+    text-align: left;
+  }
   & > .sd--checkbox {
     margin-left:8px;
   }
