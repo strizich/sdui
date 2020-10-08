@@ -178,7 +178,6 @@ export default defineComponent({
 
       &--xl {
         font-size: rem(28);
-        font-weight: 300;
         line-height: 1;
         padding: spacing(offset, xl);
       }

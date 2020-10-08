@@ -163,6 +163,7 @@ export default {
         state.shouldRender = false
       }
     }
+
     const mountEventBindings = async () => {
       await nextTick().then(() => {
         // Gets the orignal parent instance of <teleport />
@@ -198,7 +199,6 @@ export default {
       hide
     }
   }
-
 }
 </script>
 
