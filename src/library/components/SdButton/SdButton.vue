@@ -107,7 +107,8 @@ export default defineComponent({
           type: !props.href && (props.type || 'button'),
           class: ['sd--button', themeClass.value, rootClasses.value],
           href: props.href,
-          disabled: props.disabled
+          disabled: props.disabled,
+          style: alignmentStyle.value
         },
         props.icon && h(SdIcon, {
           name: props.icon,
@@ -116,8 +117,7 @@ export default defineComponent({
         h(
           'div',
           {
-            class: ['sd--button__content', sizeClass.value],
-            style: alignmentStyle.value
+            class: ['sd--button__content', sizeClass.value]
           },
           slots
         )
@@ -152,7 +152,6 @@ export default defineComponent({
   &__content {
     position: relative;
     z-index: 10;
-    flex-grow: 2;
     transition: font-size .23s;
     padding-top:8px;
     padding-bottom:8px;
@@ -210,7 +209,7 @@ export default defineComponent({
       }
 
       &.is--block {
-        display: block;
+        display: flex;
         width: 100%;
       }
 

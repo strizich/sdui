@@ -25,7 +25,6 @@
                 <span v-if="!isIconOnly">{{color}}</span>
               </sd-button>
             </template>
-            <sd-button>huh</sd-button>
           </div>
         </sd-col>
       </sd-row>
