@@ -53,9 +53,19 @@ const routes = [
     component: () => import(/* webpackChunkName: "tooltip" */ '../views/DemoTooltips.vue')
   },
   {
+    path: '/components/toast',
+    name: 'Toast',
+    component: () => import(/* webpackChunkName: "toast" */ '../views/DemoToast.vue')
+  },
+  {
     path: '/components/progress',
     name: 'progress',
     component: () => import(/* webpackChunkName: "progress" */ '../views/DemoProgress.vue')
+  },
+  {
+    path: '/components/list',
+    name: 'list',
+    component: () => import(/* webpackChunkName: "list" */ '../views/DemoList.vue')
   },
   {
     path: '/about',

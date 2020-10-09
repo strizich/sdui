@@ -1,4 +1,3 @@
-
 <script>
 import { defineComponent, computed, ref, h } from 'vue'
 import useKeyboardFocus from '../../hooks/useKeyboardFocus'
@@ -93,6 +92,7 @@ export default defineComponent({
       return `sd--button__${props.theme}`
     })
 
+    // FUTURE: Add RouterLink variation to button and depricate SdRouterLink
     const elementTag = computed(() => {
       if (props.href || props.type === 'link') return 'a'
       return 'button'

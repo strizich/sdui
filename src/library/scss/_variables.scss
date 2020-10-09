@@ -4,14 +4,15 @@ $default: #646066;
 $danger: #AE1A2C;
 $success: #83CF2A;
 $warning: #F5A623;
-
+$dark: #0e0e0e;
 $sd-color-global: (
   primary: color-map($primary, 25%, 25%),
   secondary: color-map($secondary, 25%, 50%),
   default: color-map($default, 25%, 50%),
   success: color-map($success, 25%, 15%),
   danger: color-map($danger, 25%, 25%),
-  warning: color-map($warning, 25%, 15%)
+  warning: color-map($warning, 25%, 15%),
+  dark: color-map($dark, 25%, 15%)
 );
 
 $sd-color-schemes: (

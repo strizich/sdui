@@ -1,7 +1,6 @@
 <template>
   <li :class="['sd--list__item', classes]">
-    <slot name="default" v-if="!loading"/>
-    <sd-skeleton v-else/>
+    <slot name="default"/>
     <slot name="expandable"/>
   </li>
 </template>
@@ -9,6 +8,7 @@
 <script>
 import { computed } from 'vue'
 export default {
+  name: 'SdListItem',
   props: {
     active: Boolean,
     collased: Boolean,

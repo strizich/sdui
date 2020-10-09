@@ -13,23 +13,23 @@
       flat
     >
       <sd-icon name="link"/>
-      <sd-tooltip
+      <sd-toast
         :placement="placement"
-        :theme="theme"
-        :auto-open="false"
-        :active="active"
+        :dismissable="false"
+        theme="success"
+        v-model:active="active"
       >
         <div class="tip__content">
           <span v-if="content">{{content}}</span>
           <small v-if="subContent">{{subContent}}</small>
         </div>
-      </sd-tooltip>
+      </sd-toast>
     </sd-button>
   </div>
 </template>
 
 <script>
-import { defineComponent, reactive, watch, nextTick, toRefs } from 'vue'
+import { defineComponent, reactive, toRefs } from 'vue'
 import { useRouter } from 'vue-router'
 
 export default defineComponent({
@@ -46,9 +46,8 @@ export default defineComponent({
     }
   },
   setup (props) {
-    const tooltip = reactive({
+    const toast = reactive({
       active: false,
-      theme: 'primary',
       content: '',
       subContent: ''
     })
@@ -66,27 +65,20 @@ export default defineComponent({
       }
       navigator.clipboard.writeText(copiedResult).then(
         () => {
-          tooltip.theme = ''
-          tooltip.active = true
-          tooltip.content = 'Copied!'
-          tooltip.subContent = 'Ready for paste.'
+          toast.theme = ''
+          toast.active = true
+          toast.content = 'Copied!'
+          toast.subContent = 'Ready for paste.'
         }, () => {
-          tooltip.active = true
-          tooltip.theme = 'danger'
-          tooltip.content = 'Something went wrong.'
-          tooltip.subContent = 'Nothing Copied...'
+          toast.active = true
+          toast.theme = 'danger'
+          toast.content = 'Something went wrong.'
+          toast.subContent = 'Nothing Copied...'
         }
       )
     }
 
-    watch(() => tooltip.active, (newValue) => {
-      nextTick().then(() => {
-        setTimeout(() => {
-          tooltip.active = false
-        }, 2500)
-      })
-    })
-    return { ...toRefs(tooltip), handleCopy }
+    return { ...toRefs(toast), handleCopy }
   }
 })
 
@@ -106,12 +98,10 @@ export default defineComponent({
 .tip__content{
   & > span {
     display:block;
-    text-align: center;
   }
   & > small{
     margin-top: 4px;
     display:block;
-    text-align: center;
   }
 }
 </style>

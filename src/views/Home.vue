@@ -80,43 +80,15 @@
       </sd-col>
     </sd-row>
   </sd-container>
-  <sd-list>
-    <sd-list-item>
-      <template #default>
-        boop
-      </template>
-      <template #expandable>
-        <sd-list>
-          <sd-list-item>boop</sd-list-item>
-          <sd-list-item>boop</sd-list-item>
-          <sd-list-item>boop</sd-list-item>
-          <sd-list-item>boop</sd-list-item>
-          <sd-list-item>boop</sd-list-item>
-        </sd-list>
-      </template>
-    </sd-list-item>
-    <sd-list-item>boop</sd-list-item>
-    <sd-list-item>boop</sd-list-item>
-    <sd-list-item>boop</sd-list-item>
-    <sd-list-item>boop</sd-list-item>
-  </sd-list>
-  <sd-list>
-    <sd-list-item>boop</sd-list-item>
-    <sd-list-item>boop</sd-list-item>
-    <sd-list-item>boop</sd-list-item>
-    <sd-list-item>boop</sd-list-item>
-  </sd-list>
 </div>
 </template>
 
 <script>
 import { defineComponent, reactive } from 'vue'
-import SdList from '@/library/components/SdList/SdList'
-import SdListItem from '@/library/components/SdList/SdListItem'
 import Widget from '@/components/Widget'
 export default defineComponent({
   name: 'AppHome',
-  components: { Widget, SdList, SdListItem },
+  components: { Widget },
   setup () {
     const state = reactive({
       isLoading: true

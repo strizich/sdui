@@ -20,17 +20,15 @@ export default {
     font-size: 16px;
     margin:0;
     // If the element is also its own child
-    & & {
+    &__item & {
       margin-top: 8px;
       padding-bottom:0;
-      li {
-        padding-left: 32px;
-        font-size: 14px;
-        margin-left: -16px;
-        border-bottom:none;
-        &:last-child{
-          margin-bottom: -8px;
-        }
+      padding-left: 32px;
+      font-size: 14px;
+      margin-left: -16px;
+      border-bottom:none;
+      &:last-child{
+        margin-bottom: -8px;
       }
     }
     & + &{

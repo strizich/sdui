@@ -46,6 +46,9 @@ import SdChicklet from './components/SdChicklet/SdChicklet'
 import SdChip from './components/SdChicklet/SdChip'
 import SdSkeleton from './components/SdLoader/SdSkeleton'
 import SdSheet from './components/SdSheet/SdSheet'
+import SdToast from './components/SdToast/SdToast'
+import SdList from './components/SdList/SdList'
+import SdListItem from './components/SdList/SdListItem'
 
 const components = {
   SdSkeleton,
@@ -96,7 +99,10 @@ const components = {
   SdDropdownHeader,
   SdChicklet,
   SdChip,
-  SdSheet
+  SdSheet,
+  SdToast,
+  SdList,
+  SdListItem
 }
 
 const componentsDesc = Object.keys(components).map((item) => {
@@ -186,5 +192,8 @@ export {
   SdDropdownHeader,
   SdChicklet,
   SdChip,
-  SdSheet
+  SdSheet,
+  SdToast,
+  SdList,
+  SdListItem
 }
