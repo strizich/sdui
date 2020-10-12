@@ -122,6 +122,7 @@ export default {
     z-index: 9999;
     transition: transform .2s ease-in-out, opacity .2s ease-in-out;
     display:flex;
+    border-radius: 3px;
     &__close{
       display: flex;
       align-items: center;
@@ -140,6 +141,7 @@ export default {
       font-size: 14px;
       padding:4px 4px 4px 16px;
       flex-grow: 2;
+      border-radius: 3px;;
     }
 
   @each $state, $color in $sd-color-global {
@@ -151,6 +153,8 @@ export default {
       .sd--toast__close{
         background-color: var(--#{$state}-accent);
         color: var(--#{$state}-text);
+        border-radius: 3px 0 0 3px;
+        margin-right: -3px;
       }
     }
   }
