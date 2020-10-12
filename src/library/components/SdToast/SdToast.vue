@@ -208,7 +208,7 @@ export default {
 }
 
 .toast-enter-active, .toast-leave-active{
-  transition: transform .5s ease-in-out, opacity .2s ease-in-out;
+  transition: transform .28s ease-in-out, opacity .2s ease-in-out;
 }
 
 .toast-leave-to, .toast-enter-from{
