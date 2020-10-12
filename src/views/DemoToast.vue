@@ -39,16 +39,18 @@
           </sd-radio>
         </sd-fieldset>
       </sd-col>
+      <sd-col :md="12">
+        <sd-button
+          @click="state.toast.active = true"
+          :theme="primary"
+          :disabled="state.toast.active"
+          size="lg"
+        >
+          Toggle Toast
+        </sd-button>
+      </sd-col>
     </sd-row>
   </sd-container>
-  <sd-button
-    @click="state.toast.active = true"
-    :theme="primary"
-    :disabled="state.toast.active"
-    size="lg"
-  >
-    Toggle Toast
-  </sd-button>
   <sd-toast
     v-model:active="state.toast.active"
     :theme="state.toast.theme"
