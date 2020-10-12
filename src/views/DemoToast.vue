@@ -42,7 +42,7 @@
       <sd-col :md="12">
         <sd-button
           @click="state.toast.active = true"
-          :theme="primary"
+          theme="primary"
           :disabled="state.toast.active"
           size="lg"
         >
