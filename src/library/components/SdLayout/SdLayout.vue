@@ -16,12 +16,11 @@
           <slot name="footer"/>
         </div>
     </div>
-    <transition name="fade">
+    <transition name="overlay-fade">
       <sd-overlay
         v-if="sidebar"
         :active="floating && sidebar"
         @click="() => handleOutsideClick()"
-        :transparent="overlay"
       />
     </transition>
   </div>
@@ -29,7 +28,7 @@
 
 <script>
 import { reactive, toRefs, computed, watch, nextTick } from 'vue'
-import { SdOverlay } from '../..'
+import SdOverlay from '../SdDialog/SdOverlay'
 import { useRouter } from 'vue-router'
 export default {
   name: 'SdLayout',
@@ -169,7 +168,7 @@ export default {
     }
   }
   .sidebar-enter-active, .sidebar-leave-active{
-    transition: opacity .2s ease-in-out, left .2s ease-in-out;
+    transition: opacity .2s ease-in-out;
     overflow-x: hidden;
   }
   .sidebar-enter-from, .sidebar-leave-to{
@@ -180,11 +179,10 @@ export default {
     opacity: 1;
     left: 10px;
   }
-  .fade-enter-active, .fade-leave-active{
+  .overlay-fade-enter-active, .overlay-fade-leave-active{
     transition: opacity .2s ease-in-out;
-
   }
-  .fade-enter-from, .fade-leave-to{
+  .overlay-fade-enter-from, .overlay-fade-leave-to{
     transition: opacity .2s ease-in-out;
     opacity: 0;
   }
