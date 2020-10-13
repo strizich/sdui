@@ -8,6 +8,9 @@
       </div>
       <div class="sd--slider__content" ref="slider">
         <div class="sd--slider__track-container">
+          <div class="sd--slider__ticks" v-if="showTicks">
+            <div class="sd--slider__tick" v-for="n in tickCount" :key="n"/>
+          </div>
           <div
             class="sd--slider__track"
             :style="thumbTrackStyle"
@@ -75,6 +78,7 @@ export default defineComponent({
       default: 1
     },
     showIndicators: Boolean,
+    showTicks: Boolean,
     showTooltip: Boolean,
     theme: String,
     hint: String
@@ -99,6 +103,10 @@ export default defineComponent({
       min: props.min,
       max: props.max,
       pctComplete: 0
+    })
+
+    const tickCount = computed(() => {
+      return (props.max - props.min) / props.step
     })
 
     // Styles
@@ -258,6 +266,7 @@ export default defineComponent({
       thumbClass,
       state,
       thumbTrackStyle,
+      tickCount,
       observeWindow,
       result
     }
@@ -302,6 +311,23 @@ export default defineComponent({
     top: 50%;
     margin-top: -4px;
     border-radius: 30px;
+  }
+  &__ticks{
+    display:flex;
+    justify-content: space-between;
+  }
+  &__tick{
+    text-align: center;
+    width: 100%;
+    &:after{
+      position: relative;
+      background-color: var(--divider);
+      content: '';
+      width: 1px;
+      height: 8px;
+      display:block;
+      margin:0 auto 0 0;
+    }
   }
   &__track{
     background-color: var(--primary);

@@ -2,27 +2,24 @@
   <div class="sidebar">
     <div>
       <sd-nav>
-        <sd-nav-link to="/" icon="home">Home</sd-nav-link>
-        <sd-nav-link to="/about" icon="info">About</sd-nav-link>
+        <sd-nav-link
+          v-for="(link, index) in navigation.mainNavigation"
+          :to="link.route"
+          :icon="link.icon"
+          :key="`main-nav-${index}`"
+        >
+          {{link.label}}
+        </sd-nav-link>
       </sd-nav>
       <sd-nav title="Components">
-        <sd-nav-link to="/components/buttons">Button</sd-nav-link>
-        <sd-nav-link to="/components/cards">Cards</sd-nav-link>
-        <sd-nav-link to="/components/charts">Charts</sd-nav-link>
-        <sd-nav-link to="/components/dialog">Dialog</sd-nav-link>
-        <sd-nav-link to="/components/dropdown">Dropdown</sd-nav-link>
-        <sd-nav-link to="/components/form-controls">Form Controls</sd-nav-link>
-        <sd-nav-link to="/components/form-controls#input" secondary>Input</sd-nav-link>
-        <sd-nav-link to="/components/form-controls#checkbox" secondary>Checkbox</sd-nav-link>
-        <sd-nav-link to="/components/form-controls#switch" secondary>Switch</sd-nav-link>
-        <sd-nav-link to="/components/form-controls#radio" secondary>Radio</sd-nav-link>
-        <sd-nav-link to="/components/form-controls#chips" secondary>Chips</sd-nav-link>
-        <sd-nav-link to="/components/icons">Icons</sd-nav-link>
-        <sd-nav-link to="/components/slider">Slider</sd-nav-link>
-        <sd-nav-link to="/components/tooltips">Tooltip</sd-nav-link>
-        <sd-nav-link to="/components/toast">Toast</sd-nav-link>
-        <sd-nav-link to="/components/List">List</sd-nav-link>
-        <sd-nav-link to="/components/progress">Progress</sd-nav-link>
+        <sd-nav-link
+          v-for="(link, index) in navigation.componentNavigation"
+          :to="link.route"
+          :key="`component-nav-${index}`"
+          :secondary="link.secondary"
+        >
+          {{link.label}}
+        </sd-nav-link>
       </sd-nav>
     </div>
     <div class="sidebar__options">
@@ -38,6 +35,7 @@
 </template>
 
 <script>
+import { MAIN_NAVIGATION, COMPONENT_NAVIGATION } from '@/assets/navigationConfig'
 import ColorScheme from '@/components/ColorScheme'
 import { reactive, toRefs, watch, onUnmounted } from 'vue'
 export default {
@@ -51,6 +49,10 @@ export default {
     smallDevice: Boolean
   },
   setup (props, { emit }) {
+    const navigation = reactive({
+      mainNavigation: MAIN_NAVIGATION,
+      componentNavigation: COMPONENT_NAVIGATION
+    })
     const sidebar = reactive({
       float: props.floating
     })
@@ -70,7 +72,8 @@ export default {
       window.localStorage.setItem('SDUI:sidebarFloating', sidebar.float)
     })
     return {
-      ...toRefs(sidebar)
+      ...toRefs(sidebar),
+      navigation
     }
   }
 }

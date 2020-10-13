@@ -1,7 +1,7 @@
 <template>
   <section class="demo__tooltips">
     <sd-container full>
-      <section-header hash="#tooltip" title="Tooltips" sub-title="Just the tip."/>
+      <section-header title="Tooltips" sub-title="Just the tip."/>
       <div class="demo">
         <sd-fieldset title="Tooltips" tip="Tooltip in here too..." stack inline-label>
         <sd-button>

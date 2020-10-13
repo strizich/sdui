@@ -1,0 +1,78 @@
+export const MAIN_NAVIGATION = [{
+  label: 'Home',
+  route: '/',
+  icon: 'home'
+}, {
+  label: 'About',
+  route: '/about',
+  icon: 'info'
+}]
+
+export const COMPONENT_NAVIGATION = [{
+  label: 'Button',
+  route: '/components/buttons',
+  secondary: false
+}, {
+  label: 'Elevation',
+  route: '/components/elevation'
+}, {
+  label: 'Cards',
+  route: '/components/cards',
+  secondary: false
+}, {
+  label: 'Charts',
+  route: '/components/charts',
+  secondary: false
+}, {
+  label: 'Dialog',
+  route: '/components/dialog',
+  secondary: false
+}, {
+  label: 'Dropdown',
+  route: '/components/dropdown',
+  secondary: false
+}, {
+  label: 'Input',
+  route: '/components/form-controls#input',
+  secondary: true
+}, {
+  label: 'Checkbox',
+  route: '/components/form-controls#checkbox',
+  secondary: true
+}, {
+  label: 'Switch',
+  route: '/components/form-controls#switch',
+  secondary: true
+}, {
+  label: 'Radio',
+  route: '/components/form-controls#radio',
+  secondary: true
+}, {
+  label: 'Chips',
+  route: '/components/form-controls#chips',
+  secondary: true
+}, {
+  label: 'Icons',
+  route: '/components/icons',
+  secondary: false
+}, {
+  label: 'Slider',
+  route: '/components/slider',
+  secondary: false
+}, {
+  label: 'Tooltip',
+  route: '/components/tooltips',
+  secondary: false
+}, {
+  label: 'Toast',
+  route: '/components/toast',
+  secondary: false
+}, {
+  label: 'List',
+  route: '/components/list',
+  secondary: false
+}, {
+  label: 'Progress',
+  route: '/components/progress',
+  secondary: false
+}]

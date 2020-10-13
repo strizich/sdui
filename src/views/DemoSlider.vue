@@ -36,7 +36,10 @@
     <div class="demo-slider__wrapper">
       <sd-slider
         show-tooltip
-        label="Slider with tooltip"
+        :step="4"
+        :min="min"
+        :max="max"
+        label="Slider with tooltip and tick marks"
         v-model:value="value2"
       />
     </div>
@@ -44,6 +47,9 @@
       <sd-slider
         label="Slider with min/max"
         show-indicators
+        show-ticks
+        :min="min"
+        :max="max"
         v-model:value="value3"
         :hint="`${value3} of ${max} Somethings`"
       />
@@ -51,7 +57,9 @@
     <div class="demo-slider__wrapper">
       <sd-slider
         show-indicators
-        v-model:value="value3 "
+        :min="min"
+        :max="max"
+        v-model:value="value4"
       >
         <template #label>
           <sd-label>Woooo! I am such a slot.</sd-label>
@@ -76,13 +84,15 @@ export default defineComponent({
   setup () {
     const slider = reactive({
       label: 'Label',
-      step: 1,
-      min: 10,
-      max: 100,
-      value1: 25,
-      value2: 50,
-      value3: 75,
-      showOptions: false
+      step: 4,
+      min: 8,
+      max: 32,
+      value1: 8,
+      value2: 16,
+      value3: 24,
+      value4: 32,
+      showOptions: false,
+      showTicks: false
     })
 
     return {

@@ -74,21 +74,27 @@ export default {
     const handleModal = () => {
       state.active = !state.active
     }
+
     const handleModalClose = () => {
       state.active = false
     }
+
     const handleAside = () => {
       state.activeAside = !state.activeAside
     }
+
     const handleAsideClose = () => {
       state.activeAside = false
     }
+
     const handleAsideLeft = () => {
       state.activeAsideLeft = !state.activeAsideLeft
     }
+
     const handleAsideLeftClose = () => {
       state.activeAsideLeft = false
     }
+
     return {
       ...toRefs(state),
       handleModalClose,

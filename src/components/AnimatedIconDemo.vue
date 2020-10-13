@@ -2,7 +2,8 @@
   <div class="demo">
     <h1>Animated Elements</h1>
     <div class="demo__flex">
-      <sd-mouse /><small>Animated Mouse</small>
+      <sd-mouse />
+      <small>Animated Mouse</small>
     </div>
     <div class="demo__flex">
       <sd-hamburger />
