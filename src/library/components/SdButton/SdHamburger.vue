@@ -8,7 +8,7 @@
 
 <script>
 import anime from 'animejs'
-import { ref, reactive, computed, watch } from 'vue'
+import { ref, reactive, computed, watchEffect } from 'vue'
 import useKeyboardFocus from '../../hooks/useKeyboardFocus'
 import sdUuid from '../../core/utilities/SdUuid'
 export default {
@@ -32,9 +32,11 @@ export default {
       active: false
     })
 
-    watch(() => props.active, (newValue, oldValue) => {
-      animateHamburger(newValue)
-    })
+    watchEffect(() => {
+      state.active = props.active
+      console.log(state.active, props.active)
+      animateHamburger(state.active)
+    }, { flush: 'post' })
 
     const classes = computed(() => {
       return {
@@ -101,11 +103,6 @@ export default {
     const handleToggle = (e) => {
       state.active = !props.active
       emit('toggled', state.active)
-      // if (e) {
-      //   if (props.animated) {
-      //     animateHamburger(isOpen.value)
-      //   }
-      // }
     }
 
     return {
