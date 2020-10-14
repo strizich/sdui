@@ -7,11 +7,6 @@
         </div>
       </div>
     </transition>
-    <sd-overlay
-      :active="state.shouldRender"
-      @click.passive="hide"
-      transparent
-    />
   </teleport>
 </template>
 
@@ -25,13 +20,11 @@ import {
   onMounted,
   onUnmounted
 } from 'vue'
-import { SdOverlay } from '../..'
 import { createPopper } from '@popperjs/core'
 
 export default {
   name: 'SdDropdown',
   emits: ['update:active', 'open', 'close'],
-  components: { SdOverlay },
   props: {
     active: Boolean,
     theme: {
@@ -45,10 +38,6 @@ export default {
     placement: {
       type: String,
       default: 'bottom'
-    },
-    autoOpen: {
-      type: Boolean,
-      default: false
     },
     autoClose: {
       type: Boolean,
@@ -142,25 +131,18 @@ export default {
         makePopper()
       }
     }
-
-    const hide = () => {
-      if (state.shouldRender) {
-        state.shouldRender = false
-        emit('close')
+    const show = (e) => {
+      if (!state.shouldRender) {
+        state.shouldRender = true
+        e.stopPropagation()
+        emit('open')
       }
     }
-
-    const touched = () => {
-      state.shouldRender = !state.shouldRender
-    }
-
-    const outsideTouch = (e) => {
-      if (
-        props.autoClose &&
-        state.shouldRender &&
-        state.targetEl !== e.target
-      ) {
+    const hide = (e) => {
+      if (state.shouldRender) {
         state.shouldRender = false
+        e.stopPropagation()
+        emit('close')
       }
     }
 
@@ -170,11 +152,10 @@ export default {
         state.targetEl = dropdownPortal.value?.parentNode
         if (state.targetEl) {
           // add event listeners for keyboard.
-          document.body.addEventListener('mousedown', outsideTouch, false)
+          state.targetEl.addEventListener('click', (e) => show(e), false)
         }
-        if (props.autoOpen && state.targetEl) {
-          document.body.addEventListener('touchstart', outsideTouch, false)
-          state.targetEl.addEventListener('touchstart', touched, false)
+        if (props.autoClose && state.targetEl) {
+          document.body.addEventListener('click', (e) => hide(e), false)
         }
       })
     }
@@ -185,9 +166,9 @@ export default {
     })
 
     onUnmounted(() => {
-      if (props.autoOpen) {
-        document.body.removeEventListener('touchstart', outsideTouch)
-        state.targetEl.removeEventListener('touchstart', touched)
+      document.body.removeEventListener('click', (e) => hide(e))
+      if (props.autoClose && state.targetEl) {
+        state.targetEl.removeEventListener('click', (e) => show(e))
       }
     })
 

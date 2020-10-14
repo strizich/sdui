@@ -266,8 +266,6 @@ export default defineComponent({
   }
   // Handle Icons
   &.is--icon-only{
-    display: inline-block;
-
     .sd--button__content{
       padding:0;
     }
