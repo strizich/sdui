@@ -34,7 +34,6 @@ export default {
 
     watchEffect(() => {
       state.active = props.active
-      console.log(state.active, props.active)
       animateHamburger(state.active)
     }, { flush: 'post' })
 
