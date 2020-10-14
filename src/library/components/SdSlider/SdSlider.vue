@@ -18,7 +18,8 @@
         </div>
         <div
           ref="handle"
-          class="sd--slider__thumb-container"
+          :class="['sd--slider__thumb-container', thumbClass]"
+          tabindex="0"
           :style="thumbStyle"
         >
           <svg class="sd--slider__thumb" width="24" height="24">
@@ -27,7 +28,7 @@
           <sd-tooltip
             ref="ttip"
             attach-to-parent
-            :active="state.isDragging"
+            :active="state.isDragging || hasFocus"
             :autoOpen="false"
             :show-arrow="false"
             :offset="[0, 8]"
@@ -38,7 +39,7 @@
             </div>
           </sd-tooltip>
           <transition name="dragging">
-            <div class="sd--slider__pulse" v-if="state.isDragging"></div>
+            <div class="sd--slider__pulse" v-if="state.isDragging || hasFocus"></div>
           </transition>
         </div>
       </div>
@@ -48,11 +49,13 @@
     </div>
     <small v-if="hint" class="sd--text__footnote">{{hint}}</small>
     <slot name="hint"/>
+    {{state.unit}}
   </div>
 </template>
 
 <script>
 import { defineComponent, ref, reactive, computed, watchEffect, onMounted, onUnmounted, watch, nextTick } from 'vue'
+import useKeyboardFocus from '../../hooks/useKeyboardFocus'
 import SdLabel from '../SdField/SdLabel'
 import SdTooltip from '../SdTooltip/SdTooltip'
 
@@ -88,6 +91,7 @@ export default defineComponent({
     const slider = ref(null)
     const handle = ref(null)
     const observeWindow = ref(null)
+    const hasFocus = useKeyboardFocus(handle)
     const state = reactive({
       init: false,
       computedX: 0,
@@ -102,6 +106,7 @@ export default defineComponent({
       step: props.step,
       min: props.min,
       max: props.max,
+      unit: 0,
       pctComplete: 0
     })
 
@@ -129,7 +134,8 @@ export default defineComponent({
 
     const thumbClass = computed(() => {
       return {
-        'is--dragging': state.isDragging
+        'is--dragging': state.isDragging,
+        'is--focused': hasFocus.value
       }
     })
 
@@ -226,6 +232,17 @@ export default defineComponent({
       document.removeEventListener('touchmove', onTouchMove)
     }
 
+    const onKeydown = e => {
+      if (e.code === 'ArrowRight') {
+        state.x = state.computedX + state.unit
+        state.pctComplete = Number(Math.round(minMax(0, state.x / state.maxX, 1) + 'e2') + 'e-2')
+      }
+      if (e.code === 'ArrowLeft') {
+        state.x = state.computedX - state.unit
+        state.pctComplete = Number(Math.round(minMax(0, state.x / state.maxX, 1) + 'e2') + 'e-2')
+      }
+    }
+
     // Core of the maths. Recalculates if any of the dependencies change.
     watchEffect(() => {
       if (
@@ -242,8 +259,11 @@ export default defineComponent({
         state.maxX = Math.round(slider.value.clientWidth)
         // Core calculation to convert an arbitrary value into pixels
         state.computedX = minMax(0, Math.round((props.value - props.min) / (props.max - props.min) * state.maxX), state.maxX)
-
+        state.unit = minMax(0, Math.round((props.step) / (props.max - props.min) * state.maxX), state.maxX)
         // Adds listeners when mounted. Not totally sure why I put it here.
+        if (hasFocus.value) {
+          handle.value.addEventListener('keydown', onKeydown, false)
+        }
         slider.value.addEventListener('touchstart', onTouchStart, { passive: true })
         slider.value.addEventListener('mousedown', onMouseDown)
       }
@@ -268,7 +288,8 @@ export default defineComponent({
       thumbTrackStyle,
       tickCount,
       observeWindow,
-      result
+      result,
+      hasFocus
     }
   }
 })
@@ -341,14 +362,19 @@ export default defineComponent({
   &__thumb-container{
     width: 24px;
     height:24px;
+    &:focus{
+      outline:none;
+    }
     &.is--dragging{
       &:after{
         content: '';
-        background-color: green;
         left: 50%;
         opacity: .5;
         transform: transition(-0.5, 0.5);
       }
+    }
+    &.is--focused{
+
     }
   }
   &__thumb{

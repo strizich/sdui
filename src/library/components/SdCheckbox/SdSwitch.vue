@@ -233,6 +233,7 @@ $checkmarkSvgUri: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' 
   }
   &:hover{
     background-color: var(--background-highlight);
+
   }
   @each $state, $color in $sd-color-global {
     $base: nth($color, 1);
@@ -245,10 +246,10 @@ $checkmarkSvgUri: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' 
       background-color: var(--background-highlight);
       border-radius: 3px;
       &:after{
-        background-color: $base;
+        background-color: var(--#{$base});
       }
       &:before{
-        background-color: $darker;
+        background-color: var(--#{$base}-accent);
       }
     }
   }
