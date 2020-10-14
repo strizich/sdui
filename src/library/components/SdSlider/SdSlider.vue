@@ -49,7 +49,6 @@
     </div>
     <small v-if="hint" class="sd--text__footnote">{{hint}}</small>
     <slot name="hint"/>
-    {{state.unit}}
   </div>
 </template>
 
