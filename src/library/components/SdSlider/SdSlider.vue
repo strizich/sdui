@@ -53,11 +53,13 @@
 </template>
 
 <script>
+// Math to calculate required values
 import { defineComponent, ref, reactive, computed, watchEffect, onMounted, onUnmounted, watch, nextTick } from 'vue'
+import { minMax, quantizeValue, pctComplete } from './SdSliderFoundation'
+
 import useKeyboardFocus from '../../hooks/useKeyboardFocus'
 import SdLabel from '../SdField/SdLabel'
 import SdTooltip from '../SdTooltip/SdTooltip'
-import { minMax, quantizeValue, pctComplete } from './SdSliderFoundation'
 
 export default defineComponent({
   name: 'SdSlider',
@@ -139,8 +141,6 @@ export default defineComponent({
       }
     })
 
-    // Utility function to simplify value boundries
-
     // Final Calculations
     const result = computed(() => {
       const currentValue = Math.round(props.min + state.pctComplete * (props.max - props.min))
@@ -172,7 +172,6 @@ export default defineComponent({
     }
 
     // Interaction Bindings for touch and mouse.
-    // FUTURE: Add keyboard bindings.
     const handleMove = (e) => {
       const { clientX } = e
       state.x = Math.max(0, Math.min(clientX - state.dragStartX, state.maxX))
@@ -241,6 +240,7 @@ export default defineComponent({
     }
 
     // Core of the maths. Recalculates if any of the dependencies change.
+    // Also runs once the component is mount (flush: 'post')
     watchEffect(() => {
       if (
         slider.value instanceof HTMLElement &&
