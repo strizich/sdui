@@ -32,6 +32,10 @@ export const COMPONENT_NAVIGATION = [{
   route: '/components/dropdown',
   secondary: false
 }, {
+  label: 'Form Controls',
+  route: '/components/form-controls',
+  secondary: false
+}, {
   label: 'Input',
   route: '/components/form-controls#input',
   secondary: true
