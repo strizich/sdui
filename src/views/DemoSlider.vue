@@ -66,7 +66,7 @@
         </template>
         <template #hint>
           <small class="sd--text__footnote">
-            Custom <strong>{{value3}}</strong> of <strong>{{max}}</strong> thingies.
+            Custom <strong>{{value4}}</strong> of <strong>{{max}}</strong> thingies.
           </small>
         </template>
       </sd-slider>

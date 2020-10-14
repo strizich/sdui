@@ -57,6 +57,7 @@ import { defineComponent, ref, reactive, computed, watchEffect, onMounted, onUnm
 import useKeyboardFocus from '../../hooks/useKeyboardFocus'
 import SdLabel from '../SdField/SdLabel'
 import SdTooltip from '../SdTooltip/SdTooltip'
+import { minMax, quantizeValue, pctComplete } from './SdSliderFoundation'
 
 export default defineComponent({
   name: 'SdSlider',
@@ -139,14 +140,11 @@ export default defineComponent({
     })
 
     // Utility function to simplify value boundries
-    const minMax = (min, value, max) => {
-      return Math.max(min, Math.min(value, max))
-    }
 
     // Final Calculations
     const result = computed(() => {
       const currentValue = Math.round(props.min + state.pctComplete * (props.max - props.min))
-      const quantize = Math.round(currentValue / props.step) * props.step
+      const quantize = quantizeValue(currentValue, props.step)
       if (currentValue !== props.max && currentValue !== props.min) {
         return minMax(props.min, quantize, props.max)
       }
@@ -178,7 +176,7 @@ export default defineComponent({
     const handleMove = (e) => {
       const { clientX } = e
       state.x = Math.max(0, Math.min(clientX - state.dragStartX, state.maxX))
-      state.pctComplete = Number(Math.round(minMax(0, state.x / state.maxX, 1) + 'e2') + 'e-2')
+      state.pctComplete = pctComplete(state.x, state.maxX)
     }
 
     const handleStart = (e) => {
@@ -186,7 +184,7 @@ export default defineComponent({
       const clickX = Math.round((clientX - state.offset))
       state.isDragging = true
       state.x = Math.max(0, Math.min(clickX, state.maxX))
-      state.pctComplete = Number(Math.round(minMax(0, state.x / state.maxX, 1) + 'e2') + 'e-2')
+      state.pctComplete = pctComplete(state.x, state.maxX)
       state.dragStartX = clientX - state.x
     }
 
@@ -234,11 +232,11 @@ export default defineComponent({
     const onKeydown = e => {
       if (e.code === 'ArrowRight') {
         state.x = state.computedX + state.unit
-        state.pctComplete = Number(Math.round(minMax(0, state.x / state.maxX, 1) + 'e2') + 'e-2')
+        state.pctComplete = pctComplete(state.x, state.maxX)
       }
       if (e.code === 'ArrowLeft') {
         state.x = state.computedX - state.unit
-        state.pctComplete = Number(Math.round(minMax(0, state.x / state.maxX, 1) + 'e2') + 'e-2')
+        state.pctComplete = pctComplete(state.x, state.maxX)
       }
     }
 
