@@ -55,7 +55,14 @@
 <script>
 // Math to calculate required values
 import { defineComponent, ref, reactive, computed, watchEffect, onMounted, onUnmounted, watch, nextTick } from 'vue'
-import { minMax, quantizeValue, pctComplete } from './SdSliderFoundation'
+import {
+  minMax,
+  quantizeValue,
+  pctComplete,
+  convertValueToPx,
+  singleUnitValue,
+  convertToValue
+} from './SdSliderFoundation'
 
 import useKeyboardFocus from '../../hooks/useKeyboardFocus'
 import SdLabel from '../SdField/SdLabel'
@@ -143,7 +150,7 @@ export default defineComponent({
 
     // Final Calculations
     const result = computed(() => {
-      const currentValue = Math.round(props.min + state.pctComplete * (props.max - props.min))
+      const currentValue = convertToValue(state.pctComplete, props.min, props.max)
       const quantize = quantizeValue(currentValue, props.step)
       if (currentValue !== props.max && currentValue !== props.min) {
         return minMax(props.min, quantize, props.max)
@@ -165,8 +172,8 @@ export default defineComponent({
         ) {
           const rect = slider.value.getBoundingClientRect()
           state.offset = Math.round(rect.left)
-          state.handleWidth = Math.round(handle.value.clientWidth)
           state.maxX = Math.round(slider.value.clientWidth)
+          state.handleWidth = Math.round(handle.value.clientWidth)
         }
       })
     }
@@ -183,8 +190,8 @@ export default defineComponent({
       const clickX = Math.round((clientX - state.offset))
       state.isDragging = true
       state.x = Math.max(0, Math.min(clickX, state.maxX))
-      state.pctComplete = pctComplete(state.x, state.maxX)
       state.dragStartX = clientX - state.x
+      state.pctComplete = pctComplete(state.x, state.maxX)
     }
 
     const handleEnd = (e) => {
@@ -229,13 +236,23 @@ export default defineComponent({
     }
 
     const onKeydown = e => {
-      if (e.code === 'ArrowRight') {
+      if (e.key === 'ArrowLeft' || e.key === 'PageUp') {
+        state.x = state.computedX - state.unit
+        state.pctComplete = pctComplete(state.x, state.maxX)
+      }
+      if (e.key === 'ArrowRight' || e.key === 'PageDown') {
         state.x = state.computedX + state.unit
         state.pctComplete = pctComplete(state.x, state.maxX)
       }
-      if (e.code === 'ArrowLeft') {
-        state.x = state.computedX - state.unit
-        state.pctComplete = pctComplete(state.x, state.maxX)
+      if (e.key === 'Home') {
+        e.preventDefault()
+        state.x = 0
+        state.pctComplete = 0
+      }
+      if (e.key === 'End') {
+        e.preventDefault()
+        state.x = state.maxX
+        state.pctComplete = 1
       }
     }
 
@@ -248,19 +265,27 @@ export default defineComponent({
       ) {
         const rect = slider.value.getBoundingClientRect()
         state.init = true
+
         // Used to offset the click position. Useful if the element has moved since the last interaction.
         state.offset = Math.round(rect.left)
+
         // Allows for more flexability in future iterations. (Mostly useless right now)
         state.handleWidth = Math.round(handle.value.clientWidth)
-        // The width of the slider element. Used to calculate the % complete and lock the handle in the upper bounds
+
+        // The width of the slider element in pixels. Used to calculate the % complete and lock the handle in the upper bounds
         state.maxX = Math.round(slider.value.clientWidth)
+
         // Core calculation to convert an arbitrary value into pixels
-        state.computedX = minMax(0, Math.round((props.value - props.min) / (props.max - props.min) * state.maxX), state.maxX)
-        state.unit = minMax(0, Math.round((props.step) / (props.max - props.min) * state.maxX), state.maxX)
+        state.computedX = convertValueToPx(props.value, props.min, props.max, state.maxX)
+
+        // The value of a single unit of X converted to pixels.
+        state.unit = singleUnitValue(props.step, props.min, props.max, state.maxX)
+
         // Adds listeners when mounted. Not totally sure why I put it here.
         if (hasFocus.value) {
-          handle.value.addEventListener('keydown', onKeydown, false)
+          handle.value.addEventListener('keydown', onKeydown, { passive: false })
         }
+
         slider.value.addEventListener('touchstart', onTouchStart, { passive: true })
         slider.value.addEventListener('mousedown', onMouseDown)
       }
@@ -277,11 +302,11 @@ export default defineComponent({
     })
 
     return {
+      state,
       slider,
       handle,
       thumbStyle,
       thumbClass,
-      state,
       thumbTrackStyle,
       tickCount,
       observeWindow,
@@ -355,12 +380,18 @@ export default defineComponent({
     bottom: 0;
     z-index: 0;
     border-radius: 30px;
+    &:focus-within {
+      background-color: var(--primary-accent);
+    }
   }
   &__thumb-container{
     width: 24px;
     height:24px;
     &:focus{
       outline:none;
+      .sd--slider__thumb{
+        fill: var(--primary-accent);
+      }
     }
     &.is--dragging{
       &:after{
@@ -369,9 +400,6 @@ export default defineComponent({
         opacity: .5;
         transform: transition(-0.5, 0.5);
       }
-    }
-    &.is--focused{
-
     }
   }
   &__thumb{

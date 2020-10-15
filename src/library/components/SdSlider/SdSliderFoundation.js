@@ -10,4 +10,16 @@ const quantizeValue = (value, step) => {
   return Number(Math.round(value / step) * step)
 }
 
-export { quantizeValue, pctComplete, minMax }
+const convertValueToPx = (value, min, max, width) => {
+  return minMax(0, Math.round((value - min) / (max - min) * width), width)
+}
+
+const singleUnitValue = (step, min, max, width) => {
+  return minMax(0, Math.round((step) / (max - min) * width), width)
+}
+
+const convertToValue = (percentComplete, min, max) => {
+  return min + percentComplete * (max - min)
+}
+
+export { quantizeValue, pctComplete, minMax, convertValueToPx, singleUnitValue, convertToValue }
