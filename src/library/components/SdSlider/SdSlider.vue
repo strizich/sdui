@@ -54,7 +54,18 @@
 
 <script>
 // Math to calculate required values
-import { defineComponent, ref, reactive, computed, watchEffect, onMounted, onUnmounted, watch, nextTick } from 'vue'
+import {
+  defineComponent,
+  ref,
+  reactive,
+  computed,
+  watchEffect,
+  onMounted,
+  onUnmounted,
+  watch,
+  nextTick
+} from 'vue'
+
 import {
   minMax,
   quantizeValue,
@@ -63,7 +74,6 @@ import {
   singleUnitValue,
   convertToValue
 } from './SdSliderFoundation'
-
 import useKeyboardFocus from '../../hooks/useKeyboardFocus'
 import SdLabel from '../SdField/SdLabel'
 import SdTooltip from '../SdTooltip/SdTooltip'
@@ -99,7 +109,6 @@ export default defineComponent({
   setup (props, { emit }) {
     const slider = ref(null)
     const handle = ref(null)
-    const observeWindow = ref(null)
     const hasFocus = useKeyboardFocus(handle)
     const state = reactive({
       init: false,
@@ -112,25 +121,23 @@ export default defineComponent({
       handleWidth: 0,
       handleHeight: 0,
       offset: null,
-      step: props.step,
-      min: props.min,
-      max: props.max,
       unit: 0,
       pctComplete: 0
     })
 
+    // Gets the number of ticks
     const tickCount = computed(() => {
       return (props.max - props.min) / props.step
     })
 
-    // Styles
+    // Computed Styles
     const thumbTrackStyle = computed(() => {
       return {
         width: state.computedX + (state.handleWidth / 2) + 'px'
       }
     })
 
-    // Classes
+    // Computed Classes
     const thumbStyle = computed(() => {
       return {
         transition: 'transform .23s ease-in-out',
@@ -148,114 +155,34 @@ export default defineComponent({
       }
     })
 
-    // Final Calculations
-    const result = computed(() => {
-      const currentValue = convertToValue(state.pctComplete, props.min, props.max)
-      const quantize = quantizeValue(currentValue, props.step)
-      if (currentValue !== props.max && currentValue !== props.min) {
-        return minMax(props.min, quantize, props.max)
-      }
-      return minMax(props.min, currentValue, props.max)
-    })
-
-    // Emits the result on change
-    watch(() => result.value, (newValue) => {
-      emit('update:value', newValue)
-    })
-
-    // Update element bounderies and offset when the window size changes.
-    const handleWindowResize = () => {
-      nextTick().then(() => {
-        if (
-          slider.value instanceof HTMLElement &&
-          handle.value instanceof HTMLElement
-        ) {
-          const rect = slider.value.getBoundingClientRect()
-          state.offset = Math.round(rect.left)
-          state.maxX = Math.round(slider.value.clientWidth)
-          state.handleWidth = Math.round(handle.value.clientWidth)
-        }
-      })
-    }
-
-    // Interaction Bindings for touch and mouse.
-    const handleMove = (e) => {
-      const { clientX } = e
-      state.x = Math.max(0, Math.min(clientX - state.dragStartX, state.maxX))
-      state.pctComplete = pctComplete(state.x, state.maxX)
-    }
-
-    const handleStart = (e) => {
-      const { clientX } = e
-      const clickX = Math.round((clientX - state.offset))
-      state.isDragging = true
-      state.x = Math.max(0, Math.min(clickX, state.maxX))
-      state.dragStartX = clientX - state.x
-      state.pctComplete = pctComplete(state.x, state.maxX)
-    }
-
-    const handleEnd = (e) => {
-      state.isDragging = false
-      state.dragStartX = null
-    }
-
-    const handleIncrementUp = (e) => {
+    // --- Keyboard Handlers --- //
+    // Increases the value by a unit which is `step / (max - min) * width`
+    const handleIncrementUp = () => {
       state.x = state.computedX + state.unit
       state.pctComplete = pctComplete(state.x, state.maxX)
     }
 
+    // Decrease the value by a unit
     const handleIncrementDown = () => {
       state.x = state.computedX - state.unit
       state.pctComplete = pctComplete(state.x, state.maxX)
     }
 
-    const handleIncrementMax = (e) => {
+    // Increase the value to the upper boundry (clientWith / maxX)
+    const handleIncrementMax = () => {
       state.x = state.maxX
       state.pctComplete = 1
     }
 
+    // Increase the value to the lower boundry (0)
     const handleIncrementMin = () => {
       state.x = 0
       state.pctComplete = 0
     }
 
-    const onMouseMove = e => {
-      e.preventDefault()
-      handleMove(e)
-    }
-
-    const onTouchMove = e => {
-      e.preventDefault()
-      handleMove(e.touches[0])
-    }
-
-    const onMouseDown = e => {
-      handleStart(e)
-      document.addEventListener('mouseup', onMouseUp, { passive: true })
-      document.addEventListener('mousemove', onMouseMove, { passive: false })
-    }
-
-    const onTouchStart = e => {
-      handleStart(e.touches[0])
-      document.addEventListener('touchend', onTouchEnd, { passive: true })
-      document.addEventListener('touchmove', onTouchMove, { passive: false })
-    }
-
-    const onMouseUp = e => {
-      handleEnd(e)
-      document.removeEventListener('mouseup', onMouseUp)
-      document.removeEventListener('mousemove', onMouseMove)
-      document.removeEventListener('mousedown', onMouseDown)
-    }
-
-    const onTouchEnd = e => {
-      handleEnd(e.touches[0])
-      document.removeEventListener('touchstart', onTouchStart)
-      document.removeEventListener('touchend', onTouchEnd)
-      document.removeEventListener('touchmove', onTouchMove)
-    }
-
+    // --- Keyboard Events --- //
     const onKeydown = e => {
+      // `e.preventDefault()` is called in each case so that it does not block other keys. Eg. `Tab`
       switch (e.key) {
         case 'ArrowLeft':
         case 'PageUp':
@@ -283,6 +210,79 @@ export default defineComponent({
       }
     }
 
+    // --- Mouse / Touch Handlers --- //
+    const handleMove = (e) => {
+      const { clientX } = e
+      state.x = Math.max(0, Math.min(clientX - state.dragStartX, state.maxX))
+      state.pctComplete = pctComplete(state.x, state.maxX)
+    }
+
+    const handleStart = (e) => {
+      const { clientX } = e
+      const clickX = Math.round((clientX - state.offset))
+      state.isDragging = true
+      state.x = Math.max(0, Math.min(clickX, state.maxX))
+      state.dragStartX = clientX - state.x
+      state.pctComplete = pctComplete(state.x, state.maxX)
+    }
+
+    const handleEnd = (e) => {
+      state.isDragging = false
+      state.dragStartX = null
+    }
+
+    // --- Mouse Events --- //
+    const onMouseMove = e => {
+      e.preventDefault()
+      handleMove(e)
+    }
+
+    const onMouseDown = e => {
+      handleStart(e)
+      document.addEventListener('mouseup', onMouseUp, { passive: true })
+      document.addEventListener('mousemove', onMouseMove, { passive: false })
+    }
+
+    const onMouseUp = e => {
+      handleEnd(e)
+      document.removeEventListener('mouseup', onMouseUp)
+      document.removeEventListener('mousemove', onMouseMove)
+      document.removeEventListener('mousedown', onMouseDown)
+    }
+
+    // --- Touch Events---
+    const onTouchMove = e => {
+      e.preventDefault()
+      handleMove(e.touches[0])
+    }
+
+    const onTouchStart = e => {
+      handleStart(e.touches[0])
+      document.addEventListener('touchend', onTouchEnd, { passive: true })
+      document.addEventListener('touchmove', onTouchMove, { passive: false })
+    }
+
+    const onTouchEnd = e => {
+      handleEnd(e.touches[0])
+      document.removeEventListener('touchstart', onTouchStart)
+      document.removeEventListener('touchend', onTouchEnd)
+      document.removeEventListener('touchmove', onTouchMove)
+    }
+
+    // --- Window Resize Handler  -- //
+    const handleWindowResize = () => {
+      nextTick().then(() => {
+        if (
+          slider.value instanceof HTMLElement &&
+          handle.value instanceof HTMLElement
+        ) {
+          const rect = slider.value.getBoundingClientRect()
+          state.offset = Math.round(rect.left)
+          state.maxX = Math.round(slider.value.clientWidth)
+          state.handleWidth = Math.round(handle.value.clientWidth)
+        }
+      })
+    }
     // Core of the maths. Will rerun if any of the dependencies change.
     // Also runs once the component is mount (flush: 'post')
     watchEffect(() => {
@@ -318,6 +318,21 @@ export default defineComponent({
       }
     }, { flush: 'post' })
 
+    // Final Calculations
+    const result = computed(() => {
+      const currentValue = convertToValue(state.pctComplete, props.min, props.max)
+      const quantize = quantizeValue(currentValue, props.step)
+      if (currentValue !== props.max && currentValue !== props.min) {
+        return minMax(props.min, quantize, props.max)
+      }
+      return minMax(props.min, currentValue, props.max)
+    })
+
+    // Emits the result on change
+    watch(() => result.value, (newValue) => {
+      emit('update:value', newValue)
+    })
+
     onMounted(() => {
       // Listens to resize events. `SdLayout` will also emit resize events when the state of the sidebar changes.
       window.addEventListener('resize', handleWindowResize)
@@ -325,7 +340,6 @@ export default defineComponent({
 
     onUnmounted(() => {
       window.removeEventListener('resize', handleWindowResize)
-      observeWindow.value = null
     })
 
     return {
@@ -336,7 +350,6 @@ export default defineComponent({
       thumbClass,
       thumbTrackStyle,
       tickCount,
-      observeWindow,
       result,
       hasFocus
     }
