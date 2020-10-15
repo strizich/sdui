@@ -199,6 +199,26 @@ export default defineComponent({
       state.dragStartX = null
     }
 
+    const handleIncrementUp = (e) => {
+      state.x = state.computedX + state.unit
+      state.pctComplete = pctComplete(state.x, state.maxX)
+    }
+
+    const handleIncrementDown = () => {
+      state.x = state.computedX - state.unit
+      state.pctComplete = pctComplete(state.x, state.maxX)
+    }
+
+    const handleIncrementMax = (e) => {
+      state.x = state.maxX
+      state.pctComplete = 1
+    }
+
+    const handleIncrementMin = () => {
+      state.x = 0
+      state.pctComplete = 0
+    }
+
     const onMouseMove = e => {
       e.preventDefault()
       handleMove(e)
@@ -236,27 +256,30 @@ export default defineComponent({
     }
 
     const onKeydown = e => {
-      if (e.key === 'ArrowLeft' || e.key === 'PageUp' || e.key === 'ArrowDown') {
-        // If preventDefault is called outside of the conditional it will also prevent
-        // the the default of all other keypresses including `tab`
-        e.preventDefault()
-        state.x = state.computedX - state.unit
-        state.pctComplete = pctComplete(state.x, state.maxX)
-      }
-      if (e.key === 'ArrowRight' || e.key === 'PageDown' || e.key === 'ArrowUp') {
-        e.preventDefault()
-        state.x = state.computedX + state.unit
-        state.pctComplete = pctComplete(state.x, state.maxX)
-      }
-      if (e.key === 'Home') {
-        e.preventDefault()
-        state.x = 0
-        state.pctComplete = 0
-      }
-      if (e.key === 'End') {
-        e.preventDefault()
-        state.x = state.maxX
-        state.pctComplete = 1
+      switch (e.key) {
+        case 'ArrowLeft':
+        case 'PageUp':
+        case 'ArrowDown':
+          e.preventDefault()
+          handleIncrementDown()
+          break
+
+        case 'ArrowRight':
+        case 'PageDown':
+        case 'ArrowUp':
+          e.preventDefault()
+          handleIncrementUp()
+          break
+
+        case 'Home':
+          e.preventDefault()
+          handleIncrementMin()
+          break
+
+        case 'End':
+          e.preventDefault()
+          handleIncrementMax()
+          break
       }
     }
 
