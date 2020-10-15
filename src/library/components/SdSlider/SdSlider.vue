@@ -283,6 +283,7 @@ export default defineComponent({
         }
       })
     }
+
     // Core of the maths. Will rerun if any of the dependencies change.
     // Also runs once the component is mount (flush: 'post')
     watchEffect(() => {
@@ -339,6 +340,7 @@ export default defineComponent({
     })
 
     onUnmounted(() => {
+      handle.value.removeEventListener('keydown', onKeydown)
       window.removeEventListener('resize', handleWindowResize)
     })
 
