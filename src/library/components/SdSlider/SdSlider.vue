@@ -236,11 +236,15 @@ export default defineComponent({
     }
 
     const onKeydown = e => {
-      if (e.key === 'ArrowLeft' || e.key === 'PageUp') {
+      if (e.key === 'ArrowLeft' || e.key === 'PageUp' || e.key === 'ArrowDown') {
+        // If preventDefault is called outside of the conditional it will also prevent
+        // the the default of all other keypresses including `tab`
+        e.preventDefault()
         state.x = state.computedX - state.unit
         state.pctComplete = pctComplete(state.x, state.maxX)
       }
-      if (e.key === 'ArrowRight' || e.key === 'PageDown') {
+      if (e.key === 'ArrowRight' || e.key === 'PageDown' || e.key === 'ArrowUp') {
+        e.preventDefault()
         state.x = state.computedX + state.unit
         state.pctComplete = pctComplete(state.x, state.maxX)
       }
@@ -256,7 +260,7 @@ export default defineComponent({
       }
     }
 
-    // Core of the maths. Recalculates if any of the dependencies change.
+    // Core of the maths. Will rerun if any of the dependencies change.
     // Also runs once the component is mount (flush: 'post')
     watchEffect(() => {
       if (
