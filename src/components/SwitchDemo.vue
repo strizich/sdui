@@ -22,9 +22,9 @@
       </sd-col>
       <sd-col :md="4">
         <sd-fieldset title="Array of switches" stack>
-          <sd-switch v-model="arrayCheck" value="First">Simple Switch</sd-switch>
-          <sd-switch v-model="arrayCheck" value="Second">{{objectCheck.name}}</sd-switch>
-          <sd-switch v-model="arrayCheck" value="Third">Single Switch w/ value</sd-switch>
+          <sd-switch theme="danger" v-model="arrayCheck" value="First">Simple Switch</sd-switch>
+          <sd-switch theme="success" v-model="arrayCheck" value="Second">{{objectCheck.name}}</sd-switch>
+          <sd-switch theme="default" v-model="arrayCheck" value="Third">Single Switch w/ value</sd-switch>
         </sd-fieldset>
       </sd-col>
     </sd-row>
