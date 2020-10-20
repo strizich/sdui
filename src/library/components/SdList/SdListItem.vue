@@ -23,12 +23,8 @@ export default {
         'is--active': props.active
       }
     })
-    const testing = () => {
-      console.log(props.active)
-    }
     return {
-      classes,
-      testing
+      classes
     }
   }
 }
