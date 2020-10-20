@@ -27,7 +27,7 @@ export default defineComponent({
 .sd--label {
   font-size: 14px;
   letter-spacing: .5px;
-  line-height: 1;
+  line-height: 1.2;
   display:flex;
   align-items: center;
   color: var(--text-accent);

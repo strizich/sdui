@@ -274,7 +274,7 @@ export default defineComponent({
     }
     &__label{
       font-size: 16px;
-      line-height: 1;
+      line-height: 1.2;
       display:block;
       z-index: 10;
     }

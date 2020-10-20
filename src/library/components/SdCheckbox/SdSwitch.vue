@@ -226,7 +226,7 @@ $checkmarkSvgDarkUri: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/s
   display: flex;
   position:relative;
   align-items: center;
-  padding: 16px 0;
+  padding: 16px 8px;
   margin:0;
   justify-content: space-between;
   &:focus{
