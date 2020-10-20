@@ -4,32 +4,6 @@
   <sd-container>
     <sd-row>
       <sd-col :lg="3" :md="3" :sm="6" :xs="6">
-        <sd-sheet padded>
-          <h3>This is a sheet</h3>
-          <p>It is a generic container with light styling</p>
-        </sd-sheet>
-      </sd-col>
-      <sd-col :lg="3" :md="3" :sm="6" :xs="6">
-        <sd-sheet theme="secondary" padded>
-          <h3>
-            <sd-skeleton :height="24"/>
-          </h3>
-          <p>
-            <sd-skeleton/>
-            <sd-skeleton/>
-          </p>
-        </sd-sheet>
-      </sd-col>
-      <sd-col :lg="3" :md="3" :sm="6" :xs="6">
-        <sd-sheet theme="success" padded>
-          <sd-skeleton :height="250" :min-width="100"/>
-          <p>
-            <sd-skeleton/>
-            <sd-skeleton/>
-          </p>
-        </sd-sheet>
-      </sd-col>
-      <sd-col :lg="3" :md="3" :sm="6" :xs="6">
         <router-link
           to="/components/buttons"
           v-slot="{navigate}"

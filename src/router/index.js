@@ -58,9 +58,9 @@ const routes = [
     component: () => import(/* webpackChunkName: "toast" */ '../views/DemoToast.vue')
   },
   {
-    path: '/components/progress',
-    name: 'progress',
-    component: () => import(/* webpackChunkName: "progress" */ '../views/DemoProgress.vue')
+    path: '/components/loaders',
+    name: 'loaders',
+    component: () => import(/* webpackChunkName: "loaders" */ '../views/DemoLoaders.vue')
   },
   {
     path: '/components/list',

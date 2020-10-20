@@ -1,6 +1,7 @@
 <template>
   <div class="demo">
-      <section-header title="Progress Bars" sub-title="Some clever tagline" placement="bottom"/>
+    <sd-container>
+      <section-header title="Progress Bars" sub-title="Some clever tagline" placement="bottom" hash="#progress"/>
       <div class="demo__body">
         <template
           v-for="bar in bars"
@@ -26,6 +27,7 @@
           </div>
         </template>
       </div>
+    </sd-container>
   </div>
 </template>
 
