@@ -7,21 +7,19 @@
       <sd-chip
         label="Dynamic Chips (success theme)"
         theme="success"
-        v-model="state.chipsArrayFour"
+        v-model="state.chipsArrayOne"
         placeholder="press enter to add"
       />
-      <hr class="sd--divider"/>
-        <code>{{state.chipsArrayFour}}</code>
+      <code>{{state.chipsArrayOne}}</code>
       <hr class="sd--divider"/>
       <sd-chip
         label="Chicklets are captialized"
-        v-model="state.chipsArrayOne"
+        v-model="state.chipsArrayFour"
         theme="warning"
         captialize
         placeholder="press enter to add"
       />
-      <hr class="sd--divider"/>
-        <code>{{state.chipsArrayOne}}</code>
+      <code>{{state.chipsArrayFour}}</code>
       <hr class="sd--divider"/>
 
       <sd-chip
@@ -30,8 +28,7 @@
         uppercase
         placeholder="placeholder"
       />
-      <hr class="sd--divider"/>
-        <code>{{state.chipsArrayTwo}}</code>
+      <code>{{state.chipsArrayTwo}}</code>
       <hr class="sd--divider"/>
 
       <sd-chip
@@ -40,8 +37,7 @@
         lowercase
         placeholder="placeholder"
       />
-      <hr class="sd--divider"/>
-        <code>{{state.chipsArrayThree}}</code>
+      <code>{{state.chipsArrayThree}}</code>
       <hr class="sd--divider"/>
     </div>
   </div>
