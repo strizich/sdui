@@ -11,7 +11,7 @@ export default {
   name: 'SdListItem',
   props: {
     active: Boolean,
-    collased: Boolean,
+    collapsed: Boolean,
     loading: Boolean,
     // FUTURE: Accordion
     // Need to do more research on a good way to handle this.
@@ -23,8 +23,12 @@ export default {
         'is--active': props.active
       }
     })
+    const testing = () => {
+      console.log(props.active)
+    }
     return {
-      classes
+      classes,
+      testing
     }
   }
 }

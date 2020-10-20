@@ -312,6 +312,8 @@ export default defineComponent({
         // Adds listeners when mounted. Not totally sure why I put it here.
         if (hasFocus.value) {
           handle.value.addEventListener('keydown', onKeydown, { passive: false })
+        } else {
+          handle.value.removeEventListener('keydown', onKeydown)
         }
 
         slider.value.addEventListener('touchstart', onTouchStart, { passive: true })
@@ -340,7 +342,6 @@ export default defineComponent({
     })
 
     onUnmounted(() => {
-      handle.value.removeEventListener('keydown', onKeydown)
       window.removeEventListener('resize', handleWindowResize)
     })
 
