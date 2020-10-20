@@ -27,7 +27,7 @@ export default {
 </script>
 
 <style lang="scss">
-  @import '../../scss/grid';
+  @import 'grid';
   .sd--row {
     @include make-row();
     &.is{

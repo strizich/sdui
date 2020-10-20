@@ -54,7 +54,6 @@ export default {
 
     const handleSidebarType = (e) => {
       state.floating = e
-      console.log(e)
     }
 
     return { ...toRefs(state), menuEvent, handleSidebarType, smallDevice }
