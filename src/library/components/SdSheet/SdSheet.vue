@@ -25,6 +25,8 @@ export default defineComponent({
         'is--padded': props.padded
       }
     })
+    // FUTURE: Change z-index on hover
+    // FUTURE: Customizable elevation
     // FUTURE: Allow for color gradiants with user set background colors.
     return { classes }
   }

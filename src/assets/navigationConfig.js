@@ -24,6 +24,18 @@ export const COMPONENT_NAVIGATION = [{
   route: '/components/charts',
   secondary: false
 }, {
+  label: 'Containers',
+  route: '/components/containers',
+  secondary: false
+}, {
+  label: 'Chicklets',
+  route: '/components/containers#chicklets',
+  secondary: true
+}, {
+  label: 'Sheets',
+  route: '/components/containers#sheets',
+  secondary: true
+}, {
   label: 'Dialog',
   route: '/components/dialog',
   secondary: false
@@ -52,7 +64,7 @@ export const COMPONENT_NAVIGATION = [{
   route: '/components/form-controls#radio',
   secondary: true
 }, {
-  label: 'Chips',
+  label: 'Chip Field',
   route: '/components/form-controls#chips',
   secondary: true
 }, {

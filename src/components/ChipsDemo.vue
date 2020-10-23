@@ -1,6 +1,6 @@
 <template>
   <div class="demo">
-    <section-header title="Chips" sub-title="Smallish thing" hash="#chips"/>
+    <section-header title="Chip Field" sub-title="Smallish thing" hash="#chips"/>
     <div class="demo__item">
       <!-- TODO: snake, camel, and kebab casing options for output -->
       <!-- TODO: error handling -->

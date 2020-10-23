@@ -1,5 +1,6 @@
 <template>
   <div :class="['sd--chicklet', classes]">
+    <sd-icon v-if="icon" :name="icon" size="sm"/>
     <span class="sd--chicklet__content">
       <slot/>
     </span>
@@ -14,6 +15,7 @@ export default {
   name: 'SdChicklet',
   components: { SdIcon },
   props: {
+    icon: String,
     theme: {
       type: String,
       default: 'primary'
@@ -44,7 +46,11 @@ export default {
   display:inline-flex;
   align-items: center;
   transition: background-color .23s ease-in-out;
+  vertical-align: top;
   margin: 4px 0 4px 4px;
+  .sd--icon:first-child{
+    margin-right: 4px;
+  }
   &.is--dismissable{
     cursor: pointer;
   }
@@ -54,7 +60,13 @@ export default {
       color: var(--#{$state}-text);
       background-color: var(--#{$state});
       transition: all .13s ease-out;
-      border-radius: 3px;
+      border-radius: 2px;
+      &.is--dismissable{
+        &:hover{
+          background-color: var(--#{$state}-accent);
+          color: var(--#{$state}-accent-text);
+        }
+      }
     }
   }
   &__content{
