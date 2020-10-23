@@ -19,6 +19,8 @@
         </ul>
         <li>Adjust padding lists <code>ul > li</code></li>
         <li>Adjust padding on nested lists <code>ul > ul</code></li>
+        <li>Change github link to button in header</li>
+        <li><code>FUTURE:</code> Add additional flexability for custom icons</li>
       </ul>
     </section>
   </sd-container>

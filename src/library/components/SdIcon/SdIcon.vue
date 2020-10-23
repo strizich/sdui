@@ -1,5 +1,7 @@
 <template>
-  <i :class="['sd--icon', iconSize]" :style="{'color': color}">{{name}}</i>
+  <i :class="['sd--icon', iconSize]" :style="{'color': color}">
+    {{name}}
+  </i>
 </template>
 
 <script>
