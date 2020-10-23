@@ -1,68 +1,34 @@
 <template>
 <div class="home">
+  <!-- TODO: Add sd-mast to containers demo-->
   <sd-mast title="Yay for components" subtitle="UI library built with Vue3" />
   <sd-container>
-    <sd-row>
-      <sd-col :lg="3" :md="3" :sm="6" :xs="6">
-        <router-link
-          to="/components/buttons"
-          v-slot="{navigate}"
-          custom
-        >
-          <widget title="Button" @click="navigate">
-            img here
-          </widget>
-        </router-link>
-      </sd-col>
-      <sd-col :lg="3" :md="3" :sm="6" :xs="6">
-        <router-link
-          to="/components/form-controls"
-          v-slot="{navigate}"
-          custom
-        >
-          <widget title="Form Control" @click="navigate">
-            img here
-          </widget>
-        </router-link>
-      </sd-col>
-      <sd-col :lg="3" :md="3" :sm="6" :xs="6">
-        <router-link
-          to="/components/slider"
-          v-slot="{navigate}"
-          custom
-        >
-          <widget title="Slider"  @click="navigate">
-            img here
-          </widget>
-        </router-link>
-      </sd-col>
-      <sd-col :lg="3" :md="3" :sm="6" :xs="6">
-        <router-link
-          to="/components/icons"
-          v-slot="{navigate}"
-          custom
-        >
-          <widget title="Icons" @click="navigate">
-            <div>
-              <sd-skeleton :height="16"/>
-            </div>
-            <div>
-              <sd-skeleton :height="16"/>
-            </div>
-          </widget>
-        </router-link>
-      </sd-col>
-    </sd-row>
+    <!-- TODO: Convert this into component.-->
+    <section>
+      <h3 class="sd--text__header">Recent Changes</h3>
+      <p class="sd--text__footnote">10.23.2020</p>
+      <ul>
+        <li>Added Hover state to dismissable chicklets</li>
+        <li>Added <code>icon</code> prop to <code>sd-chicklet</code>.</li>
+        <li>Added some notes for future plans for <code>sd-sheets</code></li>
+        <li>Added Containers Demo</li>
+        <ul>
+          <li><code>sd-sheet</code> demo</li>
+          <li><code>sd-chicklet</code> demo</li>
+          <li>Links added to sidebar</li>
+        </ul>
+        <li>Adjust padding lists <code>ul > li</code></li>
+        <li>Adjust padding on nested lists <code>ul > ul</code></li>
+      </ul>
+    </section>
   </sd-container>
 </div>
 </template>
 
 <script>
 import { defineComponent, reactive } from 'vue'
-import Widget from '@/components/Widget'
 export default defineComponent({
   name: 'AppHome',
-  components: { Widget },
   setup () {
     const state = reactive({
       isLoading: true

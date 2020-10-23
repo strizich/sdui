@@ -16,8 +16,13 @@ article > p {
 }
 
 ul, li {
-  padding-top: 8px;
-  padding-bottom: 8px;
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+ul > ul{
+  padding-top:0;
+  padding-bottom:0;
 }
 
 p{
