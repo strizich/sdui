@@ -87,12 +87,11 @@ export default {
     flex-grow: 1;
   }
   &__nav{
-    nav{
       flex-grow: 0;
       display: flex;
-      justify-content: space-between;
+      justify-content: flex-end;
       align-items: center;
-    }
+      margin-right: 8px;
   }
   &__subheader{
     width: 100%;
