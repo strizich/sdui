@@ -254,7 +254,7 @@ export default defineComponent({
       border-radius: 30px;
     }
     &.is--pill {
-      border-radius: 30px;
+      border-radius: 60px;
       .sd--icon + .sd--button__content{
         padding-left: 8px;
       }

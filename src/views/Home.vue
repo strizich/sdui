@@ -6,6 +6,10 @@
     <!-- TODO: Convert this into component.-->
     <section>
       <h3 class="sd--text__header">Recent Changes</h3>
+      <p class="sd--text__footnote">10.26.2020</p>
+      <ul>
+        <li>Fix styling for nav slot.</li>
+      </ul>
       <p class="sd--text__footnote">10.23.2020</p>
       <ul>
         <li>Added Hover state to dismissable chicklets</li>
