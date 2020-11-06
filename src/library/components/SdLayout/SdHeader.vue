@@ -21,16 +21,16 @@
 </template>
 
 <script>
-import { SdHamburger } from '../..'
 import useWindowWidth from '../../hooks/useWindowWidth'
+import { SdHamburger } from '../SdButton/SdHamburger'
 import { reactive } from 'vue'
+
 export default {
   name: 'SdHeader',
-  emits: ['toggle-aside'],
+  emits: ['toggle'],
   components: { SdHamburger },
   props: {
-    asideOpen: Boolean,
-    drawerFloat: Boolean
+    asideOpen: Boolean
   },
   setup (props, { emit }) {
     const { smallDevice } = useWindowWidth()
@@ -42,13 +42,13 @@ export default {
     const getStoredMenuState = () => {
       const state = window.localStorage.getItem('SDUI:navState')
       sidebar.open = (state === 'true')
-      emit('toggle-aside', sidebar.open)
+      emit('toggle', sidebar.open)
     }
 
     const updateWindowWidth = () => {
       if (smallDevice.value === true) {
         window.localStorage.setItem('SDUI:navState', false)
-        emit('toggle-aside', false)
+        emit('toggle', false)
       }
     }
 
@@ -58,7 +58,7 @@ export default {
       } else {
         window.localStorage.setItem('SDUI:navState', false)
       }
-      emit('toggle-aside', e)
+      emit('toggle', e)
     }
 
     updateWindowWidth()

@@ -1,5 +1,5 @@
 <template>
-  <sd-header :aside-open="asideOpen" @toggle-aside="(e) => handleMenu(e)">
+  <sd-header :aside-open="asideOpen" @toggle="handleMenu">
     <template v-slot:brand>
       <js-logo/>
     </template>
@@ -28,7 +28,7 @@ import { defineComponent } from 'vue'
 import JsLogo from '@/components/JsLogo'
 
 export default defineComponent({
-  emits: ['menu-open'],
+  emits: ['toggle'],
   components: {
     JsLogo
   },
@@ -37,7 +37,7 @@ export default defineComponent({
   },
   setup (props, { emit }) {
     const handleMenu = (e) => {
-      emit('menu-open', e)
+      emit('toggle', e)
     }
 
     return {

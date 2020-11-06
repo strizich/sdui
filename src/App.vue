@@ -1,12 +1,12 @@
 <template>
   <sd-layout
-    @update:sidebar="menuEvent"
+    @toggle="menuEvent"
     :sidebar="menuOpen"
     :floating="floating"
   >
     <template v-slot:header>
       <the-header
-        @menu-open="menuEvent"
+        @toggle="menuEvent"
         :aside-open="menuOpen"
       />
     </template>
@@ -48,6 +48,7 @@ export default {
     })
 
     const menuEvent = (e) => {
+      console.log('menuEvent')
       window.localStorage.setItem('SDUI:navState', e)
       state.menuOpen = e
     }

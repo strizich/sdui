@@ -6,6 +6,12 @@
     <!-- TODO: Convert this into component.-->
     <section>
       <h3 class="sd--text__header">Recent Changes</h3>
+      <p class="sd--text__footnote">11.06.2020</p>
+      <ul>
+        <li>Bump Dependencies.</li>
+        <li>Fix header emitters. <em>It appears 3.0.2 breaks event emitters withat a `-` in it. More research needed.</em>
+        </li>
+      </ul>
       <p class="sd--text__footnote">10.26.2020</p>
       <ul>
         <li>Fix styling for nav slot.</li>

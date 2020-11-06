@@ -41,14 +41,14 @@ export default {
   components: {
     SdOverlay
   },
-  emits: ['update:sidebar'],
+  emits: ['toggle'],
   // components: { JsLogo },
   setup (props, { emit }) {
     const route = useRouter()
 
     watch(() => route.currentRoute.value, (newValue) => {
       if (props.floating) {
-        emit('update:sidebar', false)
+        emit('toggle', false)
       }
     })
 
@@ -70,7 +70,7 @@ export default {
     })
 
     const handleOutsideClick = () => {
-      emit('update:sidebar', false)
+      emit('toggle', false)
     }
     const afterLeave = () => {
       if (!props.sidebar) {
