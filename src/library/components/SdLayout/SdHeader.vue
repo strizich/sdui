@@ -22,7 +22,7 @@
 
 <script>
 import useWindowWidth from '../../hooks/useWindowWidth'
-import { SdHamburger } from '../SdButton/SdHamburger'
+import SdHamburger from '../SdButton/SdHamburger'
 import { reactive } from 'vue'
 
 export default {
