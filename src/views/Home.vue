@@ -6,10 +6,14 @@
     <!-- TODO: Convert this into component.-->
     <section>
       <h3 class="sd--text__header">Recent Changes</h3>
+        <p class="sd--text__footnote">11.16.2020 pt.3</p>
+      <ul>
+        <li>Bump Dependencies</li>
+      </ul>
       <p class="sd--text__footnote">11.16.2020 pt.2</p>
       <ul>
         <li>Fix width <code>sm</code> size on <code>SdButton</code> with using <code>icon-only</code></li>
-        <li>Adjust <code>XL</code> size on <code>SdButton</code> adjusted coresponding icon sizing.</li>
+        <li>Adjust <code>XL</code> size on <code>SdButton</code>, adjusted coresponding icon sizing.</li>
         <li>Add SVG theme handling to <code>SdButton</code></li>
       </ul>
       <p class="sd--text__footnote">11.16.2020 pt.1</p>
