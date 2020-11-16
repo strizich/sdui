@@ -1,7 +1,12 @@
 <template>
 <section>
   <sd-container full>
-    <section-header title="Checkbox" sub-title="I want that one... and that one... and that one." hash="#checkbox">
+    <section-header
+    title="Checkbox"
+    sub-title="I want that one... and that one... and that one."
+    hash="#checkbox"
+    git="https://github.com/strizich/sdui/tree/master/src/library/components/SdCheckbox"
+    >
       Checkbox
     </section-header>
     <sd-row>

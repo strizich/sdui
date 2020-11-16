@@ -6,6 +6,13 @@
     <!-- TODO: Convert this into component.-->
     <section>
       <h3 class="sd--text__header">Recent Changes</h3>
+      <p class="sd--text__footnote">11.16.2020</p>
+      <ul>
+        <li>Add button to <code>SectionHeader</code> for github link.</li>
+        <li>Adjust <code>svg</code> color handling in <code>SectionHeader</code> for <code>SdButton</code>.</li>
+        <li>Add github link to each component demo.</li>
+        <li> TODO: Handle colors and theme support in SdButton for non-text elements <code>svg</code>.</li>
+      </ul>
       <p class="sd--text__footnote">11.06.2020</p>
       <ul>
         <li>Bump Dependencies.</li>

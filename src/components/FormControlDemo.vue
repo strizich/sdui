@@ -1,7 +1,13 @@
 <template>
   <section>
     <sd-container full>
-      <section-header hash="#controls" title="Form Controls" sub-title="What goes in. Comes back out?" placement="bottom"/>
+      <section-header
+      hash="#controls"
+      title="Form Controls"
+      sub-title="What goes in. Comes back out?"
+      placement="bottom"
+      git="https://github.com/strizich/sdui/blob/master/src/library/components/SdField/SdField.vue"
+      />
       <sd-row>
         <sd-col :md="4">
           <sd-field

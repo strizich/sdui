@@ -1,33 +1,37 @@
 <template>
   <div class="demo__buttons">
     <sd-container full>
-    <section-header title="Buttons" sub-title="clicky clicky" />
-    <sd-row>
-      <sd-col :md="12">
-        <div class="buttons__results">
-          <template v-for="(color, index) in colors" :key="index">
-            <sd-button
-              :aria-label="`${color} button`"
-              :theme="color"
-              :icon="showIcon ? iconName : ''"
-              :href="selectedTag === 'Link' ? '/link' : ''"
-              :to="selectedTag === 'Route' ? '/route' : ''"
-              :pill="selectedPill === 'Pill'"
-              :rounded="selectedPill === 'Rounded'"
-              :flat="selectedStyle === 'Flat'"
-              :outline="selectedStyle === 'Outline'"
-              :size="selectedSize"
-              :block="isBlock"
-              :align="selectedAlignment"
-              :disabled="disabled"
-              :icon-only="isIconOnly"
-            >
-              <span v-if="!isIconOnly">{{color}}</span>
-            </sd-button>
-          </template>
-        </div>
-      </sd-col>
-    </sd-row>
+      <section-header
+        title="Buttons"
+        sub-title="clicky clicky"
+        git="https://github.com/strizich/sdui/tree/master/src/library/components/SdButton"
+      />
+      <sd-row>
+        <sd-col :md="12">
+          <div class="buttons__results">
+            <template v-for="(color, index) in colors" :key="index">
+              <sd-button
+                :aria-label="`${color} button`"
+                :theme="color"
+                :icon="showIcon ? iconName : ''"
+                :href="selectedTag === 'Link' ? '/link' : ''"
+                :to="selectedTag === 'Route' ? '/route' : ''"
+                :pill="selectedPill === 'Pill'"
+                :rounded="selectedPill === 'Rounded'"
+                :flat="selectedStyle === 'Flat'"
+                :outline="selectedStyle === 'Outline'"
+                :size="selectedSize"
+                :block="isBlock"
+                :align="selectedAlignment"
+                :disabled="disabled"
+                :icon-only="isIconOnly"
+              >
+                <span v-if="!isIconOnly">{{color}}</span>
+              </sd-button>
+            </template>
+          </div>
+        </sd-col>
+      </sd-row>
     </sd-container>
     <sd-container>
       <sd-row class="group">

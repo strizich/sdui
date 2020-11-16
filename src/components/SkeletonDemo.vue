@@ -1,6 +1,11 @@
 <template>
   <sd-container>
-    <section-header title="Skeleton Loader" sub-title="Spooky loaders" hash="#skeleton" />
+    <section-header
+      title="Skeleton Loader"
+      sub-title="Spooky loaders"
+      hash="#skeleton"
+      git="https://github.com/strizich/sdui/blob/master/src/library/components/SdLoader/SdSkeleton.vue"
+    />
     <sd-row>
       <sd-col :lg="3" :md="3" :sm="6" :xs="6">
         <sd-sheet theme="secondary" padded>
@@ -8,8 +13,8 @@
             <sd-skeleton :height="24"/>
           </h3>
           <p>
-            <sd-skeleton/>
-            <sd-skeleton/>
+            <sd-skeleton />
+            <sd-skeleton />
           </p>
         </sd-sheet>
       </sd-col>
@@ -17,8 +22,8 @@
         <sd-sheet theme="success" padded>
           <sd-skeleton :height="250" :min-width="100"/>
           <p>
-            <sd-skeleton/>
-            <sd-skeleton/>
+            <sd-skeleton />
+            <sd-skeleton />
           </p>
         </sd-sheet>
       </sd-col>

@@ -5,6 +5,7 @@
           title="Charts"
           sub-title="Lines go up. Lines go down."
           placement="bottom"
+          git="https://github.com/strizich/sdui/tree/master/src/library/components/SdChart"
         />
         <sd-row>
           <sd-col :sm="12" :md="6" v-for="(data, index) in data.chartData" :key="index">

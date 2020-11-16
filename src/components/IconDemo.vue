@@ -1,7 +1,12 @@
 <template>
   <section>
     <sd-container full>
-      <section-header hash="#icons" title="Icons" sub-title="Powered by: Material Icons Font"/>
+      <section-header
+      title="Icons"
+      sub-title="Powered by: Material Icons Font"
+      git="https://github.com/strizich/sdui/blob/master/src/library/components/SdIcon/SdIcon.vue"
+      hash="#icons"
+      />
       <sd-fieldset class="demo__actionbar">
         <sd-field
           type="text"

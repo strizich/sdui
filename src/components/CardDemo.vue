@@ -5,6 +5,7 @@
           title="Cards"
           sub-title="Not at all like trading cards."
           hash="#cards"
+          git="https://github.com/strizich/sdui/tree/master/src/library/components/SdCard"
         />
         <sd-row>
           <sd-col :sm="6" :md="4">

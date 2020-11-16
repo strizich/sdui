@@ -1,5 +1,11 @@
 <template>
   <sd-container>
+    <section-header
+      title="Elevation"
+      sub-title="Feeling a bit light headed."
+      hash="#elevation"
+      git="https://github.com/strizich/sdui/tree/master/src/library/components/SdElevation"
+    />
     <sd-slider
       label="Elevation"
       :min="1"
@@ -24,8 +30,11 @@
 </template>
 
 <script>
+import SectionHeader from '@/components/SectionHeader'
 import { computed, defineComponent, reactive } from 'vue'
 export default defineComponent({
+  name: 'ElevationDemo',
+  components: { SectionHeader },
   setup () {
     const state = reactive({
       elevation: 12

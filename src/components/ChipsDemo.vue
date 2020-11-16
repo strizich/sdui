@@ -1,6 +1,11 @@
 <template>
   <div class="demo">
-    <section-header title="Chip Field" sub-title="Smallish thing" hash="#chips"/>
+    <section-header
+      title="Chip Field"
+      sub-title="Smallish thing"
+      hash="#chips"
+      git="https://github.com/strizich/sdui/blob/master/src/library/components/SdChicklet/SdChip.vue"
+    />
     <div class="demo__item">
       <!-- TODO: snake, camel, and kebab casing options for output -->
       <!-- TODO: error handling -->

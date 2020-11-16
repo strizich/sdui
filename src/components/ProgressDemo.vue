@@ -1,7 +1,13 @@
 <template>
   <div class="demo">
     <sd-container>
-      <section-header title="Progress Bars" sub-title="Some clever tagline" placement="bottom" hash="#progress"/>
+      <section-header
+      title="Progress Bars"
+      sub-title="Some clever tagline"
+      placement="bottom"
+      hash="#progress"
+      progress="https://github.com/strizich/sdui/blob/master/src/library/components/SdProgress/SdProgress.vue"
+      />
       <div class="demo__body">
         <template
           v-for="bar in bars"

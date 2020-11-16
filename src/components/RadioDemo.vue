@@ -1,7 +1,12 @@
 <template>
   <section>
     <sd-container full>
-      <section-header hash="#radios" title="Radio Buttons" sub-title="Only take one." />
+      <section-header
+        title="Radio Buttons"
+        sub-title="Only take one."
+        hash="#radios"
+        git="https://github.com/strizich/sdui/blob/master/src/library/components/SdRadio/SdRadio.vue"
+      />
       <sd-row>
         <sd-col :md="12">
           <sd-fieldset title="Radios">

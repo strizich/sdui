@@ -1,8 +1,12 @@
 <template>
   <section>
     <sd-container full>
-    <section-header hash="#dialogs" title="Dialogs" sub-title="The developer's worst nightmare." />
-
+    <section-header
+      title="Dialogs"
+      sub-title="The developer's worst nightmare."
+      hash="#dialogs"
+      git="https://github.com/strizich/sdui/tree/master/src/library/components/SdDialog"
+    />
     <div class="demo__content">
       <div class="demo__triggers">
       <sd-fieldset title="Dialog Size" tip="No effect on mobile devices" tip-placement="right">

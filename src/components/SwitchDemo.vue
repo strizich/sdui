@@ -1,7 +1,12 @@
 <template>
 <section>
   <sd-container full>
-    <section-header title="Switch" sub-title="I want that one... and that one... and that one." hash="#switch">
+    <section-header
+    title="Switch"
+    sub-title="I want that one... and that one... and that one."
+    hash="#switch"
+    git="https://github.com/strizich/sdui/blob/master/src/library/components/SdCheckbox/SdSwitch.vue"
+    >
       Switch
     </section-header>
     <sd-row>
