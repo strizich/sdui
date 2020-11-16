@@ -177,7 +177,7 @@ export default defineComponent({
       }
 
       &--xl {
-        font-size: rem(28);
+        font-size: rem(24);
         line-height: 1;
         padding: spacing(offset, xl);
       }
@@ -299,8 +299,8 @@ export default defineComponent({
       min-height:42px;
     }
     &.is--xl{
-      min-width: 64px;
-      min-height:64px;
+      min-width: 56px;
+      min-height:56px;
     }
   }
 }
