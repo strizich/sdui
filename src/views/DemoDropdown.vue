@@ -1,6 +1,11 @@
 <template>
   <div class="demo">
-    <section-header title="Dropdown" sub-title="WIP" placement="bottom"/>
+    <section-header
+      title="Dropdown"
+      sub-title="WIP"
+      placement="bottom"
+      git="https://github.com/strizich/sdui/tree/master/src/library/components/SdDropdown"
+    />
     <div class="demo__buttons">
       <sd-button rounded icon-only>
         <sd-icon name="more_vert" />

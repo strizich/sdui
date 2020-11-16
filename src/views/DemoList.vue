@@ -1,6 +1,10 @@
 <template>
   <div class="demo">
-    <section-header title="List" sub-title="Work in progress" />
+    <section-header
+      title="List"
+      sub-title="Work in progress"
+      git="https://github.com/strizich/sdui/tree/master/src/library/components/SdList"
+    />
     <sd-list loading>
       <sd-list-item>
         <template #default>

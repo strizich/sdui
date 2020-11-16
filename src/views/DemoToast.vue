@@ -1,6 +1,10 @@
 <template>
 <div class="demo">
-  <section-header title="Toast Notifications" sub-title="mmmmm tasty..."/>
+  <section-header
+    title="Toast Notifications"
+    sub-title="mmmmm tasty..."
+    git="https://github.com/strizich/sdui/tree/master/src/library/components/SdToast"
+  />
   <sd-container>
     <sd-row>
       <sd-col :md="4">

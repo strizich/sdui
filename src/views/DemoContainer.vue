@@ -1,7 +1,12 @@
 <template>
   <div class="demo">
     <div id="chicklets" class="demo__chicklets">
-      <section-header title="Chicklets" sub-title="Chewy" hash="#chicklets" />
+      <section-header
+        title="Chicklets"
+        sub-title="Chewy"
+        hash="#chicklets"
+        git="https://github.com/strizich/sdui/blob/master/src/library/components/SdChicklet/SdChicklet.vue"
+      />
       <div class="demo__content">
         <section>
           <h5>Themes</h5>
@@ -38,7 +43,12 @@
       </div>
     </div>
     <div id="sheets" class="demo__sheets" >
-      <section-header title="Sheets" sub-title="Construction Paper" hash="#sheets" />
+      <section-header
+        title="Sheets"
+        sub-title="Construction Paper"
+        hash="#sheets"
+        git="https://github.com/strizich/sdui/blob/master/src/library/components/SdSheet/SdSheet.vue"
+      />
         <h4>Default Sheets</h4>
         <sd-row gutterless style="margin-bottom: 32px">
           <sd-col

@@ -1,7 +1,12 @@
 <template>
   <div class="demo-slider">
   <sd-container>
-    <section-header title="Slider" sub-title="woooooo" placement="bottom"/>
+    <section-header
+      title="Slider"
+      sub-title="woooooo"
+      placement="bottom"
+      git="https://github.com/strizich/sdui/tree/master/src/library/components/SdSlider"
+    />
     <sd-row>
       <sd-col :md="6">
         <sd-checkbox v-model="showOptions">Additional Settings</sd-checkbox>
@@ -62,7 +67,7 @@
         v-model:value="value4"
       >
         <template #label>
-          <sd-label>Woooo! I am such a slot.</sd-label>
+          <sd-label>Woooo! Slot.</sd-label>
         </template>
         <template #hint>
           <small class="sd--text__footnote">
