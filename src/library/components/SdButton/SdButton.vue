@@ -191,12 +191,18 @@ export default defineComponent({
       background-color: var(--#{$state});
       transition: all .13s ease-out;
       border-radius: 3px;
+      svg{
+          fill: var(--#{$state}-text)
+      }
 
       &:hover {
         @include elevation(4);
         color: var(--#{$state}-accent-text);
         background-color: var(--#{$state}-accent);
         transition: all .13s ease-out;
+        svg {
+          fill: var(--#{$state}-accent-text)
+        }
       }
 
       &:active {

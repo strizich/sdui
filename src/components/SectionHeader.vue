@@ -111,16 +111,6 @@ export default defineComponent({
     &--group{
       margin-right: 16px;
     }
-    .sd--button{
-      .git{
-        fill: var(--primary);
-      }
-      &:hover{
-        .git{
-          fill: #fff;
-        }
-      }
-    }
   }
 
 .tip__content{
