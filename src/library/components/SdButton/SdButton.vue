@@ -161,7 +161,6 @@ export default defineComponent({
         font-size: rem(14);
         line-height: 1;
         padding: spacing(inset, sm);
-        min-width: 30px;
       }
 
       &--md {
@@ -259,6 +258,7 @@ export default defineComponent({
     &.is--rounded {
       border-radius: 30px;
     }
+
     &.is--pill {
       border-radius: 60px;
       .sd--icon + .sd--button__content{
@@ -276,6 +276,7 @@ export default defineComponent({
       padding:0;
     }
   }
+
   .sd--icon{
     line-height: 1px;
     width:32px;
