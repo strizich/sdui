@@ -6,12 +6,18 @@
     <!-- TODO: Convert this into component.-->
     <section>
       <h3 class="sd--text__header">Recent Changes</h3>
-      <p class="sd--text__footnote">11.16.2020</p>
+      <p class="sd--text__footnote">11.16.2020 pt.2</p>
+      <ul>
+        <li>Fix width <code>sm</code> size on <code>SdButton</code> with using <code>icon-only</code></li>
+        <li>Adjust <code>XL</code> size on <code>SdButton</code> adjusted coresponding icon sizing.</li>
+        <li>Add SVG theme handling to <code>SdButton</code></li>
+      </ul>
+      <p class="sd--text__footnote">11.16.2020 pt.1</p>
       <ul>
         <li>Add button to <code>SectionHeader</code> for github link.</li>
         <li>Adjust <code>svg</code> color handling in <code>SectionHeader</code> for <code>SdButton</code>.</li>
         <li>Add github link to each component demo.</li>
-        <li> TODO: Handle colors and theme support in SdButton for non-text elements <code>svg</code>.</li>
+        <li><strike>TODO: Handle colors and theme support in SdButton for non-text elements <code>svg</code>.</strike> Done.</li>
       </ul>
       <p class="sd--text__footnote">11.06.2020</p>
       <ul>
