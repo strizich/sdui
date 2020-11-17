@@ -116,9 +116,9 @@
 </template>
 
 <script>
-import { reactive, toRefs } from 'vue'
+import { reactive, toRefs, defineComponent } from 'vue'
 import SectionHeader from '@/components/SectionHeader'
-export default {
+export default defineComponent({
   name: 'DemoButton',
   components: { SectionHeader },
   setup () {
@@ -160,7 +160,7 @@ export default {
     })
     return { ...toRefs(state) }
   }
-}
+})
 </script>
 
 <style lang="scss" scoped>

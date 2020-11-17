@@ -9,31 +9,54 @@
     />
     <div class="demo__content">
       <div class="demo__triggers">
-      <sd-fieldset title="Dialog Size" tip="No effect on mobile devices" tip-placement="right">
-        <sd-radio v-model="modalSize" value="sm">Small</sd-radio>
-        <sd-radio v-model="modalSize" value="md">Medium</sd-radio>
-        <sd-radio v-model="modalSize" value="lg">Large</sd-radio>
-      </sd-fieldset>
-      <sd-button @click="handleModal">
-        Open Dialog
-      </sd-button>
-      <sd-button @click="handleAside">
-        Aside Dialog
-      </sd-button>
-        <sd-button @click="handleAsideLeft">
-        Left Dialog
-      </sd-button>
+        <sd-fieldset
+          title="Dialog Size"
+          tip="No effect on mobile devices"
+          tip-placement="right"
+        >
+          <sd-radio v-model="modalSize" value="sm">Small</sd-radio>
+          <sd-radio v-model="modalSize" value="md">Medium</sd-radio>
+          <sd-radio v-model="modalSize" value="lg">Large</sd-radio>
+        </sd-fieldset>
+        <sd-button @click="handleModal">
+          Open Dialog (Modal)
+        </sd-button>
+        <sd-button
+          @click="handleAsideLeft"
+        >
+          Left Aside
+        </sd-button>
+        <sd-button
+          @click="handleAside"
+        >
+          Right Aside
+        </sd-button>
       </div>
-      <sd-dialog :active="active" @update:active="handleModalClose" :size="modalSize">
-        <sd-dialog-title title="Normal Dialog"/>
+      <sd-dialog
+        :active="active"
+        :size="modalSize"
+        @update:active="handleModalClose"
+      >
+        <sd-dialog-title title="Here be the title" subtitle="Here be the subtitle"/>
         <sd-dialog-content>
           <div>All sorts of things go in here.</div>
         </sd-dialog-content>
         <sd-dialog-footer>
-          <sd-button size="sm" flat @click="handleModalClose">Button</sd-button>
+          <sd-button
+            size="sm"
+            @click="handleModalClose"
+            theme="default"
+          >
+            Dismiss
+          </sd-button>
         </sd-dialog-footer>
       </sd-dialog>
-      <sd-dialog v-model:active="activeAside" :size="modalSize" aside>
+
+      <sd-dialog
+        v-model:active="activeAside"
+        :size="modalSize"
+        aside
+      >
         <sd-dialog-title title="Aside Modal" subtitle="Subtitles go here"/>
         <sd-dialog-content>
           <div>
@@ -42,18 +65,39 @@
           </div>
         </sd-dialog-content>
         <sd-dialog-footer>
-          <sd-button size="sm" flat @click="handleAsideClose">Button</sd-button>
+          <sd-button size="sm"
+            theme="default"
+            @click="handleAsideClose"
+          >
+            Dismiss
+          </sd-button>
         </sd-dialog-footer>
       </sd-dialog>
-      <sd-dialog :active="activeAsideLeft" @update:active="handleAsideLeftClose" :size="modalSize" aside placement="left">
-        <sd-dialog-title title="Aside Modal" subtitle="Subtitles go here"/>
+
+      <sd-dialog
+        :active="activeAsideLeft"
+        :size="modalSize"
+        placement="left"
+        aside
+        @update:active="handleAsideLeftClose"
+      >
+        <sd-dialog-title
+          title="Aside Modal"
+          subtitle="Subtitles go here"
+        />
         <sd-dialog-content>
           <div>
             All sorts of things go in here.
           </div>
         </sd-dialog-content>
         <sd-dialog-footer>
-          <sd-button size="sm" flat @click="handleAsideLeftClose">Button</sd-button>
+          <sd-button
+            size="sm"
+            theme="default"
+            @click="handleAsideLeftClose"
+          >
+            Dismiss
+          </sd-button>
         </sd-dialog-footer>
       </sd-dialog>
     </div>

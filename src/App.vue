@@ -13,7 +13,7 @@
     <template v-slot:sidebar>
       <the-sidebar
         v-model:floating="floating"
-        :smallDevice="smallDevice"
+        :small-device="smallDevice"
       />
     </template>
     <template v-slot:content>
@@ -23,7 +23,7 @@
 </template>
 
 <script>
-import { reactive, toRefs, watchEffect } from 'vue'
+import { reactive, toRefs, watchEffect, defineComponent } from 'vue'
 import TheHeader from '@/components/TheHeader'
 import TheSidebar from '@/components/TheSidebar'
 import useWindowWidth from '@/library/hooks/useWindowWidth'
@@ -31,7 +31,7 @@ import useWindowWidth from '@/library/hooks/useWindowWidth'
 const floatState = window.localStorage.getItem('SDUI:sidebarFloating') === 'true'
 const navState = window.localStorage.getItem('SDUI:navState') === 'true'
 
-export default {
+export default defineComponent({
   components: { TheHeader, TheSidebar },
   setup () {
     const state = reactive({
@@ -59,7 +59,7 @@ export default {
 
     return { ...toRefs(state), menuEvent, handleSidebarType, smallDevice }
   }
-}
+})
 </script>
 <style lang="scss">
 

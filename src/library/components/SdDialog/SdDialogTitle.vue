@@ -25,7 +25,6 @@ export default {
       justify-content: space-between;
       align-items: center;
       padding: 16px;
-      border-top: 1px solid var(--divider);
       background-color: var(--background);
       border-radius: 3px 3px 0 0;
       flex-shrink: 0;
