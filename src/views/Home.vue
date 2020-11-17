@@ -6,7 +6,12 @@
     <!-- TODO: Convert this into component.-->
     <section>
       <h3 class="sd--text__header">Recent Changes</h3>
-        <p class="sd--text__footnote">11.16.2020 pt.3</p>
+      <p class="sd--text__footnote">11.17.2020</p>
+      <ul>
+        <li>Adjustments to <code>SdDialogTitle</code> styling.</li>
+        <li>Cleanup <code>SdDialog</code> demo.</li>
+      </ul>
+      <p class="sd--text__footnote">11.16.2020 pt.3</p>
       <ul>
         <li>Bump Dependencies</li>
       </ul>
