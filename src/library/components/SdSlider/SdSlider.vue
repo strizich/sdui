@@ -174,7 +174,7 @@ export default defineComponent({
       state.pctComplete = 1
     }
 
-    // Increase the value to the lower boundry (0)
+    // Decrease the value to the lower boundry (0)
     const handleIncrementMin = () => {
       state.x = 0
       state.pctComplete = 0
