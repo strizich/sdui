@@ -6,9 +6,13 @@
     <!-- TODO: Convert this into component.-->
     <section>
       <h3 class="sd--text__header">Recent Changes</h3>
-        <p class="sd--text__footnote">11.30.2020</p>
+      <p class="sd--text__footnote">12.03.2020</p>
       <ul>
-        <li>Bump dependencies.</li>
+        <li>Bump dependencies. (Vue 3.0.4)</li>
+      </ul>
+      <p class="sd--text__footnote">11.30.2020</p>
+      <ul>
+        <li>Bump dependencies. (Vue 3.0.3)</li>
       </ul>
       <p class="sd--text__footnote">11.17.2020</p>
       <ul>
