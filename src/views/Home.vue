@@ -6,6 +6,12 @@
     <!-- TODO: Convert this into component.-->
     <section>
       <h3 class="sd--text__header">Recent Changes</h3>
+      <p class="sd--text__footnote">1.16.2021</p>
+      <ul>
+        <li>Bump dependencies. (Vue 3.0.5)</li>
+        <li>Use dart-sass</li>
+        <l1>Disable tick on SdSlider until edgecases are resolved.</l1>
+      </ul>
       <p class="sd--text__footnote">12.03.2020</p>
       <ul>
         <li>Bump dependencies. (Vue 3.0.4)</li>

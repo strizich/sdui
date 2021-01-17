@@ -52,7 +52,6 @@
       <sd-slider
         label="Slider with min/max"
         show-indicators
-        show-ticks
         :min="min"
         :max="max"
         v-model:value="value3"

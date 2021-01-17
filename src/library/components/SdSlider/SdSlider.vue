@@ -8,9 +8,9 @@
       </div>
       <div class="sd--slider__content" ref="slider">
         <div class="sd--slider__track-container">
-          <div class="sd--slider__ticks" v-if="showTicks">
+          <!-- <div class="sd--slider__ticks" v-if="showTicks">
             <div class="sd--slider__tick" v-for="n in tickCount" :key="n"/>
-          </div>
+          </div> -->
           <div
             class="sd--slider__track"
             :style="thumbTrackStyle"
@@ -126,9 +126,9 @@ export default defineComponent({
     })
 
     // Gets the number of ticks
-    const tickCount = computed(() => {
-      return (props.max - props.min) / props.step
-    })
+    // const tickCount = computed(() => {
+    //   return (props.max - props.min) / props.step
+    // })
 
     // Computed Styles
     const thumbTrackStyle = computed(() => {
@@ -352,7 +352,6 @@ export default defineComponent({
       thumbStyle,
       thumbClass,
       thumbTrackStyle,
-      tickCount,
       result,
       hasFocus
     }
