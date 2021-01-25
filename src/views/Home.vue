@@ -10,6 +10,10 @@
       <ul>
         <li>Add <code>jsconfig.js</code> to supress Vetur warnings.</li>
         <li>Added Demo for grid system <sd-chicklet theme="default" xs >WIP</sd-chicklet>. </li>
+        <li>Added sizing to <code>SdChicklet</code></li>
+        <li>Update navigation with new demos</li>
+        <li>Updated routes with new demos</li>
+        <li>Rename some utility functions for better clarity.</li>
       </ul>
       <p class="sd--text__footnote">1.16.2021</p>
       <ul>
