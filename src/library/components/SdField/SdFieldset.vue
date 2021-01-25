@@ -28,6 +28,7 @@ export default defineComponent({
     title: String,
     stack: Boolean,
     inlineLabel: Boolean,
+    inline: Boolean,
     tip: String,
     tipPlacement: {
       type: String,
@@ -44,7 +45,8 @@ export default defineComponent({
     })
     const childClasses = computed(() => {
       return {
-        'is--stacked': props.stack
+        'is--stacked': props.stack,
+        'is--inline': props.inline
       }
     })
     return { classes, childClasses }
@@ -116,6 +118,13 @@ export default defineComponent({
         align-content: flex-start;
         .sd--button{
           margin: 4px;
+        }
+      }
+      &--inline{
+        flex-direction: row;
+        width: auto;
+        .sd--radio, .sd--button, .sd--checkbox{
+          width: auto;
         }
       }
     }

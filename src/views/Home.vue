@@ -16,6 +16,8 @@
         <li>Update navigation with new demos</li>
         <li>Updated routes with new demos</li>
         <li>Rename some utility functions for better clarity.</li>
+        <li>Added inline option top <code>sd-fieldset</code>
+        <li>Update Containers demo with size options.</li>
       </ul>
       <p class="sd--text__footnote">1.16.2021</p>
       <ul>

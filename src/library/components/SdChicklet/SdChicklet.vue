@@ -26,6 +26,7 @@ export default {
       type: Boolean,
       default: true
     },
+    lg: Boolean,
     dismissable: Boolean
   },
   setup (props) {
@@ -51,8 +52,6 @@ export default {
 @import '../../scss/variables';
 
 .sd--chicklet {
-  padding: 4px;
-  font-size: 14px;
   display:inline-flex;
   align-items: center;
   transition: background-color .23s ease-in-out;
@@ -62,14 +61,28 @@ export default {
   .sd--icon:first-child{
     margin-right: 4px;
   }
-  &.is--dismissable{
-    cursor: pointer;
-    text-align: inherit;
-  }
-  &.is--xs{
-    font-size: 10px;
-    padding: 2px;
-    margin: 0 auto;
+  &.is{
+    &--dismissable{
+      cursor: pointer;
+      text-align: inherit;
+    }
+    &--xs{
+      font-size: 10px;
+      padding: 2px;
+      margin: 0 auto;
+    }
+    &--sm{
+      font-size: 12px;
+      padding:2px;
+    }
+    &--md{
+      padding: 4px;
+      font-size: 14px;
+    }
+    &--lg{
+      padding: 4px;
+      font-size: 16px;
+    }
   }
   @each $state, $color in $sd-color-global {
     &__#{$state} {

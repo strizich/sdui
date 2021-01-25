@@ -10,10 +10,21 @@
       <div class="demo__content">
         <section>
           <h5>Themes</h5>
+          <sd-fieldset title="Size" inline>
+            <sd-radio v-model="state.size" value="xs">Extra Small</sd-radio>
+            <sd-radio v-model="state.size" value="sm">Small</sd-radio>
+            <sd-radio v-model="state.size" value="md">Medium</sd-radio>
+            <sd-radio v-model="state.size" value="lg">Large</sd-radio>
+          </sd-fieldset>
+
           <sd-chicklet
             v-for="theme in state.themes"
             :key="`1-${theme.color}`"
             :theme="theme.color"
+            :xs="state.size === 'xs'"
+            :sm="state.size === 'sm'"
+            :md="state.size === 'md'"
+            :lg="state.size === 'lg'"
           >
             {{theme.label}}
           </sd-chicklet>
@@ -104,6 +115,7 @@ export default {
   components: { SectionHeader },
   setup () {
     const state = reactive({
+      size: 'sm',
       themes: [{
         color: 'primary',
         label: 'Primary',
