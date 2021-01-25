@@ -6,6 +6,11 @@
     <!-- TODO: Convert this into component.-->
     <section>
       <h3 class="sd--text__header">Recent Changes</h3>
+      <p class="sd--text__footnote">1.25.2021</p>
+      <ul>
+        <li>Add <code>jsconfig.js</code> to supress Vetur warnings.</li>
+        <li>Added Demo for grid system <sd-chicklet theme="default" xs >WIP</sd-chicklet>. </li>
+      </ul>
       <p class="sd--text__footnote">1.16.2021</p>
       <ul>
         <li>Bump dependencies. (Vue 3.0.5)</li>

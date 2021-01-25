@@ -1,5 +1,5 @@
 import packageData from '../../package.json'
-import { camelCase, kebab } from './core/utilities/SdTextTransform'
+import { toCamelCase, toKebab } from './core/utilities/SdTextTransform'
 
 // Components
 import './scss/main.scss'
@@ -69,13 +69,17 @@ const components = {
   SdField,
   SdError,
   SdSelect,
+  SdSlider,
+  SdSwitch,
+  SdChicklet,
+  SdChip,
   // Dialog (modal)
   SdDialog,
   SdDialogTitle,
   SdDialogContent,
   SdDialogFooter,
   SdOverlay,
-  // Icon
+  // Icons
   SdIcon,
   SdMouse,
   // Poppers
@@ -87,25 +91,27 @@ const components = {
   SdNav,
   SdNavLink,
   SdNavHeading,
+  // Grid
   SdRow,
   SdCol,
   SdContainer,
-  SdSlider,
-  SdMast,
-  SdSwitch,
-  SdProgress,
+  // Dropdown
   SdDropdown,
   SdDropdownMenu,
   SdDropdownHeader,
-  SdChicklet,
-  SdChip,
+  // Loader
+  SdProgress,
+  // UI
   SdSheet,
+  SdMast,
+  // Toaster
   SdToast,
+  // WIP
   SdList,
   SdListItem
 }
 
-const componentsDesc = Object.keys(components).map((item) => {
+const sdComponentsDesc = Object.keys(components).map((item) => {
   const component = components[item]
   return {
     name: component.name || 'sd-comp',
@@ -113,20 +119,20 @@ const componentsDesc = Object.keys(components).map((item) => {
   }
 })
 
-const componentsSd = Object.keys(components).map((item) => item.slice(1))
+const sdComponents = Object.keys(components).map((item) => item.slice(1))
 
 const sdInstall = (app) => {
   if (!app || sdInstall.installed) {
     return
   }
-  componentsDesc.forEach((item) => {
-    const kebabCaseName = kebab(item.name)
-    const camelCaseName = camelCase(`-${kebabCaseName}`)
+  sdComponentsDesc.forEach((item) => {
+    const kebabCaseName = toKebab(item.name)
+    const camelCaseName = toCamelCase(`-${kebabCaseName}`)
     const registerComponent = item.component
     app.component(kebabCaseName, registerComponent)
     app.component(camelCaseName, registerComponent)
   })
-  if (process.env.NODE_ENV === 'development') {
+  if (process.env.NODE_ENV !== 'development') {
     console.info('%cSDUI Component Library', 'color: #8F00F8; font-weight: 700; font-size: 12px;')
     console.info('%cA Vue3 component library', 'font-weight: 500; font-size: 10px;')
     console.info('%cMain Page: https://www.strizichdesign.com', 'font-size: 8px;')
@@ -138,7 +144,7 @@ const sdInstall = (app) => {
 const version = packageData.version
 
 export {
-  componentsSd,
+  sdComponents,
   sdInstall,
   version,
   SdSkeleton,

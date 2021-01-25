@@ -58,6 +58,20 @@
             style="height: 75px"
           >
             <sd-sheet :theme="theme.color">
+              Minimal styling to optimize for custom content.
+              <!-- Add examples of customized sheets here -->
+            </sd-sheet>
+          </sd-col>
+        </sd-row>
+        <h4>Full Height Enabled</h4>
+        <sd-row gutterless style="margin-bottom: 32px">
+          <sd-col
+            v-for="theme in state.themes"
+            sm
+            :key="`sheet-${theme.color}`"
+            style="height: 75px"
+          >
+            <sd-sheet full-height :theme="theme.color">
               Custom content here
             </sd-sheet>
           </sd-col>

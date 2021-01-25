@@ -72,6 +72,22 @@ export const COMPONENT_NAVIGATION = [{
   route: '/components/icons',
   secondary: false
 }, {
+  label: 'Grid',
+  route: '/components/grid',
+  secondary: false
+}, {
+  label: 'List',
+  route: '/components/list',
+  secondary: false
+}, {
+  label: 'Loaders',
+  route: '/components/loaders',
+  secondary: false
+}, {
+  label: 'Skeleton',
+  route: '/components/loaders#skeleton',
+  secondary: true
+}, {
   label: 'Slider',
   route: '/components/slider',
   secondary: false
@@ -84,19 +100,7 @@ export const COMPONENT_NAVIGATION = [{
   route: '/components/toast',
   secondary: false
 }, {
-  label: 'List',
-  route: '/components/list',
-  secondary: false
-}, {
-  label: 'Loaders',
-  route: '/components/loaders',
-  secondary: false
-}, {
   label: 'Progress',
   route: '/components/loaders#progress',
-  secondary: true
-}, {
-  label: 'Skeleton',
-  route: '/components/loaders#skeleton',
   secondary: true
 }]

@@ -14,6 +14,7 @@ export default defineComponent({
       type: String,
       default: 'primary'
     },
+    fullHeight: Boolean,
     padded: Boolean
   },
   setup (props) {
@@ -22,12 +23,14 @@ export default defineComponent({
       return {
         'sd--sheet': true,
         [theme]: true,
-        'is--padded': props.padded
+        'is--padded': props.padded,
+        'is--full-height': props.fullHeight
       }
     })
     // FUTURE: Change z-index on hover
     // FUTURE: Customizable elevation
     // FUTURE: Allow for color gradiants with user set background colors.
+    // FUTURE: Additional testing for tracked css custom properties needed.
     return { classes }
   }
 })
@@ -36,11 +39,14 @@ export default defineComponent({
 <style lang="scss">
 @import '../SdElevation/mixins';
 .sd--sheet {
-  height: 100%;
+  height: auto;
   border-radius: 1px;
   @include elevation(12);
   &.is--padded{
     padding: 16px;
+  }
+  &.is--full-height {
+    height: 100%;
   }
   @each $state, $color in $sd-color-global {
     &__#{$state} {

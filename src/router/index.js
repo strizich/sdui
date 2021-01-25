@@ -78,6 +78,11 @@ const routes = [
     component: () => import(/* webpackChunkName: "elevation" */ '../views/DemoElevation.vue')
   },
   {
+    path: '/components/grid',
+    name: 'Grid',
+    component: () => import(/* webpackChunkName: "grid" */ '../views/DemoGrid.vue')
+  },
+  {
     path: '/about',
     name: 'About',
     component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')

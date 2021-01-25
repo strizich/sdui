@@ -20,13 +20,23 @@ export default {
       type: String,
       default: 'primary'
     },
+    sm: Boolean,
+    xs: Boolean,
+    md: {
+      type: Boolean,
+      default: true
+    },
     dismissable: Boolean
   },
   setup (props) {
     const classes = computed(() => {
       return {
         [`sd--chicklet__${props.theme}`]: true,
-        'is--dismissable': props.dismissable
+        'is--dismissable': props.dismissable,
+        'is--xs': props.xs,
+        'is--sm': props.sm,
+        'is--md': props.md,
+        'is--lg': props.lg
       }
     })
     return {
@@ -48,11 +58,18 @@ export default {
   transition: background-color .23s ease-in-out;
   vertical-align: top;
   margin: 4px 0 4px 4px;
+  vertical-align: middle;
   .sd--icon:first-child{
     margin-right: 4px;
   }
   &.is--dismissable{
     cursor: pointer;
+    text-align: inherit;
+  }
+  &.is--xs{
+    font-size: 10px;
+    padding: 2px;
+    margin: 0 auto;
   }
   @each $state, $color in $sd-color-global {
     &__#{$state} {
@@ -69,7 +86,7 @@ export default {
       }
     }
   }
-  &__content{
+  &__content:not(:only-child){
     margin-right: 4px;
   }
 }

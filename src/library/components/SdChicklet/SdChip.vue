@@ -121,7 +121,7 @@ export default defineComponent({
       checkDuplicate()
     })
 
-    // NOTES: Watcheffect runs once on mount. Then reruns on change
+    // NOTES: Watcheffect runs once on mount. Then reruns on change.
     watchEffect(() => {
       state.chipList = props.modelValue
     })
