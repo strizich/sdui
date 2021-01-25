@@ -47,11 +47,11 @@ const routes = [
     name: 'Cards',
     component: () => import(/* webpackChunkName: "cards" */ '../views/DemoCards.vue')
   },
-  {
-    path: '/components/charts',
-    name: 'Charts',
-    component: () => import(/* webpackChunkName: "charts" */ '../views/DemoChart.vue')
-  },
+  // {
+  //   path: '/components/charts',
+  //   name: 'Charts',
+  //   component: () => import(/* webpackChunkName: "charts" */ '../views/DemoChart.vue')
+  // },
   {
     path: '/components/tooltips',
     name: 'Tooltips',

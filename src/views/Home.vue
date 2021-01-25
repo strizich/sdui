@@ -8,6 +8,8 @@
       <h3 class="sd--text__header">Recent Changes</h3>
       <p class="sd--text__footnote">1.25.2021</p>
       <ul>
+        <li>Remove Chart Demo</li>
+        <li>Remove unused assets</li>
         <li>Add <code>jsconfig.js</code> to supress Vetur warnings.</li>
         <li>Added Demo for grid system <sd-chicklet theme="default" xs >WIP</sd-chicklet>. </li>
         <li>Added sizing to <code>SdChicklet</code></li>
