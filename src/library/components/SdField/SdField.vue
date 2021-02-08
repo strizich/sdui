@@ -19,7 +19,7 @@
           @input="(e) => handleInput(e)"
           :value="modelValue ? modelValue : value"
         />
-        <sd-icon v-if="iconEnd" :color="iconEndColor" name="bluetooth"/>
+        <sd-icon v-if="iconEnd" :color="iconEndColor" :name="iconEnd"/>
       </div>
       <slot name="footer"/>
       <sd-error :message="handleValidation"/>
