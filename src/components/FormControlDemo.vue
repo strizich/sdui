@@ -1,5 +1,5 @@
 <template>
-  <section>
+  <section class="demo">
     <sd-container full>
       <section-header
       hash="#controls"
@@ -8,14 +8,28 @@
       placement="bottom"
       git="https://github.com/strizich/sdui/blob/master/src/library/components/SdField/SdField.vue"
       />
+      <form>
+        <sd-row>
+          <sd-col :md="4">
+            <sd-field
+              icon="email"
+              type="email"
+              placeholder="hey"
+              label="Text Input One"
+              v-model="inputOne"
+            />
+          </sd-col>
+          <sd-col :md="4">
+            <sd-field
+              icon="lock"
+              type="password"
+              placeholder="hey"
+              label="Text Input One"
+            />
+          </sd-col>
+        </sd-row>
+      </form>
       <sd-row>
-        <sd-col :md="4">
-          <sd-field
-            label="Text Input One"
-            v-model="inputOne"
-            required
-          />
-        </sd-col>
         <sd-col :md="4">
           <sd-field
             label="Error as a boolean"

@@ -6,6 +6,16 @@
     <!-- TODO: Convert this into component.-->
     <section>
       <h3 class="sd--text__header">Recent Changes</h3>
+      <p class="sd--text__footnote">2.08.2021</p>
+      <ul>
+        <li>Updated Deps</li>
+        <li>Updated <code>SdField</code>
+          <ul>
+            <li>Added icon handling start and end icons.</li>
+            <li>Fixed input display for when the input is not bound to any data.</li>
+          </ul>
+        </li>
+      </ul>
       <p class="sd--text__footnote">1.25.2021</p>
       <ul>
         <li>Remove Chart Demo</li>

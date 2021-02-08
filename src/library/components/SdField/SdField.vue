@@ -3,6 +3,7 @@
       <sd-label>{{label}}</sd-label>
       <slot name="header"/>
       <div :class="[inputClasses]">
+        <sd-icon v-if="icon" :color="iconColor" :name="icon"/>
         <slot name="addon"/>
         <input
           ref="inputRef"
@@ -12,11 +13,13 @@
           :placeholder="placeholder"
           :disabled="disabled"
           :required="required"
+          @animationstart="(e) => log(e)"
           @blur="(e) => handleTouched(e)"
           @focus="(e) => handleFocused(e)"
           @input="(e) => handleInput(e)"
           :value="modelValue ? modelValue : value"
         />
+        <sd-icon v-if="iconEnd" :color="iconEndColor" name="bluetooth"/>
       </div>
       <slot name="footer"/>
       <sd-error :message="handleValidation"/>
@@ -26,6 +29,7 @@
 <script>
 import { defineComponent, reactive, computed, toRefs, watch, ref } from 'vue'
 import SdUuid from '../../core/utilities/SdUuid'
+
 import SdLabel from './SdLabel'
 import SdError from './SdError'
 export default defineComponent({
@@ -42,6 +46,10 @@ export default defineComponent({
     modelModifiers: {
       default: () => ({})
     },
+    icon: String,
+    iconColor: String,
+    iconEnd: String,
+    iconEndColor: String,
     label: String,
     name: String,
     setFocus: Boolean,
@@ -93,6 +101,7 @@ export default defineComponent({
 
     const handleInput = (e) => {
       let value = e.target.value
+      // Parse value as a number if v-model.number modifier is used.
       if (props.modelModifiers.number || props.type === 'number') {
         value = parseInt(value)
       }
@@ -123,6 +132,7 @@ export default defineComponent({
     const inputClasses = computed(() => {
       return {
         'sd--field__control': true,
+        'is--autofill': state.autofill,
         'is--dirty': state.touched,
         'is--error': handleValidation.value,
         'is--disabled': props.disabled
@@ -196,14 +206,27 @@ export default defineComponent({
         background-color: var(--background-accent);
         color: var(--text-highlight);
       }
+      & > .sd--icon{
+        color: var(--text-accent);
+        &:first-child{
+          margin: 0 0 0 8px;
+        }
+         &:last-child{
+          margin: 0 8px 0 0;
+        }
+        margin: 0 4px;
+      }
       & > input{
-        background:transparent;
+        background-color:transparent;
         flex-grow: 2;
         outline: none;
         color: var(--text);
         font-size: 16px;
         border:none;
         padding: 8px;
+        &::placeholder {
+          color: var(--text-placeholder, --text-highlight);
+        }
         // padding: 4px 0;
         // margin: -4px 0;
       }
@@ -225,5 +248,23 @@ export default defineComponent({
       bottom: 10px;
       left:0;
     }
+  }
+
+// this is still janky... needs more work
+  input:-webkit-autofill,
+  input:-webkit-autofill:hover,
+  input:-webkit-autofill:focus,
+  input:-webkit-autofill:active {
+    /* https://github.com/vuejs/vue/issues/7058 */
+    animation-name: onAutoFillStart;
+    transition: box-shadow .3s ease-in-out 0s, background 20000s ease-in-out 0s;
+    -webkit-text-fill-color: var(--text);
+    background: black;
+    box-shadow: inset 0 0 0 30px var(--background-highlight);
+  }
+
+  :not(:-webkit-autofill) {
+    /* https://github.com/vuejs/vue/issues/7058 */
+    animation-name: onAutoFillCancel;
   }
 </style>
