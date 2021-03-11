@@ -5,7 +5,7 @@
           title="Cards"
           sub-title="Not at all like trading cards."
           hash="#cards"
-          git="https://github.com/strizich/sdui/tree/master/src/library/components/SdCard"
+          git="https://github.com/strizich/sdui-vite/tree/master/src/lib/components/SdCard"
         />
         <sd-row>
           <sd-col :sm="6" :md="4">
@@ -64,6 +64,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+  @import '~/node_modules/@strizich/sdui/dist/scss/breakpoints';
   .sd--card{
     align-self: stretch;
     @include breakpoint-down('sm') {

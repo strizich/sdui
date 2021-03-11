@@ -4,7 +4,7 @@
       title="Elevation"
       sub-title="Feeling a bit light headed."
       hash="#elevation"
-      git="https://github.com/strizich/sdui/tree/master/src/library/components/SdElevation"
+      git="https://github.com/strizich/sdui-vite/tree/master/src/lib/components/SdElevation"
     />
     <sd-slider
       label="Elevation"
@@ -55,6 +55,7 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
+@import '~/node_modules/@strizich/sdui/dist/scss/breakpoints';
 .elevation{
   margin-bottom: 32px;
   &__item{

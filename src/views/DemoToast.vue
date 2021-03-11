@@ -3,7 +3,7 @@
   <section-header
     title="Toast Notifications"
     sub-title="mmmmm tasty..."
-    git="https://github.com/strizich/sdui/tree/master/src/library/components/SdToast"
+    git="https://github.com/strizich/sdui-vite/tree/master/src/lib/components/SdToast"
   />
   <sd-container>
     <sd-row>

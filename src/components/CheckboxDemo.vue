@@ -5,7 +5,7 @@
     title="Checkbox"
     sub-title="I want that one... and that one... and that one."
     hash="#checkbox"
-    git="https://github.com/strizich/sdui/tree/master/src/library/components/SdCheckbox"
+    git="https://github.com/strizich/sdui-vite/tree/master/src/lib/components/SdCheckbox"
     >
       Checkbox
     </section-header>
