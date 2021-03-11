@@ -26,7 +26,7 @@
 import { reactive, toRefs, watchEffect, defineComponent, watch } from 'vue'
 import TheHeader from '@/components/TheHeader'
 import TheSidebar from '@/components/TheSidebar'
-import useWindowWidth from '@/library/hooks/useWindowWidth'
+import useWindowWidth from '@/composables/useWindowWidth'
 import { useRouter } from 'vue-router'
 const floatState = window.localStorage.getItem('SDUI:sidebarFloating') === 'true'
 const navState = window.localStorage.getItem('SDUI:navState') === 'true'
