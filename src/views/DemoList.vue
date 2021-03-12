@@ -3,7 +3,7 @@
     <section-header
       title="List"
       sub-title="Work in progress"
-      git="https://github.com/strizich/sdui/tree/master/src/library/components/SdList"
+      git="https://github.com/strizich/sdui-vite/tree/master/src/lib/components/SdList"
     />
     <sd-list loading>
       <sd-list-item>

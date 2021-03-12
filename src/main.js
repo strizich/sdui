@@ -1,5 +1,5 @@
 import { createApp } from 'vue'
-import { sdInstall } from '@/library'
+import { sdInstall } from '@strizich/sdui'
 import App from './App.vue'
 import './registerServiceWorker'
 import router from './router'

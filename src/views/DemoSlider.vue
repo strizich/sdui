@@ -5,7 +5,7 @@
       title="Slider"
       sub-title="woooooo"
       placement="bottom"
-      git="https://github.com/strizich/sdui/tree/master/src/library/components/SdSlider"
+      git="https://github.com/strizich/sdui-vite/tree/master/src/lib/components/SdSlider"
     />
     <sd-row>
       <sd-col :md="6">
@@ -107,6 +107,7 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
+@import '~/node_modules/@strizich/sdui/dist/scss/breakpoints';
 .demo-slider {
   margin-top: 32px;
   margin-bottom: 64px;

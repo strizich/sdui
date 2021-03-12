@@ -76,7 +76,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '../library/scss/mixins';
+  @import '~/node_modules/@strizich/sdui/dist/scss/breakpoints';
 .demo__item{
   width: 50%;
   @include breakpoint-down('sm') {

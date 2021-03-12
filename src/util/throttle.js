@@ -1,4 +1,4 @@
-const SdThrottle = (delay, fn) => {
+const throttle = (delay, fn) => {
   let lastCall = 0
   return function (...args) {
     const now = (new Date()).getTime()
@@ -9,4 +9,4 @@ const SdThrottle = (delay, fn) => {
     return fn(...args)
   }
 }
-export default SdThrottle
+export default throttle

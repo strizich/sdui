@@ -7,7 +7,7 @@
       <div class="link">
         <sd-button
           type="link"
-          href="https://github.com/strizich/v3-jsdesign"
+          href="https://github.com/strizich/sdui-vite"
           target="_blank"
           flat
           size="sm"

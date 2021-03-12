@@ -72,6 +72,7 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
+@import '~/node_modules/@strizich/sdui/dist/scss/breakpoints';
 .demo__actionbar{
   width: 100%;
 }

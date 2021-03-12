@@ -1,5 +1,5 @@
 import { reactive, toRefs, onMounted, onUnmounted } from 'vue'
-import SdThrottle from '../core/utilities/SdThrottle'
+import SdThrottle from '../util/throttle'
 
 const useWindowWidth = () => {
   const state = reactive({

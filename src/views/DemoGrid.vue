@@ -4,7 +4,7 @@
       <section-header
         title="Grid System"
         sub-title="Uses bootstrap grid system"
-        git="https://github.com/strizich/sdui/tree/master/src/library/components/SdGrid"
+        git="https://github.com/strizich/sdui-vite/tree/master/src/lib/components/SdGrid"
       />
     </sd-container>
     <sd-container>

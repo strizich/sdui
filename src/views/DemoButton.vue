@@ -4,7 +4,7 @@
       <section-header
         title="Buttons"
         sub-title="clicky clicky"
-        git="https://github.com/strizich/sdui/tree/master/src/library/components/SdButton"
+        git="https://github.com/strizich/sdui-vite/tree/master/src/lib/components/SdButton"
       />
       <sd-row>
         <sd-col :md="12">

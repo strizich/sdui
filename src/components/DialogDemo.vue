@@ -5,7 +5,7 @@
       title="Dialogs"
       sub-title="The developer's worst nightmare."
       hash="#dialogs"
-      git="https://github.com/strizich/sdui/tree/master/src/library/components/SdDialog"
+      git="https://github.com/strizich/sdui-vite/tree/master/src/lib/components/SdDialog"
     />
     <div class="demo__content">
       <div class="demo__triggers">
