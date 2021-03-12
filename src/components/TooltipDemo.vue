@@ -4,7 +4,7 @@
       <section-header
         title="Tooltips"
         sub-title="Just the tip."
-        git="https://github.com/strizich/sdui/blob/master/src/library/components/SdTooltip/SdTooltip.vue"
+        git="https://github.com/strizich/sdui-vite/blob/master/src/lib/components/SdTooltip/SdTooltip.vue"
       />
       <div class="demo">
         <sd-fieldset title="Tooltips" tip="Tooltip in here too..." stack inline-label>

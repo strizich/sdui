@@ -5,7 +5,7 @@
         title="Chicklets"
         sub-title="Chewy"
         hash="#chicklets"
-        git="https://github.com/strizich/sdui/blob/master/src/library/components/SdChicklet/SdChicklet.vue"
+        git="https://github.com/strizich/sdui-vite/blob/master/src/lib/components/SdChicklet/SdChicklet.vue"
       />
       <div class="demo__content">
         <section>
@@ -58,7 +58,7 @@
         title="Sheets"
         sub-title="Construction Paper"
         hash="#sheets"
-        git="https://github.com/strizich/sdui/blob/master/src/library/components/SdSheet/SdSheet.vue"
+        git="https://github.com/strizich/sdui-vite/blob/master/src/lib/components/SdSheet/SdSheet.vue"
       />
         <h4>Default Sheets</h4>
         <sd-row gutterless style="margin-bottom: 32px">

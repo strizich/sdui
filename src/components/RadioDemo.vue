@@ -5,7 +5,7 @@
         title="Radio Buttons"
         sub-title="Only take one."
         hash="#radios"
-        git="https://github.com/strizich/sdui/blob/master/src/library/components/SdRadio/SdRadio.vue"
+        git="https://github.com/strizich/sdui-vite/blob/master/src/lib/components/SdRadio/SdRadio.vue"
       />
       <sd-row>
         <sd-col :md="12">

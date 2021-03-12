@@ -6,7 +6,7 @@
       sub-title="Some clever tagline"
       placement="bottom"
       hash="#progress"
-      progress="https://github.com/strizich/sdui/blob/master/src/library/components/SdProgress/SdProgress.vue"
+      progress="https://github.com/strizich/sdui-vite/blob/master/src/lib/components/SdProgress/SdProgress.vue"
       />
       <div class="demo__body">
         <template

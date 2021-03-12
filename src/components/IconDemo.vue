@@ -4,7 +4,7 @@
       <section-header
       title="Icons"
       sub-title="Powered by: Material Icons Font"
-      git="https://github.com/strizich/sdui/blob/master/src/library/components/SdIcon/SdIcon.vue"
+      git="https://github.com/strizich/sdui-vite/blob/master/src/lib/components/SdIcon/SdIcon.vue"
       hash="#icons"
       />
       <sd-fieldset class="demo__actionbar">

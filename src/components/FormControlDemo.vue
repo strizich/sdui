@@ -6,7 +6,7 @@
       title="Form Controls"
       sub-title="What goes in. Comes back out?"
       placement="bottom"
-      git="https://github.com/strizich/sdui/blob/master/src/library/components/SdField/SdField.vue"
+      git="https://github.com/strizich/sdui-vite/blob/master/src/lib/components/SdField/SdField.vue"
       />
       <form>
         <sd-row>

@@ -4,7 +4,7 @@
       title="Chip Field"
       sub-title="Smallish thing"
       hash="#chips"
-      git="https://github.com/strizich/sdui/blob/master/src/library/components/SdChicklet/SdChip.vue"
+      git="https://github.com/strizich/sdui-vite/blob/master/src/lib/components/SdChicklet/SdChip.vue"
     />
     <div class="demo__item">
       <!-- TODO: snake, camel, and kebab casing options for output -->

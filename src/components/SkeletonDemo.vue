@@ -4,7 +4,7 @@
       title="Skeleton Loader"
       sub-title="Spooky loaders"
       hash="#skeleton"
-      git="https://github.com/strizich/sdui/blob/master/src/library/components/SdLoader/SdSkeleton.vue"
+      git="https://github.com/strizich/sdui-vite/blob/master/src/lib/components/SdLoader/SdSkeleton.vue"
     />
     <sd-row>
       <sd-col :lg="3" :md="3" :sm="6" :xs="6">
