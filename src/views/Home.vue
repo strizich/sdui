@@ -100,9 +100,9 @@ export default defineComponent({
 </script>
 
 <style lang="scss">
-  .home{
+  .home {
     padding-bottom: 64px;
-    &__nav{
+    &__nav {
       position: sticky;
       top: 50px;
       padding: 8px 24px;
@@ -122,7 +122,7 @@ export default defineComponent({
         &.router-link-exact-active{
           background-color: var(--background-highlight);
         }
-        &:hover{
+        &:hover {
           background-color: var(--secondary);
           color: #fff;
           transition: color .3s ease-in-out;
@@ -130,13 +130,13 @@ export default defineComponent({
       }
     }
   }
-  .container{
+  .container {
     padding: 24px;
     &__content{
       padding: 0;
     }
   }
-  section{
+  section {
     margin-bottom: 64px;
   }
 
