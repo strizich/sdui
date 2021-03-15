@@ -37,7 +37,7 @@
         :size="modalSize"
         @update:active="handleModalClose"
       >
-        <sd-dialog-title title="Here be the title" subtitle="Here be the subtitle"/>
+        <sd-dialog-header title="Here be the title" subtitle="Here be the subtitle"/>
         <sd-dialog-content>
           <div>All sorts of things go in here.</div>
         </sd-dialog-content>
@@ -57,7 +57,7 @@
         :size="modalSize"
         aside
       >
-        <sd-dialog-title title="Aside Modal" subtitle="Subtitles go here"/>
+        <sd-dialog-header title="Aside Modal" subtitle="Subtitles go here"/>
         <sd-dialog-content>
           <div>
             All sorts of things go in here.
@@ -81,7 +81,7 @@
         aside
         @update:active="handleAsideLeftClose"
       >
-        <sd-dialog-title
+        <sd-dialog-header
           title="Aside Modal"
           subtitle="Subtitles go here"
         />
