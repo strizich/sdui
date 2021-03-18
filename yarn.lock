@@ -1500,10 +1500,10 @@
   resolved "https://registry.npmjs.org/@soda/get-current-script/-/get-current-script-1.0.2.tgz"
   integrity sha512-T7VNNlYVM1SgQ+VsMYhnDkcGmWhQdL0bDyGm5TlQ3GBXnJscEClUUOKduWTmm2zCnvNLC1hc3JpuXjs/nFOc5w==
 
-"@strizich/sdui@^1.1.0-alpha.3":
-  version "1.1.0-alpha.3"
-  resolved "https://registry.yarnpkg.com/@strizich/sdui/-/sdui-1.1.0-alpha.3.tgz#dee2a381e4e8da316b91792d770a12c13d122804"
-  integrity sha512-at4JOF7u+9Q27C40FIWA8ND8eOUzw2A+KV/tTs39htC9Ymsz+eyfOThJ8k0zvXXlVAZIj+DhQgDULv8MCIIb4A==
+"@strizich/sdui@^1.1.0-alpha.5":
+  version "1.1.0-alpha.5"
+  resolved "https://registry.yarnpkg.com/@strizich/sdui/-/sdui-1.1.0-alpha.5.tgz#a6f631b566b28491740a4a0ef1233fa5791fc233"
+  integrity sha512-mom9Wu7v6OtGitV9K6G8CVA2X0w0tUtMAfYwuqBbi86WpeYbkhRfh2AYu+rpPSo1bDEfzWDzNKl7mjIVieILMg==
   dependencies:
     "@popperjs/core" "^2.6.0"
     animejs "^3.2.1"

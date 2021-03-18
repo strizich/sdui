@@ -39,7 +39,7 @@
       <ul>
         <li>Bump dependencies. (Vue 3.0.5)</li>
         <li>Use dart-sass</li>
-        <l1>Disable tick on SdSlider until edgecases are resolved.</l1>
+        <li>Disable tick on SdSlider until edgecases are resolved.</li>
       </ul>
       <p class="sd--text__footnote">12.03.2020</p>
       <ul>
@@ -69,7 +69,6 @@
         <li>Add button to <code>SectionHeader</code> for github link.</li>
         <li>Adjust <code>svg</code> color handling in <code>SectionHeader</code> for <code>SdButton</code>.</li>
         <li>Add github link to each component demo.</li>
-        <li><strike>TODO: Handle colors and theme support in SdButton for non-text elements <code>svg</code>.</strike> Done.</li>
       </ul>
       <p class="sd--text__footnote">11.06.2020</p>
       <ul>

@@ -28,8 +28,9 @@
 import { reactive, toRefs, watchEffect, defineComponent, watch } from 'vue'
 import TheHeader from '@/components/TheHeader'
 import TheSidebar from '@/components/TheSidebar'
-import useWindowWidth from '@/composables/useWindowWidth'
 import { useRouter } from 'vue-router'
+import { useWindowWidth } from '@strizich/sdui'
+
 const floatState = window.localStorage.getItem('SDUI:sidebarFloating') === 'true'
 const navState = window.localStorage.getItem('SDUI:navState') === 'true'
 
@@ -44,6 +45,7 @@ export default defineComponent({
 
     const { smallDevice } = useWindowWidth()
     const route = useRouter()
+
     watchEffect(() => {
       if (smallDevice.value) {
         state.floating = smallDevice.value
@@ -51,7 +53,6 @@ export default defineComponent({
     })
 
     const menuEvent = (e) => {
-      console.log('menuEvent')
       window.localStorage.setItem('SDUI:navState', e)
       state.menuOpen = e
     }
