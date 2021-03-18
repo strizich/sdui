@@ -11,22 +11,15 @@
 </template>
 
 <script>
-import { computed, watch, reactive, toRefs, nextTick } from 'vue'
+import { watch, reactive, toRefs } from 'vue'
 export default {
-  setup () {
+  emits: ['selected'],
+  setup (props, { emit }) {
     const state = reactive({
       mode: 'auto'
     })
-
-    const scheme = computed(() => {
-      return `sd--scheme--${state.mode}`
-    })
-
-    watch(() => scheme.value, (newValue, oldValue) => {
-      nextTick().then(() => {
-        document.body.classList.remove(`${oldValue}`)
-        document.body.classList.add(`${newValue}`)
-      })
+    watch(() => state.mode, (newValue) => {
+      emit('selected', newValue)
     })
     return { ...toRefs(state) }
   }

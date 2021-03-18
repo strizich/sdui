@@ -1,5 +1,6 @@
 <template>
   <sd-layout
+    :scheme="scheme"
     @toggle="menuEvent"
     :sidebar="menuOpen"
     :floating="floating"
@@ -13,6 +14,7 @@
     <template v-slot:sidebar>
       <the-sidebar
         v-model:floating="floating"
+        @selected-scheme="(e) => handleSchemeChange(e)"
         :small-device="smallDevice"
       />
     </template>
@@ -36,7 +38,8 @@ export default defineComponent({
   setup () {
     const state = reactive({
       menuOpen: navState,
-      floating: floatState
+      floating: floatState,
+      scheme: 'auto'
     })
 
     const { smallDevice } = useWindowWidth()
@@ -58,11 +61,14 @@ export default defineComponent({
       }
     })
 
+    const handleSchemeChange = (e) => {
+      state.scheme = e
+    }
     const handleSidebarType = (e) => {
       state.floating = e
     }
 
-    return { ...toRefs(state), menuEvent, handleSidebarType, smallDevice }
+    return { ...toRefs(state), menuEvent, handleSidebarType, smallDevice, handleSchemeChange }
   }
 })
 </script>
