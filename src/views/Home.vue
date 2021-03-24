@@ -27,7 +27,7 @@
         <li>Remove Chart Demo</li>
         <li>Remove unused assets</li>
         <li>Add <code>jsconfig.js</code> to supress Vetur warnings.</li>
-        <li>Added Demo for grid system <sd-chicklet theme="default" xs >WIP</sd-chicklet>. </li>
+        <li>Added Demo for grid system <sd-chicklet theme="default" size="xs" >WIP</sd-chicklet>. </li>
         <li>Added sizing to <code>SdChicklet</code></li>
         <li>Update navigation with new demos</li>
         <li>Updated routes with new demos</li>

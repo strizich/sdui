@@ -80,19 +80,14 @@ export default defineComponent({
   min-height:100vh;
   height: 100%;
 }
+
 html, body{
   transition: background-color .6s 0s ease-in,
               color .6s 0s ease-in
               background-color .6s 0s ease-in;
-  background-color: var(--background);
-  color: var(--text);
 }
 
-.scheme{
-  display:flex;
-  justify-content: flex-end;
-  padding: 4px 32px;
-  background-color: var(--background-accent);
+p:first-child{
+  margin-top: 0;
 }
-
 </style>
