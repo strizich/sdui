@@ -1,11 +1,31 @@
 <template>
 <div class="home">
   <!-- TODO: Add sd-mast to containers demo-->
-  <sd-mast title="Yay for components" subtitle="UI library built with Vue3" />
+  <sd-mast title="Yay for components" subtitle="UI library built with Vue3">
+    <sd-button
+      type="link"
+      href="https://storybook.strizichdesign.com"
+      target="_blank"
+      size="lg"
+    >
+      Libary Storybook
+    </sd-button>
+  </sd-mast>
   <sd-container>
     <!-- TODO: Convert this into component.-->
     <section>
       <h3 class="sd--text__header">Recent Changes</h3>
+      <p class="sd--text__footnote">3.29.2021</p>
+      <ul>
+        <li>Added components to storybook</li>
+        <li>Added storybook link in header and in the mast</li>
+        <li>Updated Chicklets size implementation</li>
+        <li>Refactored <code>SdButton</code> sizing and icon handling.</li>
+        <li>Abstracted logic in <code>SdToaster</code> into a composable</li>
+        <li>Added new composable for managing the color scheme <code>useScheme</code></li>
+        <li>Fixed various issues with several components</li>
+        <li>Migrated library to typescript. Additional work in progress for stricter type coverage.</li>
+      </ul>
       <p class="sd--text__footnote">3.11.2021</p>
       <ul>
         <li>Migrated library to use new npm package</li>
