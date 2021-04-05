@@ -174,8 +174,5 @@ export default defineComponent({
   padding: 64px 32px;
   margin-bottom: 32px;
   background-color: var(--background-accent);
-  button{
-    margin: 4px;
-  }
 }
 </style>

@@ -1,5 +1,6 @@
 <template>
   <sd-layout
+    :scheme="scheme"
     @toggle="menuEvent"
     :sidebar="menuOpen"
     :floating="floating"
@@ -13,6 +14,7 @@
     <template v-slot:sidebar>
       <the-sidebar
         v-model:floating="floating"
+        @selected-scheme="(e) => handleSchemeChange(e)"
         :small-device="smallDevice"
       />
     </template>
@@ -26,8 +28,9 @@
 import { reactive, toRefs, watchEffect, defineComponent, watch } from 'vue'
 import TheHeader from '@/components/TheHeader'
 import TheSidebar from '@/components/TheSidebar'
-import useWindowWidth from '@/composables/useWindowWidth'
 import { useRouter } from 'vue-router'
+import { useWindowWidth } from '@strizich/sdui'
+
 const floatState = window.localStorage.getItem('SDUI:sidebarFloating') === 'true'
 const navState = window.localStorage.getItem('SDUI:navState') === 'true'
 
@@ -36,11 +39,13 @@ export default defineComponent({
   setup () {
     const state = reactive({
       menuOpen: navState,
-      floating: floatState
+      floating: floatState,
+      scheme: 'auto'
     })
 
     const { smallDevice } = useWindowWidth()
     const route = useRouter()
+
     watchEffect(() => {
       if (smallDevice.value) {
         state.floating = smallDevice.value
@@ -48,7 +53,6 @@ export default defineComponent({
     })
 
     const menuEvent = (e) => {
-      console.log('menuEvent')
       window.localStorage.setItem('SDUI:navState', e)
       state.menuOpen = e
     }
@@ -58,11 +62,14 @@ export default defineComponent({
       }
     })
 
+    const handleSchemeChange = (e) => {
+      state.scheme = e
+    }
     const handleSidebarType = (e) => {
       state.floating = e
     }
 
-    return { ...toRefs(state), menuEvent, handleSidebarType, smallDevice }
+    return { ...toRefs(state), menuEvent, handleSidebarType, smallDevice, handleSchemeChange }
   }
 })
 </script>
@@ -73,19 +80,14 @@ export default defineComponent({
   min-height:100vh;
   height: 100%;
 }
+
 html, body{
   transition: background-color .6s 0s ease-in,
               color .6s 0s ease-in
               background-color .6s 0s ease-in;
-  background-color: var(--background);
-  color: var(--text);
 }
 
-.scheme{
-  display:flex;
-  justify-content: flex-end;
-  padding: 4px 32px;
-  background-color: var(--background-accent);
+p:first-child{
+  margin-top: 0;
 }
-
 </style>

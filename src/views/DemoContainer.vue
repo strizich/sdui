@@ -21,10 +21,7 @@
             v-for="theme in state.themes"
             :key="`1-${theme.color}`"
             :theme="theme.color"
-            :xs="state.size === 'xs'"
-            :sm="state.size === 'sm'"
-            :md="state.size === 'md'"
-            :lg="state.size === 'lg'"
+            :size="state.size"
           >
             {{theme.label}}
           </sd-chicklet>

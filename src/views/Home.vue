@@ -1,11 +1,31 @@
 <template>
 <div class="home">
   <!-- TODO: Add sd-mast to containers demo-->
-  <sd-mast title="Yay for components" subtitle="UI library built with Vue3" />
+  <sd-mast title="Yay for components" subtitle="UI library built with Vue3">
+    <sd-button
+      type="link"
+      href="https://storybook.strizichdesign.com"
+      target="_blank"
+      size="lg"
+    >
+      Libary Storybook
+    </sd-button>
+  </sd-mast>
   <sd-container>
     <!-- TODO: Convert this into component.-->
     <section>
       <h3 class="sd--text__header">Recent Changes</h3>
+      <p class="sd--text__footnote">3.29.2021</p>
+      <ul>
+        <li>Added components to storybook</li>
+        <li>Added storybook link in header and in the mast</li>
+        <li>Updated Chicklets size implementation</li>
+        <li>Refactored <code>SdButton</code> sizing and icon handling.</li>
+        <li>Abstracted logic in <code>SdToaster</code> into a composable</li>
+        <li>Added new composable for managing the color scheme <code>useScheme</code></li>
+        <li>Fixed various issues with several components</li>
+        <li>Migrated library to typescript. Additional work in progress for stricter type coverage.</li>
+      </ul>
       <p class="sd--text__footnote">3.11.2021</p>
       <ul>
         <li>Migrated library to use new npm package</li>
@@ -27,7 +47,7 @@
         <li>Remove Chart Demo</li>
         <li>Remove unused assets</li>
         <li>Add <code>jsconfig.js</code> to supress Vetur warnings.</li>
-        <li>Added Demo for grid system <sd-chicklet theme="default" xs >WIP</sd-chicklet>. </li>
+        <li>Added Demo for grid system <sd-chicklet theme="default" size="xs" >WIP</sd-chicklet>. </li>
         <li>Added sizing to <code>SdChicklet</code></li>
         <li>Update navigation with new demos</li>
         <li>Updated routes with new demos</li>
@@ -39,7 +59,7 @@
       <ul>
         <li>Bump dependencies. (Vue 3.0.5)</li>
         <li>Use dart-sass</li>
-        <l1>Disable tick on SdSlider until edgecases are resolved.</l1>
+        <li>Disable tick on SdSlider until edgecases are resolved.</li>
       </ul>
       <p class="sd--text__footnote">12.03.2020</p>
       <ul>
@@ -69,7 +89,6 @@
         <li>Add button to <code>SectionHeader</code> for github link.</li>
         <li>Adjust <code>svg</code> color handling in <code>SectionHeader</code> for <code>SdButton</code>.</li>
         <li>Add github link to each component demo.</li>
-        <li><strike>TODO: Handle colors and theme support in SdButton for non-text elements <code>svg</code>.</strike> Done.</li>
       </ul>
       <p class="sd--text__footnote">11.06.2020</p>
       <ul>

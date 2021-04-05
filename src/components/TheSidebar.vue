@@ -23,7 +23,7 @@
       </sd-nav>
     </div>
     <div class="sidebar__options">
-      <color-scheme />
+      <color-scheme @selected="(e) => handleSchemeChange(e)"/>
       <template v-if="!smallDevice">
         <hr class="sd--divider" />
         <sd-fieldset stack >
@@ -43,7 +43,7 @@ export default {
   components: {
     ColorScheme
   },
-  emits: ['update:floating'],
+  emits: ['update:floating', 'selectedScheme'],
   props: {
     floating: Boolean,
     smallDevice: Boolean
@@ -68,12 +68,17 @@ export default {
       emit('update:floating', newValue)
     })
 
+    const handleSchemeChange = (event) => {
+      emit('selectedScheme', event)
+    }
+
     onUnmounted(() => {
       window.localStorage.setItem('SDUI:sidebarFloating', sidebar.float)
     })
     return {
       ...toRefs(sidebar),
-      navigation
+      navigation,
+      handleSchemeChange
     }
   }
 }
