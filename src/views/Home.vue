@@ -12,6 +12,7 @@
     </sd-button>
   </sd-mast>
   <sd-container>
+    <widget-demo />
     <!-- TODO: Convert this into component.-->
     <section>
       <h3 class="sd--text__header">Recent Changes</h3>
@@ -123,8 +124,10 @@
 
 <script>
 import { defineComponent, reactive } from 'vue'
+import WidgetDemo from '@/components/WidgetDemo'
 export default defineComponent({
   name: 'AppHome',
+  components: { WidgetDemo },
   setup () {
     const state = reactive({
       isLoading: true
