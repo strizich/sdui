@@ -11,9 +11,10 @@
       Libary Storybook
     </sd-button>
   </sd-mast>
-  <sd-container>
+  <sd-container full>
     <widget-demo />
-    <!-- TODO: Convert this into component.-->
+  </sd-container>
+  <sd-container>    <!-- TODO: Convert this into component.-->
     <section>
       <h3 class="sd--text__header">Recent Changes</h3>
       <p class="sd--text__footnote">3.29.2021</p>
