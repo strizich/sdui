@@ -35,7 +35,7 @@
         :min="min"
         :max="max"
         :step="step"
-        v-model:value="value1"
+        v-model="value1"
       />
     </div>
     <div class="demo-slider__wrapper">
@@ -45,7 +45,7 @@
         :min="min"
         :max="max"
         label="Slider with tooltip and tick marks"
-        v-model:value="value2"
+        v-model="value2"
       />
     </div>
     <div class="demo-slider__wrapper">
@@ -54,7 +54,7 @@
         show-indicators
         :min="min"
         :max="max"
-        v-model:value="value3"
+        v-model="value3"
         :hint="`${value3} of ${max} Somethings`"
       />
     </div>
@@ -63,7 +63,7 @@
         show-indicators
         :min="min"
         :max="max"
-        v-model:value="value4"
+        v-model="value4"
       >
         <template #label>
           <sd-label>Woooo! Slot.</sd-label>

@@ -13,7 +13,7 @@
       show-indicators
       show-tooltip
       show-ticks
-      v-model:value="state.elevation"
+      v-model="state.elevation"
     />
     <div :class="['elevation__item', computedClass]">
       {{computedClass}}

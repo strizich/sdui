@@ -19,6 +19,15 @@
       <h3 class="sd--text__header">Recent Changes</h3>
       <p class="sd--text__footnote">3.29.2021</p>
       <ul>
+        <li>Update instances with slider with api changes
+          <ul>
+            <li><code>v-model:value -> v-model</code></li>
+          </ul>
+        </li>
+        <li>Bump package dependencies</li>
+      </ul>
+      <p class="sd--text__footnote">3.29.2021</p>
+      <ul>
         <li>Added components to storybook</li>
         <li>Added storybook link in header and in the mast</li>
         <li>Updated Chicklets size implementation</li>
