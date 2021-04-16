@@ -2,10 +2,6 @@ export const MAIN_NAVIGATION = [{
   label: 'Home',
   route: '/',
   icon: 'home'
-}, {
-  label: 'About',
-  route: '/about',
-  icon: 'info'
 }]
 
 export const COMPONENT_NAVIGATION = [{
@@ -104,5 +100,9 @@ export const COMPONENT_NAVIGATION = [{
 }, {
   label: 'Toast',
   route: '/components/toast',
+  secondary: false
+}, {
+  label: 'Widget',
+  route: '/components/widget',
   secondary: false
 }]

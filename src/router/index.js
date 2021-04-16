@@ -83,6 +83,11 @@ const routes = [
     component: () => import(/* webpackChunkName: "grid" */ '../views/DemoGrid.vue')
   },
   {
+    path: '/components/widget',
+    name: 'Widget',
+    component: () => import(/* webpackChunkName: "widget" */ '../views/DemoWidget.vue')
+  },
+  {
     path: '/about',
     name: 'About',
     component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')

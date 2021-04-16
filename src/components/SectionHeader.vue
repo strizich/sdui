@@ -10,9 +10,9 @@
         type="link"
         :href="git"
         target="_blank"
+        size="sm"
         flat
         rounded
-        size="sm"
         v-if="git"
       >
         <svg class="git" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 33 33">

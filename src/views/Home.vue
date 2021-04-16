@@ -14,7 +14,8 @@
   <sd-container full>
     <widget-demo />
   </sd-container>
-  <sd-container>    <!-- TODO: Convert this into component.-->
+  <sd-container>
+    <!-- TODO: Convert this into component.-->
     <section>
       <h3 class="sd--text__header">Recent Changes</h3>
       <p class="sd--text__footnote">3.29.2021</p>

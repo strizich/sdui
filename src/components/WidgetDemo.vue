@@ -7,7 +7,9 @@
       :xl="2"
     >
       <sd-widget>
-        <sd-widget-metric value="51" />
+        <sd-widget-metric
+          value="51"
+        />
         <sd-widget-footer
           caption="Widget caption"
           footnote="Widget footnote"
