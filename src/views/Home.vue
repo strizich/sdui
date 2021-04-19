@@ -11,9 +11,6 @@
       Libary Storybook
     </sd-button>
   </sd-mast>
-  <sd-container full>
-    <widget-demo />
-  </sd-container>
   <sd-container>
     <!-- TODO: Convert this into component.-->
     <section>
@@ -135,10 +132,8 @@
 
 <script>
 import { defineComponent, reactive } from 'vue'
-import WidgetDemo from '@/components/WidgetDemo'
 export default defineComponent({
   name: 'AppHome',
-  components: { WidgetDemo },
   setup () {
     const state = reactive({
       isLoading: true
