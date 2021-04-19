@@ -15,7 +15,11 @@
     <!-- TODO: Convert this into component.-->
     <section>
       <h3 class="sd--text__header">Recent Changes</h3>
-      <p class="sd--text__footnote">3.29.2021</p>
+      <p class="sd--text__footnote">4.19.2021</p>
+      <ul>
+        <li>Remove widget demo from Home view.</li>
+      </ul>
+      <p class="sd--text__footnote">4.16.2021</p>
       <ul>
         <li>Update instances with slider with api changes
           <ul>
@@ -23,6 +27,7 @@
           </ul>
         </li>
         <li>Bump package dependencies</li>
+        <li>Added widgets demo</li>
       </ul>
       <p class="sd--text__footnote">3.29.2021</p>
       <ul>
