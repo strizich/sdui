@@ -1,11 +1,11 @@
 <template>
-<div class="demo">
+  <sd-container>
   <section-header
     title="Toast Notifications"
     sub-title="mmmmm tasty..."
     git="https://github.com/strizich/sdui-vite/tree/master/src/lib/components/SdToast"
   />
-  <sd-container>
+
     <sd-row>
       <sd-col :md="4">
         <sd-field label="Content" v-model="state.toast.content" :disabled="state.toast.active"/>
@@ -54,7 +54,7 @@
         </sd-button>
       </sd-col>
     </sd-row>
-  </sd-container>
+
   <sd-toast
     v-model:active="state.toast.active"
     :theme="state.toast.theme"
@@ -70,7 +70,7 @@
       <sd-button size="sm" theme="dark">Button</sd-button>
     </div>
   </sd-toast>
-</div>
+</sd-container>
 
 </template>
 

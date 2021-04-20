@@ -1,7 +1,7 @@
 <template>
-<div class="demo__tooltip">
-  <tooltip-demo/>
-</div>
+  <sd-container>
+    <tooltip-demo/>
+  </sd-container>
 </template>
 
 <script>

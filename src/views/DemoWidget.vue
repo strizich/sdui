@@ -1,12 +1,12 @@
 <template>
-<div class="demo__tooltip">
+<sd-container>
   <section-header
     title="Widget"
     sub-title="Not a gizmo"
     git="https://github.com/strizich/sdui-vite/tree/master/src/lib/components/SdGrid"
   />
   <widget-demo />
-</div>
+</sd-container>
 </template>
 
 <script>

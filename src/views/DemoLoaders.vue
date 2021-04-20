@@ -1,8 +1,8 @@
 <template>
-  <div class="demo">
+  <sd-container>
     <progress-demo id="progress" />
     <skeleton-demo id="skeleton" />
-  </div>
+  </sd-container>
 </template>
 
 <script>

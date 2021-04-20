@@ -164,14 +164,21 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
+@import '/node_modules/@strizich/sdui/dist/scss/breakpoints';
 .demo__buttons{
   padding: 32px;
+  @include breakpoint-down('sm'){
+    padding: 32px 16px;
+  }
 }
 .group__options{
   margin-bottom: 32px;
 }
 .buttons__results{
   padding: 64px 32px;
+    @include breakpoint-down('sm'){
+    padding: 64px 16px;
+  }
   margin-bottom: 32px;
   background-color: var(--background-accent);
 }

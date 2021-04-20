@@ -1,7 +1,7 @@
 <template>
-  <div class="demo__icons">
+  <sd-container>
     <icon-demo/>
-  </div>
+  </sd-container>
 </template>
 
 <script>

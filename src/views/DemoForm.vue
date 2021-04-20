@@ -1,11 +1,11 @@
 <template>
-  <div class="demo__forms">
+  <sd-container>
     <form-control-demo id="input"/>
     <checkbox-demo id="checkbox"/>
     <switch-demo id="switch"/>
     <radio-demo id="radio" />
     <chips-demo id="chips" />
-  </div>
+  </sd-container>
 </template>
 
 <script>
@@ -20,6 +20,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+  @import '../../node_modules/@strizich/sdui/dist/scss/breakpoints';
   .demo__forms{
     padding:32px;
   }

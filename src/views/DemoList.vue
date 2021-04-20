@@ -1,5 +1,5 @@
 <template>
-  <div class="demo">
+  <sd-container>
     <section-header
       title="List"
       sub-title="Work in progress"
@@ -31,7 +31,7 @@
       <sd-list-item>boop</sd-list-item>
       <sd-list-item>boop</sd-list-item>
     </sd-list>
-  </div>
+  </sd-container>
 </template>
 
 <script>

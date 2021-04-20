@@ -1,5 +1,5 @@
 <template>
-  <div class="demo">
+  <sd-container>
     <div id="chicklets" class="demo__chicklets">
       <section-header
         title="Chicklets"
@@ -102,7 +102,7 @@
           </sd-col>
         </sd-row>
     </div>
-  </div>
+  </sd-container>
 </template>
 
 <script>
@@ -145,7 +145,12 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import '/node_modules/@strizich/sdui/dist/scss/breakpoints';
+
 .demo{
-  padding:40px;
+  padding:32px;
+    @include breakpoint-down('sm'){
+    padding: 32px 16px;
+  }
 }
 </style>

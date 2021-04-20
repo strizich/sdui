@@ -1,7 +1,7 @@
 <template>
-  <div class="demo">
+  <sd-container>
     <chart-demo />
-  </div>
+  </sd-container>
 </template>
 
 <script>
@@ -12,7 +12,5 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-  .demo{
-    margin-top: 32px;
-  }
+
 </style>

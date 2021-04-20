@@ -1,5 +1,5 @@
 <template>
-  <div class="demo">
+  <sd-container>
     <section-header
       title="Dropdown"
       sub-title="WIP"
@@ -31,7 +31,7 @@
         </sd-dropdown>
       </sd-button>
     </div>
-  </div>
+  </sd-container>
 </template>
 
 <script>
@@ -52,7 +52,12 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
+@import '../../node_modules/@strizich/sdui/dist/scss/breakpoints';
+
 .demo{
   padding:32px;
+  @include breakpoint-down('sm'){
+    padding: 32px 16px;
+  }
 }
 </style>

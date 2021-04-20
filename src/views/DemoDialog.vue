@@ -1,7 +1,7 @@
 <template>
-  <div class="demo__dialog">
+  <sd-container>
     <dialog-demo/>
-  </div>
+  </sd-container>
 </template>
 
 <script>
@@ -12,7 +12,5 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.demo__dialog{
-  padding:32px;
-}
+
 </style>

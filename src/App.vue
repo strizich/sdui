@@ -19,7 +19,9 @@
       />
     </template>
     <template v-slot:content>
-      <router-view/>
+      <main>
+        <router-view/>
+      </main>
     </template>
   </sd-layout>
 </template>
@@ -85,6 +87,10 @@ html, body{
   transition: background-color .6s 0s ease-in,
               color .6s 0s ease-in
               background-color .6s 0s ease-in;
+}
+
+main{
+  margin-top: 32px;
 }
 
 p:first-child{

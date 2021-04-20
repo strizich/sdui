@@ -1,5 +1,4 @@
 <template>
-  <div class="demo-slider">
   <sd-container>
     <section-header
       title="Slider"
@@ -76,7 +75,6 @@
       </sd-slider>
     </div>
   </sd-container>
-  </div>
 </template>
 
 <script>
