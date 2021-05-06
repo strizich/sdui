@@ -76,7 +76,7 @@
         </sd-col>
       </sd-row>
     </sd-container>
-  {{state}}
+  <pre><code>{{state}}</code></pre>
   </section>
 </template>
 

@@ -50,7 +50,8 @@
         </section>
       </div>
     </div>
-    <div id="sheets" class="demo__sheets" >
+
+    <section id="sheets" class="demo__sheets" >
       <section-header
         title="Sheets"
         sub-title="Construction Paper"
@@ -101,7 +102,7 @@
             </sd-sheet>
           </sd-col>
         </sd-row>
-    </div>
+    </section>
   </sd-container>
 </template>
 

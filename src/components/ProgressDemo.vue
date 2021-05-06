@@ -1,5 +1,5 @@
 <template>
-  <div class="demo">
+  <section id="#progress">
     <sd-container>
       <section-header
       title="Progress Bars"
@@ -34,7 +34,7 @@
         </template>
       </div>
     </sd-container>
-  </div>
+  </section>
 </template>
 
 <script>
@@ -95,10 +95,5 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-  .demo{
-    margin: 32px;
-    &__bar{
-      margin-bottom: 64px;
-    }
-  }
+
 </style>

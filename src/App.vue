@@ -58,9 +58,9 @@ export default defineComponent({
       window.localStorage.setItem('SDUI:navState', e)
       state.menuOpen = e
     }
-    watch(() => route.currentRoute.value, (newValue) => {
+    watch(() => route.currentRoute.value, () => {
       if (state.floating) {
-        menuEvent(false)
+        menuEvent()
       }
     })
 

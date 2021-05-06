@@ -1,7 +1,5 @@
 <template>
-  <sd-container>
-    <icon-demo/>
-  </sd-container>
+  <icon-demo/>
 </template>
 
 <script>
@@ -12,7 +10,5 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.demo__icons{
-  padding: 32px;
-}
+
 </style>

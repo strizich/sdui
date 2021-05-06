@@ -1,5 +1,5 @@
 <template>
-  <div class="demo">
+  <sd-container>
     <section-header
       title="Chip Field"
       sub-title="Smallish thing"
@@ -45,7 +45,7 @@
       <code>{{state.chipsArrayThree}}</code>
       <hr class="sd--divider"/>
     </div>
-  </div>
+  </sd-container>
 </template>
 
 <script>
