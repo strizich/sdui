@@ -1,5 +1,5 @@
 <template>
-  <sd-container>
+  <sd-container full>
     <chart-demo />
   </sd-container>
 </template>

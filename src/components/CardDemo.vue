@@ -1,6 +1,6 @@
 <template>
   <section>
-      <sd-container>
+      <sd-container full>
         <section-header
           title="Cards"
           sub-title="Not at all like trading cards."

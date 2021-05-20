@@ -1,6 +1,6 @@
 <template>
   <section id="#progress">
-    <sd-container>
+    <sd-container full>
       <section-header
       title="Progress Bars"
       sub-title="Some clever tagline"

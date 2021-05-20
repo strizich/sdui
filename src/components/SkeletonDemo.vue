@@ -1,6 +1,6 @@
 <template>
   <section id="#skeleton">
-    <sd-container>
+    <sd-container full>
       <section-header
         title="Skeleton Loader"
         sub-title="Spooky loaders"

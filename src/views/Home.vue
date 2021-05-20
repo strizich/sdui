@@ -11,10 +11,16 @@
       Libary Storybook
     </sd-button>
   </sd-mast>
-  <sd-container>
+  <sd-container full>
     <!-- TODO: Convert this into component.-->
     <section>
       <h3 class="sd--text__header">Recent Changes</h3>
+      <p class="sd--text__footnote">5.20.2021</p>
+      <ul>
+        <li>Fix remaining padding issues in remaining views.</li>
+        <li>Various bugfixes</li>
+        <li>Update dependencies</li>
+      </ul>
       <p class="sd--text__footnote">5.06.2021</p>
       <ul>
         <li>Fix padding around various components and views</li>
@@ -156,6 +162,7 @@ export default defineComponent({
 <style lang="scss">
   @import '~/node_modules/@strizich/sdui/dist/scss/breakpoints';
   .home {
+    margin-top: -32px;
     padding-bottom: 64px;
     &__nav {
       position: sticky;

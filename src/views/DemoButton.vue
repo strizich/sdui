@@ -33,7 +33,7 @@
         </sd-col>
       </sd-row>
     </sd-container>
-    <sd-container>
+    <sd-container full>
       <sd-row class="group">
         <sd-col class="group__options" :lg="3" :md="4" :sm="6" :xs="6">
           <sd-fieldset title="Button Size" stack>
@@ -165,12 +165,6 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 @import '/node_modules/@strizich/sdui/dist/scss/breakpoints';
-.demo__buttons{
-  padding: 32px;
-  @include breakpoint-down('sm'){
-    padding: 32px 16px;
-  }
-}
 .group__options{
   margin-bottom: 32px;
 }

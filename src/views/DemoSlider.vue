@@ -1,5 +1,5 @@
 <template>
-  <sd-container>
+  <sd-container full>
     <section-header
       title="Slider"
       sub-title="woooooo"

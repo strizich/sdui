@@ -1,5 +1,5 @@
 <template>
-  <sd-container>
+  <sd-container full>
     <elevation-demo/>
   </sd-container>
 </template>

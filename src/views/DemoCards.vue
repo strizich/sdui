@@ -1,5 +1,5 @@
 <template>
-  <sd-container>
+  <sd-container full>
     <card-demo/>
   </sd-container>
 </template>

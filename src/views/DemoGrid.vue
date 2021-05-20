@@ -1,12 +1,12 @@
 <template>
-  <sd-container>
+  <sd-container full>
     <section-header
       title="Grid System"
       sub-title="Uses bootstrap grid system"
       git="https://github.com/strizich/sdui-vite/tree/master/src/lib/components/SdGrid"
     />
   </sd-container>
-  <sd-container>
+  <sd-container full>
     <sd-row>
       <sd-col md="2"><sd-sheet class="demo__sheet" theme="primary" padded>2</sd-sheet></sd-col>
       <sd-col md="4"><sd-sheet class="demo__sheet" theme="primary" padded>3</sd-sheet></sd-col>
@@ -18,7 +18,7 @@
     </sd-row>
   </sd-container>
   <hr class="sd--divider"/>
-  <sd-container>
+  <sd-container full>
     <sd-row>
       <sd-col><sd-sheet class="demo__sheet" theme="primary" padded>Auto Width</sd-sheet></sd-col>
       <sd-col><sd-sheet class="demo__sheet" theme="primary" padded>Auto Width</sd-sheet></sd-col>

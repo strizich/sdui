@@ -1,5 +1,5 @@
 <template>
-  <sd-container>
+  <sd-container full>
     <div id="chicklets" class="demo__chicklets">
       <section-header
         title="Chicklets"

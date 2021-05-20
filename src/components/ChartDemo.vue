@@ -1,6 +1,6 @@
 <template>
   <section>
-      <sd-container>
+      <sd-container full>
         <section-header
           title="Charts"
           sub-title="Lines go up. Lines go down."

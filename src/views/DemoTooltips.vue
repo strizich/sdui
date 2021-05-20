@@ -1,5 +1,5 @@
 <template>
-  <sd-container>
+  <sd-container full>
     <tooltip-demo/>
   </sd-container>
 </template>
