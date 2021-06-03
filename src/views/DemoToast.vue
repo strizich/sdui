@@ -6,16 +6,16 @@
     git="https://github.com/strizich/sdui-vite/tree/master/src/lib/components/SdToast"
   />
 
-    <sd-row>
-      <sd-col :md="4">
+    <sd-grid>
+      <sd-cell :md="4">
         <sd-field label="Content" v-model="state.toast.content" :disabled="state.toast.active"/>
         <sd-field label="Delay (ms)" type="number" v-model.number="state.toast.duration" :disabled="state.toast.active"/>
         <sd-fieldset title="Placement">
           <sd-checkbox v-model="state.toast.dismissable" :disabled="state.toast.active">Dismissable</sd-checkbox>
           <sd-checkbox v-model="state.toast.persistant" :disabled="state.toast.active">Persistant</sd-checkbox>
         </sd-fieldset>
-      </sd-col>
-      <sd-col :md="3">
+      </sd-cell>
+      <sd-cell :md="3">
         <sd-fieldset title="Placement">
           <sd-radio
             name="placement"
@@ -28,8 +28,8 @@
             {{placement.label}}
           </sd-radio>
         </sd-fieldset>
-      </sd-col>
-      <sd-col :md="3">
+      </sd-cell>
+      <sd-cell :md="3">
         <sd-fieldset title="Theme">
           <sd-radio
             name="themes"
@@ -42,8 +42,8 @@
             {{theme.label}}
           </sd-radio>
         </sd-fieldset>
-      </sd-col>
-      <sd-col :md="12">
+      </sd-cell>
+      <sd-cell :md="12">
         <sd-button
           @click="state.toast.active = true"
           theme="primary"
@@ -52,8 +52,8 @@
         >
           Toggle Toast
         </sd-button>
-      </sd-col>
-    </sd-row>
+      </sd-cell>
+    </sd-grid>
 
   <sd-toast
     v-model:active="state.toast.active"

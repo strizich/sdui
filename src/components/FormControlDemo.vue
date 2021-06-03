@@ -9,8 +9,8 @@
       git="https://github.com/strizich/sdui-vite/blob/master/src/lib/components/SdField/SdField.vue"
       />
       <form>
-        <sd-row>
-          <sd-col :md="4">
+        <sd-grid>
+          <sd-cell :md="4">
             <sd-field
               icon="email"
               type="email"
@@ -18,33 +18,33 @@
               label="Text Input One"
               v-model="inputOne"
             />
-          </sd-col>
-          <sd-col :md="4">
+          </sd-cell>
+          <sd-cell :md="4">
             <sd-field
               icon="lock"
               type="password"
               placeholder="hey"
               label="Text Input One"
             />
-          </sd-col>
-        </sd-row>
+          </sd-cell>
+        </sd-grid>
       </form>
-      <sd-row>
-        <sd-col :md="4">
+      <sd-grid>
+        <sd-cell :md="4">
           <sd-field
             label="Error as a boolean"
             pristine-error
             error
           />
-        </sd-col>
-        <sd-col :md="4">
+        </sd-cell>
+        <sd-cell :md="4">
           <sd-field
             label="Manual Binding"
             @input="(e) => inputSixEvent(e)"
             :value="inputSix"
           />
-        </sd-col>
-        <sd-col :md="4">
+        </sd-cell>
+        <sd-cell :md="4">
           <sd-field
             label="1 + 1 = ?"
             type="number"
@@ -52,19 +52,19 @@
             pristine-error
             :error="validateMuth"
           />
-        </sd-col>
-      </sd-row>
+        </sd-cell>
+      </sd-grid>
 
-      <sd-row>
-        <sd-col :md="4">
+      <sd-grid>
+        <sd-cell :md="4">
           <sd-field
             label="Error as a String"
             v-model="inputFour"
             required
             error="This is message"
           />
-        </sd-col>
-        <sd-col :md="4">
+        </sd-cell>
+        <sd-cell :md="4">
           <sd-field v-model="inputFive">
             <template v-slot:header>
               custom content slot
@@ -73,8 +73,8 @@
               custom content slot
             </template>
           </sd-field>
-        </sd-col>
-      </sd-row>
+        </sd-cell>
+      </sd-grid>
     </sd-container>
   <pre><code>{{state}}</code></pre>
   </section>

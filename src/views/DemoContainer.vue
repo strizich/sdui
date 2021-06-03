@@ -59,35 +59,45 @@
         git="https://github.com/strizich/sdui-vite/blob/master/src/lib/components/SdSheet/SdSheet.vue"
       />
         <h4>Default Sheets</h4>
-        <sd-row gutterless style="margin-bottom: 32px">
-          <sd-col
+        <sd-grid style="margin-bottom: 32px">
+          <sd-cell
             v-for="theme in state.themes"
             :sm="4"
             :key="`sheet-${theme.color}`"
-            style="height: 75px"
+
           >
-            <sd-sheet :theme="theme.color">
+            <sd-sheet style="height: 75px" :theme="theme.color">
               Minimal styling to optimize for custom content.
               <!-- Add examples of customized sheets here -->
             </sd-sheet>
-          </sd-col>
-        </sd-row>
+          </sd-cell>
+        </sd-grid>
         <h4>Full Height Enabled</h4>
-        <sd-row gutterless style="margin-bottom: 32px">
-          <sd-col
-            v-for="theme in state.themes"
-            sm
-            :key="`sheet-${theme.color}`"
-            style="height: 75px"
+        <sd-grid style="margin-bottom: 32px">
+          <sd-cell
+            :sm="4"
           >
-            <sd-sheet full-height :theme="theme.color">
-              Custom content here
+            <sd-sheet padded full-height theme="dark">
+              <p>Consectetur adipiscing elit. Aliquam finibus nisi ipsum,
+                 eu varius nulla euismod efficitur.
+                 Donec ultricies, augue a dictum dictum.</p>
+              <p>Consectetur adipiscing elit. Donec ultricies, augue a dictum dictum.</p>
             </sd-sheet>
-          </sd-col>
-        </sd-row>
+          </sd-cell>
+          <sd-cell
+            v-for="theme in state.themes"
+            :sm="4"
+            :key="`sheet-${theme.color}`"
+          >
+            <sd-sheet padded full-height :theme="theme.color">
+              Custom content here
+
+            </sd-sheet>
+          </sd-cell>
+        </sd-grid>
         <h4>Padded Sheets</h4>
-        <sd-row gutterless>
-          <sd-col
+        <sd-grid>
+          <sd-cell
             v-for="theme in state.themes"
             :sm="4"
             :key="`sheet-${theme.color}`"
@@ -100,8 +110,8 @@
               <p>Consectetur adipiscing elit.
                 Donec ultricies, augue a dictum dictum.</p>
             </sd-sheet>
-          </sd-col>
-        </sd-row>
+          </sd-cell>
+        </sd-grid>
     </section>
   </sd-container>
 </template>

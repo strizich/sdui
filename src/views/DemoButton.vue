@@ -7,7 +7,7 @@
         git="https://github.com/strizich/sdui-vite/tree/master/src/lib/components/SdButton"
       />
       <sd-row>
-        <sd-col :md="12">
+        <sd-cell :md="12">
           <div class="buttons__results">
             <template v-for="(color, index) in colors" :key="index">
               <sd-button
@@ -30,12 +30,12 @@
               </sd-button>
             </template>
           </div>
-        </sd-col>
+        </sd-cell>
       </sd-row>
     </sd-container>
     <sd-container full>
       <sd-row class="group">
-        <sd-col class="group__options" :lg="3" :md="4" :sm="6" :xs="6">
+        <sd-cell class="group__options" :lg="3" :md="4" :sm="6" :xs="6">
           <sd-fieldset title="Button Size" stack>
             <sd-radio
               name="sizes"
@@ -46,8 +46,8 @@
               {{size.name}}
             </sd-radio>
           </sd-fieldset>
-        </sd-col>
-        <sd-col class="group__options" :lg="3" :md="4" :sm="6" :xs="6">
+        </sd-cell>
+        <sd-cell class="group__options" :lg="3" :md="4" :sm="6" :xs="6">
           <sd-fieldset title="Types" stack>
             <sd-radio
               name="pills"
@@ -58,8 +58,8 @@
               {{pill}}
             </sd-radio>
           </sd-fieldset>
-        </sd-col>
-        <sd-col class="group__options" :lg="3" :md="4" :sm="6" :xs="6">
+        </sd-cell>
+        <sd-cell class="group__options" :lg="3" :md="4" :sm="6" :xs="6">
           <sd-fieldset title="Style" stack>
             <sd-radio
               name="styles"
@@ -70,8 +70,8 @@
               {{style}}
             </sd-radio>
           </sd-fieldset>
-        </sd-col>
-        <sd-col class="group__options" :lg="3" :md="4" :sm="6" :xs="6">
+        </sd-cell>
+        <sd-cell class="group__options" :lg="3" :md="4" :sm="6" :xs="6">
           <sd-fieldset title="Layout" stack>
             <sd-checkbox v-model="isBlock">
               Full Width
@@ -86,8 +86,8 @@
               Icon Only
             </sd-checkbox>
           </sd-fieldset>
-        </sd-col>
-        <sd-col class="group__options" :lg="2" :md="2" :sm="6" :xs="6">
+        </sd-cell>
+        <sd-cell class="group__options" :lg="2" :md="2" :sm="6" :xs="6">
           <sd-fieldset title="Alignment" stack>
             <sd-radio
               name="Alignment"
@@ -100,8 +100,8 @@
               {{align.name}}
             </sd-radio>
           </sd-fieldset>
-        </sd-col>
-        <sd-col class="group__options" :lg="3" :md="4" :sm="6" :xs="6">
+        </sd-cell>
+        <sd-cell class="group__options" :lg="3" :md="4" :sm="6" :xs="6">
           <sd-field
             label="Icon Name"
             name="sizes"
@@ -109,7 +109,7 @@
             v-model="iconName">
             {{size.name}}
           </sd-field>
-        </sd-col>
+        </sd-cell>
       </sd-row>
     </sd-container>
   </div>

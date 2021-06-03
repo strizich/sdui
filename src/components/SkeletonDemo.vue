@@ -7,8 +7,8 @@
         hash="#skeleton"
         git="https://github.com/strizich/sdui-vite/blob/master/src/lib/components/SdLoader/SdSkeleton.vue"
       />
-      <sd-row>
-        <sd-col :lg="3" :md="3" :sm="6" :xs="6">
+      <sd-grid>
+        <sd-cell :lg="3" :md="3" :sm="6" :xs="6">
           <sd-sheet theme="secondary" padded>
             <h3>
               <sd-skeleton :height="24"/>
@@ -18,8 +18,8 @@
               <sd-skeleton />
             </p>
           </sd-sheet>
-        </sd-col>
-        <sd-col :lg="3" :md="3" :sm="6" :xs="6">
+        </sd-cell>
+        <sd-cell :lg="3" :md="3" :sm="6" :xs="6">
           <sd-sheet theme="success" padded>
             <sd-skeleton :height="250" :min-width="100"/>
             <p>
@@ -27,8 +27,8 @@
               <sd-skeleton />
             </p>
           </sd-sheet>
-        </sd-col>
-      </sd-row>
+        </sd-cell>
+      </sd-grid>
     </sd-container>
   </section>
 </template>

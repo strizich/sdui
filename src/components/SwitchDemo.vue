@@ -9,30 +9,30 @@
     >
       Switch
     </section-header>
-    <sd-row>
-      <sd-col :md="4">
+    <sd-grid>
+      <sd-cell :md="4">
         <sd-fieldset title="Simple switch with boolean values">
           <sd-switch v-model="simpleCheck">Simple Switch</sd-switch>
         </sd-fieldset>
-      </sd-col>
-      <sd-col :md="4">
+      </sd-cell>
+      <sd-cell :md="4">
         <sd-fieldset title="Object binding">
           <sd-switch v-model="objectCheck.checked">{{objectCheck.name}}</sd-switch>
         </sd-fieldset>
-      </sd-col>
-      <sd-col :md="4">
+      </sd-cell>
+      <sd-cell :md="4">
         <sd-fieldset title="Custom true/false values">
           <sd-switch v-model="valueCheck" true-value="yup" false-value="nope">Single Switch w/ value</sd-switch>
         </sd-fieldset>
-      </sd-col>
-      <sd-col :md="4">
+      </sd-cell>
+      <sd-cell :md="4">
         <sd-fieldset title="Array of switches" stack>
           <sd-switch theme="danger" v-model="arrayCheck" value="First">Simple Switch</sd-switch>
           <sd-switch theme="success" v-model="arrayCheck" value="Second">{{objectCheck.name}}</sd-switch>
           <sd-switch theme="default" v-model="arrayCheck" value="Third">Single Switch w/ value</sd-switch>
         </sd-fieldset>
-      </sd-col>
-    </sd-row>
+      </sd-cell>
+    </sd-grid>
     <code>simpleCheck: {{simpleCheck}}</code><br/>
     <code>objectCheck: {{objectCheck}}</code><br/>
     <code>valueCheck: {{valueCheck}}</code><br/>

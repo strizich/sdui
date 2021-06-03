@@ -1,6 +1,6 @@
 <template>
-  <sd-row dense>
-    <sd-col
+  <sd-grid dense>
+    <sd-cell
       :sm="6"
       :md="4"
       :lg="3"
@@ -15,8 +15,8 @@
           footnote="Widget footnote"
         />
       </sd-widget>
-    </sd-col>
-    <sd-col
+    </sd-cell>
+    <sd-cell
       :sm="6"
       :md="4"
       :lg="3"
@@ -34,8 +34,8 @@
           footnote="Widget footnote"
         />
       </sd-widget>
-    </sd-col>
-    <sd-col
+    </sd-cell>
+    <sd-cell
       :sm="6"
       :md="4"
       :lg="3"
@@ -50,8 +50,8 @@
           footnote="Widget footnote"
         />
       </sd-widget>
-    </sd-col>
-    <sd-col
+    </sd-cell>
+    <sd-cell
       :sm="6"
       :md="4"
       :lg="3"
@@ -67,8 +67,8 @@
           footnote="Widget footnote"
         />
       </sd-widget>
-    </sd-col>
-    <sd-col
+    </sd-cell>
+    <sd-cell
       :sm="6"
       :md="4"
       :lg="3"
@@ -81,8 +81,8 @@
           footnote="Widget footnote"
         />
       </sd-widget>
-    </sd-col>
-    <sd-col
+    </sd-cell>
+    <sd-cell
       :sm="6"
       :md="4"
       :lg="3"
@@ -95,8 +95,8 @@
           footnote="Widget footnote"
         />
       </sd-widget>
-    </sd-col>
-  </sd-row>
+    </sd-cell>
+  </sd-grid>
 </template>
 <script>
 export default {

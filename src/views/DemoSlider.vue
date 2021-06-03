@@ -6,26 +6,26 @@
       placement="bottom"
       git="https://github.com/strizich/sdui-vite/tree/master/src/lib/components/SdSlider"
     />
-    <sd-row>
-      <sd-col :md="6">
+    <sd-grid>
+      <sd-cell :md="6">
         <sd-checkbox v-model="showOptions">Additional Settings</sd-checkbox>
-      </sd-col>
-    </sd-row>
-    <sd-row v-if="showOptions">
-      <sd-col :xs="6" :sm="6" :md="6">
+      </sd-cell>
+    </sd-grid>
+    <sd-grid v-if="showOptions">
+      <sd-cell :xs="6" :sm="6" :md="6">
         <sd-fieldset stack>
           <sd-field label="Set Label" type="text" v-model="label"/>
           <sd-field label="Set Step" type="number" v-model.number="step"/>
           <sd-field label="Set Value" type="number" v-model.number="value1"/>
         </sd-fieldset>
-      </sd-col>
-      <sd-col :xs="6" :sm="6" :md="6">
+      </sd-cell>
+      <sd-cell :xs="6" :sm="6" :md="6">
         <sd-fieldset stack>
           <sd-field label="Set Min" type="number" v-model.number="min"/>
           <sd-field label="Set Max" type="number" v-model.number="max"/>
         </sd-fieldset>
-      </sd-col>
-    </sd-row>
+      </sd-cell>
+    </sd-grid>
     <div class="demo-slider__wrapper">
       <sd-slider
         show-tooltip
