@@ -6,7 +6,7 @@
         sub-title="clicky clicky"
         git="https://github.com/strizich/sdui-vite/tree/master/src/lib/components/SdButton"
       />
-      <sd-row>
+      <sd-grid>
         <sd-cell :md="12">
           <div class="buttons__results">
             <template v-for="(color, index) in colors" :key="index">
@@ -31,10 +31,10 @@
             </template>
           </div>
         </sd-cell>
-      </sd-row>
+      </sd-grid>
     </sd-container>
     <sd-container full>
-      <sd-row class="group">
+      <sd-grid class="group">
         <sd-cell class="group__options" :lg="3" :md="4" :sm="6" :xs="6">
           <sd-fieldset title="Button Size" stack>
             <sd-radio
@@ -110,7 +110,7 @@
             {{size.name}}
           </sd-field>
         </sd-cell>
-      </sd-row>
+      </sd-grid>
     </sd-container>
   </div>
 </template>

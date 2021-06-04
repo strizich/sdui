@@ -7,16 +7,16 @@
           placement="bottom"
           git="https://github.com/strizich/sdui-vite/tree/master/src/lib/components/SdChart"
         />
-        <sd-row>
-          <sd-col :sm="12" :md="6" v-for="(data, index) in data.chartData" :key="index">
+        <sd-grid>
+          <sd-cell :sm="12" :md="6" v-for="(data, index) in data.chartData" :key="index">
             <sd-card>
               <sd-card-header>{{data.title}}</sd-card-header>
               <sd-card-body>
                 <sd-base-chart :chart-data="data"/>
               </sd-card-body>
             </sd-card>
-          </sd-col>
-        </sd-row>
+          </sd-cell>
+        </sd-grid>
       </sd-container>
   </section>
 </template>
