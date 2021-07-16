@@ -7,46 +7,40 @@
       git="https://github.com/strizich/sdui-vite/tree/master/src/lib/components/SdDropdown"
     />
     <div class="demo__buttons">
-      <sd-button rounded icon-only>
-        <sd-icon name="more_vert" />
-        <sd-dropdown v-model:active="dropdown" auto-close>
-          <sd-dropdown-menu title="Auto close disabled">
-            <sd-button flat align="flex-start">Button</sd-button>
-            <sd-button flat align="flex-start">Button</sd-button>
-            <sd-button flat align="flex-start">Button</sd-button>
-            <sd-button flat align="flex-start">Button</sd-button>
-            <sd-button flat align="flex-start">Button</sd-button>
+      <sd-button-group>
+        <sd-button id="dropdrop-trigger">Dropdown</sd-button>
+        <sd-button id="dropdrop-trigger-2">Dropdown</sd-button>
+        <sd-dropdown trigger="dropdrop-trigger">
+          <sd-dropdown-menu title="Dropdown Header">
+            <sd-button flat align="flex-start">One</sd-button>
+            <sd-button flat align="flex-start">Two</sd-button>
           </sd-dropdown-menu>
         </sd-dropdown>
-      </sd-button>
-      <sd-button>
-        <span>
-          Dropdown
-        </span>
-        <sd-dropdown auto-close v-model:active="dropdown2">
-          <sd-dropdown-menu title="Auto close onClick">
-            <sd-button flat align="flex-start" @click.stop="meh">w/ @click.stop</sd-button>
-            <sd-button flat align="flex-start">w/o @click.stop</sd-button>
+        <sd-dropdown trigger="dropdrop-trigger-2">
+          <sd-dropdown-menu title="Dropdown Header">
+            <sd-button flat align="flex-start">One</sd-button>
+            <sd-button flat align="flex-start">Two</sd-button>
           </sd-dropdown-menu>
         </sd-dropdown>
-      </sd-button>
+      </sd-button-group>
     </div>
   </sd-container>
 </template>
 
 <script>
-import { defineComponent, ref } from 'vue'
+import { defineComponent, reactive, toRefs } from 'vue'
 import SectionHeader from '@/components/SectionHeader'
 export default defineComponent({
   components: { SectionHeader },
   setup () {
-    const dropdown = ref(false)
-    const dropdown2 = ref(false)
-    const dropdown3 = ref(false)
-    const meh = () => {
-      console.log('meh')
+    const state = reactive({
+      dropdown1: false,
+      dropdown2: false
+    })
+    const toggleDropdown = () => {
+      state.dropdown2 = !state.dropdown2
     }
-    return { dropdown, dropdown2, meh, dropdown3 }
+    return { ...toRefs(state), toggleDropdown }
   }
 })
 </script>

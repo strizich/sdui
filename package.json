@@ -11,13 +11,13 @@
   },
   "dependencies": {
     "@popperjs/core": "^2.9.2",
-    "@strizich/sdui": "^1.1.0-alpha.19",
+    "@strizich/sdui": "^1.1.0-alpha.22",
     "animejs": "^3.2.1",
     "chart.js": "^2.9.4",
     "core-js": "^3.12.1",
     "deepmerge": "^4.2.2",
     "register-service-worker": "^1.7.2",
-    "vue": "^3.0.11",
+    "vue": "^3.1.1",
     "vue-router": "^4.0.8",
     "vuex": "^4.0.0"
   },
