@@ -4,25 +4,31 @@
       title="Dropdown"
       sub-title="WIP"
       placement="bottom"
-      git="https://github.com/strizich/sdui-vite/tree/master/src/lib/components/SdDropdown"
+      git="https://github.com/strizich/sdui-vite/tree/master/src/lib/components/SdMenu"
     />
     <div class="demo__buttons">
-      <sd-button-group>
-        <sd-button id="dropdrop-trigger">Dropdown</sd-button>
-        <sd-button id="dropdrop-trigger-2">Dropdown</sd-button>
-        <sd-dropdown trigger="dropdrop-trigger">
-          <sd-dropdown-menu title="Dropdown Header">
-            <sd-button flat align="flex-start">One</sd-button>
-            <sd-button flat align="flex-start">Two</sd-button>
-          </sd-dropdown-menu>
-        </sd-dropdown>
-        <sd-dropdown trigger="dropdrop-trigger-2">
-          <sd-dropdown-menu title="Dropdown Header">
-            <sd-button flat align="flex-start">One</sd-button>
-            <sd-button flat align="flex-start">Two</sd-button>
-          </sd-dropdown-menu>
-        </sd-dropdown>
-      </sd-button-group>
+      <sd-menu>
+        <sd-button trigger>Dropdown</sd-button>
+        <sd-menu-content>
+          <sd-button-group>
+            <sd-button align="flex-start">One</sd-button>
+            <sd-button align="flex-start">Two</sd-button>
+          </sd-button-group>
+        </sd-menu-content>
+      </sd-menu>
+
+      <sd-menu >
+        <sd-button-group>
+          <sd-button flat>Dropdown</sd-button>
+          <sd-button icon="keyboard_arrow_down" trigger icon-only/>
+        </sd-button-group>
+        <sd-menu-content placement="bottom-end">
+          <sd-button-group vertical>
+            <sd-button align="flex-start" block>Menu Option 1</sd-button>
+            <sd-button align="flex-start" block>Menu Option 2</sd-button>
+          </sd-button-group>
+        </sd-menu-content>
+      </sd-menu>
     </div>
   </sd-container>
 </template>
