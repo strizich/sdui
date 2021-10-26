@@ -14,14 +14,14 @@
           v-model="iconSearch"
           placeholder="Search all icons"
         />
-        <sd-select label="results" v-model="resultCount">
+        <sd-simple-select label="results" v-model="resultCount">
           <option value="25">25</option>
           <option value="100">100</option>
           <option value="200">200</option>
           <option value="300">300</option>
           <option value="400">400</option>
           <option value="2000">400+</option>
-        </sd-select>
+        </sd-simple-select>
       </sd-fieldset>
       <div class="demo__icon-container">
         <div class="demo__icons" v-if="totalFilteredResults.length >= 1">

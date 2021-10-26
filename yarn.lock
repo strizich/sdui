@@ -1389,13 +1389,14 @@
   resolved "https://registry.yarnpkg.com/@soda/get-current-script/-/get-current-script-1.0.2.tgz#a53515db25d8038374381b73af20bb4f2e508d87"
   integrity sha512-T7VNNlYVM1SgQ+VsMYhnDkcGmWhQdL0bDyGm5TlQ3GBXnJscEClUUOKduWTmm2zCnvNLC1hc3JpuXjs/nFOc5w==
 
-"@strizich/sdui@^1.2.6":
-  version "1.2.6"
-  resolved "https://registry.yarnpkg.com/@strizich/sdui/-/sdui-1.2.6.tgz#b60a35a782bd00f10b419dd307ba001a5eb7a0be"
-  integrity sha512-yNp8AesfCGpesb8sbgFl5t7BgY12phbs9qzR7m+1WR7Zh8vk6zhbR+GKBj1zqoTHku8EFBBDv2jF1sKjvYhXRg==
+"@strizich/sdui@^1.2.7":
+  version "1.2.7"
+  resolved "https://registry.yarnpkg.com/@strizich/sdui/-/sdui-1.2.7.tgz#c127ba6204ff9ca4fede69ddab6086e6c04b506a"
+  integrity sha512-3mMprHrF5tLfRTmp0foTKcEODcABAQ+AJB/X2GK7s7k+KJmi0QSlrD1+N7OvMK74W+udoJfvkv/MfUkmkDJluQ==
   dependencies:
     "@popperjs/core" "^2.9.2"
     animejs "^3.2.1"
+    caniuse-lite "^1.0.30001271"
     focus-trap "^6.5.1"
     vue "^3.2.20"
 
@@ -3412,6 +3413,11 @@ caniuse-lite@^1.0.0, caniuse-lite@^1.0.30001109, caniuse-lite@^1.0.30001254:
   version "1.0.30001258"
   resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30001258.tgz#b604eed80cc54a578e4bf5a02ae3ed49f869d252"
   integrity sha512-RBByOG6xWXUp0CR2/WU2amXz3stjKpSl5J1xU49F1n2OxD//uBZO4wCKUiG+QMGf7CHGfDDcqoKriomoGVxTeA==
+
+caniuse-lite@^1.0.30001271:
+  version "1.0.30001271"
+  resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30001271.tgz#0dda0c9bcae2cf5407cd34cac304186616cc83e8"
+  integrity sha512-BBruZFWmt3HFdVPS8kceTBIguKxu4f99n5JNp06OlPD/luoAMIaIK5ieV5YjnBLH3Nysai9sxj9rpJj4ZisXOA==
 
 capture-exit@^2.0.0:
   version "2.0.0"

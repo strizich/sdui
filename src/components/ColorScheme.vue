@@ -1,11 +1,11 @@
 <template>
   <div>
     <sd-fieldset title="Color Scheme" stack>
-      <sd-select v-model="mode" block>
+      <sd-simple-select v-model="mode" block>
         <option value="auto">Auto</option>
         <option value="light">Light</option>
         <option value="dark">Dark</option>
-      </sd-select>
+      </sd-simple-select>
     </sd-fieldset>
   </div>
 </template>
