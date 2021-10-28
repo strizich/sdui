@@ -6,30 +6,29 @@
       placement="bottom"
       git="https://github.com/strizich/sdui-vite/tree/master/src/lib/components/SdMenu"
     />
-    <div class="demo__buttons">
-      <sd-menu>
-        <sd-button trigger>Dropdown</sd-button>
-        <sd-menu-content>
-          <sd-button-group>
-            <sd-button align="flex-start">One</sd-button>
-            <sd-button align="flex-start">Two</sd-button>
-          </sd-button-group>
-        </sd-menu-content>
-      </sd-menu>
-
-      <sd-menu >
+  </sd-container>
+  <sd-container>
+    <sd-menu>
+      <sd-button trigger>Dropdown</sd-button>
+      <sd-menu-content>
         <sd-button-group>
-          <sd-button flat>Dropdown</sd-button>
-          <sd-button icon="keyboard_arrow_down" trigger icon-only/>
+          <sd-button align="flex-start">One</sd-button>
+          <sd-button align="flex-start">Two</sd-button>
         </sd-button-group>
-        <sd-menu-content placement="bottom-end">
-          <sd-button-group vertical>
-            <sd-button align="flex-start" block>Menu Option 1</sd-button>
-            <sd-button align="flex-start" block>Menu Option 2</sd-button>
-          </sd-button-group>
-        </sd-menu-content>
-      </sd-menu>
-    </div>
+      </sd-menu-content>
+    </sd-menu>
+    <sd-menu>
+      <sd-button-group>
+        <sd-button>Dropdown</sd-button>
+        <sd-button icon="keyboard_arrow_down" trigger icon-only/>
+      </sd-button-group>
+      <sd-menu-content placement="bottom-end">
+        <sd-button-group vertical>
+          <sd-button flat align="flex-start" block>Menu Option 1</sd-button>
+          <sd-button flat align="flex-start" block>Menu Option 2</sd-button>
+        </sd-button-group>
+      </sd-menu-content>
+    </sd-menu>
   </sd-container>
 </template>
 
@@ -52,12 +51,5 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
-@import '../../node_modules/@strizich/sdui/dist/scss/breakpoints';
 
-.demo{
-  padding:32px;
-  @include breakpoint-down('sm'){
-    padding: 32px 16px;
-  }
-}
 </style>
