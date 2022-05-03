@@ -32,7 +32,6 @@
       <ul>
         <li>Fix padding around various components and views</li>
       </ul>
-      <h3 class="sd--text__header">Recent Changes</h3>
       <p class="sd--text__footnote">4.19.2021</p>
       <ul>
         <li>Remove widget demo from Home view.</li>
