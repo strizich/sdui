@@ -15,6 +15,13 @@
     <!-- TODO: Convert this into component.-->
     <section>
       <h3 class="sd--text__header">Recent Changes</h3>
+      <p class="sd--text__footnote">5.03.2022</p>
+      <ul>
+        <li>Large update to theming system.</li>
+        <li>New mixins to facilitate the create fully customizable buttons.</li>
+        <li>Additional Theming options for the sidebar and header</li>
+        <li>Various Fixes</li>
+      </ul>
       <p class="sd--text__footnote">5.20.2021</p>
       <ul>
         <li>Fix remaining padding issues in remaining views.</li>
